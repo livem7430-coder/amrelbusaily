@@ -32,6 +32,28 @@ const metrics = [
 
 const experience = [
   {
+    role: "SEO & Digital Products Lead",
+    org: "Expand Pro",
+    place: "Digital products, AI products & software",
+    period: "Jan 2025 — Present",
+    points: [
+      "Leading SEO and growth for digital products, AI-powered products, and software offerings.",
+      "Building organic acquisition strategies for AI tools and SaaS launches, from keyword strategy to technical SEO and content.",
+      "Aligning product, content, and paid channels to scale qualified traffic and activation.",
+    ],
+  },
+  {
+    role: "Founder — Tansiky.com",
+    org: "Independent client work",
+    place: "AI & education sector projects",
+    period: "2025 — Present",
+    points: [
+      "Running independent SEO and growth engagements through my own project, tansiky.com.",
+      "Delivering SEO and paid ads for multiple AI-focused products and education-sector platforms.",
+      "Owning strategy end-to-end: audits, keyword research, on-page, technical SEO, and campaign management.",
+    ],
+  },
+  {
     role: "Founder & SEO Specialist",
     org: "A2M Digital Marketing Agency",
     place: "Cairo",
