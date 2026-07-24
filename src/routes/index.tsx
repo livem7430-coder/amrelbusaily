@@ -166,9 +166,9 @@ function Home() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#top" className="flex items-center gap-2 font-display font-semibold">
             <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground font-mono text-sm">
-              A2M
+              AE
             </span>
-            <span>Amr Elbusaily</span>
+            <span>Amr Elbossaily</span>
           </a>
           <nav className="hidden gap-7 text-sm text-muted-foreground md:flex">
             <a href="#work" className="hover:text-foreground">Work</a>
