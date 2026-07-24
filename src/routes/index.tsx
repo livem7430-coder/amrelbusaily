@@ -32,6 +32,28 @@ const metrics = [
 
 const experience = [
   {
+    role: "SEO & Digital Products Lead",
+    org: "Expand Pro",
+    place: "Digital products, AI products & software",
+    period: "Jan 2025 — Present",
+    points: [
+      "Leading SEO and growth for digital products, AI-powered products, and software offerings.",
+      "Building organic acquisition strategies for AI tools and SaaS launches, from keyword strategy to technical SEO and content.",
+      "Aligning product, content, and paid channels to scale qualified traffic and activation.",
+    ],
+  },
+  {
+    role: "Founder — Tansiky.com",
+    org: "Independent client work",
+    place: "AI & education sector projects",
+    period: "2025 — Present",
+    points: [
+      "Running independent SEO and growth engagements through my own project, tansiky.com.",
+      "Delivering SEO and paid ads for multiple AI-focused products and education-sector platforms.",
+      "Owning strategy end-to-end: audits, keyword research, on-page, technical SEO, and campaign management.",
+    ],
+  },
+  {
     role: "Founder & SEO Specialist",
     org: "A2M Digital Marketing Agency",
     place: "Cairo",
@@ -144,9 +166,9 @@ function Home() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#top" className="flex items-center gap-2 font-display font-semibold">
             <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground font-mono text-sm">
-              A2M
+              AE
             </span>
-            <span>Amr Elbusaily</span>
+            <span>Amr Elbossaily</span>
           </a>
           <nav className="hidden gap-7 text-sm text-muted-foreground md:flex">
             <a href="#work" className="hover:text-foreground">Work</a>
