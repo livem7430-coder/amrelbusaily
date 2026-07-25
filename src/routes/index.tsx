@@ -216,10 +216,10 @@ function Home() {
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
               Available for SEO & paid ads projects
             </div>
-            <h1 className="mt-6 text-5xl font-semibold leading-[1.05] md:text-6xl">
-              <span className="text-gradient">Rank higher.</span>
+            <h1 className="mt-6 text-4xl font-semibold leading-[1.05] md:text-5xl lg:text-6xl">
+              <span className="text-gradient">SEO that dominates</span>
               <br />
-              Sell more. Own search.
+              rankings, traffic & revenue.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
               I'm Amr Elbusaily — an SEO Specialist and Paid Ads Expert from Cairo with{" "}
