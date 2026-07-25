@@ -8,13 +8,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Amr Elbusaily is an SEO specialist and paid ads expert from Cairo with 6+ years managing 50+ e-commerce and SEO projects, driving up to 45% organic traffic growth and 35% sales lift.",
+          "Amr Elbusaily is an SEO specialist and paid ads expert from Cairo with 7 years managing 50+ e-commerce and SEO projects, driving up to 45% organic traffic growth and 35% sales lift.",
       },
       { property: "og:title", content: "Amr Elbusaily — SEO Specialist & Paid Ads Expert" },
       {
         property: "og:description",
         content:
-          "6+ years in SEO and paid ads. Founder of A2M Digital Marketing Agency. 50+ projects across fashion, tech, beauty, and sports e-commerce.",
+          "7 years in SEO and paid ads. Founder of A2M Digital Marketing Agency. 50+ projects across fashion, tech, beauty, and sports e-commerce.",
       },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -24,13 +24,24 @@ export const Route = createFileRoute("/")({
 });
 
 const metrics = [
-  { value: "6+", label: "Years in SEO & paid ads" },
+  { value: "7", label: "Years in SEO & paid ads" },
   { value: "50+", label: "SEO & e-commerce projects" },
   { value: "45%", label: "Organic traffic uplift" },
   { value: "35%", label: "E-commerce sales growth" },
 ];
 
 const experience = [
+  {
+    role: "SEO & Growth Lead — Digital & AI Projects",
+    org: "Independent & agency engagements",
+    place: "Digital products, AI & automation",
+    period: "2026 — Present",
+    points: [
+      "Leading SEO and growth strategy for multiple digital products and AI-powered platforms across SaaS, education, and e-commerce.",
+      "Building and optimizing n8n automation workflows that connect SEO data, reporting, and marketing operations.",
+      "Delivering end-to-end organic growth: technical audits, keyword strategy, content optimization, and performance reporting.",
+    ],
+  },
   {
     role: "SEO & Digital Products Lead",
     org: "Expand Pro",
@@ -212,7 +223,7 @@ function Home() {
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
               I'm Amr Elbusaily — an SEO Specialist and Paid Ads Expert from Cairo with{" "}
-              <span className="text-foreground">6+ years</span> scaling e-commerce brands. Founder of
+              <span className="text-foreground">7 years</span> scaling e-commerce brands. Founder of
               A2M Digital Marketing Agency, with{" "}
               <span className="text-foreground">50+ projects</span> across fashion, tech, beauty, and
               sports.
@@ -294,7 +305,7 @@ function Home() {
       {/* EXPERIENCE */}
       <section id="experience" className="border-t border-border">
         <div className="mx-auto max-w-6xl px-6 py-20">
-          <SectionHeader eyebrow="Employment history" title="6+ years shipping SEO & paid ads" />
+          <SectionHeader eyebrow="Employment history" title="7 years shipping SEO & paid ads" />
           <div className="mt-10 space-y-4">
             {experience.map((e) => (
               <div
