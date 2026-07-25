@@ -190,7 +190,7 @@ function Home() {
             <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground font-mono text-sm">
               AE
             </span>
-            <span>Amr Elbossaily</span>
+            <span>Amr Elbusaily</span>
           </a>
           <nav className="hidden gap-7 text-sm text-muted-foreground md:flex">
             <a href="#work" className="hover:text-foreground">Work</a>
