@@ -43,6 +43,17 @@ const experience = [
     ],
   },
   {
+    role: "SEO Consultant & Expert",
+    org: "Aldowly.com",
+    place: "Fitness & gym equipment e-commerce",
+    period: "2025 — Present",
+    points: [
+      "Leading SEO strategy for aldowly.com, an e-commerce platform selling gym equipment and fitness products.",
+      "Conducting technical SEO audits, keyword research, and on-page optimization to improve search visibility.",
+      "Advising on site architecture, product page optimization, and content strategy to drive organic traffic and sales.",
+    ],
+  },
+  {
     role: "Founder — Tansiky.com",
     org: "Independent client work",
     place: "AI & education sector projects",
