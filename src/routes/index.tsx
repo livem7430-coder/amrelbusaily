@@ -217,9 +217,9 @@ function Home() {
               Available for SEO & paid ads projects
             </div>
             <h1 className="mt-6 text-5xl font-semibold leading-[1.05] md:text-6xl">
-              <span className="text-gradient">SEO that moves</span>
+              <span className="text-gradient">Rank higher.</span>
               <br />
-              rankings, traffic & revenue.
+              Sell more. Own search.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
               I'm Amr Elbusaily — an SEO Specialist and Paid Ads Expert from Cairo with{" "}
@@ -399,7 +399,6 @@ function Home() {
                 <ContactRow label="Email" value="amreelbasily@gmail.com" href="mailto:amreelbasily@gmail.com" />
                 <ContactRow label="Phone" value="+20 100 258 8901" href="tel:+201002588901" />
                 <ContactRow label="Location" value="Cairo, Egypt" />
-                <ContactRow label="Agency" value="A2M Digital Marketing" />
               </div>
             </div>
           </div>
