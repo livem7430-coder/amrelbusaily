@@ -4,24 +4,93 @@ import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Amr Elbusaily — SEO Specialist & Paid Ads Expert" },
+      { title: "Amr Elbusaily — SEO Specialist & Paid Ads Expert | Cairo" },
       {
         name: "description",
         content:
-          "Amr Elbusaily is an SEO specialist and paid ads expert from Cairo with 7 years managing 50+ e-commerce and SEO projects, driving up to 45% organic traffic growth and 35% sales lift.",
+          "Amr Elbusaily is an SEO specialist and paid ads expert from Cairo with 7 years managing 50+ e-commerce, SaaS and AI projects — driving up to 45% organic traffic growth and 35% sales lift.",
       },
       { property: "og:title", content: "Amr Elbusaily — SEO Specialist & Paid Ads Expert" },
       {
         property: "og:description",
         content:
-          "7 years in SEO and paid ads. Founder of A2M Digital Marketing Agency. 50+ projects across fashion, tech, beauty, and sports e-commerce.",
+          "7 years in SEO and paid ads. Founder of A2M Digital Marketing Agency. 50+ projects across e-commerce, SaaS, AI and education.",
       },
       { property: "og:type", content: "profile" },
+      { property: "og:url", content: "https://amrelbusaily.lovable.app/" },
+      { property: "og:image", content: `https://amrelbusaily.lovable.app${amrPortrait.url}` },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Amr Elbusaily — SEO Specialist & Paid Ads Expert" },
+      { name: "twitter:description", content: "SEO that dominates rankings, traffic & revenue." },
+      { name: "twitter:image", content: `https://amrelbusaily.lovable.app${amrPortrait.url}` },
+    ],
+    links: [{ rel: "canonical", href: "https://amrelbusaily.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Amr Elbusaily",
+          url: "https://amrelbusaily.lovable.app/",
+          image: `https://amrelbusaily.lovable.app${amrPortrait.url}`,
+          jobTitle: "SEO Specialist & Paid Ads Expert",
+          address: { "@type": "PostalAddress", addressLocality: "Cairo", addressCountry: "EG" },
+          knowsAbout: [
+            "Search Engine Optimization",
+            "Technical SEO",
+            "E-commerce SEO",
+            "Google Ads",
+            "Paid Media",
+            "n8n Automation",
+            "AI Product Growth",
+          ],
+          worksFor: { "@type": "Organization", name: "Expand Pro" },
+          alumniOf: [
+            { "@type": "CollegeOrUniversity", name: "Cairo University" },
+            { "@type": "CollegeOrUniversity", name: "Zagazig University" },
+          ],
+          sameAs: ["https://tansiky.com", "https://aldowly.com"],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Who is Amr Elbusaily?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Amr Elbusaily is an SEO specialist and paid ads expert based in Cairo, Egypt, with 7 years of experience and 50+ projects across e-commerce, SaaS, AI and education.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What services does Amr Elbusaily offer?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Technical SEO audits, on-page and content SEO, e-commerce SEO, Google Ads and paid media management, and n8n marketing automation.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How can I contact Amr Elbusaily?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "You can reach Amr Elbusaily through the contact section on amrelbusaily.lovable.app for SEO consulting, audits, and growth engagements.",
+              },
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: Home,
 });
+
 
 const metrics = [
   { value: "7", label: "Years in SEO & paid ads" },
