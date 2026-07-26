@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import amrPortrait from "@/assets/amr-portrait.jpg";
+import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -225,8 +225,7 @@ function Home() {
               I'm Amr Elbusaily — an SEO Specialist and Paid Ads Expert from Cairo with{" "}
               <span className="text-foreground">7 years</span> scaling e-commerce brands. Founder of
               A2M Digital Marketing Agency, with{" "}
-              <span className="text-foreground">50+ projects</span> across fashion, tech, beauty, and
-              sports.
+              <span className="text-foreground">50+ projects</span> across fashion and tech.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
@@ -248,7 +247,7 @@ function Home() {
             <div className="absolute -inset-4 rounded-2xl bg-primary/10 blur-2xl" aria-hidden />
             <div className="relative overflow-hidden rounded-2xl border border-border bg-surface">
               <img
-                src={amrPortrait}
+                src={amrPortrait.url}
                 alt="Amr Elbusaily, SEO Specialist based in Cairo"
                 className="aspect-[4/5] w-full object-cover"
               />
