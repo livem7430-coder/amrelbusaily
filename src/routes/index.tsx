@@ -247,7 +247,7 @@ function Home() {
             <div className="absolute -inset-4 rounded-2xl bg-primary/10 blur-2xl" aria-hidden />
             <div className="relative overflow-hidden rounded-2xl border border-border bg-surface">
               <img
-                src={amrPortrait}
+                src={amrPortrait.url}
                 alt="Amr Elbusaily, SEO Specialist based in Cairo"
                 className="aspect-[4/5] w-full object-cover"
               />
