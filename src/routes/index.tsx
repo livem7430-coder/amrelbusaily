@@ -225,8 +225,7 @@ function Home() {
               I'm Amr Elbusaily — an SEO Specialist and Paid Ads Expert from Cairo with{" "}
               <span className="text-foreground">7 years</span> scaling e-commerce brands. Founder of
               A2M Digital Marketing Agency, with{" "}
-              <span className="text-foreground">50+ projects</span> across fashion, tech, beauty, and
-              sports.
+              <span className="text-foreground">50+ projects</span> across fashion and tech.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
