@@ -77,14 +77,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Amr Elbusaily — SEO Specialist & Paid Ads Expert" },
+      {
+        name: "description",
+        content:
+          "Amr Elbusaily — SEO specialist and paid ads expert from Cairo. 7 years, 50+ projects driving rankings, organic traffic and revenue for e-commerce, SaaS and AI products.",
+      },
+      { name: "author", content: "Amr Elbusaily" },
+      { name: "keywords", content: "Amr Elbusaily, SEO specialist, SEO expert Cairo, technical SEO, e-commerce SEO, paid ads expert, Google Ads, n8n automation, AI SEO" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
+      { property: "og:site_name", content: "Amr Elbusaily" },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "theme-color", content: "#0a0a0a" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -94,6 +100,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Amr Elbusaily",
+          url: "https://amrelbusaily.lovable.app",
+          inLanguage: "en",
+        }),
       },
     ],
   }),
