@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -24,7 +24,12 @@ export const Route = createFileRoute("/")({
       { name: "twitter:description", content: "SEO that dominates rankings, traffic & revenue." },
       { name: "twitter:image", content: `https://amrelbusaily.lovable.app${amrPortrait.url}` },
     ],
-    links: [{ rel: "canonical", href: "https://amrelbusaily.lovable.app/" }],
+    links: [
+      { rel: "canonical", href: "https://amrelbusaily.lovable.app/" },
+      { rel: "alternate", hrefLang: "en", href: "https://amrelbusaily.lovable.app/" },
+      { rel: "alternate", hrefLang: "ar", href: "https://amrelbusaily.lovable.app/ar" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://amrelbusaily.lovable.app/" },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -265,14 +270,18 @@ function Home() {
             <a href="#work" className="hover:text-foreground">Work</a>
             <a href="#experience" className="hover:text-foreground">Experience</a>
             <a href="#skills" className="hover:text-foreground">Skills</a>
+            <Link to="/blog" className="hover:text-foreground">Blog</Link>
             <a href="#contact" className="hover:text-foreground">Contact</a>
           </nav>
-          <a
-            href="mailto:amreelbasily@gmail.com"
-            className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition hover:opacity-90"
-          >
-            Hire me
-          </a>
+          <div className="flex items-center gap-3">
+            <Link to="/ar" className="text-xs font-mono text-muted-foreground hover:text-foreground">AR</Link>
+            <a
+              href="mailto:amreelbasily@gmail.com"
+              className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition hover:opacity-90"
+            >
+              Hire me
+            </a>
+          </div>
         </div>
       </header>
 

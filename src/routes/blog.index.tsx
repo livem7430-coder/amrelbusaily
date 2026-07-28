@@ -1,0 +1,92 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { blogPosts } from "@/lib/blog-posts";
+
+export const Route = createFileRoute("/blog/")({
+  head: () => ({
+    meta: [
+      { title: "مدونة عمرو البصيلي — مقالات SEO ونمو رقمي" },
+      {
+        name: "description",
+        content:
+          "مقالات عمرو البصيلي في السيو التقني، سيو المتاجر الإلكترونية، AEO، وبحث الكلمات المفتاحية — من واقع 7 سنين خبرة و+50 مشروع.",
+      },
+      { property: "og:title", content: "مدونة عمرو البصيلي — مقالات SEO" },
+      { property: "og:description", content: "مقالات SEO احترافية بالعربي." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://amrelbusaily.lovable.app/blog" },
+      { property: "og:locale", content: "ar_EG" },
+    ],
+    links: [{ rel: "canonical", href: "https://amrelbusaily.lovable.app/blog" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          name: "مدونة عمرو البصيلي",
+          url: "https://amrelbusaily.lovable.app/blog",
+          inLanguage: "ar",
+          author: { "@type": "Person", name: "Amr Elbusaily" },
+        }),
+      },
+    ],
+  }),
+  component: BlogIndex,
+});
+
+function BlogIndex() {
+  return (
+    <div className="min-h-screen" dir="rtl" lang="ar">
+      <header className="sticky top-0 z-40 border-b border-border/60 backdrop-blur-md bg-background/70">
+        <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+          <Link to="/" className="flex items-center gap-2 font-display font-semibold">
+            <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground font-mono text-sm">
+              AE
+            </span>
+            <span>Amr Elbusaily</span>
+          </Link>
+          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+            <Link to="/ar" className="hover:text-foreground">النسخة العربية</Link>
+            <Link to="/" className="hover:text-foreground">EN</Link>
+          </div>
+        </div>
+      </header>
+
+      <section className="mx-auto max-w-4xl px-6 py-20">
+        <div className="font-mono text-xs uppercase tracking-widest text-primary">المدونة</div>
+        <h1 className="mt-3 text-4xl font-semibold md:text-5xl">
+          مقالات SEO ونمو رقمي بالعربي
+        </h1>
+        <p className="mt-4 max-w-2xl text-muted-foreground">
+          كل اللي تعلمته في 7 سنين من السيو التقني، سيو المتاجر، الإعلانات المدفوعة، وأتمتة n8n —
+          مكتوب بشكل عملي تقدر تطبقه من غير رغي.
+        </p>
+
+        <div className="mt-12 grid gap-5">
+          {blogPosts.map((p) => (
+            <Link
+              key={p.slug}
+              to="/blog/$slug"
+              params={{ slug: p.slug }}
+              className="group block rounded-xl border border-border bg-surface p-6 transition hover:border-primary/50"
+            >
+              <div className="font-mono text-xs text-muted-foreground">
+                {p.date} · {p.readTime}
+              </div>
+              <h2 className="mt-3 text-xl font-semibold group-hover:text-primary md:text-2xl">
+                {p.title}
+              </h2>
+              <p className="mt-3 text-sm text-muted-foreground">{p.description}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <footer className="border-t border-border">
+        <div className="mx-auto max-w-4xl px-6 py-8 text-sm text-muted-foreground">
+          © {new Date().getFullYear()} Amr Elbusaily
+        </div>
+      </footer>
+    </div>
+  );
+}
