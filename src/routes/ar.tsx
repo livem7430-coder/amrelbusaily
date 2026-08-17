@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
+import { Portrait } from "@/components/Portrait";
 
 export const Route = createFileRoute("/ar")({
   head: () => ({
@@ -256,11 +257,7 @@ function HomeAr() {
           <div className="relative">
             <div className="absolute -inset-4 rounded-2xl bg-primary/10 blur-2xl" aria-hidden />
             <div className="relative overflow-hidden rounded-2xl border border-border bg-surface">
-              <img
-                src={amrPortrait.url}
-                alt="عمرو البصيلي — خبير SEO من القاهرة"
-                className="aspect-[4/5] w-full object-cover"
-              />
+              <Portrait alt="عمرو البصيلي — خبير SEO من القاهرة" />
               <div className="grid grid-cols-2 divide-x divide-border border-t border-border font-mono text-xs">
                 <div className="p-4">
                   <div className="text-muted-foreground">المكان</div>
