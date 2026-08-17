@@ -68,10 +68,17 @@ function BlogIndex() {
               key={p.slug}
               to="/blog/$slug"
               params={{ slug: p.slug }}
+              dir={p.lang === "ar" ? "rtl" : "ltr"}
+              lang={p.lang}
               className="group block rounded-xl border border-border bg-surface p-6 transition hover:border-primary/50"
             >
-              <div className="font-mono text-xs text-muted-foreground">
-                {p.date} · {p.readTime}
+              <div className="flex items-center gap-3 font-mono text-xs text-muted-foreground">
+                <span className="rounded border border-border px-2 py-0.5 uppercase text-primary">
+                  {p.lang}
+                </span>
+                <span>
+                  {p.date} · {p.readTime}
+                </span>
               </div>
               <h2 className="mt-3 text-xl font-semibold group-hover:text-primary md:text-2xl">
                 {p.title}
