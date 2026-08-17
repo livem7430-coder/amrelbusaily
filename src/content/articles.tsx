@@ -291,9 +291,113 @@ function KeywordResearch() {
   );
 }
 
+function SEOvsAIAr() {
+  return (
+    <>
+      <p>
+        <strong>الإجابة المختصرة: لأ، السيو مش هينتهي بسبب الذكاء الاصطناعي — لكنه بيتغير جذرياً.</strong>{" "}
+        محركات البحث بقت محركات إجابات، والترافيك بقى بيتوزع بين نتائج جوجل التقليدية وAI Overviews
+        وChatGPT وPerplexity. اللي بينتهي هو أسلوب السيو القديم: مقالات مكررة، كلمات مفتاحية محشورة،
+        وباك لينكس مشتراة.
+      </p>
+
+      <h2>ليه الناس بتسأل "هل السيو هيموت؟"</h2>
+      <p>
+        لأن AI Overviews بتجاوب المستخدم من غير ما يدخل الموقع، ودي بتقلل نسبة الكليك على بعض
+        الاستعلامات المعلوماتية البسيطة. لكن ده بيأثر على نوع واحد من الاستعلامات، مش على البحث كله.
+      </p>
+
+      <h2>اللي فعلاً بيتغير في 2026</h2>
+      <ul>
+        <li><strong>الاستعلامات المعلوماتية القصيرة</strong> بتخسر كليكات لصالح الإجابات المباشرة.</li>
+        <li><strong>الاستعلامات التجارية والشرائية</strong> لسه بتجيب ترافيك عالي القيمة — محدش بيشتري من فقرة نص.</li>
+        <li><strong>الظهور كمصدر</strong> جوه إجابة الـAI بقى هدف بحد ذاته (AEO).</li>
+        <li><strong>الثقة والخبرة (E-E-A-T)</strong> بقت فلتر أساسي لاختيار المصادر.</li>
+      </ul>
+
+      <h2>ليه السيو هيفضل موجود</h2>
+      <ol>
+        <li>الـAI نفسه محتاج مصادر — ومصادره هي المواقع المفهرسة.</li>
+        <li>البحث التجاري (منتجات، أسعار، مقارنات) لسه بيحتاج زيارة فعلية للموقع.</li>
+        <li>السيو التقني (سرعة، فهرسة، Schema، بنية موقع) شرط عشان أي محرك — تقليدي أو AI — يقراك.</li>
+        <li>العلامات التجارية القوية بتتذكر في الإجابات أكتر من المواقع المجهولة.</li>
+      </ol>
+
+      <h2>إزاي تجهز موقعك للمرحلة الجاية</h2>
+      <ul>
+        <li>اكتب إجابات مباشرة في 40–60 كلمة تحت كل سؤال، وبعدها التفاصيل.</li>
+        <li>ضيف <strong>FAQPage</strong> و<strong>Article</strong> و<strong>Organization</strong> Schema.</li>
+        <li>ماتحجبش GPTBot وPerplexityBot وGoogle-Extended من robots.txt.</li>
+        <li>اشتغل على محتوى فيه خبرة حقيقية وبيانات وتجارب — ده اللي الـAI بيفضله.</li>
+        <li>ركز على Topic Clusters بدل مقالات متفرقة.</li>
+        <li>قيس الترافيك من مصادر AI في GA4 (referrals من chatgpt.com وperplexity.ai).</li>
+      </ul>
+
+      <h2>خلاصة</h2>
+      <p>
+        السيو مش بيموت، بيترقّى. اللي هيخسر هو اللي بيعمل محتوى ضعيف مكرر. لو عايز خطة سيو + AEO
+        جاهزة لـ2026، تواصل معايا.
+      </p>
+    </>
+  );
+}
+
+function SEOvsAIEn() {
+  return (
+    <>
+      <p>
+        <strong>Short answer: no, AI will not kill SEO — it is rewriting it.</strong> Search engines
+        have become answer engines, and traffic is now split between classic results, AI Overviews,
+        ChatGPT and Perplexity. What is dying is old-school SEO: thin duplicated articles, keyword
+        stuffing and bought links.
+      </p>
+
+      <h2>Why people ask if SEO is dead</h2>
+      <p>
+        AI Overviews answer some queries without a click, which lowers CTR on simple informational
+        searches. That affects one slice of search demand — not search itself.
+      </p>
+
+      <h2>What is actually changing in 2026</h2>
+      <ul>
+        <li><strong>Short informational queries</strong> lose clicks to direct answers.</li>
+        <li><strong>Commercial and transactional queries</strong> still send high-value traffic — nobody buys from a paragraph.</li>
+        <li><strong>Being cited as a source</strong> inside AI answers is now its own goal (AEO).</li>
+        <li><strong>E-E-A-T</strong> is the filter that decides which sites get quoted.</li>
+      </ul>
+
+      <h2>Why SEO survives</h2>
+      <ol>
+        <li>AI models need sources, and those sources are indexed websites.</li>
+        <li>Commercial search still requires visiting a real store or service page.</li>
+        <li>Technical SEO — speed, indexation, schema, architecture — is the prerequisite for any engine to read you.</li>
+        <li>Strong brands get recalled in answers far more than anonymous sites.</li>
+      </ol>
+
+      <h2>How to future-proof your site</h2>
+      <ul>
+        <li>Answer each question directly in 40–60 words, then expand with detail.</li>
+        <li>Ship <strong>FAQPage</strong>, <strong>Article</strong> and <strong>Organization</strong> schema.</li>
+        <li>Do not block GPTBot, PerplexityBot or Google-Extended in robots.txt.</li>
+        <li>Publish first-hand expertise, data and real case results — that is what AI prefers to cite.</li>
+        <li>Build topic clusters instead of scattered posts.</li>
+        <li>Track AI referrals in GA4 (chatgpt.com, perplexity.ai).</li>
+      </ul>
+
+      <h2>Bottom line</h2>
+      <p>
+        SEO is not dying, it is being upgraded. If you want an SEO + AEO roadmap built for 2026,
+        get in touch.
+      </p>
+    </>
+  );
+}
+
 export const articles: Record<string, ComponentType> = {
   "technical-seo-guide-ar": TechnicalSEO,
   "ecommerce-seo-ar": EcommerceSEO,
   "aeo-ai-search-ar": AEOArticle,
   "keyword-research-ar": KeywordResearch,
+  "will-ai-kill-seo-ar": SEOvsAIAr,
+  "will-ai-kill-seo-en": SEOvsAIEn,
 };

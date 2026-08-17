@@ -19,6 +19,8 @@ export const Route = createFileRoute("/blog/$slug")({
       slug: params.slug,
       lang: loaderData.post.lang,
       datePublished: loaderData.post.date,
+      altSlug: loaderData.post.altSlug,
+      faq: loaderData.post.faq,
     });
   },
   component: BlogPost,
