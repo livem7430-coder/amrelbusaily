@@ -77,18 +77,71 @@ export function articleHead({
   slug,
   lang = "ar",
   datePublished,
+  altSlug,
+  faq,
 }: {
   title: string;
   description: string;
   slug: string;
   lang?: string;
   datePublished: string;
+  altSlug?: string;
+  faq?: { q: string; a: string }[];
 }) {
-  const url = `https://amrelbusaily.lovable.app/blog/${slug}`;
+  const base = "https://amrelbusaily.lovable.app";
+  const url = `${base}/blog/${slug}`;
+  const links: { rel: string; href: string; hrefLang?: string }[] = [
+    { rel: "canonical", href: url },
+  ];
+  if (altSlug) {
+    const altLang = lang === "ar" ? "en" : "ar";
+    links.push(
+      { rel: "alternate", hrefLang: lang, href: url },
+      { rel: "alternate", hrefLang: altLang, href: `${base}/blog/${altSlug}` },
+      { rel: "alternate", hrefLang: "x-default", href: `${base}/blog/${altSlug}` },
+    );
+  }
+  const scripts = [
+    {
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: title,
+        description,
+        inLanguage: lang,
+        datePublished,
+        dateModified: datePublished,
+        author: {
+          "@type": "Person",
+          name: "Amr Elbusaily",
+          url: "https://amrelbusaily.lovable.app/",
+        },
+        publisher: { "@type": "Person", name: "Amr Elbusaily" },
+        mainEntityOfPage: url,
+      }),
+    },
+  ];
+  if (faq?.length) {
+    scripts.push({
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        inLanguage: lang,
+        mainEntity: faq.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }),
+    });
+  }
   return {
     meta: [
       { title: `${title} | Amr Elbusaily` },
       { name: "description", content: description },
+      { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "article" },
@@ -98,27 +151,7 @@ export function articleHead({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: url }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Article",
-          headline: title,
-          description,
-          inLanguage: lang,
-          datePublished,
-          dateModified: datePublished,
-          author: {
-            "@type": "Person",
-            name: "Amr Elbusaily",
-            url: "https://amrelbusaily.lovable.app/",
-          },
-          publisher: { "@type": "Person", name: "Amr Elbusaily" },
-          mainEntityOfPage: url,
-        }),
-      },
-    ],
+    links,
+    scripts,
   };
 }
