@@ -272,6 +272,7 @@ function Home() {
             <a href="#experience" className="hover:text-foreground">Experience</a>
             <a href="#skills" className="hover:text-foreground">Skills</a>
             <Link to="/blog" className="hover:text-foreground">Blog</Link>
+            <Link to="/free-consultation" className="text-primary hover:opacity-80">Free consultation</Link>
             <a href="#contact" className="hover:text-foreground">Contact</a>
           </nav>
           <div className="flex items-center gap-3">
