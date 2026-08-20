@@ -15,6 +15,7 @@ import { Route as ArRouteImport } from './routes/ar'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as ArFreeConsultationRouteImport } from './routes/ar.free-consultation'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -46,29 +47,37 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArFreeConsultationRoute = ArFreeConsultationRouteImport.update({
+  id: '/free-consultation',
+  path: '/free-consultation',
+  getParentRoute: () => ArRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/ar': typeof ArRoute
+  '/ar': typeof ArRouteWithChildren
   '/free-consultation': typeof FreeConsultationRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/ar': typeof ArRoute
+  '/ar': typeof ArRouteWithChildren
   '/free-consultation': typeof FreeConsultationRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/ar': typeof ArRoute
+  '/ar': typeof ArRouteWithChildren
   '/free-consultation': typeof FreeConsultationRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/ar'
     | '/free-consultation'
     | '/sitemap.xml'
+    | '/ar/free-consultation'
     | '/blog/$slug'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/ar'
     | '/free-consultation'
     | '/sitemap.xml'
+    | '/ar/free-consultation'
     | '/blog/$slug'
     | '/blog'
   id:
@@ -95,13 +106,14 @@ export interface FileRouteTypes {
     | '/ar'
     | '/free-consultation'
     | '/sitemap.xml'
+    | '/ar/free-consultation'
     | '/blog/$slug'
     | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ArRoute: typeof ArRoute
+  ArRoute: typeof ArRouteWithChildren
   FreeConsultationRoute: typeof FreeConsultationRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -152,12 +164,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ar/free-consultation': {
+      id: '/ar/free-consultation'
+      path: '/free-consultation'
+      fullPath: '/ar/free-consultation'
+      preLoaderRoute: typeof ArFreeConsultationRouteImport
+      parentRoute: typeof ArRoute
+    }
   }
 }
 
+interface ArRouteChildren {
+  ArFreeConsultationRoute: typeof ArFreeConsultationRoute
+}
+
+const ArRouteChildren: ArRouteChildren = {
+  ArFreeConsultationRoute: ArFreeConsultationRoute,
+}
+
+const ArRouteWithChildren = ArRoute._addFileChildren(ArRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ArRoute: ArRoute,
+  ArRoute: ArRouteWithChildren,
   FreeConsultationRoute: FreeConsultationRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
