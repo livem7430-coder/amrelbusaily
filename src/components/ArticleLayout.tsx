@@ -21,6 +21,8 @@ export function ArticleLayout({
   lang?: string;
   faq?: { q: string; a: string }[];
 }) {
+  const blogHref = lang === "ar" ? "/blog/ar" : "/blog/en";
+
   return (
     <div className="min-h-screen" dir={dir} lang={lang}>
       <header className="sticky top-0 z-40 border-b border-border/60 backdrop-blur-md bg-background/70">
@@ -31,7 +33,7 @@ export function ArticleLayout({
             </span>
             <span>Amr Elbusaily</span>
           </Link>
-          <Link to="/blog" className="text-sm text-muted-foreground hover:text-foreground">
+          <Link to={blogHref} className="text-sm text-muted-foreground hover:text-foreground">
             {lang === "ar" ? "كل المقالات" : "All articles"}
           </Link>
         </div>
@@ -43,7 +45,7 @@ export function ArticleLayout({
             {lang === "ar" ? "الرئيسية" : "Home"}
           </a>
           <span className="mx-2">/</span>
-          <a href="/blog" className="hover:text-primary">
+          <a href={blogHref} className="hover:text-primary">
             {lang === "ar" ? "المدونة" : "Blog"}
           </a>
         </nav>
