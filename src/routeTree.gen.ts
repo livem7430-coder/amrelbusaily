@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArRouteImport } from './routes/ar'
 import { Route as ContentSeoRouteImport } from './routes/content-seo'
+import { Route as ContentStrategyRouteImport } from './routes/content-strategy'
 import { Route as FreeConsultationRouteImport } from './routes/free-consultation'
 import { Route as GrowthMarketingRouteImport } from './routes/growth-marketing'
 import { Route as InternationalSeoRouteImport } from './routes/international-seo'
@@ -24,6 +25,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ArContentSeoRouteImport } from './routes/ar.content-seo'
+import { Route as ArContentStrategyRouteImport } from './routes/ar.content-strategy'
 import { Route as ArFreeConsultationRouteImport } from './routes/ar.free-consultation'
 import { Route as ArGrowthMarketingRouteImport } from './routes/ar.growth-marketing'
 import { Route as ArInternationalSeoRouteImport } from './routes/ar.international-seo'
@@ -41,8 +43,10 @@ import { Route as BlogEnRouteImport } from './routes/blog.en'
 import { Route as BlogInternationalContentPlanRouteImport } from './routes/blog.international-content-plan'
 import { Route as CourseIndexRouteImport } from './routes/course.index'
 import { Route as CourseLessonIdRouteImport } from './routes/course.$lessonId'
+import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as ArCourseIndexRouteImport } from './routes/ar.course.index'
 import { Route as ArCourseLessonIdRouteImport } from './routes/ar.course.$lessonId'
+import { Route as ArServicesSlugRouteImport } from './routes/ar.services.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -57,6 +61,11 @@ const ArRoute = ArRouteImport.update({
 const ContentSeoRoute = ContentSeoRouteImport.update({
   id: '/content-seo',
   path: '/content-seo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContentStrategyRoute = ContentStrategyRouteImport.update({
+  id: '/content-strategy',
+  path: '/content-strategy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FreeConsultationRoute = FreeConsultationRouteImport.update({
@@ -117,6 +126,11 @@ const ArIndexRoute = ArIndexRouteImport.update({
 const ArContentSeoRoute = ArContentSeoRouteImport.update({
   id: '/content-seo',
   path: '/content-seo',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArContentStrategyRoute = ArContentStrategyRouteImport.update({
+  id: '/content-strategy',
+  path: '/content-strategy',
   getParentRoute: () => ArRoute,
 } as any)
 const ArFreeConsultationRoute = ArFreeConsultationRouteImport.update({
@@ -205,6 +219,11 @@ const CourseLessonIdRoute = CourseLessonIdRouteImport.update({
   path: '/course/$lessonId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const ArCourseIndexRoute = ArCourseIndexRouteImport.update({
   id: '/course/',
   path: '/course/',
@@ -215,11 +234,17 @@ const ArCourseLessonIdRoute = ArCourseLessonIdRouteImport.update({
   path: '/course/$lessonId',
   getParentRoute: () => ArRoute,
 } as any)
+const ArServicesSlugRoute = ArServicesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ArServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ar': typeof ArRouteWithChildren
   '/content-seo': typeof ContentSeoRoute
+  '/content-strategy': typeof ContentStrategyRoute
   '/free-consultation': typeof FreeConsultationRoute
   '/growth-marketing': typeof GrowthMarketingRoute
   '/international-seo': typeof InternationalSeoRoute
@@ -228,9 +253,10 @@ export interface FileRoutesByFullPath {
   '/seo-expert': typeof SeoExpertRoute
   '/seo-geo-eli5': typeof SeoGeoEli5Route
   '/seo-services': typeof SeoServicesRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/content-seo': typeof ArContentSeoRoute
+  '/ar/content-strategy': typeof ArContentStrategyRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/ar/international-seo': typeof ArInternationalSeoRoute
@@ -239,22 +265,25 @@ export interface FileRoutesByFullPath {
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
   '/ar/seo-services': typeof ArSeoServicesRoute
-  '/ar/services': typeof ArServicesRoute
+  '/ar/services': typeof ArServicesRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
   '/blog/en': typeof BlogEnRoute
   '/blog/international-content-plan': typeof BlogInternationalContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/course/': typeof CourseIndexRoute
   '/ar/course/$lessonId': typeof ArCourseLessonIdRoute
+  '/ar/services/$slug': typeof ArServicesSlugRoute
   '/ar/course/': typeof ArCourseIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/content-seo': typeof ContentSeoRoute
+  '/content-strategy': typeof ContentStrategyRoute
   '/free-consultation': typeof FreeConsultationRoute
   '/growth-marketing': typeof GrowthMarketingRoute
   '/international-seo': typeof InternationalSeoRoute
@@ -263,9 +292,10 @@ export interface FileRoutesByTo {
   '/seo-expert': typeof SeoExpertRoute
   '/seo-geo-eli5': typeof SeoGeoEli5Route
   '/seo-services': typeof SeoServicesRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/content-seo': typeof ArContentSeoRoute
+  '/ar/content-strategy': typeof ArContentStrategyRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/ar/international-seo': typeof ArInternationalSeoRoute
@@ -274,17 +304,19 @@ export interface FileRoutesByTo {
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
   '/ar/seo-services': typeof ArSeoServicesRoute
-  '/ar/services': typeof ArServicesRoute
+  '/ar/services': typeof ArServicesRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
   '/blog/en': typeof BlogEnRoute
   '/blog/international-content-plan': typeof BlogInternationalContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/ar': typeof ArIndexRoute
   '/blog': typeof BlogIndexRoute
   '/course': typeof CourseIndexRoute
   '/ar/course/$lessonId': typeof ArCourseLessonIdRoute
+  '/ar/services/$slug': typeof ArServicesSlugRoute
   '/ar/course': typeof ArCourseIndexRoute
 }
 export interface FileRoutesById {
@@ -292,6 +324,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/ar': typeof ArRouteWithChildren
   '/content-seo': typeof ContentSeoRoute
+  '/content-strategy': typeof ContentStrategyRoute
   '/free-consultation': typeof FreeConsultationRoute
   '/growth-marketing': typeof GrowthMarketingRoute
   '/international-seo': typeof InternationalSeoRoute
@@ -300,9 +333,10 @@ export interface FileRoutesById {
   '/seo-expert': typeof SeoExpertRoute
   '/seo-geo-eli5': typeof SeoGeoEli5Route
   '/seo-services': typeof SeoServicesRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/content-seo': typeof ArContentSeoRoute
+  '/ar/content-strategy': typeof ArContentStrategyRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/ar/international-seo': typeof ArInternationalSeoRoute
@@ -311,17 +345,19 @@ export interface FileRoutesById {
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
   '/ar/seo-services': typeof ArSeoServicesRoute
-  '/ar/services': typeof ArServicesRoute
+  '/ar/services': typeof ArServicesRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
   '/blog/en': typeof BlogEnRoute
   '/blog/international-content-plan': typeof BlogInternationalContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/course/': typeof CourseIndexRoute
   '/ar/course/$lessonId': typeof ArCourseLessonIdRoute
+  '/ar/services/$slug': typeof ArServicesSlugRoute
   '/ar/course/': typeof ArCourseIndexRoute
 }
 export interface FileRouteTypes {
@@ -330,6 +366,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ar'
     | '/content-seo'
+    | '/content-strategy'
     | '/free-consultation'
     | '/growth-marketing'
     | '/international-seo'
@@ -341,6 +378,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/ar/content-seo'
+    | '/ar/content-strategy'
     | '/ar/free-consultation'
     | '/ar/growth-marketing'
     | '/ar/international-seo'
@@ -356,15 +394,18 @@ export interface FileRouteTypes {
     | '/blog/en'
     | '/blog/international-content-plan'
     | '/course/$lessonId'
+    | '/services/$slug'
     | '/ar/'
     | '/blog/'
     | '/course/'
     | '/ar/course/$lessonId'
+    | '/ar/services/$slug'
     | '/ar/course/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/content-seo'
+    | '/content-strategy'
     | '/free-consultation'
     | '/growth-marketing'
     | '/international-seo'
@@ -376,6 +417,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/ar/content-seo'
+    | '/ar/content-strategy'
     | '/ar/free-consultation'
     | '/ar/growth-marketing'
     | '/ar/international-seo'
@@ -391,16 +433,19 @@ export interface FileRouteTypes {
     | '/blog/en'
     | '/blog/international-content-plan'
     | '/course/$lessonId'
+    | '/services/$slug'
     | '/ar'
     | '/blog'
     | '/course'
     | '/ar/course/$lessonId'
+    | '/ar/services/$slug'
     | '/ar/course'
   id:
     | '__root__'
     | '/'
     | '/ar'
     | '/content-seo'
+    | '/content-strategy'
     | '/free-consultation'
     | '/growth-marketing'
     | '/international-seo'
@@ -412,6 +457,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/ar/content-seo'
+    | '/ar/content-strategy'
     | '/ar/free-consultation'
     | '/ar/growth-marketing'
     | '/ar/international-seo'
@@ -427,10 +473,12 @@ export interface FileRouteTypes {
     | '/blog/en'
     | '/blog/international-content-plan'
     | '/course/$lessonId'
+    | '/services/$slug'
     | '/ar/'
     | '/blog/'
     | '/course/'
     | '/ar/course/$lessonId'
+    | '/ar/services/$slug'
     | '/ar/course/'
   fileRoutesById: FileRoutesById
 }
@@ -438,6 +486,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ArRoute: typeof ArRouteWithChildren
   ContentSeoRoute: typeof ContentSeoRoute
+  ContentStrategyRoute: typeof ContentStrategyRoute
   FreeConsultationRoute: typeof FreeConsultationRoute
   GrowthMarketingRoute: typeof GrowthMarketingRoute
   InternationalSeoRoute: typeof InternationalSeoRoute
@@ -446,7 +495,7 @@ export interface RootRouteChildren {
   SeoExpertRoute: typeof SeoExpertRoute
   SeoGeoEli5Route: typeof SeoGeoEli5Route
   SeoServicesRoute: typeof SeoServicesRoute
-  ServicesRoute: typeof ServicesRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogArRoute: typeof BlogArRoute
@@ -479,6 +528,13 @@ declare module '@tanstack/react-router' {
       path: '/content-seo'
       fullPath: '/content-seo'
       preLoaderRoute: typeof ContentSeoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/content-strategy': {
+      id: '/content-strategy'
+      path: '/content-strategy'
+      fullPath: '/content-strategy'
+      preLoaderRoute: typeof ContentStrategyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/free-consultation': {
@@ -563,6 +619,13 @@ declare module '@tanstack/react-router' {
       path: '/content-seo'
       fullPath: '/ar/content-seo'
       preLoaderRoute: typeof ArContentSeoRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/content-strategy': {
+      id: '/ar/content-strategy'
+      path: '/content-strategy'
+      fullPath: '/ar/content-strategy'
+      preLoaderRoute: typeof ArContentStrategyRouteImport
       parentRoute: typeof ArRoute
     }
     '/ar/free-consultation': {
@@ -684,6 +747,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CourseLessonIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/$slug': {
+      id: '/services/$slug'
+      path: '/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/ar/course/': {
       id: '/ar/course/'
       path: '/course'
@@ -698,11 +768,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArCourseLessonIdRouteImport
       parentRoute: typeof ArRoute
     }
+    '/ar/services/$slug': {
+      id: '/ar/services/$slug'
+      path: '/$slug'
+      fullPath: '/ar/services/$slug'
+      preLoaderRoute: typeof ArServicesSlugRouteImport
+      parentRoute: typeof ArServicesRoute
+    }
   }
 }
 
+interface ArServicesRouteChildren {
+  ArServicesSlugRoute: typeof ArServicesSlugRoute
+}
+
+const ArServicesRouteChildren: ArServicesRouteChildren = {
+  ArServicesSlugRoute: ArServicesSlugRoute,
+}
+
+const ArServicesRouteWithChildren = ArServicesRoute._addFileChildren(
+  ArServicesRouteChildren,
+)
+
 interface ArRouteChildren {
   ArContentSeoRoute: typeof ArContentSeoRoute
+  ArContentStrategyRoute: typeof ArContentStrategyRoute
   ArFreeConsultationRoute: typeof ArFreeConsultationRoute
   ArGrowthMarketingRoute: typeof ArGrowthMarketingRoute
   ArInternationalSeoRoute: typeof ArInternationalSeoRoute
@@ -711,7 +801,7 @@ interface ArRouteChildren {
   ArSeoExpertRoute: typeof ArSeoExpertRoute
   ArSeoGeoEli5Route: typeof ArSeoGeoEli5Route
   ArSeoServicesRoute: typeof ArSeoServicesRoute
-  ArServicesRoute: typeof ArServicesRoute
+  ArServicesRoute: typeof ArServicesRouteWithChildren
   ArIndexRoute: typeof ArIndexRoute
   ArCourseLessonIdRoute: typeof ArCourseLessonIdRoute
   ArCourseIndexRoute: typeof ArCourseIndexRoute
@@ -719,6 +809,7 @@ interface ArRouteChildren {
 
 const ArRouteChildren: ArRouteChildren = {
   ArContentSeoRoute: ArContentSeoRoute,
+  ArContentStrategyRoute: ArContentStrategyRoute,
   ArFreeConsultationRoute: ArFreeConsultationRoute,
   ArGrowthMarketingRoute: ArGrowthMarketingRoute,
   ArInternationalSeoRoute: ArInternationalSeoRoute,
@@ -727,7 +818,7 @@ const ArRouteChildren: ArRouteChildren = {
   ArSeoExpertRoute: ArSeoExpertRoute,
   ArSeoGeoEli5Route: ArSeoGeoEli5Route,
   ArSeoServicesRoute: ArSeoServicesRoute,
-  ArServicesRoute: ArServicesRoute,
+  ArServicesRoute: ArServicesRouteWithChildren,
   ArIndexRoute: ArIndexRoute,
   ArCourseLessonIdRoute: ArCourseLessonIdRoute,
   ArCourseIndexRoute: ArCourseIndexRoute,
@@ -735,10 +826,23 @@ const ArRouteChildren: ArRouteChildren = {
 
 const ArRouteWithChildren = ArRoute._addFileChildren(ArRouteChildren)
 
+interface ServicesRouteChildren {
+  ServicesSlugRoute: typeof ServicesSlugRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesSlugRoute: ServicesSlugRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ArRoute: ArRouteWithChildren,
   ContentSeoRoute: ContentSeoRoute,
+  ContentStrategyRoute: ContentStrategyRoute,
   FreeConsultationRoute: FreeConsultationRoute,
   GrowthMarketingRoute: GrowthMarketingRoute,
   InternationalSeoRoute: InternationalSeoRoute,
@@ -747,7 +851,7 @@ const rootRouteChildren: RootRouteChildren = {
   SeoExpertRoute: SeoExpertRoute,
   SeoGeoEli5Route: SeoGeoEli5Route,
   SeoServicesRoute: SeoServicesRoute,
-  ServicesRoute: ServicesRoute,
+  ServicesRoute: ServicesRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogArRoute: BlogArRoute,

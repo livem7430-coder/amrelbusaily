@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { blogPosts } from "@/lib/blog-posts";
 import { COURSE_UPDATED, publishedCourseLessons } from "@/lib/seo-course";
+import { SERVICE_DETAIL_SLUGS } from "@/lib/service-details";
 
 const BASE_URL = "https://amrelbusaily.vercel.app";
 
@@ -32,6 +33,12 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/ar/content-seo", changefreq: "monthly", priority: "0.9", lastmod: today },
           { path: "/international-seo", changefreq: "monthly", priority: "0.9", lastmod: today },
           { path: "/ar/international-seo", changefreq: "monthly", priority: "0.9", lastmod: today },
+          { path: "/content-strategy", changefreq: "monthly", priority: "0.8", lastmod: today },
+          { path: "/ar/content-strategy", changefreq: "monthly", priority: "0.8", lastmod: today },
+          ...SERVICE_DETAIL_SLUGS.flatMap((slug) => [
+            { path: `/services/${slug}`, changefreq: "monthly", priority: "0.8", lastmod: today },
+            { path: `/ar/services/${slug}`, changefreq: "monthly", priority: "0.8", lastmod: today },
+          ]),
           { path: "/blog", changefreq: "weekly", priority: "0.8", lastmod: today },
           { path: "/blog/ar", changefreq: "weekly", priority: "0.8", lastmod: today },
           { path: "/blog/en", changefreq: "weekly", priority: "0.8", lastmod: today },
