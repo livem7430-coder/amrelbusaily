@@ -13,10 +13,12 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArRouteImport } from './routes/ar'
 import { Route as FreeConsultationRouteImport } from './routes/free-consultation'
 import { Route as GrowthMarketingRouteImport } from './routes/growth-marketing'
+import { Route as SeoGeoEli5RouteImport } from './routes/seo-geo-eli5'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ArFreeConsultationRouteImport } from './routes/ar.free-consultation'
 import { Route as ArGrowthMarketingRouteImport } from './routes/ar.growth-marketing'
+import { Route as ArSeoGeoEli5RouteImport } from './routes/ar.seo-geo-eli5'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as BlogContentPlanRouteImport } from './routes/blog.content-plan'
@@ -45,6 +47,11 @@ const GrowthMarketingRoute = GrowthMarketingRouteImport.update({
   path: '/growth-marketing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SeoGeoEli5Route = SeoGeoEli5RouteImport.update({
+  id: '/seo-geo-eli5',
+  path: '/seo-geo-eli5',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -63,6 +70,11 @@ const ArFreeConsultationRoute = ArFreeConsultationRouteImport.update({
 const ArGrowthMarketingRoute = ArGrowthMarketingRouteImport.update({
   id: '/growth-marketing',
   path: '/growth-marketing',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArSeoGeoEli5Route = ArSeoGeoEli5RouteImport.update({
+  id: '/seo-geo-eli5',
+  path: '/seo-geo-eli5',
   getParentRoute: () => ArRoute,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -106,9 +118,11 @@ export interface FileRoutesByFullPath {
   '/ar': typeof ArRouteWithChildren
   '/free-consultation': typeof FreeConsultationRoute
   '/growth-marketing': typeof GrowthMarketingRoute
+  '/seo-geo-eli5': typeof SeoGeoEli5Route
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
+  '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
@@ -122,9 +136,11 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/free-consultation': typeof FreeConsultationRoute
   '/growth-marketing': typeof GrowthMarketingRoute
+  '/seo-geo-eli5': typeof SeoGeoEli5Route
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
+  '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
@@ -140,9 +156,11 @@ export interface FileRoutesById {
   '/ar': typeof ArRouteWithChildren
   '/free-consultation': typeof FreeConsultationRoute
   '/growth-marketing': typeof GrowthMarketingRoute
+  '/seo-geo-eli5': typeof SeoGeoEli5Route
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
+  '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
@@ -159,9 +177,11 @@ export interface FileRouteTypes {
     | '/ar'
     | '/free-consultation'
     | '/growth-marketing'
+    | '/seo-geo-eli5'
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/ar/growth-marketing'
+    | '/ar/seo-geo-eli5'
     | '/blog/$slug'
     | '/blog/content-plan'
     | '/course/$lessonId'
@@ -175,9 +195,11 @@ export interface FileRouteTypes {
     | '/'
     | '/free-consultation'
     | '/growth-marketing'
+    | '/seo-geo-eli5'
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/ar/growth-marketing'
+    | '/ar/seo-geo-eli5'
     | '/blog/$slug'
     | '/blog/content-plan'
     | '/course/$lessonId'
@@ -192,9 +214,11 @@ export interface FileRouteTypes {
     | '/ar'
     | '/free-consultation'
     | '/growth-marketing'
+    | '/seo-geo-eli5'
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/ar/growth-marketing'
+    | '/ar/seo-geo-eli5'
     | '/blog/$slug'
     | '/blog/content-plan'
     | '/course/$lessonId'
@@ -210,6 +234,7 @@ export interface RootRouteChildren {
   ArRoute: typeof ArRouteWithChildren
   FreeConsultationRoute: typeof FreeConsultationRoute
   GrowthMarketingRoute: typeof GrowthMarketingRoute
+  SeoGeoEli5Route: typeof SeoGeoEli5Route
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogContentPlanRoute: typeof BlogContentPlanRoute
@@ -248,6 +273,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GrowthMarketingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/seo-geo-eli5': {
+      id: '/seo-geo-eli5'
+      path: '/seo-geo-eli5'
+      fullPath: '/seo-geo-eli5'
+      preLoaderRoute: typeof SeoGeoEli5RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -274,6 +306,13 @@ declare module '@tanstack/react-router' {
       path: '/growth-marketing'
       fullPath: '/ar/growth-marketing'
       preLoaderRoute: typeof ArGrowthMarketingRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/seo-geo-eli5': {
+      id: '/ar/seo-geo-eli5'
+      path: '/seo-geo-eli5'
+      fullPath: '/ar/seo-geo-eli5'
+      preLoaderRoute: typeof ArSeoGeoEli5RouteImport
       parentRoute: typeof ArRoute
     }
     '/blog/': {
@@ -331,6 +370,7 @@ declare module '@tanstack/react-router' {
 interface ArRouteChildren {
   ArFreeConsultationRoute: typeof ArFreeConsultationRoute
   ArGrowthMarketingRoute: typeof ArGrowthMarketingRoute
+  ArSeoGeoEli5Route: typeof ArSeoGeoEli5Route
   ArIndexRoute: typeof ArIndexRoute
   ArCourseLessonIdRoute: typeof ArCourseLessonIdRoute
   ArCourseIndexRoute: typeof ArCourseIndexRoute
@@ -339,6 +379,7 @@ interface ArRouteChildren {
 const ArRouteChildren: ArRouteChildren = {
   ArFreeConsultationRoute: ArFreeConsultationRoute,
   ArGrowthMarketingRoute: ArGrowthMarketingRoute,
+  ArSeoGeoEli5Route: ArSeoGeoEli5Route,
   ArIndexRoute: ArIndexRoute,
   ArCourseLessonIdRoute: ArCourseLessonIdRoute,
   ArCourseIndexRoute: ArCourseIndexRoute,
@@ -351,6 +392,7 @@ const rootRouteChildren: RootRouteChildren = {
   ArRoute: ArRouteWithChildren,
   FreeConsultationRoute: FreeConsultationRoute,
   GrowthMarketingRoute: GrowthMarketingRoute,
+  SeoGeoEli5Route: SeoGeoEli5Route,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogContentPlanRoute: BlogContentPlanRoute,

@@ -323,6 +323,7 @@ function Home() {
             <a href="#skills" className="hover:text-foreground">Skills</a>
             <Link to="/blog" className="hover:text-foreground">Blog</Link>
             <Link to="/course" className="hover:text-foreground">SEO Course</Link>
+            <Link to="/seo-geo-eli5" className="hover:text-foreground">SEO + GEO ELI5</Link>
             <Link to="/free-consultation" className="text-primary hover:opacity-80">Free consultation</Link>
             <a href="#contact" className="hover:text-foreground">Contact</a>
           </nav>
