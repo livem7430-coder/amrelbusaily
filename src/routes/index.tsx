@@ -118,18 +118,26 @@ const services = [
   {
     title: "SEO Strategy & Consulting",
     detail: "Technical audits, keyword research, on-page SEO, local SEO and content systems that turn search visibility into qualified demand.",
+    href: "/seo-services",
+    linkLabel: "Explore SEO services →",
   },
   {
     title: "Digital Marketing & AI Growth",
     detail: "AI search optimization, AEO/GEO, content marketing, marketing automation and digital growth systems for qualified demand.",
+    href: "/seo-expert",
+    linkLabel: "Meet the SEO strategist →",
   },
   {
     title: "E-commerce SEO & Growth",
     detail: "Store architecture, product-page SEO, conversion optimization, analytics and digital marketing strategy for online brands.",
+    href: "/seo-company",
+    linkLabel: "Compare the partnership →",
   },
   {
     title: "Growth Marketing for Services & B2B",
     detail: "Demand generation, funnel strategy, CRM, lifecycle email, lead qualification and sales-aligned content for service companies and B2B teams.",
+    href: "/growth-marketing",
+    linkLabel: "Explore the service →",
   },
 ];
 
@@ -425,11 +433,7 @@ function Home() {
               <div key={service.title} className="rounded-xl border border-border bg-surface p-6 transition hover:border-primary/50">
                 <h3 className="text-lg font-semibold">{service.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">{service.detail}</p>
-                {service.title === "Growth Marketing for Services & B2B" ? (
-                  <Link to="/growth-marketing" className="mt-5 inline-block text-sm text-primary hover:underline">Explore the service →</Link>
-                ) : (
-                  <a href="#contact" className="mt-5 inline-block text-sm text-primary hover:underline">Discuss your project →</a>
-                )}
+                <a href={service.href} className="mt-5 inline-block text-sm text-primary hover:underline">{service.linkLabel}</a>
               </div>
             ))}
           </div>

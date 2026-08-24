@@ -115,18 +115,26 @@ const services = [
   {
     title: "استراتيجية واستشارات SEO",
     detail: "أوديت تقني، بحث كلمات، On-Page SEO، سيو محلي، واستراتيجية محتوى لتحويل الظهور في جوجل إلى زيارات وعملاء مؤهلين.",
+    href: "/ar/seo-services",
+    linkLabel: "استكشف خدمات SEO ←",
   },
   {
     title: "التسويق الرقمي ونمو AI",
     detail: "AI SEO، AEO/GEO، تسويق المحتوى، أتمتة التسويق وأنظمة نمو رقمية تجذب طلبًا وعملاء مؤهلين.",
+    href: "/ar/seo-expert",
+    linkLabel: "تعرف على استشاري SEO ←",
   },
   {
     title: "SEO ونمو التجارة الإلكترونية",
     detail: "تحسين هيكل المتجر وصفحات المنتجات والتحويل والتحليلات، مع استراتيجية SEO وتسويق رقمي للبراندات الأونلاين.",
+    href: "/ar/seo-company",
+    linkLabel: "قارن شراكة SEO ←",
   },
   {
     title: "Growth Marketing لشركات الخدمات وB2B",
     detail: "توليد الطلب، بناء الـfunnel، تأهيل العملاء، CRM، Email Marketing ومحتوى متوافق مع المبيعات للشركات الخدمية وفرق B2B.",
+    href: "/ar/growth-marketing",
+    linkLabel: "استكشف الخدمة ←",
   },
 ];
 
@@ -360,11 +368,7 @@ function HomeAr() {
               <div key={service.title} className="rounded-xl border border-border bg-surface p-6 transition hover:border-primary/50">
                 <h3 className="text-lg font-semibold">{service.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">{service.detail}</p>
-                {service.title === "Growth Marketing لشركات الخدمات وB2B" ? (
-                  <Link to="/ar/growth-marketing" className="mt-5 inline-block text-sm text-primary hover:underline">استكشف الخدمة ←</Link>
-                ) : (
-                  <a href="#contact" className="mt-5 inline-block text-sm text-primary hover:underline">ناقش مشروعك ←</a>
-                )}
+                <a href={service.href} className="mt-5 inline-block text-sm text-primary hover:underline">{service.linkLabel}</a>
               </div>
             ))}
           </div>

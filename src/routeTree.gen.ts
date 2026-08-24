@@ -13,12 +13,18 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArRouteImport } from './routes/ar'
 import { Route as FreeConsultationRouteImport } from './routes/free-consultation'
 import { Route as GrowthMarketingRouteImport } from './routes/growth-marketing'
+import { Route as SeoCompanyRouteImport } from './routes/seo-company'
+import { Route as SeoExpertRouteImport } from './routes/seo-expert'
 import { Route as SeoGeoEli5RouteImport } from './routes/seo-geo-eli5'
+import { Route as SeoServicesRouteImport } from './routes/seo-services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ArFreeConsultationRouteImport } from './routes/ar.free-consultation'
 import { Route as ArGrowthMarketingRouteImport } from './routes/ar.growth-marketing'
+import { Route as ArSeoCompanyRouteImport } from './routes/ar.seo-company'
+import { Route as ArSeoExpertRouteImport } from './routes/ar.seo-expert'
 import { Route as ArSeoGeoEli5RouteImport } from './routes/ar.seo-geo-eli5'
+import { Route as ArSeoServicesRouteImport } from './routes/ar.seo-services'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as BlogArRouteImport } from './routes/blog.ar'
@@ -49,9 +55,24 @@ const GrowthMarketingRoute = GrowthMarketingRouteImport.update({
   path: '/growth-marketing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SeoCompanyRoute = SeoCompanyRouteImport.update({
+  id: '/seo-company',
+  path: '/seo-company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeoExpertRoute = SeoExpertRouteImport.update({
+  id: '/seo-expert',
+  path: '/seo-expert',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SeoGeoEli5Route = SeoGeoEli5RouteImport.update({
   id: '/seo-geo-eli5',
   path: '/seo-geo-eli5',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeoServicesRoute = SeoServicesRouteImport.update({
+  id: '/seo-services',
+  path: '/seo-services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -74,9 +95,24 @@ const ArGrowthMarketingRoute = ArGrowthMarketingRouteImport.update({
   path: '/growth-marketing',
   getParentRoute: () => ArRoute,
 } as any)
+const ArSeoCompanyRoute = ArSeoCompanyRouteImport.update({
+  id: '/seo-company',
+  path: '/seo-company',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArSeoExpertRoute = ArSeoExpertRouteImport.update({
+  id: '/seo-expert',
+  path: '/seo-expert',
+  getParentRoute: () => ArRoute,
+} as any)
 const ArSeoGeoEli5Route = ArSeoGeoEli5RouteImport.update({
   id: '/seo-geo-eli5',
   path: '/seo-geo-eli5',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArSeoServicesRoute = ArSeoServicesRouteImport.update({
+  id: '/seo-services',
+  path: '/seo-services',
   getParentRoute: () => ArRoute,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -130,11 +166,17 @@ export interface FileRoutesByFullPath {
   '/ar': typeof ArRouteWithChildren
   '/free-consultation': typeof FreeConsultationRoute
   '/growth-marketing': typeof GrowthMarketingRoute
+  '/seo-company': typeof SeoCompanyRoute
+  '/seo-expert': typeof SeoExpertRoute
   '/seo-geo-eli5': typeof SeoGeoEli5Route
+  '/seo-services': typeof SeoServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
+  '/ar/seo-company': typeof ArSeoCompanyRoute
+  '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
+  '/ar/seo-services': typeof ArSeoServicesRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
@@ -150,11 +192,17 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/free-consultation': typeof FreeConsultationRoute
   '/growth-marketing': typeof GrowthMarketingRoute
+  '/seo-company': typeof SeoCompanyRoute
+  '/seo-expert': typeof SeoExpertRoute
   '/seo-geo-eli5': typeof SeoGeoEli5Route
+  '/seo-services': typeof SeoServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
+  '/ar/seo-company': typeof ArSeoCompanyRoute
+  '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
+  '/ar/seo-services': typeof ArSeoServicesRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
@@ -172,11 +220,17 @@ export interface FileRoutesById {
   '/ar': typeof ArRouteWithChildren
   '/free-consultation': typeof FreeConsultationRoute
   '/growth-marketing': typeof GrowthMarketingRoute
+  '/seo-company': typeof SeoCompanyRoute
+  '/seo-expert': typeof SeoExpertRoute
   '/seo-geo-eli5': typeof SeoGeoEli5Route
+  '/seo-services': typeof SeoServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
+  '/ar/seo-company': typeof ArSeoCompanyRoute
+  '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
+  '/ar/seo-services': typeof ArSeoServicesRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
@@ -195,11 +249,17 @@ export interface FileRouteTypes {
     | '/ar'
     | '/free-consultation'
     | '/growth-marketing'
+    | '/seo-company'
+    | '/seo-expert'
     | '/seo-geo-eli5'
+    | '/seo-services'
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/ar/growth-marketing'
+    | '/ar/seo-company'
+    | '/ar/seo-expert'
     | '/ar/seo-geo-eli5'
+    | '/ar/seo-services'
     | '/blog/$slug'
     | '/blog/ar'
     | '/blog/content-plan'
@@ -215,11 +275,17 @@ export interface FileRouteTypes {
     | '/'
     | '/free-consultation'
     | '/growth-marketing'
+    | '/seo-company'
+    | '/seo-expert'
     | '/seo-geo-eli5'
+    | '/seo-services'
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/ar/growth-marketing'
+    | '/ar/seo-company'
+    | '/ar/seo-expert'
     | '/ar/seo-geo-eli5'
+    | '/ar/seo-services'
     | '/blog/$slug'
     | '/blog/ar'
     | '/blog/content-plan'
@@ -236,11 +302,17 @@ export interface FileRouteTypes {
     | '/ar'
     | '/free-consultation'
     | '/growth-marketing'
+    | '/seo-company'
+    | '/seo-expert'
     | '/seo-geo-eli5'
+    | '/seo-services'
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/ar/growth-marketing'
+    | '/ar/seo-company'
+    | '/ar/seo-expert'
     | '/ar/seo-geo-eli5'
+    | '/ar/seo-services'
     | '/blog/$slug'
     | '/blog/ar'
     | '/blog/content-plan'
@@ -258,7 +330,10 @@ export interface RootRouteChildren {
   ArRoute: typeof ArRouteWithChildren
   FreeConsultationRoute: typeof FreeConsultationRoute
   GrowthMarketingRoute: typeof GrowthMarketingRoute
+  SeoCompanyRoute: typeof SeoCompanyRoute
+  SeoExpertRoute: typeof SeoExpertRoute
   SeoGeoEli5Route: typeof SeoGeoEli5Route
+  SeoServicesRoute: typeof SeoServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogArRoute: typeof BlogArRoute
@@ -299,11 +374,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GrowthMarketingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/seo-company': {
+      id: '/seo-company'
+      path: '/seo-company'
+      fullPath: '/seo-company'
+      preLoaderRoute: typeof SeoCompanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seo-expert': {
+      id: '/seo-expert'
+      path: '/seo-expert'
+      fullPath: '/seo-expert'
+      preLoaderRoute: typeof SeoExpertRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/seo-geo-eli5': {
       id: '/seo-geo-eli5'
       path: '/seo-geo-eli5'
       fullPath: '/seo-geo-eli5'
       preLoaderRoute: typeof SeoGeoEli5RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seo-services': {
+      id: '/seo-services'
+      path: '/seo-services'
+      fullPath: '/seo-services'
+      preLoaderRoute: typeof SeoServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -334,11 +430,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArGrowthMarketingRouteImport
       parentRoute: typeof ArRoute
     }
+    '/ar/seo-company': {
+      id: '/ar/seo-company'
+      path: '/seo-company'
+      fullPath: '/ar/seo-company'
+      preLoaderRoute: typeof ArSeoCompanyRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/seo-expert': {
+      id: '/ar/seo-expert'
+      path: '/seo-expert'
+      fullPath: '/ar/seo-expert'
+      preLoaderRoute: typeof ArSeoExpertRouteImport
+      parentRoute: typeof ArRoute
+    }
     '/ar/seo-geo-eli5': {
       id: '/ar/seo-geo-eli5'
       path: '/seo-geo-eli5'
       fullPath: '/ar/seo-geo-eli5'
       preLoaderRoute: typeof ArSeoGeoEli5RouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/seo-services': {
+      id: '/ar/seo-services'
+      path: '/seo-services'
+      fullPath: '/ar/seo-services'
+      preLoaderRoute: typeof ArSeoServicesRouteImport
       parentRoute: typeof ArRoute
     }
     '/blog/': {
@@ -410,7 +527,10 @@ declare module '@tanstack/react-router' {
 interface ArRouteChildren {
   ArFreeConsultationRoute: typeof ArFreeConsultationRoute
   ArGrowthMarketingRoute: typeof ArGrowthMarketingRoute
+  ArSeoCompanyRoute: typeof ArSeoCompanyRoute
+  ArSeoExpertRoute: typeof ArSeoExpertRoute
   ArSeoGeoEli5Route: typeof ArSeoGeoEli5Route
+  ArSeoServicesRoute: typeof ArSeoServicesRoute
   ArIndexRoute: typeof ArIndexRoute
   ArCourseLessonIdRoute: typeof ArCourseLessonIdRoute
   ArCourseIndexRoute: typeof ArCourseIndexRoute
@@ -419,7 +539,10 @@ interface ArRouteChildren {
 const ArRouteChildren: ArRouteChildren = {
   ArFreeConsultationRoute: ArFreeConsultationRoute,
   ArGrowthMarketingRoute: ArGrowthMarketingRoute,
+  ArSeoCompanyRoute: ArSeoCompanyRoute,
+  ArSeoExpertRoute: ArSeoExpertRoute,
   ArSeoGeoEli5Route: ArSeoGeoEli5Route,
+  ArSeoServicesRoute: ArSeoServicesRoute,
   ArIndexRoute: ArIndexRoute,
   ArCourseLessonIdRoute: ArCourseLessonIdRoute,
   ArCourseIndexRoute: ArCourseIndexRoute,
@@ -432,7 +555,10 @@ const rootRouteChildren: RootRouteChildren = {
   ArRoute: ArRouteWithChildren,
   FreeConsultationRoute: FreeConsultationRoute,
   GrowthMarketingRoute: GrowthMarketingRoute,
+  SeoCompanyRoute: SeoCompanyRoute,
+  SeoExpertRoute: SeoExpertRoute,
   SeoGeoEli5Route: SeoGeoEli5Route,
+  SeoServicesRoute: SeoServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogArRoute: BlogArRoute,
