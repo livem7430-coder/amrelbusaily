@@ -8,6 +8,16 @@ import {
   EcommerceGrowthAr,
   EcommerceGrowthEn,
 } from "@/content/seo-growth-articles";
+import {
+  LocalSeoEgyptAr,
+  LocalSeoEgyptEn,
+  SeoVsGoogleAdsAr,
+  SeoVsGoogleAdsEn,
+  EcommerceTechnicalSeoAr,
+  EcommerceTechnicalSeoEn,
+  ContentBriefSeoAr,
+  ContentBriefSeoEn,
+} from "@/content/more-seo-articles";
 
 function TechnicalSEO() {
   return (
@@ -415,4 +425,12 @@ export const articles: Record<string, ComponentType> = {
   "media-buying-guide-en": MediaBuyingEn,
   "ecommerce-growth-plan-ar": EcommerceGrowthAr,
   "ecommerce-growth-plan-en": EcommerceGrowthEn,
+  "local-seo-egypt-ar": LocalSeoEgyptAr,
+  "local-seo-egypt-en": LocalSeoEgyptEn,
+  "seo-vs-google-ads-ar": SeoVsGoogleAdsAr,
+  "seo-vs-google-ads-en": SeoVsGoogleAdsEn,
+  "ecommerce-technical-seo-ar": EcommerceTechnicalSeoAr,
+  "ecommerce-technical-seo-en": EcommerceTechnicalSeoEn,
+  "seo-content-brief-ar": ContentBriefSeoAr,
+  "seo-content-brief-en": ContentBriefSeoEn,
 };
