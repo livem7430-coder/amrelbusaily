@@ -372,6 +372,10 @@ function HomeAr() {
               </div>
             ))}
           </div>
+          <div className="mt-6 flex flex-wrap gap-3 text-sm">
+            <a href="/ar/keyword-research" className="rounded-md border border-border px-4 py-2 text-muted-foreground hover:border-primary hover:text-primary">خدمة بحث الكلمات ←</a>
+            <a href="/ar/content-seo" className="rounded-md border border-border px-4 py-2 text-muted-foreground hover:border-primary hover:text-primary">خدمة Content SEO ←</a>
+          </div>
         </div>
       </section>
 
