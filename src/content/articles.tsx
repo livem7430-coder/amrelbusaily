@@ -38,6 +38,20 @@ import {
   SeoServicesQatarAr,
   SeoServicesQatarEn,
 } from "@/content/gulf-seo-articles";
+import {
+  SeoRiyadhAr,
+  SeoRiyadhEn,
+  SeoJeddahAr,
+  SeoJeddahEn,
+  SeoDubaiAr,
+  SeoDubaiEn,
+  SeoPricingAr,
+  SeoPricingEn,
+  TechnicalAuditAr,
+  TechnicalAuditEn,
+  AiSeoAr,
+  AiSeoEn,
+} from "@/content/wave-two-seo-articles";
 
 function TechnicalSEO() {
   return (
@@ -469,4 +483,16 @@ export const articles: Record<string, ComponentType> = {
   "seo-services-kuwait-en": SeoServicesKuwaitEn,
   "seo-services-qatar-ar": SeoServicesQatarAr,
   "seo-services-qatar-en": SeoServicesQatarEn,
+  "seo-riyadh-ar": SeoRiyadhAr,
+  "seo-riyadh-en": SeoRiyadhEn,
+  "seo-jeddah-ar": SeoJeddahAr,
+  "seo-jeddah-en": SeoJeddahEn,
+  "seo-dubai-ar": SeoDubaiAr,
+  "seo-dubai-en": SeoDubaiEn,
+  "seo-pricing-ar": SeoPricingAr,
+  "seo-pricing-en": SeoPricingEn,
+  "technical-seo-audit-ar": TechnicalAuditAr,
+  "technical-seo-audit-en": TechnicalAuditEn,
+  "ai-seo-ar": AiSeoAr,
+  "ai-seo-en": AiSeoEn,
 };
