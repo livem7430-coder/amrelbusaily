@@ -251,6 +251,7 @@ const skills = [
 function HomeAr() {
   return (
     <div className="min-h-screen" dir="rtl" lang="ar">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:right-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:text-primary-foreground">انتقل إلى المحتوى</a>
       <header className="sticky top-0 z-40 border-b border-border/60 backdrop-blur-md bg-background/70">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#top" className="flex items-center gap-2 font-display font-semibold">
@@ -281,7 +282,16 @@ function HomeAr() {
           </div>
         </div>
       </header>
-
+      <div className="border-b border-border/60 bg-background/95 px-6 py-3 md:hidden">
+        <nav aria-label="التنقل السريع" className="mx-auto flex max-w-6xl gap-2 overflow-x-auto pb-1 text-xs text-muted-foreground">
+          <a href="#services" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">الخدمات</a>
+          <a href="#results" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">النتائج</a>
+          <Link to="/blog" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">المدونة</Link>
+          <Link to="/ar/course" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">الكورس</Link>
+          <Link to="/ar/free-consultation" className="shrink-0 rounded-full bg-primary px-3 py-2 font-medium text-primary-foreground">ابدأ مشروعك</Link>
+        </nav>
+      </div>
+      <main id="main-content">
       <section id="top" className="relative overflow-hidden">
         <div className="absolute inset-0 grid-bg" aria-hidden />
         <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.4fr_1fr] md:py-28">
@@ -305,7 +315,8 @@ function HomeAr() {
               <a href="#contact" className="rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground glow-primary hover:opacity-90">
                 ابدأ مشروعك
               </a>
-              <a href="#work" className="rounded-md border border-border bg-surface px-5 py-3 text-sm text-foreground hover:bg-surface-2">
+              <a                 href="#results"
+                className="rounded-md border border-border bg-surface px-5 py-3 text-sm text-foreground hover:bg-surface-2">
                 شوف النتائج
               </a>
             </div>
@@ -468,6 +479,7 @@ function HomeAr() {
           </div>
         </div>
       </section>
+      </main>
 
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-muted-foreground md:flex-row">

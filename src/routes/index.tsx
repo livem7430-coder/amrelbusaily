@@ -307,6 +307,7 @@ const courses = [
 function Home() {
   return (
     <div className="min-h-screen">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:text-primary-foreground">Skip to content</a>
       {/* NAV */}
       <header className="sticky top-0 z-40 border-b border-border/60 backdrop-blur-md bg-background/70">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
@@ -338,7 +339,16 @@ function Home() {
           </div>
         </div>
       </header>
-
+      <div className="border-b border-border/60 bg-background/95 px-6 py-3 md:hidden">
+        <nav aria-label="Quick navigation" className="mx-auto flex max-w-6xl gap-2 overflow-x-auto pb-1 text-xs text-muted-foreground">
+          <a href="#services" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Services</a>
+          <a href="#results" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Results</a>
+          <Link to="/blog" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Blog</Link>
+          <Link to="/course" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Course</Link>
+          <Link to="/free-consultation" className="shrink-0 rounded-full bg-primary px-3 py-2 font-medium text-primary-foreground">Start a project</Link>
+        </nav>
+      </div>
+      <main id="main-content">
       {/* HERO */}
       <section id="top" className="relative overflow-hidden">
         <div className="absolute inset-0 grid-bg" aria-hidden />
@@ -367,7 +377,7 @@ function Home() {
                 Start a project
               </a>
               <a
-                href="#work"
+                href="#results"
                 className="rounded-md border border-border bg-surface px-5 py-3 text-sm font-medium text-foreground transition hover:bg-surface-2"
               >
                 See results
@@ -578,6 +588,7 @@ function Home() {
           </div>
         </div>
       </section>
+      </main>
 
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-muted-foreground md:flex-row">
