@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ServicesPage, servicesHead } from "@/components/ServicesPage";
 
 export const Route = createFileRoute("/ar/services")({
-  head: () => servicesHead("ar"),
+  head: ({ matches }) => matches.some((match) => String(match.routeId) === "/$slug") ? {} : servicesHead("ar"),
   component: ArabicServices,
 });
 
