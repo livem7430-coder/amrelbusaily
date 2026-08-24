@@ -82,7 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Amr Elbusaily — SEO, digital marketing and AI growth specialist from Cairo. 7 years and 50+ projects driving rankings, organic traffic and revenue for e-commerce, SaaS and AI products.",
+          "Amr Elbusaily — SEO, digital marketing and AI growth specialist. 7 years and 50+ projects driving rankings, organic traffic and revenue for e-commerce, SaaS and AI products.",
       },
       { name: "author", content: "Amr Elbusaily" },
       {

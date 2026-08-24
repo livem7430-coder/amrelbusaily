@@ -140,7 +140,7 @@ function FreeConsultation() {
           <div className="relative">
             <div className="absolute -inset-4 rounded-2xl bg-primary/10 blur-2xl" aria-hidden />
             <div className="relative overflow-hidden rounded-2xl border border-border bg-surface">
-              <Portrait alt="Amr Elbusaily, SEO specialist from Cairo" />
+              <Portrait alt="Amr Elbusaily, SEO specialist" />
               <div className="grid grid-cols-2 divide-x divide-border border-t border-border font-mono text-xs">
                 <div className="p-4">
                   <div className="text-muted-foreground">Consultation</div>

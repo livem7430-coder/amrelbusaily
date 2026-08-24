@@ -6,11 +6,11 @@ import { ResultsShowcase } from "@/components/ResultsShowcase";
 export const Route = createFileRoute("/ar/")({
   head: () => ({
     meta: [
-      { title: "عمرو البصيلي — خبير SEO والتسويق الرقمي ونمو AI | القاهرة" },
+      { title: "عمرو البصيلي — خبير SEO والتسويق الرقمي ونمو AI" },
       {
         name: "description",
         content:
-          "عمرو البصيلي خبير SEO وتسويق رقمي وGrowth Marketing من القاهرة، متخصص في نمو شركات الخدمات وشركات B2B عبر توليد الطلب، المحتوى، الـfunnel، CRM، الأتمتة، وسيو المتاجر والبحث بالذكاء الاصطناعي.",
+          "عمرو البصيلي خبير SEO وتسويق رقمي وGrowth Marketing، متخصص في نمو شركات الخدمات وشركات B2B عبر توليد الطلب، المحتوى، الـfunnel، CRM، الأتمتة، وسيو المتاجر والبحث بالذكاء الاصطناعي.",
       },
       { property: "og:title", content: "عمرو البصيلي — خبير SEO والتسويق الرقمي ونمو AI" },
       {
@@ -77,7 +77,7 @@ export const Route = createFileRoute("/ar/")({
               name: "مين هو عمرو البصيلي؟",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "عمرو البصيلي خبير SEO وتسويق رقمي من القاهرة، عنده 7 سنين خبرة وأكثر من 50 مشروع في التجارة الإلكترونية وSaaS ومنتجات الذكاء الاصطناعي والتعليم.",
+                text: "عمرو البصيلي خبير SEO وتسويق رقمي، عنده 7 سنين خبرة وأكثر من 50 مشروع في التجارة الإلكترونية وSaaS ومنتجات الذكاء الاصطناعي والتعليم.",
               },
             },
             {
@@ -306,7 +306,7 @@ function HomeAr() {
               إلى نمو مستدام.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              أنا عمرو البصيلي، استشاري SEO ونمو رقمي من القاهرة. أساعد العلامات الطموحة على تحويل الظهور في محركات البحث،
+              أنا عمرو البصيلي، استشاري SEO ونمو رقمي. أساعد العلامات الطموحة على تحويل الظهور في محركات البحث،
               والمحتوى، والذكاء الاصطناعي إلى منظومة مستدامة لجذب الطلب والعملاء وزيادة الإيرادات. مؤسس A2M Digital Marketing Agency،
               بخبرة <span className="text-foreground">7 سنوات</span> وأكثر من <span className="text-foreground">50 مشروعًا</span> في التجارة الإلكترونية
               وSaaS والمنتجات الرقمية.
@@ -325,11 +325,11 @@ function HomeAr() {
           <div className="relative">
             <div className="absolute -inset-4 rounded-2xl bg-primary/10 blur-2xl" aria-hidden />
             <div className="relative overflow-hidden rounded-2xl border border-border bg-surface">
-              <Portrait alt="عمرو البصيلي — خبير SEO من القاهرة" />
+              <Portrait alt="عمرو البصيلي — خبير SEO" />
               <div className="grid grid-cols-2 divide-x divide-border border-t border-border font-mono text-xs">
                 <div className="p-4">
-                  <div className="text-muted-foreground">المكان</div>
-                  <div className="mt-1 text-foreground">القاهرة، مصر</div>
+                  <div className="text-muted-foreground">نموذج العمل</div>
+                  <div className="mt-1 text-foreground">عن بُعد أولًا</div>
                 </div>
                 <div className="p-4">
                   <div className="text-muted-foreground">التخصص</div>
@@ -473,7 +473,7 @@ function HomeAr() {
               </div>
               <div className="space-y-3">
                 <ContactRow label="إيميل" value="amreelbasily@gmail.com" href="mailto:amreelbasily@gmail.com" />
-                <ContactRow label="المكان" value="القاهرة، مصر" />
+                <ContactRow label="نموذج العمل" value="عن بُعد أولًا" />
               </div>
             </div>
           </div>

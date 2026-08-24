@@ -6,11 +6,11 @@ import { ResultsShowcase } from "@/components/ResultsShowcase";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Amr Elbusaily — SEO, Digital Marketing & AI Growth | Cairo" },
+      { title: "Amr Elbusaily — SEO, Digital Marketing & AI Growth" },
       {
         name: "description",
         content:
-          "Amr Elbusaily is an SEO, digital marketing and growth marketing specialist in Cairo. He helps service companies and B2B teams grow qualified demand through technical SEO, content, funnels, CRM, automation, e-commerce SEO and AI search optimization.",
+          "Amr Elbusaily is an SEO, digital marketing and growth marketing specialist. He helps service companies and B2B teams grow qualified demand through technical SEO, content, funnels, CRM, automation, e-commerce SEO and AI search optimization.",
       },
       { property: "og:title", content: "Amr Elbusaily — SEO, Digital Marketing & AI Growth" },
       {
@@ -79,7 +79,7 @@ export const Route = createFileRoute("/")({
               name: "Who is Amr Elbusaily?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Amr Elbusaily is an SEO and digital marketing specialist based in Cairo, Egypt, with 7 years of experience and 50+ projects across e-commerce, SaaS, AI and education.",
+                text: "Amr Elbusaily is an SEO and digital marketing specialist with 7 years of experience and 50+ projects across e-commerce, SaaS, AI and education.",
               },
             },
             {
@@ -364,7 +364,7 @@ function Home() {
               sustainable growth.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              I'm Amr Elbusaily, an SEO and digital growth strategist in Cairo. I help ambitious brands turn search visibility,
+              I'm Amr Elbusaily, an SEO and digital growth strategist. I help ambitious brands turn search visibility,
               content and AI into a reliable engine for qualified demand and revenue. Founder of A2M Digital Marketing Agency,
               with <span className="text-foreground">7 years</span> of experience across <span className="text-foreground">50+ projects</span>{" "}
               in e-commerce, SaaS and digital products.
@@ -388,11 +388,11 @@ function Home() {
           <div className="relative">
             <div className="absolute -inset-4 rounded-2xl bg-primary/10 blur-2xl" aria-hidden />
             <div className="relative overflow-hidden rounded-2xl border border-border bg-surface">
-              <Portrait alt="Amr Elbusaily, SEO Specialist based in Cairo" />
+              <Portrait alt="Amr Elbusaily, SEO Specialist" />
               <div className="grid grid-cols-2 divide-x divide-border border-t border-border font-mono text-xs">
                 <div className="p-4">
-                  <div className="text-muted-foreground">Location</div>
-                  <div className="mt-1 text-foreground">Cairo, Egypt</div>
+                  <div className="text-muted-foreground">Work model</div>
+                  <div className="mt-1 text-foreground">Remote-first</div>
                 </div>
                 <div className="p-4">
                   <div className="text-muted-foreground">Focus</div>
