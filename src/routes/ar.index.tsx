@@ -248,6 +248,7 @@ function HomeAr() {
             <a href="#experience" className="hover:text-foreground">الخبرة</a>
             <a href="#skills" className="hover:text-foreground">المهارات</a>
             <Link to="/blog" className="hover:text-foreground">المدونة</Link>
+            <Link to="/ar/course" className="hover:text-foreground">كورس SEO</Link>
             <Link to="/ar/free-consultation" className="text-primary hover:opacity-80">استشارة مجانية</Link>
             <a href="#contact" className="hover:text-foreground">تواصل</a>
           </nav>

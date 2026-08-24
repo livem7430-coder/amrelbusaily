@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { blogPosts } from "@/lib/blog-posts";
+import { COURSE_UPDATED, publishedCourseLessons } from "@/lib/seo-course";
 
 const BASE_URL = "https://amrelbusaily.vercel.app";
 
@@ -18,6 +19,8 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/", changefreq: "weekly", priority: "1.0", lastmod: today },
           { path: "/ar", changefreq: "weekly", priority: "1.0", lastmod: today },
           { path: "/blog", changefreq: "weekly", priority: "0.8", lastmod: today },
+          { path: "/course", changefreq: "weekly", priority: "0.8", lastmod: COURSE_UPDATED },
+          { path: "/ar/course", changefreq: "weekly", priority: "0.8", lastmod: COURSE_UPDATED },
           {
             path: "/free-consultation",
             changefreq: "monthly",
@@ -30,6 +33,10 @@ export const Route = createFileRoute("/sitemap.xml")({
             priority: "0.7",
             lastmod: p.date,
           })),
+          ...publishedCourseLessons.flatMap((lesson) => [
+            { path: `/course/${lesson.id}`, changefreq: "monthly", priority: "0.6", lastmod: COURSE_UPDATED },
+            { path: `/ar/course/${lesson.id}`, changefreq: "monthly", priority: "0.6", lastmod: COURSE_UPDATED },
+          ]),
         ];
         const urls = entries.map(
           (e) =>

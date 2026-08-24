@@ -17,6 +17,10 @@ import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ArFreeConsultationRouteImport } from './routes/ar.free-consultation'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as CourseIndexRouteImport } from './routes/course.index'
+import { Route as CourseLessonIdRouteImport } from './routes/course.$lessonId'
+import { Route as ArCourseIndexRouteImport } from './routes/ar.course.index'
+import { Route as ArCourseLessonIdRouteImport } from './routes/ar.course.$lessonId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +62,26 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CourseIndexRoute = CourseIndexRouteImport.update({
+  id: '/course/',
+  path: '/course/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CourseLessonIdRoute = CourseLessonIdRouteImport.update({
+  id: '/course/$lessonId',
+  path: '/course/$lessonId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArCourseIndexRoute = ArCourseIndexRouteImport.update({
+  id: '/course/',
+  path: '/course/',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArCourseLessonIdRoute = ArCourseLessonIdRouteImport.update({
+  id: '/course/$lessonId',
+  path: '/course/$lessonId',
+  getParentRoute: () => ArRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -66,8 +90,12 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/course/$lessonId': typeof CourseLessonIdRoute
   '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
+  '/course/': typeof CourseIndexRoute
+  '/ar/course/$lessonId': typeof ArCourseLessonIdRoute
+  '/ar/course/': typeof ArCourseIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -75,8 +103,12 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/course/$lessonId': typeof CourseLessonIdRoute
   '/ar': typeof ArIndexRoute
   '/blog': typeof BlogIndexRoute
+  '/course': typeof CourseIndexRoute
+  '/ar/course/$lessonId': typeof ArCourseLessonIdRoute
+  '/ar/course': typeof ArCourseIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -86,8 +118,12 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/course/$lessonId': typeof CourseLessonIdRoute
   '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
+  '/course/': typeof CourseIndexRoute
+  '/ar/course/$lessonId': typeof ArCourseLessonIdRoute
+  '/ar/course/': typeof ArCourseIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -98,8 +134,12 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/blog/$slug'
+    | '/course/$lessonId'
     | '/ar/'
     | '/blog/'
+    | '/course/'
+    | '/ar/course/$lessonId'
+    | '/ar/course/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -107,8 +147,12 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/blog/$slug'
+    | '/course/$lessonId'
     | '/ar'
     | '/blog'
+    | '/course'
+    | '/ar/course/$lessonId'
+    | '/ar/course'
   id:
     | '__root__'
     | '/'
@@ -117,8 +161,12 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/blog/$slug'
+    | '/course/$lessonId'
     | '/ar/'
     | '/blog/'
+    | '/course/'
+    | '/ar/course/$lessonId'
+    | '/ar/course/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -127,7 +175,9 @@ export interface RootRouteChildren {
   FreeConsultationRoute: typeof FreeConsultationRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  CourseLessonIdRoute: typeof CourseLessonIdRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  CourseIndexRoute: typeof CourseIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -188,17 +238,49 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/course/': {
+      id: '/course/'
+      path: '/course'
+      fullPath: '/course/'
+      preLoaderRoute: typeof CourseIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/course/$lessonId': {
+      id: '/course/$lessonId'
+      path: '/course/$lessonId'
+      fullPath: '/course/$lessonId'
+      preLoaderRoute: typeof CourseLessonIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/course/': {
+      id: '/ar/course/'
+      path: '/course'
+      fullPath: '/ar/course/'
+      preLoaderRoute: typeof ArCourseIndexRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/course/$lessonId': {
+      id: '/ar/course/$lessonId'
+      path: '/course/$lessonId'
+      fullPath: '/ar/course/$lessonId'
+      preLoaderRoute: typeof ArCourseLessonIdRouteImport
+      parentRoute: typeof ArRoute
+    }
   }
 }
 
 interface ArRouteChildren {
   ArFreeConsultationRoute: typeof ArFreeConsultationRoute
   ArIndexRoute: typeof ArIndexRoute
+  ArCourseLessonIdRoute: typeof ArCourseLessonIdRoute
+  ArCourseIndexRoute: typeof ArCourseIndexRoute
 }
 
 const ArRouteChildren: ArRouteChildren = {
   ArFreeConsultationRoute: ArFreeConsultationRoute,
   ArIndexRoute: ArIndexRoute,
+  ArCourseLessonIdRoute: ArCourseLessonIdRoute,
+  ArCourseIndexRoute: ArCourseIndexRoute,
 }
 
 const ArRouteWithChildren = ArRoute._addFileChildren(ArRouteChildren)
@@ -209,7 +291,9 @@ const rootRouteChildren: RootRouteChildren = {
   FreeConsultationRoute: FreeConsultationRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
+  CourseLessonIdRoute: CourseLessonIdRoute,
   BlogIndexRoute: BlogIndexRoute,
+  CourseIndexRoute: CourseIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
