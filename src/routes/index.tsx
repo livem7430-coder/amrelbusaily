@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
 import { Portrait } from "@/components/Portrait";
+import { WhatsAppIconButton } from "@/components/WhatsAppIconButton";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -520,7 +521,7 @@ function Home() {
               </div>
               <div className="space-y-3">
                 <ContactRow label="Email" value="amreelbasily@gmail.com" href="mailto:amreelbasily@gmail.com" />
-                <ContactRow label="Phone" value="+20 100 258 8901" href="tel:+201002588901" />
+                <WhatsAppIconButton className="h-10 w-10" />
                 <ContactRow label="Location" value="Cairo, Egypt" />
               </div>
             </div>
