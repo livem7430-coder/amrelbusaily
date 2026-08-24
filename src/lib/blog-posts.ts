@@ -87,6 +87,126 @@ export const blogPosts: BlogPost[] = [
     lang: "ar",
   },
   {
+    slug: "seo-audit-guide-ar",
+    title: "أوديت SEO: قائمة فحص عملية لاكتشاف أخطاء الموقع وزيادة العملاء",
+    description:
+      "دليل عملي لعمل أوديت SEO للمواقع والمتاجر: الزحف والفهرسة، الروابط الداخلية، المحتوى، السرعة، صفحات الخدمات والتحويل.",
+    date: "2026-08-24",
+    readTime: "11 دقيقة",
+    lang: "ar",
+    altSlug: "seo-audit-guide-en",
+    faq: [
+      {
+        q: "ما هو أوديت SEO؟",
+        a: "هو مراجعة منظمة للتقنية والمحتوى والروابط وتجربة المستخدم لتحديد ما يمنع الموقع من الظهور والتحويل.",
+      },
+      {
+        q: "ما الذي يجب فحصه أولًا في أوديت السيو؟",
+        a: "ابدأ بقابلية الزحف والفهرسة، ثم الصفحات المهمة والعناوين والروابط الداخلية والقياس.",
+      },
+    ],
+  },
+  {
+    slug: "seo-audit-guide-en",
+    title: "SEO Audit Guide: A Practical Checklist for More Visibility and Leads",
+    description:
+      "A practical SEO audit checklist covering crawling, indexing, internal links, content, speed, service pages and conversion priorities.",
+    date: "2026-08-24",
+    readTime: "11 min read",
+    lang: "en",
+    altSlug: "seo-audit-guide-ar",
+    faq: [
+      {
+        q: "What is an SEO audit?",
+        a: "It is a structured review of technical SEO, content, links and user experience to find what limits visibility and conversion.",
+      },
+      {
+        q: "What should an SEO audit check first?",
+        a: "Start with crawling and indexing, then review important pages, titles, internal links and measurement.",
+      },
+    ],
+  },
+  {
+    slug: "media-buying-guide-ar",
+    title: "Media Buying في مصر: كيف تدير إعلانات Google وMeta بربحية",
+    description:
+      "دليل عملي لإدارة الإعلانات المدفوعة: القياس، الجمهور، اختبار الإعلانات، تكلفة اكتساب العميل، ودمج Media Buying مع SEO.",
+    date: "2026-08-24",
+    readTime: "10 دقائق",
+    lang: "ar",
+    altSlug: "media-buying-guide-en",
+    faq: [
+      {
+        q: "ما الفرق بين Media Buying وتشغيل إعلان؟",
+        a: "Media Buying يشمل الاستراتيجية والقياس واختيار الجمهور واختبار الإعلانات وتحسين الربحية، وليس تشغيل إعلان فقط.",
+      },
+      {
+        q: "ما أهم مؤشرات قياس الحملات؟",
+        a: "راقب تكلفة اكتساب العميل ومعدل التحويل وقيمة الطلب والعائد على الإنفاق مع ربطها بجودة العميل والهامش.",
+      },
+    ],
+  },
+  {
+    slug: "media-buying-guide-en",
+    title: "Media Buying Guide: How to Manage Google and Meta Ads for Profit",
+    description:
+      "A practical paid media guide covering measurement, audiences, creative testing, customer acquisition cost and the SEO connection.",
+    date: "2026-08-24",
+    readTime: "10 min read",
+    lang: "en",
+    altSlug: "media-buying-guide-ar",
+    faq: [
+      {
+        q: "What is the difference between media buying and running an ad?",
+        a: "Media buying includes strategy, measurement, audience selection, testing and profit optimization—not just launching an ad.",
+      },
+      {
+        q: "Which metrics matter in paid campaigns?",
+        a: "Track customer acquisition cost, conversion rate, order value and return on ad spend alongside lead quality and margin.",
+      },
+    ],
+  },
+  {
+    slug: "ecommerce-growth-plan-ar",
+    title: "خطة نمو التجارة الإلكترونية: SEO وإعلانات لزيادة مبيعات المتجر",
+    description:
+      "خطة عملية لنمو المتاجر الإلكترونية تشمل اقتصاديات المتجر، هيكل الفئات، صفحات المنتجات، المحتوى، الإعلانات وتحسين التحويل.",
+    date: "2026-08-24",
+    readTime: "12 دقيقة",
+    lang: "ar",
+    altSlug: "ecommerce-growth-plan-en",
+    faq: [
+      {
+        q: "هل نمو المتجر يعتمد على الإعلانات فقط؟",
+        a: "لا. النمو المستمر يحتاج إلى SEO وبنية متجر جيدة وصفحات منتجات مقنعة وتجربة شراء سهلة بالإضافة إلى الإعلانات.",
+      },
+      {
+        q: "ما أول خطوة في خطة نمو متجر؟",
+        a: "ابدأ بفهم هامش الربح ومتوسط قيمة الطلب ومعدل التحويل وتكلفة اكتساب العميل قبل زيادة الميزانية.",
+      },
+    ],
+  },
+  {
+    slug: "ecommerce-growth-plan-en",
+    title: "E-commerce Growth Plan: SEO and Paid Media for More Store Sales",
+    description:
+      "A practical e-commerce growth plan covering store economics, category structure, product pages, content, paid media and conversion optimization.",
+    date: "2026-08-24",
+    readTime: "12 min read",
+    lang: "en",
+    altSlug: "ecommerce-growth-plan-ar",
+    faq: [
+      {
+        q: "Does e-commerce growth depend on ads alone?",
+        a: "No. Sustainable growth combines SEO, strong store architecture, persuasive product pages, a smooth buying experience and paid media.",
+      },
+      {
+        q: "What is the first step in an e-commerce growth plan?",
+        a: "Start with margin, average order value, conversion rate and acquisition cost before increasing the media budget.",
+      },
+    ],
+  },
+  {
     slug: "keyword-research-ar",
     title: "بحث الكلمات المفتاحية: الطريقة اللي بتنجح فعلاً",
     description:

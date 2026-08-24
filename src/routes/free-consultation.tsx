@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
 import { Portrait } from "@/components/Portrait";
 
-const url = "https://amrelbusaily.lovable.app/free-consultation";
+const url = "https://amrelbusaily.vercel.app/free-consultation";
 const title = "Free SEO Consultation — Sadaqah Jariyah | Amr Elbusaily";
 const description =
   "A free technical SEO growth plan in memory of my father. Get a full audit covering crawl budget, keyword gaps, authority mapping, and a 90-day roadmap for e-commerce & SaaS sites.";
@@ -18,16 +18,16 @@ export const Route = createFileRoute("/free-consultation")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: url },
       { property: "og:locale", content: "en_US" },
-      { property: "og:image", content: `https://amrelbusaily.lovable.app${amrPortrait.url}` },
+      { property: "og:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Free SEO Consultation — Sadaqah Jariyah" },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: `https://amrelbusaily.lovable.app${amrPortrait.url}` },
+      { name: "twitter:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
     ],
     links: [
       { rel: "canonical", href: url },
       { rel: "alternate", hrefLang: "en", href: url },
-      { rel: "alternate", hrefLang: "ar", href: "https://amrelbusaily.lovable.app/ar/free-consultation" },
+      { rel: "alternate", hrefLang: "ar", href: "https://amrelbusaily.vercel.app/ar/free-consultation" },
       { rel: "alternate", hrefLang: "x-default", href: url },
     ],
     scripts: [
@@ -43,7 +43,7 @@ export const Route = createFileRoute("/free-consultation")({
           provider: {
             "@type": "Person",
             name: "Amr Elbusaily",
-            url: "https://amrelbusaily.lovable.app/",
+            url: "https://amrelbusaily.vercel.app/",
           },
           areaServed: "Worldwide",
           audience: {

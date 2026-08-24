@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
 
 export function ArticleLayout({
   title,
@@ -35,6 +36,15 @@ export function ArticleLayout({
       </header>
 
       <article className="mx-auto max-w-3xl px-6 py-16">
+        <nav aria-label={lang === "ar" ? "مسار التنقل" : "Breadcrumb"} className="mb-8 text-sm text-muted-foreground">
+          <a href={lang === "ar" ? "/ar" : "/"} className="hover:text-primary">
+            {lang === "ar" ? "الرئيسية" : "Home"}
+          </a>
+          <span className="mx-2">/</span>
+          <a href="/blog" className="hover:text-primary">
+            {lang === "ar" ? "المدونة" : "Blog"}
+          </a>
+        </nav>
         <div className="font-mono text-xs uppercase tracking-widest text-primary">
           {date} · {readTime}
         </div>
@@ -88,8 +98,9 @@ export function articleHead({
   altSlug?: string;
   faq?: { q: string; a: string }[];
 }) {
-  const base = "https://amrelbusaily.lovable.app";
+  const base = "https://amrelbusaily.vercel.app";
   const url = `${base}/blog/${slug}`;
+  const image = `${base}${amrPortrait.url}`;
   const links: { rel: string; href: string; hrefLang?: string }[] = [
     { rel: "canonical", href: url },
   ];
@@ -112,12 +123,18 @@ export function articleHead({
         inLanguage: lang,
         datePublished,
         dateModified: datePublished,
+        image: [image],
+        articleSection: "SEO, Media Buying & E-commerce Growth",
         author: {
           "@type": "Person",
           name: "Amr Elbusaily",
-          url: "https://amrelbusaily.lovable.app/",
+          url: "https://amrelbusaily.vercel.app/",
         },
-        publisher: { "@type": "Person", name: "Amr Elbusaily" },
+        publisher: {
+          "@type": "Person",
+          name: "Amr Elbusaily",
+          url: `${base}/`,
+        },
         mainEntityOfPage: url,
       }),
     },
@@ -144,6 +161,9 @@ export function articleHead({
       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:image", content: image },
+      { name: "twitter:image", content: image },
+      { name: "keywords", content: `${title}, SEO, media buying, e-commerce growth` },
       { property: "og:type", content: "article" },
       { property: "og:url", content: url },
       { property: "og:locale", content: lang === "ar" ? "ar_EG" : "en_US" },

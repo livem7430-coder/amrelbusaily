@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://amrelbusaily.lovable.app/sitemap.xml
+Sitemap: https://amrelbusaily.vercel.app/sitemap.xml

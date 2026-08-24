@@ -1,5 +1,14 @@
 import type { ComponentType } from "react";
 
+import {
+  SeoAuditAr,
+  SeoAuditEn,
+  MediaBuyingAr,
+  MediaBuyingEn,
+  EcommerceGrowthAr,
+  EcommerceGrowthEn,
+} from "@/content/seo-growth-articles";
+
 function TechnicalSEO() {
   return (
     <>
@@ -400,4 +409,10 @@ export const articles: Record<string, ComponentType> = {
   "keyword-research-ar": KeywordResearch,
   "will-ai-kill-seo-ar": SEOvsAIAr,
   "will-ai-kill-seo-en": SEOvsAIEn,
+  "seo-audit-guide-ar": SeoAuditAr,
+  "seo-audit-guide-en": SeoAuditEn,
+  "media-buying-guide-ar": MediaBuyingAr,
+  "media-buying-guide-en": MediaBuyingEn,
+  "ecommerce-growth-plan-ar": EcommerceGrowthAr,
+  "ecommerce-growth-plan-en": EcommerceGrowthEn,
 };

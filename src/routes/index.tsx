@@ -5,31 +5,31 @@ import { Portrait } from "@/components/Portrait";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Amr Elbusaily — SEO Specialist & Paid Ads Expert | Cairo" },
+      { title: "Amr Elbusaily — SEO, Media Buying & E-commerce Growth | Cairo" },
       {
         name: "description",
         content:
-          "Amr Elbusaily is an SEO specialist and paid ads expert from Cairo with 7 years managing 50+ e-commerce, SaaS and AI projects — driving up to 45% organic traffic growth and 35% sales lift.",
+          "Amr Elbusaily is an SEO, media buying and e-commerce growth specialist in Cairo. 7 years managing 50+ projects across SEO, Google and Meta Ads, online stores, SaaS and AI products.",
       },
-      { property: "og:title", content: "Amr Elbusaily — SEO Specialist & Paid Ads Expert" },
+      { property: "og:title", content: "Amr Elbusaily — SEO, Media Buying & E-commerce Growth" },
       {
         property: "og:description",
         content:
-          "7 years in SEO and paid ads. Founder of A2M Digital Marketing Agency. 50+ projects across e-commerce, SaaS, AI and education.",
+          "SEO, Google Ads, Meta Ads and e-commerce growth for brands that want more qualified traffic, leads and sales.",
       },
       { property: "og:type", content: "profile" },
-      { property: "og:url", content: "https://amrelbusaily.lovable.app/" },
-      { property: "og:image", content: `https://amrelbusaily.lovable.app${amrPortrait.url}` },
+      { property: "og:url", content: "https://amrelbusaily.vercel.app/" },
+      { property: "og:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Amr Elbusaily — SEO Specialist & Paid Ads Expert" },
-      { name: "twitter:description", content: "SEO that dominates rankings, traffic & revenue." },
-      { name: "twitter:image", content: `https://amrelbusaily.lovable.app${amrPortrait.url}` },
+      { name: "twitter:title", content: "Amr Elbusaily — SEO, Media Buying & E-commerce Growth" },
+      { name: "twitter:description", content: "SEO, media buying and e-commerce growth for more qualified traffic, leads and sales." },
+      { name: "twitter:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
     ],
     links: [
-      { rel: "canonical", href: "https://amrelbusaily.lovable.app/" },
-      { rel: "alternate", hrefLang: "en", href: "https://amrelbusaily.lovable.app/" },
-      { rel: "alternate", hrefLang: "ar", href: "https://amrelbusaily.lovable.app/ar" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://amrelbusaily.lovable.app/" },
+      { rel: "canonical", href: "https://amrelbusaily.vercel.app/" },
+      { rel: "alternate", hrefLang: "en", href: "https://amrelbusaily.vercel.app/" },
+      { rel: "alternate", hrefLang: "ar", href: "https://amrelbusaily.vercel.app/ar" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://amrelbusaily.vercel.app/" },
     ],
     scripts: [
       {
@@ -38,8 +38,8 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Person",
           name: "Amr Elbusaily",
-          url: "https://amrelbusaily.lovable.app/",
-          image: `https://amrelbusaily.lovable.app${amrPortrait.url}`,
+          url: "https://amrelbusaily.vercel.app/",
+          image: `https://amrelbusaily.vercel.app${amrPortrait.url}`,
           jobTitle: "SEO Specialist & Paid Ads Expert",
           address: { "@type": "PostalAddress", addressLocality: "Cairo", addressCountry: "EG" },
           knowsAbout: [
@@ -47,7 +47,7 @@ export const Route = createFileRoute("/")({
             "Technical SEO",
             "E-commerce SEO",
             "Google Ads",
-            "Paid Media",
+            "Paid Media & Media Buying",
             "n8n Automation",
             "AI Product Growth",
           ],
@@ -86,7 +86,7 @@ export const Route = createFileRoute("/")({
               name: "How can I contact Amr Elbusaily?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "You can reach Amr Elbusaily through the contact section on amrelbusaily.lovable.app for SEO consulting, audits, and growth engagements.",
+                text: "You can reach Amr Elbusaily through the contact section on amrelbusaily.vercel.app for SEO consulting, audits, and growth engagements.",
               },
             },
           ],
@@ -102,7 +102,22 @@ const metrics = [
   { value: "7", label: "Years in SEO & paid ads" },
   { value: "50+", label: "SEO & e-commerce projects" },
   { value: "45%", label: "Organic traffic uplift" },
-  { value: "35%", label: "E-commerce sales growth" },
+    { value: "35%", label: "E-commerce sales growth" },
+];
+
+const services = [
+  {
+    title: "SEO & Organic Growth",
+    detail: "Technical audits, keyword strategy, content systems and e-commerce SEO that turn search visibility into qualified demand.",
+  },
+  {
+    title: "Media Buying & Paid Ads",
+    detail: "Google Ads and Meta Ads planning, campaign management, creative testing and performance optimization focused on profitable acquisition.",
+  },
+  {
+    title: "E-commerce Growth",
+    detail: "Store architecture, product-page optimization, conversion improvements and a joined-up SEO and paid media plan for online brands.",
+  },
 ];
 
 const experience = [
@@ -235,7 +250,11 @@ const skills = [
   "SEO Keyword Research & Strategy",
   "On-Page & Off-Page SEO",
   "Paid Ads (Google & Facebook)",
+  "Media Buying Strategy",
+  "Meta Ads Campaign Management",
+  "Conversion Rate Optimization",
   "E-commerce SEO",
+  "E-commerce Growth",
   "Technical SEO Audits",
   "Link Building & Outreach",
   "Local & Mobile SEO",
@@ -269,6 +288,7 @@ function Home() {
           </a>
           <nav className="hidden gap-7 text-sm text-muted-foreground md:flex">
             <a href="#work" className="hover:text-foreground">Work</a>
+            <a href="#services" className="hover:text-foreground">Services</a>
             <a href="#experience" className="hover:text-foreground">Experience</a>
             <a href="#skills" className="hover:text-foreground">Skills</a>
             <Link to="/blog" className="hover:text-foreground">Blog</Link>
@@ -294,7 +314,7 @@ function Home() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs font-mono text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-              Available for SEO & paid ads projects
+              Available for SEO, media buying & e-commerce projects
             </div>
             <h1 className="mt-6 text-4xl font-semibold leading-[1.05] md:text-5xl lg:text-6xl">
               <span className="text-gradient">SEO that dominates</span>
@@ -302,10 +322,10 @@ function Home() {
               rankings, traffic & revenue.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              I'm Amr Elbusaily — an SEO Specialist and Paid Ads Expert from Cairo with{" "}
-              <span className="text-foreground">7 years</span> scaling e-commerce brands. Founder of
+              I'm Amr Elbusaily — an SEO, media buying and e-commerce growth specialist from Cairo with{" "}
+              <span className="text-foreground">7 years</span> helping brands grow qualified traffic, leads and sales. Founder of
               A2M Digital Marketing Agency, with{" "}
-              <span className="text-foreground">50+ projects</span> across fashion and tech.
+              <span className="text-foreground">50+ projects</span> across e-commerce, SaaS and digital products.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
@@ -348,6 +368,22 @@ function Home() {
               <div key={m.label} className="bg-surface p-6">
                 <div className="font-display text-4xl font-semibold text-primary">{m.value}</div>
                 <div className="mt-2 text-sm text-muted-foreground">{m.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="services" className="border-t border-border bg-surface/30">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <SectionHeader eyebrow="Services" title="One growth partner for search, ads & e-commerce" />
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {services.map((service) => (
+              <div key={service.title} className="rounded-xl border border-border bg-surface p-6 transition hover:border-primary/50">
+                <h3 className="text-lg font-semibold">{service.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">{service.detail}</p>
+                <a href="#contact" className="mt-5 inline-block text-sm text-primary hover:underline">Discuss your project →</a>
               </div>
             ))}
           </div>
@@ -413,7 +449,7 @@ function Home() {
       <section id="skills" className="border-t border-border bg-surface/30">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.3fr_1fr]">
           <div>
-            <SectionHeader eyebrow="Skills & tools" title="A full SEO & paid ads toolkit" />
+              <SectionHeader eyebrow="Skills & tools" title="A full SEO, media buying & e-commerce toolkit" />
             <div className="mt-8 flex flex-wrap gap-2">
               {skills.map((s) => (
                 <span
@@ -466,8 +502,8 @@ function Home() {
                   Ready to grow your organic traffic & sales?
                 </h2>
                 <p className="mt-4 max-w-lg text-muted-foreground">
-                  Whether it's a technical SEO audit, an e-commerce growth plan, or a paid ads
-                  campaign — let's map the fastest path to results.
+                  Whether you need a technical SEO audit, an e-commerce growth plan, or a media buying
+                  campaign — let's map the fastest path to qualified traffic and profitable sales.
                 </p>
               </div>
               <div className="space-y-3">
@@ -483,7 +519,7 @@ function Home() {
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-muted-foreground md:flex-row">
           <div>© {new Date().getFullYear()} Amr Elbusaily. All rights reserved.</div>
-          <div className="font-mono text-xs">SEO Specialist · Paid Ads Expert · Cairo</div>
+          <div className="font-mono text-xs">SEO · Media Buying · E-commerce Growth · Cairo</div>
         </div>
       </footer>
     </div>

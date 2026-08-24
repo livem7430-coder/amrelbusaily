@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
 import { Portrait } from "@/components/Portrait";
 
-const url = "https://amrelbusaily.lovable.app/ar/free-consultation";
+const url = "https://amrelbusaily.vercel.app/ar/free-consultation";
 const title = "استشارة SEO مجانية — صدقة جارية على روح والدي | Amr Elbusaily";
 const description =
   "خطة نمو SEO تقنية كاملة مجاناً كصدقة جارية: Technical Deep Dive، Keyword & Competitor Gap، Authority Map، وخارطة طريق 90 يوم لأصحاب مواقع E-commerce وSaaS.";
@@ -18,17 +18,17 @@ export const Route = createFileRoute("/ar/free-consultation")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: url },
       { property: "og:locale", content: "ar_EG" },
-      { property: "og:image", content: `https://amrelbusaily.lovable.app${amrPortrait.url}` },
+      { property: "og:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "استشارة SEO مجانية — Free Technical SEO Growth Plan" },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: `https://amrelbusaily.lovable.app${amrPortrait.url}` },
+      { name: "twitter:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
     ],
     links: [
       { rel: "canonical", href: url },
       { rel: "alternate", hrefLang: "ar", href: url },
-      { rel: "alternate", hrefLang: "en", href: "https://amrelbusaily.lovable.app/free-consultation" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://amrelbusaily.lovable.app/free-consultation" },
+      { rel: "alternate", hrefLang: "en", href: "https://amrelbusaily.vercel.app/free-consultation" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://amrelbusaily.vercel.app/free-consultation" },
     ],
     scripts: [
       {
@@ -43,7 +43,7 @@ export const Route = createFileRoute("/ar/free-consultation")({
           provider: {
             "@type": "Person",
             name: "Amr Elbusaily",
-            url: "https://amrelbusaily.lovable.app/",
+            url: "https://amrelbusaily.vercel.app/",
           },
           areaServed: "Worldwide",
           audience: {

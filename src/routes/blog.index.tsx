@@ -4,19 +4,19 @@ import { blogPosts } from "@/lib/blog-posts";
 export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
-      { title: "مدونة عمرو البصيلي — مقالات SEO ونمو رقمي" },
+      { title: "مدونة عمرو البصيلي — SEO وMedia Buying ونمو التجارة الإلكترونية" },
       {
         name: "description",
         content:
-          "مقالات عمرو البصيلي في السيو التقني، سيو المتاجر الإلكترونية، AEO، وبحث الكلمات المفتاحية — من واقع 7 سنين خبرة و+50 مشروع.",
+          "مقالات عملية من عمرو البصيلي عن SEO، Media Buying، Google Ads، Meta Ads، سيو المتاجر الإلكترونية ونمو المبيعات.",
       },
-      { property: "og:title", content: "مدونة عمرو البصيلي — مقالات SEO" },
-      { property: "og:description", content: "مقالات SEO احترافية بالعربي." },
+      { property: "og:title", content: "مدونة عمرو البصيلي — SEO وMedia Buying ونمو التجارة الإلكترونية" },
+      { property: "og:description", content: "أدلة عملية بالعربي والإنجليزي عن SEO والإعلانات المدفوعة ونمو المتاجر." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://amrelbusaily.lovable.app/blog" },
+      { property: "og:url", content: "https://amrelbusaily.vercel.app/blog" },
       { property: "og:locale", content: "ar_EG" },
     ],
-    links: [{ rel: "canonical", href: "https://amrelbusaily.lovable.app/blog" }],
+    links: [{ rel: "canonical", href: "https://amrelbusaily.vercel.app/blog" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/blog/")({
           "@context": "https://schema.org",
           "@type": "Blog",
           name: "مدونة عمرو البصيلي",
-          url: "https://amrelbusaily.lovable.app/blog",
+          url: "https://amrelbusaily.vercel.app/blog",
           inLanguage: "ar",
           author: { "@type": "Person", name: "Amr Elbusaily" },
         }),
@@ -55,15 +55,15 @@ function BlogIndex() {
       <section className="mx-auto max-w-4xl px-6 py-20">
         <div className="font-mono text-xs uppercase tracking-widest text-primary">المدونة</div>
         <h1 className="mt-3 text-4xl font-semibold md:text-5xl">
-          مقالات SEO ونمو رقمي بالعربي
+          مقالات SEO وMedia Buying ونمو التجارة الإلكترونية بالعربي والإنجليزي
         </h1>
         <p className="mt-4 max-w-2xl text-muted-foreground">
-          كل اللي تعلمته في 7 سنين من السيو التقني، سيو المتاجر، الإعلانات المدفوعة، وأتمتة n8n —
-          مكتوب بشكل عملي تقدر تطبقه من غير رغي.
+          أدلة عملية عن السيو التقني، سيو المتاجر، Media Buying، الإعلانات المدفوعة، وأتمتة النمو —
+          مكتوبة عشان تساعدك تجيب زيارات مؤهلة وعملاء ومبيعات.
         </p>
 
         <div className="mt-12 grid gap-5">
-          {blogPosts.map((p) => (
+          {[...blogPosts].sort((a, b) => b.date.localeCompare(a.date)).map((p) => (
             <Link
               key={p.slug}
               to="/blog/$slug"

@@ -5,29 +5,30 @@ import { Portrait } from "@/components/Portrait";
 export const Route = createFileRoute("/ar")({
   head: () => ({
     meta: [
-      { title: "عمرو البصيلي — خبير SEO وإعلانات مدفوعة | القاهرة" },
+      { title: "عمرو البصيلي — خبير SEO وMedia Buying ونمو التجارة الإلكترونية | القاهرة" },
       {
         name: "description",
         content:
-          "عمرو البصيلي متخصص SEO وخبير إعلانات مدفوعة من القاهرة. 7 سنوات خبرة و+50 مشروع في التجارة الإلكترونية والذكاء الاصطناعي وSaaS. زيادة الترافيك العضوي حتى 45% والمبيعات 35%.",
+          "عمرو البصيلي خبير SEO وMedia Buying ونمو التجارة الإلكترونية من القاهرة. 7 سنوات خبرة وأكثر من 50 مشروعًا في المتاجر والإعلانات على Google وMeta ومنتجات SaaS وAI.",
       },
-      { property: "og:title", content: "عمرو البصيلي — خبير SEO وإعلانات مدفوعة" },
+      { property: "og:title", content: "عمرو البصيلي — خبير SEO وMedia Buying ونمو التجارة الإلكترونية" },
       {
         property: "og:description",
         content:
-          "خبير سيو مصري، مؤسس A2M وTansiky، شغال على مشاريع AI وn8n. سيو تقني، محتوى، و Google Ads.",
+          "خبير تسويق رقمي مصري: SEO، Media Buying، Google Ads، Meta Ads، وتحسين نمو المتاجر الإلكترونية.",
       },
+      { name: "keywords", content: "عمرو البصيلي، خبير SEO في مصر، Media Buyer مصر، إدارة إعلانات، Google Ads، Meta Ads، سيو المتاجر، نمو التجارة الإلكترونية" },
       { property: "og:type", content: "profile" },
-      { property: "og:url", content: "https://amrelbusaily.lovable.app/ar" },
+      { property: "og:url", content: "https://amrelbusaily.vercel.app/ar" },
       { property: "og:locale", content: "ar_EG" },
-      { property: "og:image", content: `https://amrelbusaily.lovable.app${amrPortrait.url}` },
+      { property: "og:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: `https://amrelbusaily.lovable.app${amrPortrait.url}` },
+      { name: "twitter:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
     ],
     links: [
-      { rel: "canonical", href: "https://amrelbusaily.lovable.app/ar" },
-      { rel: "alternate", hrefLang: "ar", href: "https://amrelbusaily.lovable.app/ar" },
-      { rel: "alternate", hrefLang: "en", href: "https://amrelbusaily.lovable.app/" },
+      { rel: "canonical", href: "https://amrelbusaily.vercel.app/ar" },
+      { rel: "alternate", hrefLang: "ar", href: "https://amrelbusaily.vercel.app/ar" },
+      { rel: "alternate", hrefLang: "en", href: "https://amrelbusaily.vercel.app/" },
     ],
     scripts: [
       {
@@ -37,8 +38,8 @@ export const Route = createFileRoute("/ar")({
           "@type": "Person",
           name: "عمرو البصيلي",
           alternateName: "Amr Elbusaily",
-          url: "https://amrelbusaily.lovable.app/ar",
-          image: `https://amrelbusaily.lovable.app${amrPortrait.url}`,
+          url: "https://amrelbusaily.vercel.app/ar",
+          image: `https://amrelbusaily.vercel.app${amrPortrait.url}`,
           jobTitle: "خبير SEO وإعلانات مدفوعة",
           address: { "@type": "PostalAddress", addressLocality: "القاهرة", addressCountry: "EG" },
           knowsAbout: [
@@ -97,6 +98,21 @@ const metrics = [
   { value: "+50", label: "مشروع سيو وتجارة إلكترونية" },
   { value: "45%", label: "زيادة في الترافيك العضوي" },
   { value: "35%", label: "نمو مبيعات المتاجر" },
+];
+
+const services = [
+  {
+    title: "SEO والنمو العضوي",
+    detail: "أوديت تقني، بحث كلمات، استراتيجية محتوى وسيو للمتاجر لتحويل الظهور في جوجل إلى زيارات وعملاء مؤهلين.",
+  },
+  {
+    title: "Media Buying والإعلانات المدفوعة",
+    detail: "تخطيط وإدارة حملات Google Ads وMeta Ads، اختبار الإبداعات وتحسين الأداء بهدف اكتساب عملاء ومبيعات مربحة.",
+  },
+  {
+    title: "نمو التجارة الإلكترونية",
+    detail: "تحسين هيكل المتجر وصفحات المنتجات وتجربة التحويل، مع خطة موحدة تجمع السيو والإعلانات المدفوعة.",
+  },
 ];
 
 const experience = [
@@ -184,7 +200,11 @@ const skills = [
   "بحث الكلمات المفتاحية",
   "On-Page & Off-Page SEO",
   "إعلانات مدفوعة (Google & Facebook)",
+  "Media Buying",
+  "إدارة حملات Meta Ads",
+  "تحسين معدل التحويل",
   "سيو التجارة الإلكترونية",
+  "نمو المتاجر الإلكترونية",
   "أوديت تقني",
   "بناء الروابط",
   "سيو محلي وموبايل",
@@ -209,10 +229,11 @@ function HomeAr() {
           </a>
           <nav className="hidden gap-7 text-sm text-muted-foreground md:flex">
             <a href="#work" className="hover:text-foreground">الأعمال</a>
+            <a href="#services" className="hover:text-foreground">الخدمات</a>
             <a href="#experience" className="hover:text-foreground">الخبرة</a>
             <a href="#skills" className="hover:text-foreground">المهارات</a>
             <Link to="/blog" className="hover:text-foreground">المدونة</Link>
-            <Link to="/free-consultation" className="text-primary hover:opacity-80">استشارة مجانية</Link>
+            <Link to="/ar/free-consultation" className="text-primary hover:opacity-80">استشارة مجانية</Link>
             <a href="#contact" className="hover:text-foreground">تواصل</a>
           </nav>
           <div className="flex items-center gap-3">
@@ -233,7 +254,7 @@ function HomeAr() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs font-mono text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-              متاح لمشاريع سيو وإعلانات مدفوعة
+              متاح لمشاريع SEO وMedia Buying والتجارة الإلكترونية
             </div>
             <h1 className="mt-6 text-4xl font-semibold leading-[1.2] md:text-5xl lg:text-6xl">
               <span className="text-gradient">سيو يتصدر</span>
@@ -241,9 +262,9 @@ function HomeAr() {
               الترتيب، الترافيك، والمبيعات.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              أنا عمرو البصيلي — خبير SEO وإعلانات مدفوعة من القاهرة، خبرة{" "}
-              <span className="text-foreground">7 سنين</span> في تنمية المتاجر الإلكترونية. مؤسس
-              A2M و <span className="text-foreground">+50 مشروع</span> في الفاشون والتكنولوجيا وAI.
+              أنا عمرو البصيلي — خبير SEO وMedia Buying ونمو التجارة الإلكترونية من القاهرة، خبرة{" "}
+              <span className="text-foreground">7 سنين</span> في تحويل الزيارات إلى عملاء ومبيعات. مؤسس
+              A2M وصاحب خبرة في <span className="text-foreground">+50 مشروع</span> في التجارة الإلكترونية وSaaS وAI.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#contact" className="rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground glow-primary hover:opacity-90">
@@ -279,6 +300,21 @@ function HomeAr() {
               <div key={m.label} className="bg-surface p-6">
                 <div className="font-display text-4xl font-semibold text-primary">{m.value}</div>
                 <div className="mt-2 text-sm text-muted-foreground">{m.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="border-t border-border bg-surface/30">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <SectionHeader eyebrow="الخدمات" title="شريك نمو واحد للسيو والإعلانات والمتاجر" />
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {services.map((service) => (
+              <div key={service.title} className="rounded-xl border border-border bg-surface p-6 transition hover:border-primary/50">
+                <h3 className="text-lg font-semibold">{service.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">{service.detail}</p>
+                <a href="#contact" className="mt-5 inline-block text-sm text-primary hover:underline">ناقش مشروعك ←</a>
               </div>
             ))}
           </div>
@@ -333,7 +369,7 @@ function HomeAr() {
 
       <section id="skills" className="border-t border-border bg-surface/30">
         <div className="mx-auto max-w-6xl px-6 py-20">
-          <SectionHeader eyebrow="المهارات والأدوات" title="عدة كاملة للسيو والإعلانات" />
+          <SectionHeader eyebrow="المهارات والأدوات" title="عدة كاملة للسيو وMedia Buying والتجارة الإلكترونية" />
           <div className="mt-8 flex flex-wrap gap-2">
             {skills.map((s) => (
               <span key={s} className="rounded-md border border-border bg-surface px-3 py-2 font-mono text-xs">
@@ -354,7 +390,7 @@ function HomeAr() {
                   مستعد تكبّر ترافيكك ومبيعاتك؟
                 </h2>
                 <p className="mt-4 max-w-lg text-muted-foreground">
-                  سواء أوديت تقني، خطة نمو لمتجرك، أو حملة إعلانات — نرسم مع بعض أسرع طريق للنتائج.
+                  سواء محتاج أوديت SEO تقني، خطة نمو لمتجرك، أو حملة Media Buying — نرسم مع بعض أسرع طريق لزيارات مؤهلة ومبيعات مربحة.
                 </p>
               </div>
               <div className="space-y-3">
@@ -370,7 +406,7 @@ function HomeAr() {
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-muted-foreground md:flex-row">
           <div>© {new Date().getFullYear()} عمرو البصيلي — جميع الحقوق محفوظة.</div>
-          <div className="font-mono text-xs">SEO · Paid Ads · Cairo</div>
+          <div className="font-mono text-xs">SEO · Media Buying · E-commerce Growth · Cairo</div>
         </div>
       </footer>
     </div>
