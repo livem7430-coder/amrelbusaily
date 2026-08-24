@@ -57,6 +57,7 @@ function getCopy(lang: SeoLanguage, mode: SeoPageMode): SeoCopy {
         { label: "خريطة الكلمات المفتاحية", href: "/blog/seo-keyword-mapping-ar" },
         { label: "بحث الكلمات المفتاحية", href: "/ar/keyword-research" },
         { label: "Content SEO", href: "/ar/content-seo" },
+        { label: "International SEO", href: "/ar/international-seo" },
         { label: "SEO وGEO بطريقة مبسطة", href: "/ar/seo-geo-eli5" },
       ],
     };
@@ -187,6 +188,7 @@ function getCopy(lang: SeoLanguage, mode: SeoPageMode): SeoCopy {
         { label: "Keyword mapping guide", href: "/blog/seo-keyword-mapping-en" },
         { label: "Keyword Research service", href: "/keyword-research" },
         { label: "Content SEO service", href: "/content-seo" },
+        { label: "International SEO", href: "/international-seo" },
         { label: "SEO and GEO explained simply", href: "/seo-geo-eli5" },
       ],
   };

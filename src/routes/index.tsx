@@ -440,6 +440,7 @@ function Home() {
           <div className="mt-6 flex flex-wrap gap-3 text-sm">
             <a href="/keyword-research" className="rounded-md border border-border px-4 py-2 text-muted-foreground hover:border-primary hover:text-primary">Keyword Research service →</a>
             <a href="/content-seo" className="rounded-md border border-border px-4 py-2 text-muted-foreground hover:border-primary hover:text-primary">Content SEO service →</a>
+            <a href="/international-seo" className="rounded-md border border-border px-4 py-2 text-muted-foreground hover:border-primary hover:text-primary">International SEO →</a>
           </div>
         </div>
       </section>

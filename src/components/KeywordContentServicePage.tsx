@@ -230,6 +230,7 @@ export function KeywordContentServicePage({ lang, mode }: { lang: Language; mode
         { label: "بحث الكلمات", href: "/ar/keyword-research" },
         { label: "Content SEO", href: "/ar/content-seo" },
         { label: "الأوديت التقني", href: "/blog/technical-seo-audit-ar" },
+        { label: "International SEO", href: "/ar/international-seo" },
       ]
     : [
         { label: "SEO services", href: "/seo-services" },
@@ -238,6 +239,7 @@ export function KeywordContentServicePage({ lang, mode }: { lang: Language; mode
         { label: "Keyword Research", href: "/keyword-research" },
         { label: "Content SEO", href: "/content-seo" },
         { label: "Technical SEO audit", href: "/blog/technical-seo-audit-en" },
+        { label: "International SEO", href: "/international-seo" },
       ];
   return (
     <div className="min-h-screen" dir={ar ? "rtl" : "ltr"} lang={lang}>
