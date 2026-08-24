@@ -9,22 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as FreeConsultationRouteImport } from './routes/free-consultation'
-import { Route as ArRouteImport } from './routes/ar'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ArRouteImport } from './routes/ar'
+import { Route as FreeConsultationRouteImport } from './routes/free-consultation'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ArIndexRouteImport } from './routes/ar.index'
+import { Route as ArFreeConsultationRouteImport } from './routes/ar.free-consultation'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
-import { Route as ArFreeConsultationRouteImport } from './routes/ar.free-consultation'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FreeConsultationRoute = FreeConsultationRouteImport.update({
-  id: '/free-consultation',
-  path: '/free-consultation',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArRoute = ArRouteImport.update({
@@ -32,10 +28,25 @@ const ArRoute = ArRouteImport.update({
   path: '/ar',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
+const FreeConsultationRoute = FreeConsultationRouteImport.update({
+  id: '/free-consultation',
+  path: '/free-consultation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArIndexRoute = ArIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => ArRoute,
+} as any)
+const ArFreeConsultationRoute = ArFreeConsultationRouteImport.update({
+  id: '/free-consultation',
+  path: '/free-consultation',
+  getParentRoute: () => ArRoute,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
@@ -47,11 +58,6 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ArFreeConsultationRoute = ArFreeConsultationRouteImport.update({
-  id: '/free-consultation',
-  path: '/free-consultation',
-  getParentRoute: () => ArRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -60,15 +66,16 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/ar': typeof ArRouteWithChildren
   '/free-consultation': typeof FreeConsultationRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/ar': typeof ArIndexRoute
   '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
@@ -79,6 +86,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
@@ -90,15 +98,16 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/blog/$slug'
+    | '/ar/'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/ar'
     | '/free-consultation'
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/blog/$slug'
+    | '/ar'
     | '/blog'
   id:
     | '__root__'
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/blog/$slug'
+    | '/ar/'
     | '/blog/'
   fileRoutesById: FileRoutesById
 }
@@ -122,18 +132,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/free-consultation': {
-      id: '/free-consultation'
-      path: '/free-consultation'
-      fullPath: '/free-consultation'
-      preLoaderRoute: typeof FreeConsultationRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ar': {
@@ -143,12 +146,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/free-consultation': {
+      id: '/free-consultation'
+      path: '/free-consultation'
+      fullPath: '/free-consultation'
+      preLoaderRoute: typeof FreeConsultationRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/': {
+      id: '/ar/'
+      path: '/'
+      fullPath: '/ar/'
+      preLoaderRoute: typeof ArIndexRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/free-consultation': {
+      id: '/ar/free-consultation'
+      path: '/free-consultation'
+      fullPath: '/ar/free-consultation'
+      preLoaderRoute: typeof ArFreeConsultationRouteImport
+      parentRoute: typeof ArRoute
     }
     '/blog/': {
       id: '/blog/'
@@ -164,22 +188,17 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/ar/free-consultation': {
-      id: '/ar/free-consultation'
-      path: '/free-consultation'
-      fullPath: '/ar/free-consultation'
-      preLoaderRoute: typeof ArFreeConsultationRouteImport
-      parentRoute: typeof ArRoute
-    }
   }
 }
 
 interface ArRouteChildren {
   ArFreeConsultationRoute: typeof ArFreeConsultationRoute
+  ArIndexRoute: typeof ArIndexRoute
 }
 
 const ArRouteChildren: ArRouteChildren = {
   ArFreeConsultationRoute: ArFreeConsultationRoute,
+  ArIndexRoute: ArIndexRoute,
 }
 
 const ArRouteWithChildren = ArRoute._addFileChildren(ArRouteChildren)
