@@ -55,6 +55,8 @@ function getCopy(lang: SeoLanguage, mode: SeoPageMode): SeoCopy {
       related: [
         { label: "الأوديت التقني", href: "/blog/technical-seo-audit-ar" },
         { label: "خريطة الكلمات المفتاحية", href: "/blog/seo-keyword-mapping-ar" },
+        { label: "بحث الكلمات المفتاحية", href: "/ar/keyword-research" },
+        { label: "Content SEO", href: "/ar/content-seo" },
         { label: "SEO وGEO بطريقة مبسطة", href: "/ar/seo-geo-eli5" },
       ],
     };
@@ -180,11 +182,13 @@ function getCopy(lang: SeoLanguage, mode: SeoPageMode): SeoCopy {
       { number: "03", title: "Prioritized implementation", body: "Every recommendation becomes a task with an owner, timing and success signal. We begin with work that balances commercial impact and team capacity." },
       { number: "04", title: "Launch and learn", body: "We review releases, monitor Search Console, analytics and CRM signals, then improve the map and content based on evidence from the project." },
     ],
-    related: [
-      { label: "Technical SEO audit", href: "/blog/technical-seo-audit-en" },
-      { label: "Keyword mapping guide", href: "/blog/seo-keyword-mapping-en" },
-      { label: "SEO and GEO explained simply", href: "/seo-geo-eli5" },
-    ],
+      related: [
+        { label: "Technical SEO audit", href: "/blog/technical-seo-audit-en" },
+        { label: "Keyword mapping guide", href: "/blog/seo-keyword-mapping-en" },
+        { label: "Keyword Research service", href: "/keyword-research" },
+        { label: "Content SEO service", href: "/content-seo" },
+        { label: "SEO and GEO explained simply", href: "/seo-geo-eli5" },
+      ],
   };
   if (mode === "expert") {
     return {

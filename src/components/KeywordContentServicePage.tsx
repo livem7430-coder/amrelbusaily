@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { CaseStudiesSection } from "@/components/CaseStudiesSection";
 
 type Language = "ar" | "en";
 type Mode = "keyword" | "content";
@@ -222,8 +223,22 @@ export function KeywordContentServicePage({ lang, mode }: { lang: Language; mode
   const data = copy(lang, mode);
   const ar = lang === "ar";
   const related = ar
-    ? [{ label: "خدمات SEO", href: "/ar/seo-services" }, { label: "الأوديت التقني", href: "/blog/technical-seo-audit-ar" }, { label: "SEO وGEO", href: "/ar/seo-geo-eli5" }]
-    : [{ label: "SEO services", href: "/seo-services" }, { label: "Technical SEO audit", href: "/blog/technical-seo-audit-en" }, { label: "SEO and GEO", href: "/seo-geo-eli5" }];
+    ? [
+        { label: "خدمات SEO", href: "/ar/seo-services" },
+        { label: "خبير SEO", href: "/ar/seo-expert" },
+        { label: "شركة SEO", href: "/ar/seo-company" },
+        { label: "بحث الكلمات", href: "/ar/keyword-research" },
+        { label: "Content SEO", href: "/ar/content-seo" },
+        { label: "الأوديت التقني", href: "/blog/technical-seo-audit-ar" },
+      ]
+    : [
+        { label: "SEO services", href: "/seo-services" },
+        { label: "SEO expert", href: "/seo-expert" },
+        { label: "SEO company", href: "/seo-company" },
+        { label: "Keyword Research", href: "/keyword-research" },
+        { label: "Content SEO", href: "/content-seo" },
+        { label: "Technical SEO audit", href: "/blog/technical-seo-audit-en" },
+      ];
   return (
     <div className="min-h-screen" dir={ar ? "rtl" : "ltr"} lang={lang}>
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/70 backdrop-blur-md">
@@ -238,6 +253,7 @@ export function KeywordContentServicePage({ lang, mode }: { lang: Language; mode
         <section className="mx-auto max-w-6xl px-6 py-20"><div className="max-w-2xl"><div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">{ar ? "نطاق الخدمة" : "Service scope"}</div><h2 className="mt-3 text-3xl font-semibold md:text-4xl">{data.pointsTitle}</h2></div><div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{data.points.map((point, i) => <article key={point.title} className="rounded-2xl border border-border bg-surface p-7"><div className="font-mono text-xs text-primary">{String(i + 1).padStart(2, "0")}</div><h3 className="mt-4 text-xl font-semibold">{point.title}</h3><p className="mt-3 leading-8 text-muted-foreground">{point.body}</p></article>)}</div></section>
         <section className="border-y border-border bg-surface/30"><div className="mx-auto max-w-6xl px-6 py-20"><div className="max-w-2xl"><div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">{ar ? "طريقة العمل" : "How it works"}</div><h2 className="mt-3 text-3xl font-semibold md:text-4xl">{data.processTitle}</h2></div><div className="mt-10 grid gap-0 border-y border-border">{data.process.map((step) => <div key={step.number} className="grid gap-4 border-b border-border py-7 last:border-b-0 md:grid-cols-[80px_1fr_1.5fr] md:items-start md:gap-8"><div className="font-mono text-sm text-primary">{step.number}</div><h3 className="text-xl font-semibold">{step.title}</h3><p className="leading-8 text-muted-foreground">{step.body}</p></div>)}</div></div></section>
         <section className="mx-auto max-w-6xl px-6 py-20"><div className="grid gap-6 md:grid-cols-2"><div className="rounded-2xl border border-border bg-surface p-8"><h2 className="text-2xl font-semibold">{data.fitTitle}</h2><p className="mt-4 leading-8 text-muted-foreground">{data.fitBody}</p></div><div className="rounded-2xl border border-border bg-surface p-8"><h2 className="text-2xl font-semibold">{ar ? "جودة قابلة للمراجعة" : "Reviewable quality"}</h2><p className="mt-4 leading-8 text-muted-foreground">{ar ? "نوضح لماذا اختير الموضوع أو الكلمة، وما الصفحة المقصودة، وما الذي يحتاجه التنفيذ. لا نخلط بين زيادة عدد الصفحات وبين بناء أصل مفيد للموقع." : "We explain why a topic or query was selected, which page should own it and what implementation needs to happen. More URLs are not confused with a useful site asset."}</p></div></div></section>
+        <CaseStudiesSection lang={lang} mode={mode} />
         <section className="border-y border-border bg-surface/30"><div className="mx-auto max-w-6xl px-6 py-20"><div className="max-w-2xl"><div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">FAQ</div><h2 className="mt-3 text-3xl font-semibold md:text-4xl">{data.faqTitle}</h2></div><div className="mt-10 grid gap-4 md:grid-cols-2">{data.faq.map((item) => <details key={item.q} className="group rounded-xl border border-border bg-surface p-6"><summary className="cursor-pointer list-none text-lg font-semibold">{item.q}</summary><p className="mt-4 leading-8 text-muted-foreground">{item.a}</p></details>)}</div></div></section>
         <section className="border-t border-border"><div className="mx-auto max-w-6xl px-6 py-20"><div className="rounded-2xl border border-border bg-surface p-8 md:p-12"><h2 className="text-3xl font-semibold md:text-4xl">{data.ctaTitle}</h2><p className="mt-4 max-w-2xl leading-8 text-muted-foreground">{data.ctaBody}</p><div className="mt-7 flex flex-wrap gap-4"><a href="mailto:amreelbasily@gmail.com?subject=SEO%20strategy" className="rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground">{data.cta}</a>{related.map((link) => <a key={link.href} href={link.href} className="rounded-md border border-border px-5 py-3 text-sm text-muted-foreground hover:border-primary hover:text-primary">{link.label}</a>)}</div></div></div></section>
       </main>
