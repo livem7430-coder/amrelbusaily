@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
 import { Portrait } from "@/components/Portrait";
-import { WhatsAppIconButton } from "@/components/WhatsAppIconButton";
 
 const url = "https://amrelbusaily.vercel.app/free-consultation";
 const title = "Free SEO Consultation — Sadaqah Jariyah | Amr Elbusaily";
@@ -132,7 +131,6 @@ function FreeConsultation() {
               >
                 Book your consultation — send GROWTH
               </a>
-              <WhatsAppIconButton />
             </div>
             <p className="mt-4 font-mono text-xs text-muted-foreground">
               Send me the word <span className="text-primary">GROWTH</span> + your website URL
@@ -221,7 +219,6 @@ function FreeConsultation() {
               >
                 amreelbasily@gmail.com
               </a>
-              <WhatsAppIconButton />
             </div>
             <p className="mt-10 text-sm leading-8 text-muted-foreground">
               May Allah accept this deed as Sadaqah Jariyah and make it knowledge that benefits others.

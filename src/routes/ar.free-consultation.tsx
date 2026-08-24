@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
 import { Portrait } from "@/components/Portrait";
-import { WhatsAppIconButton } from "@/components/WhatsAppIconButton";
 
 const url = "https://amrelbusaily.vercel.app/ar/free-consultation";
 const title = "استشارة SEO مجانية — صدقة جارية على روح والدي | Amr Elbusaily";
@@ -132,7 +131,6 @@ function FreeConsultationAr() {
               >
                 احجز استشارتك — ابعت GROWTH
               </a>
-              <WhatsAppIconButton />
             </div>
             <p className="mt-4 font-mono text-xs text-muted-foreground">
               ابعتلي كلمة <span className="text-primary">GROWTH</span> + رابط الموقع
@@ -223,7 +221,6 @@ function FreeConsultationAr() {
               >
                 amreelbasily@gmail.com
               </a>
-              <WhatsAppIconButton />
             </div>
             <p className="mt-10 text-sm leading-8 text-muted-foreground">
               اللهم تقبل هذا العمل صدقة جارية واجعله علماً يُنتفع به.
