@@ -18,6 +18,16 @@ import {
   ContentBriefSeoAr,
   ContentBriefSeoEn,
 } from "@/content/more-seo-articles";
+import {
+  BestSeoExpertEgyptAr,
+  BestSeoExpertEgyptEn,
+  BestSeoExpertSaudiAr,
+  BestSeoExpertSaudiEn,
+  SeoServicesEgyptAr,
+  SeoServicesEgyptEn,
+  SeoServicesSaudiAr,
+  SeoServicesSaudiEn,
+} from "@/content/geo-seo-articles";
 
 function TechnicalSEO() {
   return (
@@ -433,4 +443,12 @@ export const articles: Record<string, ComponentType> = {
   "ecommerce-technical-seo-en": EcommerceTechnicalSeoEn,
   "seo-content-brief-ar": ContentBriefSeoAr,
   "seo-content-brief-en": ContentBriefSeoEn,
+  "best-seo-expert-egypt-ar": BestSeoExpertEgyptAr,
+  "best-seo-expert-egypt-en": BestSeoExpertEgyptEn,
+  "best-seo-expert-saudi-ar": BestSeoExpertSaudiAr,
+  "best-seo-expert-saudi-en": BestSeoExpertSaudiEn,
+  "seo-services-egypt-ar": SeoServicesEgyptAr,
+  "seo-services-egypt-en": SeoServicesEgyptEn,
+  "seo-services-saudi-ar": SeoServicesSaudiAr,
+  "seo-services-saudi-en": SeoServicesSaudiEn,
 };
