@@ -53,6 +53,18 @@ import {
   AiSeoAr,
   AiSeoEn,
 } from "@/content/wave-two-seo-articles";
+import {
+  SeoForServiceBusinessesAr,
+  SeoForServiceBusinessesEn,
+  B2bSeoStrategyAr,
+  B2bSeoStrategyEn,
+  SeoKeywordMappingAr,
+  SeoKeywordMappingEn,
+  InternalLinkingSeoAr,
+  InternalLinkingSeoEn,
+  SchemaMarkupSeoAr,
+  SchemaMarkupSeoEn,
+} from "@/content/seo-expansion-articles";
 
 function TechnicalSEO() {
   return (
@@ -498,4 +510,14 @@ export const articles: Record<string, ComponentType> = {
   "ai-seo-en": AiSeoEn,
   "growth-marketing-services-ar": GrowthMarketingServicesAr,
   "growth-marketing-services-en": GrowthMarketingServicesEn,
+  "seo-for-service-businesses-ar": SeoForServiceBusinessesAr,
+  "seo-for-service-businesses-en": SeoForServiceBusinessesEn,
+  "b2b-seo-strategy-ar": B2bSeoStrategyAr,
+  "b2b-seo-strategy-en": B2bSeoStrategyEn,
+  "seo-keyword-mapping-ar": SeoKeywordMappingAr,
+  "seo-keyword-mapping-en": SeoKeywordMappingEn,
+  "internal-linking-seo-ar": InternalLinkingSeoAr,
+  "internal-linking-seo-en": InternalLinkingSeoEn,
+  "schema-markup-seo-ar": SchemaMarkupSeoAr,
+  "schema-markup-seo-en": SchemaMarkupSeoEn,
 };
