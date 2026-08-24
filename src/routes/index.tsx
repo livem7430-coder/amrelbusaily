@@ -337,7 +337,7 @@ function Home() {
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
               I'm Amr Elbusaily, an SEO and digital growth strategist in Cairo. I help ambitious brands turn search visibility,
               content and AI into a reliable engine for qualified demand and revenue. Founder of A2M Digital Marketing Agency,
-              with <span className="text-foreground">7 years</span> of experience across <span className="text-foreground">50+ projects</span>
+              with <span className="text-foreground">7 years</span> of experience across <span className="text-foreground">50+ projects</span>{" "}
               in e-commerce, SaaS and digital products.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
