@@ -1,3 +1,5 @@
+import { longFormBlogPosts } from "@/content/long-form-metadata-batch";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -969,4 +971,5 @@ export const blogPosts: BlogPost[] = [
       { q: "Does WebP solve image performance by itself?", a: "No. Use an appropriate size, compression, reserved layout space and measure the effect on page speed." },
     ],
   },
+  ...longFormBlogPosts,
 ];
