@@ -65,6 +65,18 @@ import {
   SchemaMarkupSeoAr,
   SchemaMarkupSeoEn,
 } from "@/content/seo-expansion-articles";
+import {
+  CoreWebVitalsSeoAr,
+  CoreWebVitalsSeoEn,
+  MobileSeoAr,
+  MobileSeoEn,
+  JavascriptSeoAr,
+  JavascriptSeoEn,
+  SeoUrlStructureAr,
+  SeoUrlStructureEn,
+  ImageSeoAr,
+  ImageSeoEn,
+} from "@/content/technical-foundations-articles";
 
 function TechnicalSEO() {
   return (
@@ -520,4 +532,14 @@ export const articles: Record<string, ComponentType> = {
   "internal-linking-seo-en": InternalLinkingSeoEn,
   "schema-markup-seo-ar": SchemaMarkupSeoAr,
   "schema-markup-seo-en": SchemaMarkupSeoEn,
+  "core-web-vitals-seo-ar": CoreWebVitalsSeoAr,
+  "core-web-vitals-seo-en": CoreWebVitalsSeoEn,
+  "mobile-seo-ar": MobileSeoAr,
+  "mobile-seo-en": MobileSeoEn,
+  "javascript-seo-ar": JavascriptSeoAr,
+  "javascript-seo-en": JavascriptSeoEn,
+  "seo-url-structure-ar": SeoUrlStructureAr,
+  "seo-url-structure-en": SeoUrlStructureEn,
+  "image-seo-ar": ImageSeoAr,
+  "image-seo-en": ImageSeoEn,
 };
