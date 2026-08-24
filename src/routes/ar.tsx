@@ -269,17 +269,18 @@ function HomeAr() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs font-mono text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-              متاح لمشاريع SEO والتسويق الرقمي وAI والتجارة الإلكترونية
+              أبني نموًا عضويًا للعلامات الطموحة
             </div>
             <h1 className="mt-6 text-4xl font-semibold leading-[1.2] md:text-5xl lg:text-6xl">
-              <span className="text-gradient">سيو يتصدر</span>
+              <span className="text-gradient">حوّل البحث</span>
               <br />
-              الترتيب، الترافيك، والمبيعات.
+              إلى نمو مستدام.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              أنا عمرو البصيلي — خبير SEO والتسويق الرقمي ونمو AI من القاهرة، خبرة{" "}
-              <span className="text-foreground">7 سنين</span> في تحويل الزيارات إلى عملاء ومبيعات. مؤسس
-              A2M وصاحب خبرة في <span className="text-foreground">+50 مشروع</span> في التجارة الإلكترونية وSaaS وAI.
+              أنا عمرو البصيلي، استشاري SEO ونمو رقمي من القاهرة. أساعد العلامات الطموحة على تحويل الظهور في محركات البحث،
+              والمحتوى، والذكاء الاصطناعي إلى منظومة مستدامة لجذب الطلب والعملاء وزيادة الإيرادات. مؤسس A2M Digital Marketing Agency،
+              بخبرة <span className="text-foreground">7 سنوات</span> وأكثر من <span className="text-foreground">50 مشروعًا</span> في التجارة الإلكترونية
+              وSaaS والمنتجات الرقمية.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#contact" className="rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground glow-primary hover:opacity-90">

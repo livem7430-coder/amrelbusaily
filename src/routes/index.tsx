@@ -327,18 +327,18 @@ function Home() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs font-mono text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-              Available for SEO, digital marketing, AI growth & e-commerce projects
+              Building organic growth for ambitious brands
             </div>
             <h1 className="mt-6 text-4xl font-semibold leading-[1.05] md:text-5xl lg:text-6xl">
-              <span className="text-gradient">SEO that dominates</span>
+              <span className="text-gradient">Turn search into</span>
               <br />
-              rankings, traffic & revenue.
+              sustainable growth.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              I'm Amr Elbusaily — an SEO, digital marketing and AI growth specialist from Cairo with{" "}
-              <span className="text-foreground">7 years</span> helping brands grow qualified traffic, leads and sales. Founder of
-              A2M Digital Marketing Agency, with{" "}
-              <span className="text-foreground">50+ projects</span> across e-commerce, SaaS and digital products.
+              I'm Amr Elbusaily, an SEO and digital growth strategist in Cairo. I help ambitious brands turn search visibility,
+              content and AI into a reliable engine for qualified demand and revenue. Founder of A2M Digital Marketing Agency,
+              with <span className="text-foreground">7 years</span> of experience across <span className="text-foreground">50+ projects</span>
+              in e-commerce, SaaS and digital products.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
