@@ -71,9 +71,9 @@ function BlogIndex() {
             <span>Amr Elbusaily</span>
           </Link>
           <nav className="flex items-center gap-4 text-sm text-muted-foreground" aria-label="التنقل الرئيسي">
-            <Link to="/ar" className="hover:text-foreground">النسخة العربية</Link>
+            <Link to="/blog/ar" className="hover:text-foreground">المقالات العربية</Link>
+            <Link to="/blog/en" className="hover:text-foreground">English articles</Link>
             <Link to="/course" className="hover:text-foreground">SEO Course</Link>
-            <Link to="/" className="hover:text-foreground">EN</Link>
           </nav>
         </div>
       </header>
@@ -128,7 +128,7 @@ function BlogIndex() {
                 </button>
               ))}
             </div>
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground" aria-live="polite"><span>عرض {filteredPosts.length} من {blogPosts.length} مقالًا</span><Link to="/blog/content-plan" className="font-medium text-primary hover:underline">شوف خريطة الـ500 موضوع ←</Link></div>
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground" aria-live="polite"><span>عرض {filteredPosts.length} من {blogPosts.length} مقالًا</span><span className="flex flex-wrap gap-3"><Link to="/blog/ar" className="font-medium text-primary hover:underline">كل العربي</Link><Link to="/blog/en" className="font-medium text-primary hover:underline">كل الإنجليزي</Link><Link to="/blog/content-plan" className="font-medium text-primary hover:underline">خريطة الـ500 موضوع ←</Link></span></div>
           </div>
         </section>
 

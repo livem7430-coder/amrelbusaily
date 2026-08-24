@@ -21,7 +21,9 @@ import { Route as ArGrowthMarketingRouteImport } from './routes/ar.growth-market
 import { Route as ArSeoGeoEli5RouteImport } from './routes/ar.seo-geo-eli5'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as BlogArRouteImport } from './routes/blog.ar'
 import { Route as BlogContentPlanRouteImport } from './routes/blog.content-plan'
+import { Route as BlogEnRouteImport } from './routes/blog.en'
 import { Route as CourseIndexRouteImport } from './routes/course.index'
 import { Route as CourseLessonIdRouteImport } from './routes/course.$lessonId'
 import { Route as ArCourseIndexRouteImport } from './routes/ar.course.index'
@@ -87,9 +89,19 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogArRoute = BlogArRouteImport.update({
+  id: '/blog/ar',
+  path: '/blog/ar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogContentPlanRoute = BlogContentPlanRouteImport.update({
   id: '/blog/content-plan',
   path: '/blog/content-plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogEnRoute = BlogEnRouteImport.update({
+  id: '/blog/en',
+  path: '/blog/en',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CourseIndexRoute = CourseIndexRouteImport.update({
@@ -124,7 +136,9 @@ export interface FileRoutesByFullPath {
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
   '/blog/$slug': typeof BlogSlugRoute
+  '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
+  '/blog/en': typeof BlogEnRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
   '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
@@ -142,7 +156,9 @@ export interface FileRoutesByTo {
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
   '/blog/$slug': typeof BlogSlugRoute
+  '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
+  '/blog/en': typeof BlogEnRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
   '/ar': typeof ArIndexRoute
   '/blog': typeof BlogIndexRoute
@@ -162,7 +178,9 @@ export interface FileRoutesById {
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
   '/blog/$slug': typeof BlogSlugRoute
+  '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
+  '/blog/en': typeof BlogEnRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
   '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
@@ -183,7 +201,9 @@ export interface FileRouteTypes {
     | '/ar/growth-marketing'
     | '/ar/seo-geo-eli5'
     | '/blog/$slug'
+    | '/blog/ar'
     | '/blog/content-plan'
+    | '/blog/en'
     | '/course/$lessonId'
     | '/ar/'
     | '/blog/'
@@ -201,7 +221,9 @@ export interface FileRouteTypes {
     | '/ar/growth-marketing'
     | '/ar/seo-geo-eli5'
     | '/blog/$slug'
+    | '/blog/ar'
     | '/blog/content-plan'
+    | '/blog/en'
     | '/course/$lessonId'
     | '/ar'
     | '/blog'
@@ -220,7 +242,9 @@ export interface FileRouteTypes {
     | '/ar/growth-marketing'
     | '/ar/seo-geo-eli5'
     | '/blog/$slug'
+    | '/blog/ar'
     | '/blog/content-plan'
+    | '/blog/en'
     | '/course/$lessonId'
     | '/ar/'
     | '/blog/'
@@ -237,7 +261,9 @@ export interface RootRouteChildren {
   SeoGeoEli5Route: typeof SeoGeoEli5Route
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  BlogArRoute: typeof BlogArRoute
   BlogContentPlanRoute: typeof BlogContentPlanRoute
+  BlogEnRoute: typeof BlogEnRoute
   CourseLessonIdRoute: typeof CourseLessonIdRoute
   BlogIndexRoute: typeof BlogIndexRoute
   CourseIndexRoute: typeof CourseIndexRoute
@@ -329,11 +355,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/ar': {
+      id: '/blog/ar'
+      path: '/blog/ar'
+      fullPath: '/blog/ar'
+      preLoaderRoute: typeof BlogArRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/content-plan': {
       id: '/blog/content-plan'
       path: '/blog/content-plan'
       fullPath: '/blog/content-plan'
       preLoaderRoute: typeof BlogContentPlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/en': {
+      id: '/blog/en'
+      path: '/blog/en'
+      fullPath: '/blog/en'
+      preLoaderRoute: typeof BlogEnRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/course/': {
@@ -395,7 +435,9 @@ const rootRouteChildren: RootRouteChildren = {
   SeoGeoEli5Route: SeoGeoEli5Route,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
+  BlogArRoute: BlogArRoute,
   BlogContentPlanRoute: BlogContentPlanRoute,
+  BlogEnRoute: BlogEnRoute,
   CourseLessonIdRoute: CourseLessonIdRoute,
   BlogIndexRoute: BlogIndexRoute,
   CourseIndexRoute: CourseIndexRoute,
