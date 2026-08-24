@@ -37,6 +37,7 @@ function BlogPost() {
       readTime={post.readTime}
       lang={post.lang}
       dir={post.lang === "ar" ? "rtl" : "ltr"}
+      faq={post.faq}
     >
       <Content />
     </ArticleLayout>

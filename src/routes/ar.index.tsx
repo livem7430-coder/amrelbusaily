@@ -338,6 +338,32 @@ function HomeAr() {
         </div>
       </section>
 
+      <section id="learn" className="border-t border-border bg-surface/30">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <SectionHeader eyebrow="اتعلم وكبّر" title="اختار الخطوة المناسبة لنية البحث بتاعتك" />
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            <Link to="/ar/course" className="group rounded-2xl border border-border bg-surface p-6 transition hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_12px_40px_rgba(94,242,135,0.08)]">
+              <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">تعلم منظم</div>
+              <h3 className="mt-3 text-xl font-semibold group-hover:text-primary">كورس SEO</h3>
+              <p className="mt-3 text-sm leading-8 text-muted-foreground">اتعلم السيو من الأساسيات حتى التنفيذ الاحترافي من خلال خريطة ثنائية اللغة قابلة للتوسع إلى 500 درس.</p>
+              <span className="mt-5 inline-block text-sm text-primary">افتح الكورس ←</span>
+            </Link>
+            <Link to="/blog" className="group rounded-2xl border border-border bg-surface p-6 transition hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_12px_40px_rgba(94,242,135,0.08)]">
+              <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">ابحث حسب الموضوع</div>
+              <h3 className="mt-3 text-xl font-semibold group-hover:text-primary">مركز محتوى SEO</h3>
+              <p className="mt-3 text-sm leading-8 text-muted-foreground">وصل لأدلة عملية عن السيو التقني والمحلي والمتاجر وAI SEO وAEO/GEO والنمو، مع تصفية حسب اللغة والعنقود.</p>
+              <span className="mt-5 inline-block text-sm text-primary">استكشف المقالات ←</span>
+            </Link>
+            <Link to="/ar/free-consultation" className="group rounded-2xl border border-primary/40 bg-primary/10 p-6 transition hover:-translate-y-0.5 hover:border-primary hover:shadow-[0_12px_40px_rgba(94,242,135,0.12)]">
+              <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">جاهز تنفذ</div>
+              <h3 className="mt-3 text-xl font-semibold group-hover:text-primary">SEO Audit واستراتيجية</h3>
+              <p className="mt-3 text-sm leading-8 text-muted-foreground">بدل النصائح العامة، ابدأ بخطة مرتبة حسب الأولوية لموقعك أو متجرك أو منتجك الرقمي.</p>
+              <span className="mt-5 inline-block text-sm text-primary">اطلب مراجعة ←</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section id="work" className="border-t border-border bg-surface/30">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionHeader eyebrow="مشاريع مميزة" title="حالات نجاح بأرقام حقيقية" />

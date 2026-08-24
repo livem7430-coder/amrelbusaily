@@ -10,6 +10,7 @@ export function ArticleLayout({
   children,
   dir = "rtl",
   lang = "ar",
+  faq,
 }: {
   title: string;
   description: string;
@@ -18,6 +19,7 @@ export function ArticleLayout({
   children: ReactNode;
   dir?: "rtl" | "ltr";
   lang?: string;
+  faq?: { q: string; a: string }[];
 }) {
   return (
     <div className="min-h-screen" dir={dir} lang={lang}>
@@ -53,6 +55,21 @@ export function ArticleLayout({
         <div className="mt-10 space-y-6 text-base leading-8 text-foreground/90 [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-semibold [&_ul]:list-disc [&_ul]:space-y-2 [&_ol]:list-decimal [&_ol]:space-y-2 [&_ul]:ps-6 [&_ol]:ps-6 [&_a]:text-primary [&_a]:underline [&_strong]:text-foreground">
           {children}
         </div>
+
+        {faq?.length ? (
+          <section className="mt-16" aria-labelledby="article-faq-heading">
+            <div className="font-mono text-xs uppercase tracking-widest text-primary">{lang === "ar" ? "أسئلة شائعة" : "Frequently asked questions"}</div>
+            <h2 id="article-faq-heading" className="mt-3 text-3xl font-semibold">{lang === "ar" ? "إجابات مختصرة قبل أن تبدأ." : "Clear answers before you start."}</h2>
+            <div className="mt-6 divide-y divide-border rounded-2xl border border-border bg-surface">
+              {faq.map((item) => (
+                <details key={item.q} className="group p-5">
+                  <summary className="cursor-pointer list-none pe-8 font-medium marker:hidden group-open:text-primary">{item.q}</summary>
+                  <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <div className="mt-16 rounded-2xl border border-border bg-surface p-8">
           <div className="font-mono text-xs uppercase text-primary">
@@ -124,7 +141,7 @@ export function articleHead({
         datePublished,
         dateModified: datePublished,
         image: [image],
-        articleSection: "SEO, Media Buying & E-commerce Growth",
+            articleSection: "SEO, Digital Marketing, AI Growth & E-commerce",
         author: {
           "@type": "Person",
           name: "Amr Elbusaily",
@@ -163,7 +180,7 @@ export function articleHead({
       { property: "og:description", content: description },
       { property: "og:image", content: image },
       { name: "twitter:image", content: image },
-      { name: "keywords", content: `${title}, SEO, media buying, e-commerce growth` },
+      { name: "keywords", content: `${title}, SEO, digital marketing, AI growth, e-commerce SEO` },
       { property: "og:type", content: "article" },
       { property: "og:url", content: url },
       { property: "og:locale", content: lang === "ar" ? "ar_EG" : "en_US" },

@@ -17,6 +17,7 @@ import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ArFreeConsultationRouteImport } from './routes/ar.free-consultation'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as BlogContentPlanRouteImport } from './routes/blog.content-plan'
 import { Route as CourseIndexRouteImport } from './routes/course.index'
 import { Route as CourseLessonIdRouteImport } from './routes/course.$lessonId'
 import { Route as ArCourseIndexRouteImport } from './routes/ar.course.index'
@@ -62,6 +63,11 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogContentPlanRoute = BlogContentPlanRouteImport.update({
+  id: '/blog/content-plan',
+  path: '/blog/content-plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CourseIndexRoute = CourseIndexRouteImport.update({
   id: '/course/',
   path: '/course/',
@@ -90,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/blog/content-plan': typeof BlogContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
   '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
@@ -103,6 +110,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/blog/content-plan': typeof BlogContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
   '/ar': typeof ArIndexRoute
   '/blog': typeof BlogIndexRoute
@@ -118,6 +126,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/blog/content-plan': typeof BlogContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
   '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
@@ -134,6 +143,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/blog/$slug'
+    | '/blog/content-plan'
     | '/course/$lessonId'
     | '/ar/'
     | '/blog/'
@@ -147,6 +157,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/blog/$slug'
+    | '/blog/content-plan'
     | '/course/$lessonId'
     | '/ar'
     | '/blog'
@@ -161,6 +172,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ar/free-consultation'
     | '/blog/$slug'
+    | '/blog/content-plan'
     | '/course/$lessonId'
     | '/ar/'
     | '/blog/'
@@ -175,6 +187,7 @@ export interface RootRouteChildren {
   FreeConsultationRoute: typeof FreeConsultationRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  BlogContentPlanRoute: typeof BlogContentPlanRoute
   CourseLessonIdRoute: typeof CourseLessonIdRoute
   BlogIndexRoute: typeof BlogIndexRoute
   CourseIndexRoute: typeof CourseIndexRoute
@@ -238,6 +251,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/content-plan': {
+      id: '/blog/content-plan'
+      path: '/blog/content-plan'
+      fullPath: '/blog/content-plan'
+      preLoaderRoute: typeof BlogContentPlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/course/': {
       id: '/course/'
       path: '/course'
@@ -291,6 +311,7 @@ const rootRouteChildren: RootRouteChildren = {
   FreeConsultationRoute: FreeConsultationRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
+  BlogContentPlanRoute: BlogContentPlanRoute,
   CourseLessonIdRoute: CourseLessonIdRoute,
   BlogIndexRoute: BlogIndexRoute,
   CourseIndexRoute: CourseIndexRoute,

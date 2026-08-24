@@ -404,6 +404,33 @@ function Home() {
         </div>
       </section>
 
+      {/* LEARN & GROW */}
+      <section id="learn" className="border-t border-border bg-surface/30">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <SectionHeader eyebrow="Learn & grow" title="Choose the next step that fits your intent" />
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            <Link to="/course" className="group rounded-2xl border border-border bg-surface p-6 transition hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_12px_40px_rgba(94,242,135,0.08)]">
+              <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Structured learning</div>
+              <h3 className="mt-3 text-xl font-semibold group-hover:text-primary">SEO Course</h3>
+              <p className="mt-3 text-sm leading-7 text-muted-foreground">Learn SEO from foundations to professional delivery through a bilingual 500-lesson roadmap.</p>
+              <span className="mt-5 inline-block text-sm text-primary">Open the course →</span>
+            </Link>
+            <Link to="/blog" className="group rounded-2xl border border-border bg-surface p-6 transition hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_12px_40px_rgba(94,242,135,0.08)]">
+              <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Search by topic</div>
+              <h3 className="mt-3 text-xl font-semibold group-hover:text-primary">SEO content hub</h3>
+              <p className="mt-3 text-sm leading-7 text-muted-foreground">Find practical guides by technical SEO, local search, e-commerce, AI SEO, AEO/GEO, and growth.</p>
+              <span className="mt-5 inline-block text-sm text-primary">Explore the articles →</span>
+            </Link>
+            <Link to="/free-consultation" className="group rounded-2xl border border-primary/40 bg-primary/10 p-6 transition hover:-translate-y-0.5 hover:border-primary hover:shadow-[0_12px_40px_rgba(94,242,135,0.12)]">
+              <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Ready to act</div>
+              <h3 className="mt-3 text-xl font-semibold group-hover:text-primary">SEO audit & strategy</h3>
+              <p className="mt-3 text-sm leading-7 text-muted-foreground">Move from general advice to a prioritized plan for your website, store, or digital product.</p>
+              <span className="mt-5 inline-block text-sm text-primary">Request a review →</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* WORK */}
       <section id="work" className="border-t border-border bg-surface/30">
         <div className="mx-auto max-w-6xl px-6 py-20">
