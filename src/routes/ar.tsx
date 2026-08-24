@@ -323,7 +323,7 @@ function HomeAr() {
 
       <section id="services" className="border-t border-border bg-surface/30">
         <div className="mx-auto max-w-6xl px-6 py-20">
-          <SectionHeader eyebrow="الخدمات" title="شريك نمو واحد للسيو والإعلانات والمتاجر" />
+          <SectionHeader eyebrow="الخدمات" title="شريك نمو واحد للسيو والمحتوى والذكاء الاصطناعي والمتاجر" />
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {services.map((service) => (
               <div key={service.title} className="rounded-xl border border-border bg-surface p-6 transition hover:border-primary/50">
@@ -357,7 +357,7 @@ function HomeAr() {
 
       <section id="experience" className="border-t border-border">
         <div className="mx-auto max-w-6xl px-6 py-20">
-          <SectionHeader eyebrow="تاريخ العمل" title="7 سنوات في السيو والإعلانات المدفوعة" />
+          <SectionHeader eyebrow="تاريخ العمل" title="7 سنوات في السيو والتسويق الرقمي" />
           <div className="mt-10 space-y-4">
             {experience.map((e) => (
               <div key={e.role + e.org} className="grid gap-4 rounded-xl border border-border bg-surface p-6 md:grid-cols-[220px_1fr]">
