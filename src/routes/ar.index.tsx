@@ -9,15 +9,15 @@ export const Route = createFileRoute("/ar/")({
       {
         name: "description",
         content:
-          "عمرو البصيلي خبير SEO وتسويق رقمي ونمو بالذكاء الاصطناعي من القاهرة. 7 سنوات خبرة وأكثر من 50 مشروعًا في التجارة الإلكترونية وSaaS ومنتجات AI.",
+          "عمرو البصيلي خبير SEO وتسويق رقمي وGrowth Marketing من القاهرة، متخصص في نمو شركات الخدمات وشركات B2B عبر توليد الطلب، المحتوى، الـfunnel، CRM، الأتمتة، وسيو المتاجر والبحث بالذكاء الاصطناعي.",
       },
       { property: "og:title", content: "عمرو البصيلي — خبير SEO والتسويق الرقمي ونمو AI" },
       {
         property: "og:description",
         content:
-          "خبير تسويق رقمي مصري: SEO، استراتيجية المحتوى، السيو المحلي والتقني، AI SEO، وتحسين نمو المتاجر الإلكترونية.",
+          "خبير تسويق ونمو رقمي مصري: SEO، Growth Marketing، توليد الطلب لشركات الخدمات وB2B، استراتيجية المحتوى، السيو المحلي والتقني، AI SEO، وتحسين نمو المتاجر الإلكترونية.",
       },
-      { name: "keywords", content: "عمرو البصيلي، خبير SEO في مصر، تسويق رقمي، AI SEO، سيو تقني، سيو محلي، سيو المتاجر، استراتيجية محتوى، نمو التجارة الإلكترونية" },
+      { name: "keywords", content: "عمرو البصيلي، خبير SEO في مصر، Growth Marketing، تسويق B2B، توليد الطلب، نمو شركات الخدمات، تسويق رقمي، AI SEO، سيو تقني، سيو محلي، سيو المتاجر، استراتيجية محتوى، نمو التجارة الإلكترونية" },
       { property: "og:type", content: "profile" },
       { property: "og:url", content: "https://amrelbusaily.vercel.app/ar" },
       { property: "og:locale", content: "ar_EG" },
@@ -53,6 +53,12 @@ export const Route = createFileRoute("/ar/")({
 
             "أتمتة n8n",
             "منتجات الذكاء الاصطناعي",
+            "Growth Marketing",
+            "توليد الطلب لشركات B2B",
+            "نمو شركات الخدمات",
+            "استراتيجية الـFunnel ودورة حياة العميل",
+            "تأهيل العملاء المحتملين وCRM",
+            "تكلفة اكتساب العميل وقيمة العميل",
           ],
           worksFor: { "@type": "Organization", name: "Expand Pro" },
           sameAs: ["https://tansiky.com", "https://aldowly.com"],
@@ -78,7 +84,7 @@ export const Route = createFileRoute("/ar/")({
               name: "إيه الخدمات اللي بيقدمها عمرو البصيلي؟",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "سيو تقني ومحلي، بحث كلمات مفتاحية واستراتيجية محتوى، AI SEO وAEO/GEO، تحسين المتاجر الإلكترونية، وتحليلات وأتمتة تسويقية بـ n8n.",
+                text: "سيو تقني ومحلي، بحث كلمات مفتاحية واستراتيجية محتوى، Growth Marketing وتوليد الطلب لشركات الخدمات وB2B، AI SEO وAEO/GEO، تحسين المتاجر الإلكترونية، وتحليلات وأتمتة تسويقية بـ n8n.",
               },
             },
             {
@@ -116,6 +122,10 @@ const services = [
   {
     title: "SEO ونمو التجارة الإلكترونية",
     detail: "تحسين هيكل المتجر وصفحات المنتجات والتحويل والتحليلات، مع استراتيجية SEO وتسويق رقمي للبراندات الأونلاين.",
+  },
+  {
+    title: "Growth Marketing لشركات الخدمات وB2B",
+    detail: "توليد الطلب، بناء الـfunnel، تأهيل العملاء، CRM، Email Marketing ومحتوى متوافق مع المبيعات للشركات الخدمية وفرق B2B.",
   },
 ];
 
@@ -211,6 +221,12 @@ const skills = [
   "عمليات المحتوى بالذكاء الاصطناعي واستراتيجية الـPrompts",
   "AEO وGEO",
   "استراتيجية التسويق الرقمي",
+  "Growth Marketing",
+  "توليد الطلب لشركات B2B",
+  "نمو شركات الخدمات",
+  "استراتيجية الـFunnel ودورة حياة العميل",
+  "CRM وتأهيل العملاء المحتملين",
+  "تحليل CAC وLTV",
   "أتمتة التسويق وn8n",
   "CRM وتوليد العملاء المحتملين",
   "استراتيجية Email Marketing",
@@ -326,12 +342,16 @@ function HomeAr() {
       <section id="services" className="border-t border-border bg-surface/30">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionHeader eyebrow="الخدمات" title="شريك نمو واحد للسيو والمحتوى والذكاء الاصطناعي والمتاجر" />
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
               <div key={service.title} className="rounded-xl border border-border bg-surface p-6 transition hover:border-primary/50">
                 <h3 className="text-lg font-semibold">{service.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">{service.detail}</p>
-                <a href="#contact" className="mt-5 inline-block text-sm text-primary hover:underline">ناقش مشروعك ←</a>
+                {service.title === "Growth Marketing لشركات الخدمات وB2B" ? (
+                  <Link to="/ar/growth-marketing" className="mt-5 inline-block text-sm text-primary hover:underline">استكشف الخدمة ←</Link>
+                ) : (
+                  <a href="#contact" className="mt-5 inline-block text-sm text-primary hover:underline">ناقش مشروعك ←</a>
+                )}
               </div>
             ))}
           </div>

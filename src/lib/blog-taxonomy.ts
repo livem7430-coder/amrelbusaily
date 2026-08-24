@@ -16,6 +16,7 @@ export function getBlogCategory(post: Pick<BlogPost, "slug" | "title" | "descrip
   if (/technical|audit|أوديت|تقني|core-web|سرعة|speed|index|فهرس|canonical|schema|structured/.test(text)) return "technical";
   if (/ecommerce|e-commerce|store|product|متجر|المتاجر|تجارة إلكترونية|منتج/.test(text)) return "ecommerce";
   if (/local|egypt|cairo|saudi|riyadh|jeddah|dubai|uae|kuwait|qatar|مصر|القاهرة|السعودية|الرياض|جدة|دبي|الإمارات|الكويت|قطر|محلي|خبير seo|seo expert|seo services/.test(text)) return "local";
+  if (/growth|b2b|demand|funnel|cac|ltv|crm|توليد الطلب|نمو شركات|نمو الأعمال|مسار التحويل|تسويق النمو/.test(text)) return "growth";
   if (/ai|aeo|geo|content|محتوى|كتابة|تسويق بالمحتوى|ذكاء اصطناعي|search brief|marketing/.test(text)) return "content-ai";
   return "growth";
 }

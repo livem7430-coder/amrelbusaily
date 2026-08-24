@@ -8,6 +8,7 @@ import {
   EcommerceGrowthAr,
   EcommerceGrowthEn,
 } from "@/content/seo-growth-articles";
+import { GrowthMarketingServicesAr, GrowthMarketingServicesEn } from "@/content/growth-marketing-articles";
 import {
   LocalSeoEgyptAr,
   LocalSeoEgyptEn,
@@ -495,4 +496,6 @@ export const articles: Record<string, ComponentType> = {
   "technical-seo-audit-en": TechnicalAuditEn,
   "ai-seo-ar": AiSeoAr,
   "ai-seo-en": AiSeoEn,
+  "growth-marketing-services-ar": GrowthMarketingServicesAr,
+  "growth-marketing-services-en": GrowthMarketingServicesEn,
 };

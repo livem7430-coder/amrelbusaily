@@ -9,20 +9,20 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Amr Elbusaily is an SEO, digital marketing and AI growth specialist in Cairo. 7 years helping 50+ projects grow through technical SEO, content marketing, e-commerce SEO and AI search optimization.",
+          "Amr Elbusaily is an SEO, digital marketing and growth marketing specialist in Cairo. He helps service companies and B2B teams grow qualified demand through technical SEO, content, funnels, CRM, automation, e-commerce SEO and AI search optimization.",
       },
       { property: "og:title", content: "Amr Elbusaily — SEO, Digital Marketing & AI Growth" },
       {
         property: "og:description",
         content:
-          "SEO strategy, content marketing, AI search optimization and e-commerce growth for brands that want qualified traffic, leads and sales.",
+          "SEO strategy, growth marketing, B2B demand generation, content, AI search optimization and e-commerce growth for brands that want qualified traffic, leads and sales.",
       },
       { property: "og:type", content: "profile" },
       { property: "og:url", content: "https://amrelbusaily.vercel.app/" },
       { property: "og:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Amr Elbusaily — SEO, Digital Marketing & AI Growth" },
-      { name: "twitter:description", content: "SEO, digital marketing and AI growth for more qualified traffic, leads and sales." },
+      { name: "twitter:description", content: "SEO, growth marketing, B2B demand generation and AI growth for more qualified traffic, leads and sales." },
       { name: "twitter:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
     ],
     links: [
@@ -52,6 +52,12 @@ export const Route = createFileRoute("/")({
             "Marketing Automation",
             "n8n Automation",
             "AI Product Growth",
+            "Growth Marketing",
+            "B2B Demand Generation",
+            "Service Business Growth",
+            "Funnel Strategy and Lifecycle Marketing",
+            "CRM and Lead Qualification",
+            "Customer Acquisition Cost and Lifetime Value",
           ],
           worksFor: { "@type": "Organization", name: "Expand Pro" },
           alumniOf: [
@@ -80,7 +86,7 @@ export const Route = createFileRoute("/")({
               name: "What services does Amr Elbusaily offer?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Technical SEO audits, on-page SEO, content marketing, e-commerce SEO, AI search optimization, conversion optimization and n8n marketing automation.",
+                text: "Technical SEO audits, on-page SEO, content marketing, Growth Marketing, B2B demand generation, e-commerce SEO, AI search optimization, conversion optimization and n8n marketing automation.",
               },
             },
             {
@@ -119,6 +125,10 @@ const services = [
   {
     title: "E-commerce SEO & Growth",
     detail: "Store architecture, product-page SEO, conversion optimization, analytics and digital marketing strategy for online brands.",
+  },
+  {
+    title: "Growth Marketing for Services & B2B",
+    detail: "Demand generation, funnel strategy, CRM, lifecycle email, lead qualification and sales-aligned content for service companies and B2B teams.",
   },
 ];
 
@@ -259,6 +269,12 @@ const skills = [
   "AI Content Operations & Prompt Strategy",
   "AEO & GEO",
   "Digital Marketing Strategy",
+  "Growth Marketing",
+  "B2B Demand Generation",
+  "Service Business Growth",
+  "Funnel Strategy & Lifecycle Marketing",
+  "CRM & Lead Qualification",
+  "CAC & LTV Analysis",
   "Marketing Automation & n8n",
   "CRM & Lead Generation",
   "Email Marketing Strategy",
@@ -392,12 +408,16 @@ function Home() {
       <section id="services" className="border-t border-border bg-surface/30">
         <div className="mx-auto max-w-6xl px-6 py-20">
             <SectionHeader eyebrow="Services" title="One growth partner for search, content, AI & e-commerce" />
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
               <div key={service.title} className="rounded-xl border border-border bg-surface p-6 transition hover:border-primary/50">
                 <h3 className="text-lg font-semibold">{service.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">{service.detail}</p>
-                <a href="#contact" className="mt-5 inline-block text-sm text-primary hover:underline">Discuss your project →</a>
+                {service.title === "Growth Marketing for Services & B2B" ? (
+                  <Link to="/growth-marketing" className="mt-5 inline-block text-sm text-primary hover:underline">Explore the service →</Link>
+                ) : (
+                  <a href="#contact" className="mt-5 inline-block text-sm text-primary hover:underline">Discuss your project →</a>
+                )}
               </div>
             ))}
           </div>

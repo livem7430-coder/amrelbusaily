@@ -12,9 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArRouteImport } from './routes/ar'
 import { Route as FreeConsultationRouteImport } from './routes/free-consultation'
+import { Route as GrowthMarketingRouteImport } from './routes/growth-marketing'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ArFreeConsultationRouteImport } from './routes/ar.free-consultation'
+import { Route as ArGrowthMarketingRouteImport } from './routes/ar.growth-marketing'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as BlogContentPlanRouteImport } from './routes/blog.content-plan'
@@ -38,6 +40,11 @@ const FreeConsultationRoute = FreeConsultationRouteImport.update({
   path: '/free-consultation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GrowthMarketingRoute = GrowthMarketingRouteImport.update({
+  id: '/growth-marketing',
+  path: '/growth-marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -51,6 +58,11 @@ const ArIndexRoute = ArIndexRouteImport.update({
 const ArFreeConsultationRoute = ArFreeConsultationRouteImport.update({
   id: '/free-consultation',
   path: '/free-consultation',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArGrowthMarketingRoute = ArGrowthMarketingRouteImport.update({
+  id: '/growth-marketing',
+  path: '/growth-marketing',
   getParentRoute: () => ArRoute,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -93,8 +105,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ar': typeof ArRouteWithChildren
   '/free-consultation': typeof FreeConsultationRoute
+  '/growth-marketing': typeof GrowthMarketingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
+  '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
@@ -107,8 +121,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/free-consultation': typeof FreeConsultationRoute
+  '/growth-marketing': typeof GrowthMarketingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
+  '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
@@ -123,8 +139,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/ar': typeof ArRouteWithChildren
   '/free-consultation': typeof FreeConsultationRoute
+  '/growth-marketing': typeof GrowthMarketingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
+  '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
@@ -140,8 +158,10 @@ export interface FileRouteTypes {
     | '/'
     | '/ar'
     | '/free-consultation'
+    | '/growth-marketing'
     | '/sitemap.xml'
     | '/ar/free-consultation'
+    | '/ar/growth-marketing'
     | '/blog/$slug'
     | '/blog/content-plan'
     | '/course/$lessonId'
@@ -154,8 +174,10 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/free-consultation'
+    | '/growth-marketing'
     | '/sitemap.xml'
     | '/ar/free-consultation'
+    | '/ar/growth-marketing'
     | '/blog/$slug'
     | '/blog/content-plan'
     | '/course/$lessonId'
@@ -169,8 +191,10 @@ export interface FileRouteTypes {
     | '/'
     | '/ar'
     | '/free-consultation'
+    | '/growth-marketing'
     | '/sitemap.xml'
     | '/ar/free-consultation'
+    | '/ar/growth-marketing'
     | '/blog/$slug'
     | '/blog/content-plan'
     | '/course/$lessonId'
@@ -185,6 +209,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ArRoute: typeof ArRouteWithChildren
   FreeConsultationRoute: typeof FreeConsultationRoute
+  GrowthMarketingRoute: typeof GrowthMarketingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogContentPlanRoute: typeof BlogContentPlanRoute
@@ -216,6 +241,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FreeConsultationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/growth-marketing': {
+      id: '/growth-marketing'
+      path: '/growth-marketing'
+      fullPath: '/growth-marketing'
+      preLoaderRoute: typeof GrowthMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -235,6 +267,13 @@ declare module '@tanstack/react-router' {
       path: '/free-consultation'
       fullPath: '/ar/free-consultation'
       preLoaderRoute: typeof ArFreeConsultationRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/growth-marketing': {
+      id: '/ar/growth-marketing'
+      path: '/growth-marketing'
+      fullPath: '/ar/growth-marketing'
+      preLoaderRoute: typeof ArGrowthMarketingRouteImport
       parentRoute: typeof ArRoute
     }
     '/blog/': {
@@ -291,6 +330,7 @@ declare module '@tanstack/react-router' {
 
 interface ArRouteChildren {
   ArFreeConsultationRoute: typeof ArFreeConsultationRoute
+  ArGrowthMarketingRoute: typeof ArGrowthMarketingRoute
   ArIndexRoute: typeof ArIndexRoute
   ArCourseLessonIdRoute: typeof ArCourseLessonIdRoute
   ArCourseIndexRoute: typeof ArCourseIndexRoute
@@ -298,6 +338,7 @@ interface ArRouteChildren {
 
 const ArRouteChildren: ArRouteChildren = {
   ArFreeConsultationRoute: ArFreeConsultationRoute,
+  ArGrowthMarketingRoute: ArGrowthMarketingRoute,
   ArIndexRoute: ArIndexRoute,
   ArCourseLessonIdRoute: ArCourseLessonIdRoute,
   ArCourseIndexRoute: ArCourseIndexRoute,
@@ -309,6 +350,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ArRoute: ArRouteWithChildren,
   FreeConsultationRoute: FreeConsultationRoute,
+  GrowthMarketingRoute: GrowthMarketingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogContentPlanRoute: BlogContentPlanRoute,

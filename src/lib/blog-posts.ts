@@ -681,4 +681,32 @@ export const blogPosts: BlogPost[] = [
       { q: "Can AI search visibility be guaranteed?", a: "No. You can improve clarity, trust and content quality, but citation and ranking are not fixed outcomes." },
     ],
   },
+  {
+    slug: "growth-marketing-services-ar",
+    title: "Growth Marketing لشركات الخدمات وB2B: من توليد الطلب إلى المبيعات",
+    description: "دليل عملي لتسويق النمو لشركات الخدمات وB2B: توليد الطلب، الـfunnel، SEO، المحتوى، تأهيل العملاء، CRM وقياس CAC وLTV.",
+    date: "2026-08-24",
+    readTime: "10 دقائق",
+    lang: "ar",
+    altSlug: "growth-marketing-services-en",
+    faq: [
+      { q: "ما هو Growth Marketing لشركات الخدمات؟", a: "هو نظام يربط توليد الطلب والـfunnel وتأهيل العملاء والمبيعات والقياس بدل الاعتماد على الزيارات أو الحملات المنفصلة فقط." },
+      { q: "هل يناسب Growth Marketing شركات B2B؟", a: "نعم، خصوصًا عندما تكون دورة الشراء طويلة ويحتاج فريق المبيعات إلى عملاء مؤهلين ومحتوى يساعد في المقارنة واتخاذ القرار." },
+      { q: "كيف نقيس نجاح تسويق النمو؟", a: "بجودة العملاء، الطلبات، معدل التحويل، CAC، LTV، سرعة إغلاق الفرص ومصدر الطلب، وليس بعدد الزيارات وحده." },
+    ],
+  },
+  {
+    slug: "growth-marketing-services-en",
+    title: "Growth Marketing for Service Companies and B2B: From Demand to Revenue",
+    description: "A practical Growth Marketing guide for service companies and B2B teams covering demand generation, funnels, SEO, content, CRM, qualification, CAC and LTV.",
+    date: "2026-08-24",
+    readTime: "10 min read",
+    lang: "en",
+    altSlug: "growth-marketing-services-ar",
+    faq: [
+      { q: "What is Growth Marketing for service companies?", a: "It is a system connecting demand generation, funnels, lead qualification, sales and measurement instead of relying on visits or disconnected campaigns alone." },
+      { q: "Is Growth Marketing suitable for B2B teams?", a: "Yes, especially when the buying cycle is long and sales needs qualified opportunities and content that supports comparison and decision-making." },
+      { q: "How should Growth Marketing success be measured?", a: "Use lead quality, enquiries, conversion rate, CAC, LTV, sales velocity and demand source rather than traffic volume alone." },
+    ],
+  },
 ];
