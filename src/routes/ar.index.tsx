@@ -270,7 +270,7 @@ function HomeAr() {
           </a>
           <nav className="hidden gap-7 text-sm text-muted-foreground md:flex">
             <a href="#work" className="hover:text-foreground">الأعمال</a>
-            <a href="#services" className="hover:text-foreground">الخدمات</a>
+            <Link to="/ar/services" className="hover:text-foreground">الخدمات</Link>
             <a href="#experience" className="hover:text-foreground">الخبرة</a>
             <a href="#skills" className="hover:text-foreground">المهارات</a>
             <Link to="/blog" className="hover:text-foreground">المدونة</Link>
@@ -292,7 +292,7 @@ function HomeAr() {
       </header>
       <div className="border-b border-border/60 bg-background/95 px-6 py-3 md:hidden">
         <nav aria-label="التنقل السريع" className="mx-auto flex max-w-6xl gap-2 overflow-x-auto pb-1 text-xs text-muted-foreground">
-          <a href="#services" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">الخدمات</a>
+          <Link to="/ar/services" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">الخدمات</Link>
           <a href="#results" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">النتائج</a>
           <Link to="/blog" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">المدونة</Link>
           <Link to="/ar/course" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">الكورس</Link>
@@ -376,6 +376,7 @@ function HomeAr() {
             <a href="/ar/keyword-research" className="rounded-md border border-border px-4 py-2 text-muted-foreground hover:border-primary hover:text-primary">خدمة بحث الكلمات ←</a>
             <a href="/ar/content-seo" className="rounded-md border border-border px-4 py-2 text-muted-foreground hover:border-primary hover:text-primary">خدمة Content SEO ←</a>
             <a href="/ar/international-seo" className="rounded-md border border-border px-4 py-2 text-muted-foreground hover:border-primary hover:text-primary">International SEO ←</a>
+            <Link to="/ar/services" className="rounded-md bg-primary/10 px-4 py-2 text-primary hover:bg-primary/20">اعرض كل الخدمات ←</Link>
           </div>
         </div>
       </section>

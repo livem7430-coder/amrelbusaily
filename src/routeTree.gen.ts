@@ -20,6 +20,7 @@ import { Route as SeoCompanyRouteImport } from './routes/seo-company'
 import { Route as SeoExpertRouteImport } from './routes/seo-expert'
 import { Route as SeoGeoEli5RouteImport } from './routes/seo-geo-eli5'
 import { Route as SeoServicesRouteImport } from './routes/seo-services'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ArContentSeoRouteImport } from './routes/ar.content-seo'
@@ -31,6 +32,7 @@ import { Route as ArSeoCompanyRouteImport } from './routes/ar.seo-company'
 import { Route as ArSeoExpertRouteImport } from './routes/ar.seo-expert'
 import { Route as ArSeoGeoEli5RouteImport } from './routes/ar.seo-geo-eli5'
 import { Route as ArSeoServicesRouteImport } from './routes/ar.seo-services'
+import { Route as ArServicesRouteImport } from './routes/ar.services'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as BlogArRouteImport } from './routes/blog.ar'
@@ -97,6 +99,11 @@ const SeoServicesRoute = SeoServicesRouteImport.update({
   path: '/seo-services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -150,6 +157,11 @@ const ArSeoGeoEli5Route = ArSeoGeoEli5RouteImport.update({
 const ArSeoServicesRoute = ArSeoServicesRouteImport.update({
   id: '/seo-services',
   path: '/seo-services',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArServicesRoute = ArServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => ArRoute,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -216,6 +228,7 @@ export interface FileRoutesByFullPath {
   '/seo-expert': typeof SeoExpertRoute
   '/seo-geo-eli5': typeof SeoGeoEli5Route
   '/seo-services': typeof SeoServicesRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
@@ -226,6 +239,7 @@ export interface FileRoutesByFullPath {
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
   '/ar/seo-services': typeof ArSeoServicesRoute
+  '/ar/services': typeof ArServicesRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
@@ -249,6 +263,7 @@ export interface FileRoutesByTo {
   '/seo-expert': typeof SeoExpertRoute
   '/seo-geo-eli5': typeof SeoGeoEli5Route
   '/seo-services': typeof SeoServicesRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
@@ -259,6 +274,7 @@ export interface FileRoutesByTo {
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
   '/ar/seo-services': typeof ArSeoServicesRoute
+  '/ar/services': typeof ArServicesRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
@@ -284,6 +300,7 @@ export interface FileRoutesById {
   '/seo-expert': typeof SeoExpertRoute
   '/seo-geo-eli5': typeof SeoGeoEli5Route
   '/seo-services': typeof SeoServicesRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
@@ -294,6 +311,7 @@ export interface FileRoutesById {
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
   '/ar/seo-services': typeof ArSeoServicesRoute
+  '/ar/services': typeof ArServicesRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
@@ -320,6 +338,7 @@ export interface FileRouteTypes {
     | '/seo-expert'
     | '/seo-geo-eli5'
     | '/seo-services'
+    | '/services'
     | '/sitemap.xml'
     | '/ar/content-seo'
     | '/ar/free-consultation'
@@ -330,6 +349,7 @@ export interface FileRouteTypes {
     | '/ar/seo-expert'
     | '/ar/seo-geo-eli5'
     | '/ar/seo-services'
+    | '/ar/services'
     | '/blog/$slug'
     | '/blog/ar'
     | '/blog/content-plan'
@@ -353,6 +373,7 @@ export interface FileRouteTypes {
     | '/seo-expert'
     | '/seo-geo-eli5'
     | '/seo-services'
+    | '/services'
     | '/sitemap.xml'
     | '/ar/content-seo'
     | '/ar/free-consultation'
@@ -363,6 +384,7 @@ export interface FileRouteTypes {
     | '/ar/seo-expert'
     | '/ar/seo-geo-eli5'
     | '/ar/seo-services'
+    | '/ar/services'
     | '/blog/$slug'
     | '/blog/ar'
     | '/blog/content-plan'
@@ -387,6 +409,7 @@ export interface FileRouteTypes {
     | '/seo-expert'
     | '/seo-geo-eli5'
     | '/seo-services'
+    | '/services'
     | '/sitemap.xml'
     | '/ar/content-seo'
     | '/ar/free-consultation'
@@ -397,6 +420,7 @@ export interface FileRouteTypes {
     | '/ar/seo-expert'
     | '/ar/seo-geo-eli5'
     | '/ar/seo-services'
+    | '/ar/services'
     | '/blog/$slug'
     | '/blog/ar'
     | '/blog/content-plan'
@@ -422,6 +446,7 @@ export interface RootRouteChildren {
   SeoExpertRoute: typeof SeoExpertRoute
   SeoGeoEli5Route: typeof SeoGeoEli5Route
   SeoServicesRoute: typeof SeoServicesRoute
+  ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogArRoute: typeof BlogArRoute
@@ -512,6 +537,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SeoServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -587,6 +619,13 @@ declare module '@tanstack/react-router' {
       path: '/seo-services'
       fullPath: '/ar/seo-services'
       preLoaderRoute: typeof ArSeoServicesRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/services': {
+      id: '/ar/services'
+      path: '/services'
+      fullPath: '/ar/services'
+      preLoaderRoute: typeof ArServicesRouteImport
       parentRoute: typeof ArRoute
     }
     '/blog/': {
@@ -672,6 +711,7 @@ interface ArRouteChildren {
   ArSeoExpertRoute: typeof ArSeoExpertRoute
   ArSeoGeoEli5Route: typeof ArSeoGeoEli5Route
   ArSeoServicesRoute: typeof ArSeoServicesRoute
+  ArServicesRoute: typeof ArServicesRoute
   ArIndexRoute: typeof ArIndexRoute
   ArCourseLessonIdRoute: typeof ArCourseLessonIdRoute
   ArCourseIndexRoute: typeof ArCourseIndexRoute
@@ -687,6 +727,7 @@ const ArRouteChildren: ArRouteChildren = {
   ArSeoExpertRoute: ArSeoExpertRoute,
   ArSeoGeoEli5Route: ArSeoGeoEli5Route,
   ArSeoServicesRoute: ArSeoServicesRoute,
+  ArServicesRoute: ArServicesRoute,
   ArIndexRoute: ArIndexRoute,
   ArCourseLessonIdRoute: ArCourseLessonIdRoute,
   ArCourseIndexRoute: ArCourseIndexRoute,
@@ -706,6 +747,7 @@ const rootRouteChildren: RootRouteChildren = {
   SeoExpertRoute: SeoExpertRoute,
   SeoGeoEli5Route: SeoGeoEli5Route,
   SeoServicesRoute: SeoServicesRoute,
+  ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogArRoute: BlogArRoute,
