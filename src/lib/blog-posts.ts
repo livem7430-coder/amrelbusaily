@@ -128,17 +128,16 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "media-buying-guide-ar",
-    title: "Media Buying في مصر: كيف تدير إعلانات Google وMeta بربحية",
-    description:
-      "دليل عملي لإدارة الإعلانات المدفوعة: القياس، الجمهور، اختبار الإعلانات، تكلفة اكتساب العميل، ودمج Media Buying مع SEO.",
+    title: "التسويق الرقمي بالأداء في مصر: كيف تبني حملات تنمو بربحية",
+    description: "دليل عملي للتسويق الرقمي بالأداء: القياس، الجمهور، اختبار الرسائل، تكلفة اكتساب العميل، ودمج القنوات مع SEO.",
     date: "2026-08-24",
     readTime: "10 دقائق",
     lang: "ar",
     altSlug: "media-buying-guide-en",
     faq: [
       {
-        q: "ما الفرق بين Media Buying وتشغيل إعلان؟",
-        a: "Media Buying يشمل الاستراتيجية والقياس واختيار الجمهور واختبار الإعلانات وتحسين الربحية، وليس تشغيل إعلان فقط.",
+        q: "ما الفرق بين التسويق الرقمي بالأداء وتشغيل إعلان؟",
+        a: "التسويق الرقمي بالأداء يشمل الاستراتيجية والقياس واختيار الجمهور واختبار الرسائل وتحسين الربحية، وليس تشغيل إعلان فقط.",
       },
       {
         q: "ما أهم مؤشرات قياس الحملات؟",
@@ -148,17 +147,16 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "media-buying-guide-en",
-    title: "Media Buying Guide: How to Manage Google and Meta Ads for Profit",
-    description:
-      "A practical paid media guide covering measurement, audiences, creative testing, customer acquisition cost and the SEO connection.",
+    title: "Performance Digital Marketing: How to Build Profitable Growth Campaigns",
+    description: "A practical performance marketing guide covering measurement, audiences, message testing, customer acquisition cost and the SEO connection.",
     date: "2026-08-24",
     readTime: "10 min read",
     lang: "en",
     altSlug: "media-buying-guide-ar",
     faq: [
       {
-        q: "What is the difference between media buying and running an ad?",
-        a: "Media buying includes strategy, measurement, audience selection, testing and profit optimization—not just launching an ad.",
+        q: "What is the difference between performance digital marketing and running an ad?",
+        a: "Performance digital marketing includes strategy, measurement, audience selection, testing and profit optimization—not just launching an ad.",
       },
       {
         q: "Which metrics matter in paid campaigns?",

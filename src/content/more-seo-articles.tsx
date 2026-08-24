@@ -115,7 +115,7 @@ export function SeoVsGoogleAdsAr() {
       </p>
       <h2>الخلاصة</h2>
       <p>
-        ابدأ بهدف واحد قابل للقياس، وتأكد من القياس قبل الإنفاق. اقرأ <a href="/blog/media-buying-guide-ar">دليل Media Buying</a> و<a href="/blog/seo-audit-guide-ar">دليل أوديت SEO</a> لتحديد القناة والصفحة التي تحتاجها أولًا.
+        ابدأ بهدف واحد قابل للقياس، وتأكد من القياس قبل الإنفاق. اقرأ <a href="/blog/media-buying-guide-ar">دليل التسويق الرقمي بالأداء</a> و<a href="/blog/seo-audit-guide-ar">دليل أوديت SEO</a> لتحديد القناة والصفحة التي تحتاجها أولًا.
       </p>
     </>
   );
@@ -150,7 +150,7 @@ export function SeoVsGoogleAdsEn() {
       </p>
       <h2>Bottom line</h2>
       <p>
-        Start with one measurable objective and validate tracking before spending. Read the <a href="/blog/media-buying-guide-en">media buying guide</a> and the <a href="/blog/seo-audit-guide-en">SEO audit guide</a> to decide what to fix first.
+        Start with one measurable objective and validate tracking before spending. Read the <a href="/blog/media-buying-guide-en">performance digital marketing guide</a> and the <a href="/blog/seo-audit-guide-en">SEO audit guide</a> to decide what to fix first.
       </p>
     </>
   );

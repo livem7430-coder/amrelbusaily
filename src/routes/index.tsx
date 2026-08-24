@@ -5,24 +5,24 @@ import { Portrait } from "@/components/Portrait";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Amr Elbusaily — SEO, Media Buying & E-commerce Growth | Cairo" },
+      { title: "Amr Elbusaily — SEO, Digital Marketing & AI Growth | Cairo" },
       {
         name: "description",
         content:
-          "Amr Elbusaily is an SEO, media buying and e-commerce growth specialist in Cairo. 7 years managing 50+ projects across SEO, Google and Meta Ads, online stores, SaaS and AI products.",
+          "Amr Elbusaily is an SEO, digital marketing and AI growth specialist in Cairo. 7 years helping 50+ projects grow through technical SEO, content marketing, e-commerce SEO and AI search optimization.",
       },
-      { property: "og:title", content: "Amr Elbusaily — SEO, Media Buying & E-commerce Growth" },
+      { property: "og:title", content: "Amr Elbusaily — SEO, Digital Marketing & AI Growth" },
       {
         property: "og:description",
         content:
-          "SEO, Google Ads, Meta Ads and e-commerce growth for brands that want more qualified traffic, leads and sales.",
+          "SEO strategy, content marketing, AI search optimization and e-commerce growth for brands that want qualified traffic, leads and sales.",
       },
       { property: "og:type", content: "profile" },
       { property: "og:url", content: "https://amrelbusaily.vercel.app/" },
       { property: "og:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Amr Elbusaily — SEO, Media Buying & E-commerce Growth" },
-      { name: "twitter:description", content: "SEO, media buying and e-commerce growth for more qualified traffic, leads and sales." },
+      { name: "twitter:title", content: "Amr Elbusaily — SEO, Digital Marketing & AI Growth" },
+      { name: "twitter:description", content: "SEO, digital marketing and AI growth for more qualified traffic, leads and sales." },
       { name: "twitter:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
     ],
     links: [
@@ -40,14 +40,16 @@ export const Route = createFileRoute("/")({
           name: "Amr Elbusaily",
           url: "https://amrelbusaily.vercel.app/",
           image: `https://amrelbusaily.vercel.app${amrPortrait.url}`,
-          jobTitle: "SEO Specialist & Paid Ads Expert",
+          jobTitle: "SEO & Digital Marketing Specialist",
           address: { "@type": "PostalAddress", addressLocality: "Cairo", addressCountry: "EG" },
           knowsAbout: [
             "Search Engine Optimization",
             "Technical SEO",
             "E-commerce SEO",
-            "Google Ads",
-            "Paid Media & Media Buying",
+            "Content Marketing",
+            "AEO & GEO",
+            "AI SEO & Search Optimization",
+            "Marketing Automation",
             "n8n Automation",
             "AI Product Growth",
           ],
@@ -70,7 +72,7 @@ export const Route = createFileRoute("/")({
               name: "Who is Amr Elbusaily?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Amr Elbusaily is an SEO specialist and paid ads expert based in Cairo, Egypt, with 7 years of experience and 50+ projects across e-commerce, SaaS, AI and education.",
+                text: "Amr Elbusaily is an SEO and digital marketing specialist based in Cairo, Egypt, with 7 years of experience and 50+ projects across e-commerce, SaaS, AI and education.",
               },
             },
             {
@@ -78,7 +80,7 @@ export const Route = createFileRoute("/")({
               name: "What services does Amr Elbusaily offer?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Technical SEO audits, on-page and content SEO, e-commerce SEO, Google Ads and paid media management, and n8n marketing automation.",
+                text: "Technical SEO audits, on-page SEO, content marketing, e-commerce SEO, AI search optimization, conversion optimization and n8n marketing automation.",
               },
             },
             {
@@ -99,7 +101,7 @@ export const Route = createFileRoute("/")({
 
 
 const metrics = [
-  { value: "7", label: "Years in SEO & paid ads" },
+  { value: "7", label: "Years in SEO & digital marketing" },
   { value: "50+", label: "SEO & e-commerce projects" },
   { value: "45%", label: "Organic traffic uplift" },
     { value: "35%", label: "E-commerce sales growth" },
@@ -107,16 +109,16 @@ const metrics = [
 
 const services = [
   {
-    title: "SEO & Organic Growth",
-    detail: "Technical audits, keyword strategy, content systems and e-commerce SEO that turn search visibility into qualified demand.",
+    title: "SEO Strategy & Consulting",
+    detail: "Technical audits, keyword research, on-page SEO, local SEO and content systems that turn search visibility into qualified demand.",
   },
   {
-    title: "Media Buying & Paid Ads",
-    detail: "Google Ads and Meta Ads planning, campaign management, creative testing and performance optimization focused on profitable acquisition.",
+    title: "Digital Marketing & AI Growth",
+    detail: "AI search optimization, AEO/GEO, content marketing, marketing automation and digital growth systems for qualified demand.",
   },
   {
-    title: "E-commerce Growth",
-    detail: "Store architecture, product-page optimization, conversion improvements and a joined-up SEO and paid media plan for online brands.",
+    title: "E-commerce SEO & Growth",
+    detail: "Store architecture, product-page SEO, conversion optimization, analytics and digital marketing strategy for online brands.",
   },
 ];
 
@@ -161,7 +163,7 @@ const experience = [
     period: "2025 — Present",
     points: [
       "Running independent SEO and growth engagements through my own project, tansiky.com.",
-      "Delivering SEO and paid ads for multiple AI-focused products and education-sector platforms.",
+      "Delivering SEO, content strategy and digital marketing for multiple AI-focused products and education-sector platforms.",
       "Owning strategy end-to-end: audits, keyword research, on-page, technical SEO, and campaign management.",
     ],
   },
@@ -171,9 +173,9 @@ const experience = [
     place: "Cairo",
     period: "Jan 2022 — Present",
     points: [
-      "Founded and led A2M, focused on e-commerce SEO and paid advertising across 50+ projects.",
+      "Founded and led A2M, focused on e-commerce SEO, content marketing and digital growth across 50+ projects.",
       "Delivered up to 40% increase in organic traffic and 35% growth in sales for clients in fashion, electronics, and beauty.",
-      "Managed large-scale Google Ads and Facebook Ads campaigns, lifting conversions by 20–35% across sectors.",
+      "Built content, SEO and conversion systems that improved qualified demand across sectors.",
       "Ran full SEO audits, link-building, and technical SEO to improve site performance and search visibility.",
     ],
   },
@@ -183,8 +185,8 @@ const experience = [
     place: "",
     period: "Jan 2023 — Present",
     points: [
-      "Managed SEO and paid ads for 20+ sports and e-commerce websites, driving a 45% increase in organic traffic within 8 months.",
-      "Optimized e-commerce platforms with on-page SEO and paid ads to boost conversions and sales.",
+      "Managed SEO and digital growth for 20+ sports and e-commerce websites, driving a 45% increase in organic traffic within 8 months.",
+      "Optimized e-commerce platforms with technical SEO, content and conversion improvements to boost organic sales.",
     ],
   },
   {
@@ -222,17 +224,17 @@ const projects = [
   {
     name: "Fashion E-Commerce (A2M)",
     result: "+40% traffic · +35% sales",
-    detail: "Mix of SEO optimization and paid ads for a leading fashion brand.",
+    detail: "Technical SEO, content optimization and conversion improvements for a leading fashion brand.",
   },
   {
     name: "Tech E-Commerce (A2M)",
     result: "+30% sales",
-    detail: "Optimized product pages and ran high-performing Google Ads campaigns.",
+    detail: "Optimized product architecture, product pages and organic conversion paths.",
   },
   {
     name: "Beauty Products E-Commerce (A2M)",
     result: "+25% online sales",
-    detail: "SEO and PPC management that improved overall ROI.",
+    detail: "SEO, content and conversion optimization that improved overall organic ROI.",
   },
   {
     name: "Local Restaurant SEO",
@@ -247,11 +249,22 @@ const projects = [
 ];
 
 const skills = [
+  "SEO Strategy & Consulting",
   "SEO Keyword Research & Strategy",
   "On-Page & Off-Page SEO",
-  "Paid Ads (Google & Facebook)",
-  "Media Buying Strategy",
-  "Meta Ads Campaign Management",
+  "Programmatic & International SEO",
+  "Content Marketing & Copywriting",
+  "Content Strategy & Editorial Planning",
+  "AI SEO & Search Optimization",
+  "AI Content Operations & Prompt Strategy",
+  "AEO & GEO",
+  "Digital Marketing Strategy",
+  "Marketing Automation & n8n",
+  "CRM & Lead Generation",
+  "Email Marketing Strategy",
+  "Digital PR & Link Building",
+  "Analytics, GA4 & Search Console",
+  "Looker Studio Reporting",
   "Conversion Rate Optimization",
   "E-commerce SEO",
   "E-commerce Growth",
@@ -270,7 +283,7 @@ const skills = [
 const courses = [
   { name: "SEO Fundamentals", org: "Coursera", period: "2020 — 2021" },
   { name: "Digital Marketing Specialization", org: "University of Illinois", period: "2021" },
-  { name: "Advanced Google Ads Strategies", org: "Udemy", period: "2022" },
+  { name: "AI for Digital Marketing", org: "Udemy", period: "2022" },
   { name: "Social Media Marketing", org: "Hootsuite Academy", period: "2023 — 2024" },
 ];
 
@@ -314,7 +327,7 @@ function Home() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs font-mono text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-              Available for SEO, media buying & e-commerce projects
+              Available for SEO, digital marketing, AI growth & e-commerce projects
             </div>
             <h1 className="mt-6 text-4xl font-semibold leading-[1.05] md:text-5xl lg:text-6xl">
               <span className="text-gradient">SEO that dominates</span>
@@ -322,7 +335,7 @@ function Home() {
               rankings, traffic & revenue.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              I'm Amr Elbusaily — an SEO, media buying and e-commerce growth specialist from Cairo with{" "}
+              I'm Amr Elbusaily — an SEO, digital marketing and AI growth specialist from Cairo with{" "}
               <span className="text-foreground">7 years</span> helping brands grow qualified traffic, leads and sales. Founder of
               A2M Digital Marketing Agency, with{" "}
               <span className="text-foreground">50+ projects</span> across e-commerce, SaaS and digital products.
@@ -354,7 +367,7 @@ function Home() {
                 </div>
                 <div className="p-4">
                   <div className="text-muted-foreground">Focus</div>
-                  <div className="mt-1 text-foreground">SEO · PPC · E-com</div>
+                  <div className="mt-1 text-foreground">SEO · AI · E-com</div>
                 </div>
               </div>
             </div>
@@ -377,7 +390,7 @@ function Home() {
       {/* SERVICES */}
       <section id="services" className="border-t border-border bg-surface/30">
         <div className="mx-auto max-w-6xl px-6 py-20">
-          <SectionHeader eyebrow="Services" title="One growth partner for search, ads & e-commerce" />
+            <SectionHeader eyebrow="Services" title="One growth partner for search, content, AI & e-commerce" />
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {services.map((service) => (
               <div key={service.title} className="rounded-xl border border-border bg-surface p-6 transition hover:border-primary/50">
@@ -416,7 +429,7 @@ function Home() {
       {/* EXPERIENCE */}
       <section id="experience" className="border-t border-border">
         <div className="mx-auto max-w-6xl px-6 py-20">
-          <SectionHeader eyebrow="Employment history" title="7 years shipping SEO & paid ads" />
+          <SectionHeader eyebrow="Employment history" title="7 years shipping SEO & digital marketing" />
           <div className="mt-10 space-y-4">
             {experience.map((e) => (
               <div
@@ -449,7 +462,7 @@ function Home() {
       <section id="skills" className="border-t border-border bg-surface/30">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.3fr_1fr]">
           <div>
-              <SectionHeader eyebrow="Skills & tools" title="A full SEO, media buying & e-commerce toolkit" />
+              <SectionHeader eyebrow="Skills & tools" title="A full SEO, digital marketing & AI growth toolkit" />
             <div className="mt-8 flex flex-wrap gap-2">
               {skills.map((s) => (
                 <span
@@ -502,8 +515,7 @@ function Home() {
                   Ready to grow your organic traffic & sales?
                 </h2>
                 <p className="mt-4 max-w-lg text-muted-foreground">
-                  Whether you need a technical SEO audit, an e-commerce growth plan, or a media buying
-                  campaign — let's map the fastest path to qualified traffic and profitable sales.
+                  Whether you need a technical SEO audit, a content and AI search plan, or an e-commerce growth strategy — let's map the fastest path to qualified traffic and profitable sales.
                 </p>
               </div>
               <div className="space-y-3">
@@ -519,7 +531,7 @@ function Home() {
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-muted-foreground md:flex-row">
           <div>© {new Date().getFullYear()} Amr Elbusaily. All rights reserved.</div>
-          <div className="font-mono text-xs">SEO · Media Buying · E-commerce Growth · Cairo</div>
+          <div className="font-mono text-xs">SEO · Digital Marketing · AI Growth · E-commerce · Cairo</div>
         </div>
       </footer>
     </div>

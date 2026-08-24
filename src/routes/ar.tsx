@@ -5,19 +5,19 @@ import { Portrait } from "@/components/Portrait";
 export const Route = createFileRoute("/ar")({
   head: () => ({
     meta: [
-      { title: "عمرو البصيلي — خبير SEO وMedia Buying ونمو التجارة الإلكترونية | القاهرة" },
+      { title: "عمرو البصيلي — خبير SEO والتسويق الرقمي ونمو AI | القاهرة" },
       {
         name: "description",
         content:
-          "عمرو البصيلي خبير SEO وMedia Buying ونمو التجارة الإلكترونية من القاهرة. 7 سنوات خبرة وأكثر من 50 مشروعًا في المتاجر والإعلانات على Google وMeta ومنتجات SaaS وAI.",
+          "عمرو البصيلي خبير SEO وتسويق رقمي ونمو بالذكاء الاصطناعي من القاهرة. 7 سنوات خبرة وأكثر من 50 مشروعًا في التجارة الإلكترونية وSaaS ومنتجات AI.",
       },
-      { property: "og:title", content: "عمرو البصيلي — خبير SEO وMedia Buying ونمو التجارة الإلكترونية" },
+      { property: "og:title", content: "عمرو البصيلي — خبير SEO والتسويق الرقمي ونمو AI" },
       {
         property: "og:description",
         content:
-          "خبير تسويق رقمي مصري: SEO، Media Buying، Google Ads، Meta Ads، وتحسين نمو المتاجر الإلكترونية.",
+          "خبير تسويق رقمي مصري: SEO، استراتيجية المحتوى، السيو المحلي والتقني، AI SEO، وتحسين نمو المتاجر الإلكترونية.",
       },
-      { name: "keywords", content: "عمرو البصيلي، خبير SEO في مصر، Media Buyer مصر، إدارة إعلانات، Google Ads، Meta Ads، سيو المتاجر، نمو التجارة الإلكترونية" },
+      { name: "keywords", content: "عمرو البصيلي، خبير SEO في مصر، تسويق رقمي، AI SEO، سيو تقني، سيو محلي، سيو المتاجر، استراتيجية محتوى، نمو التجارة الإلكترونية" },
       { property: "og:type", content: "profile" },
       { property: "og:url", content: "https://amrelbusaily.vercel.app/ar" },
       { property: "og:locale", content: "ar_EG" },
@@ -40,13 +40,17 @@ export const Route = createFileRoute("/ar")({
           alternateName: "Amr Elbusaily",
           url: "https://amrelbusaily.vercel.app/ar",
           image: `https://amrelbusaily.vercel.app${amrPortrait.url}`,
-          jobTitle: "خبير SEO وإعلانات مدفوعة",
+          jobTitle: "خبير SEO وتسويق رقمي وAI Growth",
           address: { "@type": "PostalAddress", addressLocality: "القاهرة", addressCountry: "EG" },
           knowsAbout: [
             "تحسين محركات البحث",
             "السيو التقني",
             "سيو المتاجر الإلكترونية",
-            "Google Ads",
+                          "التسويق بالمحتوى",
+              "AEO وGEO",
+              "AI SEO وتحسين البحث بالذكاء الاصطناعي",
+              "الأتمتة التسويقية",
+
             "أتمتة n8n",
             "منتجات الذكاء الاصطناعي",
           ],
@@ -66,7 +70,7 @@ export const Route = createFileRoute("/ar")({
               name: "مين هو عمرو البصيلي؟",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "عمرو البصيلي خبير سيو وإعلانات مدفوعة من القاهرة، عنده 7 سنين خبرة وأكثر من 50 مشروع في التجارة الإلكترونية وSaaS ومنتجات الذكاء الاصطناعي والتعليم.",
+                text: "عمرو البصيلي خبير SEO وتسويق رقمي من القاهرة، عنده 7 سنين خبرة وأكثر من 50 مشروع في التجارة الإلكترونية وSaaS ومنتجات الذكاء الاصطناعي والتعليم.",
               },
             },
             {
@@ -74,7 +78,7 @@ export const Route = createFileRoute("/ar")({
               name: "إيه الخدمات اللي بيقدمها عمرو البصيلي؟",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "سيو تقني، تحسين المتاجر الإلكترونية، بحث كلمات مفتاحية واستراتيجية محتوى، Google Ads وإعلانات مدفوعة، وأتمتة تسويقية بـ n8n.",
+                text: "سيو تقني ومحلي، بحث كلمات مفتاحية واستراتيجية محتوى، AI SEO وAEO/GEO، تحسين المتاجر الإلكترونية، وتحليلات وأتمتة تسويقية بـ n8n.",
               },
             },
             {
@@ -94,7 +98,7 @@ export const Route = createFileRoute("/ar")({
 });
 
 const metrics = [
-  { value: "7", label: "سنوات خبرة سيو وإعلانات" },
+  { value: "7", label: "سنوات خبرة سيو وتسويق رقمي" },
   { value: "+50", label: "مشروع سيو وتجارة إلكترونية" },
   { value: "45%", label: "زيادة في الترافيك العضوي" },
   { value: "35%", label: "نمو مبيعات المتاجر" },
@@ -102,16 +106,16 @@ const metrics = [
 
 const services = [
   {
-    title: "SEO والنمو العضوي",
-    detail: "أوديت تقني، بحث كلمات، استراتيجية محتوى وسيو للمتاجر لتحويل الظهور في جوجل إلى زيارات وعملاء مؤهلين.",
+    title: "استراتيجية واستشارات SEO",
+    detail: "أوديت تقني، بحث كلمات، On-Page SEO، سيو محلي، واستراتيجية محتوى لتحويل الظهور في جوجل إلى زيارات وعملاء مؤهلين.",
   },
   {
-    title: "Media Buying والإعلانات المدفوعة",
-    detail: "تخطيط وإدارة حملات Google Ads وMeta Ads، اختبار الإبداعات وتحسين الأداء بهدف اكتساب عملاء ومبيعات مربحة.",
+    title: "التسويق الرقمي ونمو AI",
+    detail: "AI SEO، AEO/GEO، تسويق المحتوى، أتمتة التسويق وأنظمة نمو رقمية تجذب طلبًا وعملاء مؤهلين.",
   },
   {
-    title: "نمو التجارة الإلكترونية",
-    detail: "تحسين هيكل المتجر وصفحات المنتجات وتجربة التحويل، مع خطة موحدة تجمع السيو والإعلانات المدفوعة.",
+    title: "SEO ونمو التجارة الإلكترونية",
+    detail: "تحسين هيكل المتجر وصفحات المنتجات والتحويل والتحليلات، مع استراتيجية SEO وتسويق رقمي للبراندات الأونلاين.",
   },
 ];
 
@@ -154,7 +158,7 @@ const experience = [
     period: "2025 — حتى الآن",
     points: [
       "إدارة مشاريع سيو ونمو من خلال مشروعي الخاص tansiky.com.",
-      "تنفيذ سيو وإعلانات لمنتجات ذكاء اصطناعي ومنصات تعليمية متعددة.",
+      "تنفيذ SEO واستراتيجية محتوى وتسويق رقمي لمنتجات ذكاء اصطناعي ومنصات تعليمية متعددة.",
     ],
   },
   {
@@ -163,9 +167,9 @@ const experience = [
     place: "القاهرة",
     period: "يناير 2022 — حتى الآن",
     points: [
-      "تأسيس A2M المتخصصة في سيو التجارة الإلكترونية والإعلانات المدفوعة عبر +50 مشروع.",
+      "تأسيس A2M المتخصصة في سيو التجارة الإلكترونية وتسويق المحتوى والنمو الرقمي عبر +50 مشروع.",
       "تحقيق زيادة تصل لـ 40% في الترافيك العضوي و35% نمو مبيعات في الفاشون والإلكترونيات والبيوتي.",
-      "إدارة حملات Google Ads وFacebook Ads كبيرة رفعت التحويلات 20–35%.",
+      "بناء أنظمة محتوى وSEO وتحسين تحويل رفعت الطلب المؤهل عبر قطاعات مختلفة.",
     ],
   },
   {
@@ -174,7 +178,7 @@ const experience = [
     place: "",
     period: "يناير 2023 — حتى الآن",
     points: [
-      "إدارة سيو وإعلانات لأكثر من 20 موقع رياضة وتجارة إلكترونية بزيادة 45% ترافيك في 8 شهور.",
+      "إدارة SEO ونمو رقمي لأكثر من 20 موقع رياضة وتجارة إلكترونية بزيادة 45% ترافيك عضوي في 8 شهور.",
     ],
   },
   {
@@ -189,19 +193,30 @@ const experience = [
 ];
 
 const projects = [
-  { name: "متجر فاشون (A2M)", result: "+40% ترافيك · +35% مبيعات", detail: "مزيج سيو وإعلانات مدفوعة لبراند فاشون رائد." },
-  { name: "متجر إلكترونيات (A2M)", result: "+30% مبيعات", detail: "تحسين صفحات المنتج وحملات Google Ads فعّالة." },
-  { name: "متجر منتجات جمال (A2M)", result: "+25% مبيعات أونلاين", detail: "إدارة سيو وPPC حسّنت الـROI." },
+  { name: "متجر فاشون (A2M)", result: "+40% ترافيك · +35% مبيعات", detail: "تحسين SEO التقني والمحتوى والتحويل لبراند فاشون رائد." },
+  { name: "متجر إلكترونيات (A2M)", result: "+30% مبيعات", detail: "تحسين بنية المتجر وصفحات المنتجات ومسارات التحويل العضوية." },
+  { name: "متجر منتجات جمال (A2M)", result: "+25% مبيعات أونلاين", detail: "SEO واستراتيجية محتوى وتحسين تحويل حسّنوا العائد العضوي." },
   { name: "سيو محلي لمطعم", result: "+25% زيارات", detail: "تحسين الترتيب المحلي عبر Google My Business." },
   { name: "منصة رياضة إلكترونية", result: "+50% ترافيك", detail: "Structured data وتحسين للموبايل." },
 ];
 
 const skills = [
+  "استراتيجية واستشارات SEO",
   "بحث الكلمات المفتاحية",
   "On-Page & Off-Page SEO",
-  "إعلانات مدفوعة (Google & Facebook)",
-  "Media Buying",
-  "إدارة حملات Meta Ads",
+  "Programmatic & International SEO",
+  "تسويق المحتوى والكتابة",
+  "استراتيجية المحتوى والتخطيط التحريري",
+  "AI SEO وتحسين البحث بالذكاء الاصطناعي",
+  "عمليات المحتوى بالذكاء الاصطناعي واستراتيجية الـPrompts",
+  "AEO وGEO",
+  "استراتيجية التسويق الرقمي",
+  "أتمتة التسويق وn8n",
+  "CRM وتوليد العملاء المحتملين",
+  "استراتيجية Email Marketing",
+  "Digital PR وبناء الروابط",
+  "تحليلات GA4 وSearch Console",
+  "تقارير Looker Studio",
   "تحسين معدل التحويل",
   "سيو التجارة الإلكترونية",
   "نمو المتاجر الإلكترونية",
@@ -254,7 +269,7 @@ function HomeAr() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs font-mono text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-              متاح لمشاريع SEO وMedia Buying والتجارة الإلكترونية
+              متاح لمشاريع SEO والتسويق الرقمي وAI والتجارة الإلكترونية
             </div>
             <h1 className="mt-6 text-4xl font-semibold leading-[1.2] md:text-5xl lg:text-6xl">
               <span className="text-gradient">سيو يتصدر</span>
@@ -262,7 +277,7 @@ function HomeAr() {
               الترتيب، الترافيك، والمبيعات.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              أنا عمرو البصيلي — خبير SEO وMedia Buying ونمو التجارة الإلكترونية من القاهرة، خبرة{" "}
+              أنا عمرو البصيلي — خبير SEO والتسويق الرقمي ونمو AI من القاهرة، خبرة{" "}
               <span className="text-foreground">7 سنين</span> في تحويل الزيارات إلى عملاء ومبيعات. مؤسس
               A2M وصاحب خبرة في <span className="text-foreground">+50 مشروع</span> في التجارة الإلكترونية وSaaS وAI.
             </p>
@@ -287,7 +302,7 @@ function HomeAr() {
                 </div>
                 <div className="p-4">
                   <div className="text-muted-foreground">التخصص</div>
-                  <div className="mt-1 text-foreground">سيو · PPC · متاجر</div>
+                  <div className="mt-1 text-foreground">سيو · AI · متاجر</div>
                 </div>
               </div>
             </div>
@@ -369,7 +384,7 @@ function HomeAr() {
 
       <section id="skills" className="border-t border-border bg-surface/30">
         <div className="mx-auto max-w-6xl px-6 py-20">
-          <SectionHeader eyebrow="المهارات والأدوات" title="عدة كاملة للسيو وMedia Buying والتجارة الإلكترونية" />
+          <SectionHeader eyebrow="المهارات والأدوات" title="عدة كاملة للسيو والتسويق الرقمي وAI" />
           <div className="mt-8 flex flex-wrap gap-2">
             {skills.map((s) => (
               <span key={s} className="rounded-md border border-border bg-surface px-3 py-2 font-mono text-xs">
@@ -390,7 +405,7 @@ function HomeAr() {
                   مستعد تكبّر ترافيكك ومبيعاتك؟
                 </h2>
                 <p className="mt-4 max-w-lg text-muted-foreground">
-                  سواء محتاج أوديت SEO تقني، خطة نمو لمتجرك، أو حملة Media Buying — نرسم مع بعض أسرع طريق لزيارات مؤهلة ومبيعات مربحة.
+                  سواء محتاج أوديت SEO تقني، استراتيجية محتوى وAI، أو خطة نمو لمتجرك — نرسم مع بعض أسرع طريق لزيارات مؤهلة ومبيعات مربحة.
                 </p>
               </div>
               <div className="space-y-3">
@@ -406,7 +421,7 @@ function HomeAr() {
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-muted-foreground md:flex-row">
           <div>© {new Date().getFullYear()} عمرو البصيلي — جميع الحقوق محفوظة.</div>
-          <div className="font-mono text-xs">SEO · Media Buying · E-commerce Growth · Cairo</div>
+          <div className="font-mono text-xs">SEO · Digital Marketing · AI Growth · E-commerce · Cairo</div>
         </div>
       </footer>
     </div>

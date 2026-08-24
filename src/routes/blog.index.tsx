@@ -4,14 +4,14 @@ import { blogPosts } from "@/lib/blog-posts";
 export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
-      { title: "مدونة عمرو البصيلي — SEO وMedia Buying ونمو التجارة الإلكترونية" },
+      { title: "مدونة عمرو البصيلي — SEO والتسويق الرقمي وAI Growth" },
       {
         name: "description",
         content:
-          "مقالات عملية من عمرو البصيلي عن SEO، Media Buying، Google Ads، Meta Ads، سيو المتاجر الإلكترونية ونمو المبيعات.",
+          "مقالات عملية من عمرو البصيلي عن SEO، التسويق بالمحتوى، AI SEO، AEO/GEO، سيو المتاجر الإلكترونية ونمو المبيعات.",
       },
-      { property: "og:title", content: "مدونة عمرو البصيلي — SEO وMedia Buying ونمو التجارة الإلكترونية" },
-      { property: "og:description", content: "أدلة عملية بالعربي والإنجليزي عن SEO والإعلانات المدفوعة ونمو المتاجر." },
+      { property: "og:title", content: "مدونة عمرو البصيلي — SEO والتسويق الرقمي وAI Growth" },
+      { property: "og:description", content: "أدلة عملية بالعربي والإنجليزي عن SEO والتسويق الرقمي والذكاء الاصطناعي ونمو المتاجر." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://amrelbusaily.vercel.app/blog" },
       { property: "og:locale", content: "ar_EG" },
@@ -55,10 +55,10 @@ function BlogIndex() {
       <section className="mx-auto max-w-4xl px-6 py-20">
         <div className="font-mono text-xs uppercase tracking-widest text-primary">المدونة</div>
         <h1 className="mt-3 text-4xl font-semibold md:text-5xl">
-          مقالات SEO وMedia Buying ونمو التجارة الإلكترونية بالعربي والإنجليزي
+          مقالات SEO والتسويق الرقمي وAI ونمو التجارة الإلكترونية بالعربي والإنجليزي
         </h1>
         <p className="mt-4 max-w-2xl text-muted-foreground">
-          أدلة عملية عن السيو التقني، سيو المتاجر، Media Buying، الإعلانات المدفوعة، وأتمتة النمو —
+          أدلة عملية عن السيو التقني، السيو المحلي، سيو المتاجر، استراتيجية المحتوى، AI SEO، AEO/GEO وأتمتة النمو —
           مكتوبة عشان تساعدك تجيب زيارات مؤهلة وعملاء ومبيعات.
         </p>
 
