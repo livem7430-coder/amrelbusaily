@@ -36,6 +36,7 @@ import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as BlogArRouteImport } from './routes/blog.ar'
 import { Route as BlogContentPlanRouteImport } from './routes/blog.content-plan'
 import { Route as BlogEnRouteImport } from './routes/blog.en'
+import { Route as BlogInternationalContentPlanRouteImport } from './routes/blog.international-content-plan'
 import { Route as CourseIndexRouteImport } from './routes/course.index'
 import { Route as CourseLessonIdRouteImport } from './routes/course.$lessonId'
 import { Route as ArCourseIndexRouteImport } from './routes/ar.course.index'
@@ -176,6 +177,12 @@ const BlogEnRoute = BlogEnRouteImport.update({
   path: '/blog/en',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogInternationalContentPlanRoute =
+  BlogInternationalContentPlanRouteImport.update({
+    id: '/blog/international-content-plan',
+    path: '/blog/international-content-plan',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const CourseIndexRoute = CourseIndexRouteImport.update({
   id: '/course/',
   path: '/course/',
@@ -223,6 +230,7 @@ export interface FileRoutesByFullPath {
   '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
   '/blog/en': typeof BlogEnRoute
+  '/blog/international-content-plan': typeof BlogInternationalContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
   '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
@@ -255,6 +263,7 @@ export interface FileRoutesByTo {
   '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
   '/blog/en': typeof BlogEnRoute
+  '/blog/international-content-plan': typeof BlogInternationalContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
   '/ar': typeof ArIndexRoute
   '/blog': typeof BlogIndexRoute
@@ -289,6 +298,7 @@ export interface FileRoutesById {
   '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
   '/blog/en': typeof BlogEnRoute
+  '/blog/international-content-plan': typeof BlogInternationalContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
   '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
@@ -324,6 +334,7 @@ export interface FileRouteTypes {
     | '/blog/ar'
     | '/blog/content-plan'
     | '/blog/en'
+    | '/blog/international-content-plan'
     | '/course/$lessonId'
     | '/ar/'
     | '/blog/'
@@ -356,6 +367,7 @@ export interface FileRouteTypes {
     | '/blog/ar'
     | '/blog/content-plan'
     | '/blog/en'
+    | '/blog/international-content-plan'
     | '/course/$lessonId'
     | '/ar'
     | '/blog'
@@ -389,6 +401,7 @@ export interface FileRouteTypes {
     | '/blog/ar'
     | '/blog/content-plan'
     | '/blog/en'
+    | '/blog/international-content-plan'
     | '/course/$lessonId'
     | '/ar/'
     | '/blog/'
@@ -414,6 +427,7 @@ export interface RootRouteChildren {
   BlogArRoute: typeof BlogArRoute
   BlogContentPlanRoute: typeof BlogContentPlanRoute
   BlogEnRoute: typeof BlogEnRoute
+  BlogInternationalContentPlanRoute: typeof BlogInternationalContentPlanRoute
   CourseLessonIdRoute: typeof CourseLessonIdRoute
   BlogIndexRoute: typeof BlogIndexRoute
   CourseIndexRoute: typeof CourseIndexRoute
@@ -610,6 +624,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogEnRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/international-content-plan': {
+      id: '/blog/international-content-plan'
+      path: '/blog/international-content-plan'
+      fullPath: '/blog/international-content-plan'
+      preLoaderRoute: typeof BlogInternationalContentPlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/course/': {
       id: '/course/'
       path: '/course'
@@ -690,6 +711,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogArRoute: BlogArRoute,
   BlogContentPlanRoute: BlogContentPlanRoute,
   BlogEnRoute: BlogEnRoute,
+  BlogInternationalContentPlanRoute: BlogInternationalContentPlanRoute,
   CourseLessonIdRoute: CourseLessonIdRoute,
   BlogIndexRoute: BlogIndexRoute,
   CourseIndexRoute: CourseIndexRoute,
