@@ -43,9 +43,11 @@ import { Route as BlogEnRouteImport } from './routes/blog.en'
 import { Route as BlogInternationalContentPlanRouteImport } from './routes/blog.international-content-plan'
 import { Route as CourseIndexRouteImport } from './routes/course.index'
 import { Route as CourseLessonIdRouteImport } from './routes/course.$lessonId'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as ArCourseIndexRouteImport } from './routes/ar.course.index'
 import { Route as ArCourseLessonIdRouteImport } from './routes/ar.course.$lessonId'
+import { Route as ArServicesIndexRouteImport } from './routes/ar.services.index'
 import { Route as ArServicesSlugRouteImport } from './routes/ar.services.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -219,6 +221,11 @@ const CourseLessonIdRoute = CourseLessonIdRouteImport.update({
   path: '/course/$lessonId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -233,6 +240,11 @@ const ArCourseLessonIdRoute = ArCourseLessonIdRouteImport.update({
   id: '/course/$lessonId',
   path: '/course/$lessonId',
   getParentRoute: () => ArRoute,
+} as any)
+const ArServicesIndexRoute = ArServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ArServicesRoute,
 } as any)
 const ArServicesSlugRoute = ArServicesSlugRouteImport.update({
   id: '/$slug',
@@ -276,9 +288,11 @@ export interface FileRoutesByFullPath {
   '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/course/': typeof CourseIndexRoute
+  '/services/': typeof ServicesIndexRoute
   '/ar/course/$lessonId': typeof ArCourseLessonIdRoute
   '/ar/services/$slug': typeof ArServicesSlugRoute
   '/ar/course/': typeof ArCourseIndexRoute
+  '/ar/services/': typeof ArServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -292,7 +306,6 @@ export interface FileRoutesByTo {
   '/seo-expert': typeof SeoExpertRoute
   '/seo-geo-eli5': typeof SeoGeoEli5Route
   '/seo-services': typeof SeoServicesRoute
-  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
@@ -304,7 +317,6 @@ export interface FileRoutesByTo {
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
   '/ar/seo-services': typeof ArSeoServicesRoute
-  '/ar/services': typeof ArServicesRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/ar': typeof BlogArRoute
   '/blog/content-plan': typeof BlogContentPlanRoute
@@ -315,9 +327,11 @@ export interface FileRoutesByTo {
   '/ar': typeof ArIndexRoute
   '/blog': typeof BlogIndexRoute
   '/course': typeof CourseIndexRoute
+  '/services': typeof ServicesIndexRoute
   '/ar/course/$lessonId': typeof ArCourseLessonIdRoute
   '/ar/services/$slug': typeof ArServicesSlugRoute
   '/ar/course': typeof ArCourseIndexRoute
+  '/ar/services': typeof ArServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -356,9 +370,11 @@ export interface FileRoutesById {
   '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/course/': typeof CourseIndexRoute
+  '/services/': typeof ServicesIndexRoute
   '/ar/course/$lessonId': typeof ArCourseLessonIdRoute
   '/ar/services/$slug': typeof ArServicesSlugRoute
   '/ar/course/': typeof ArCourseIndexRoute
+  '/ar/services/': typeof ArServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -398,9 +414,11 @@ export interface FileRouteTypes {
     | '/ar/'
     | '/blog/'
     | '/course/'
+    | '/services/'
     | '/ar/course/$lessonId'
     | '/ar/services/$slug'
     | '/ar/course/'
+    | '/ar/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -414,7 +432,6 @@ export interface FileRouteTypes {
     | '/seo-expert'
     | '/seo-geo-eli5'
     | '/seo-services'
-    | '/services'
     | '/sitemap.xml'
     | '/ar/content-seo'
     | '/ar/content-strategy'
@@ -426,7 +443,6 @@ export interface FileRouteTypes {
     | '/ar/seo-expert'
     | '/ar/seo-geo-eli5'
     | '/ar/seo-services'
-    | '/ar/services'
     | '/blog/$slug'
     | '/blog/ar'
     | '/blog/content-plan'
@@ -437,9 +453,11 @@ export interface FileRouteTypes {
     | '/ar'
     | '/blog'
     | '/course'
+    | '/services'
     | '/ar/course/$lessonId'
     | '/ar/services/$slug'
     | '/ar/course'
+    | '/ar/services'
   id:
     | '__root__'
     | '/'
@@ -477,9 +495,11 @@ export interface FileRouteTypes {
     | '/ar/'
     | '/blog/'
     | '/course/'
+    | '/services/'
     | '/ar/course/$lessonId'
     | '/ar/services/$slug'
     | '/ar/course/'
+    | '/ar/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -747,6 +767,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CourseLessonIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/services/$slug': {
       id: '/services/$slug'
       path: '/$slug'
@@ -768,6 +795,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArCourseLessonIdRouteImport
       parentRoute: typeof ArRoute
     }
+    '/ar/services/': {
+      id: '/ar/services/'
+      path: '/'
+      fullPath: '/ar/services/'
+      preLoaderRoute: typeof ArServicesIndexRouteImport
+      parentRoute: typeof ArServicesRoute
+    }
     '/ar/services/$slug': {
       id: '/ar/services/$slug'
       path: '/$slug'
@@ -780,10 +814,12 @@ declare module '@tanstack/react-router' {
 
 interface ArServicesRouteChildren {
   ArServicesSlugRoute: typeof ArServicesSlugRoute
+  ArServicesIndexRoute: typeof ArServicesIndexRoute
 }
 
 const ArServicesRouteChildren: ArServicesRouteChildren = {
   ArServicesSlugRoute: ArServicesSlugRoute,
+  ArServicesIndexRoute: ArServicesIndexRoute,
 }
 
 const ArServicesRouteWithChildren = ArServicesRoute._addFileChildren(
@@ -828,10 +864,12 @@ const ArRouteWithChildren = ArRoute._addFileChildren(ArRouteChildren)
 
 interface ServicesRouteChildren {
   ServicesSlugRoute: typeof ServicesSlugRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesSlugRoute: ServicesSlugRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 
 const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
