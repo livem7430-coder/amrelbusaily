@@ -28,6 +28,16 @@ import {
   SeoServicesSaudiAr,
   SeoServicesSaudiEn,
 } from "@/content/geo-seo-articles";
+import {
+  SeoServicesUaeAr,
+  SeoServicesUaeEn,
+  BestSeoExpertUaeAr,
+  BestSeoExpertUaeEn,
+  SeoServicesKuwaitAr,
+  SeoServicesKuwaitEn,
+  SeoServicesQatarAr,
+  SeoServicesQatarEn,
+} from "@/content/gulf-seo-articles";
 
 function TechnicalSEO() {
   return (
@@ -451,4 +461,12 @@ export const articles: Record<string, ComponentType> = {
   "seo-services-egypt-en": SeoServicesEgyptEn,
   "seo-services-saudi-ar": SeoServicesSaudiAr,
   "seo-services-saudi-en": SeoServicesSaudiEn,
+  "seo-services-uae-ar": SeoServicesUaeAr,
+  "seo-services-uae-en": SeoServicesUaeEn,
+  "best-seo-expert-uae-ar": BestSeoExpertUaeAr,
+  "best-seo-expert-uae-en": BestSeoExpertUaeEn,
+  "seo-services-kuwait-ar": SeoServicesKuwaitAr,
+  "seo-services-kuwait-en": SeoServicesKuwaitEn,
+  "seo-services-qatar-ar": SeoServicesQatarAr,
+  "seo-services-qatar-en": SeoServicesQatarEn,
 };
