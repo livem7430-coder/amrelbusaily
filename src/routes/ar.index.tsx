@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
 import { Portrait } from "@/components/Portrait";
+import { ResultsShowcase } from "@/components/ResultsShowcase";
 
 export const Route = createFileRoute("/ar/")({
   head: () => ({
@@ -383,6 +384,8 @@ function HomeAr() {
           </div>
         </div>
       </section>
+
+      <ResultsShowcase lang="ar" />
 
       <section id="work" className="border-t border-border bg-surface/30">
         <div className="mx-auto max-w-6xl px-6 py-20">
