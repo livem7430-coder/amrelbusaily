@@ -7,6 +7,34 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  vite: {
+    build: {
+      rolldownOptions: {
+        output: {
+          codeSplitting: {
+            groups: [
+              {
+                name: "article-content",
+                test: /[\\/]src[\\/]content[\\/]/,
+                priority: 20,
+              },
+              {
+                name: "seo-course",
+                test: /[\\/]src[\\/]lib[\\/]seo-course\./,
+                priority: 20,
+              },
+              {
+                name: "vendor",
+                test: /[\\/]node_modules[\\/]/,
+                minShareCount: 2,
+                priority: 1,
+              },
+            ],
+          },
+        },
+      },
+    },
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
