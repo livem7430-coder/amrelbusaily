@@ -6,27 +6,27 @@ type ResultsShowcaseProps = {
 
 const watermarkedImages = [
   {
-    src: "/case-studies/traffic-summary-amr-elbusaily.png",
+    src: "/case-studies/traffic-summary-amr-elbusaily.webp",
     alt: "Arabic analytics summary showing 2.09 million audience and 254 thousand visits with Amr Elbusaily watermark",
     className: "md:col-span-2",
   },
   {
-    src: "/case-studies/performance-trend-amr-elbusaily.png",
+    src: "/case-studies/performance-trend-amr-elbusaily.webp",
     alt: "Arabic search performance chart showing 2.14 thousand clicks, 22.1 thousand impressions, 9.7 percent CTR and 8.4 average position with Amr Elbusaily watermark",
     className: "md:col-span-2",
   },
   {
-    src: "/case-studies/search-console-amr-elbusaily.png",
+    src: "/case-studies/search-console-amr-elbusaily.webp",
     alt: "Arabic Search Console overview showing 202 thousand users, 1.5 million events and 389 thousand views with Amr Elbusaily watermark",
     className: "md:col-span-2",
   },
   {
-    src: "/case-studies/analytics-overview-amr-elbusaily.png",
+    src: "/case-studies/analytics-overview-amr-elbusaily.webp",
     alt: "Arabic analytics overview showing 511 thousand returning users and 518 thousand new users with Amr Elbusaily watermark",
     className: "md:col-span-2",
   },
   {
-    src: "/case-studies/seo-readiness-amr-elbusaily.png",
+    src: "/case-studies/seo-readiness-amr-elbusaily.webp",
     alt: "SEO readiness checklist and analytics card showing 142701 views and 131103 people with Amr Elbusaily watermark",
     className: "md:col-span-1 md:max-w-[390px]",
   },
@@ -129,7 +129,7 @@ export function ResultsShowcase({ lang }: ResultsShowcaseProps) {
           <div className="grid gap-4 sm:grid-cols-2">
             {watermarkedImages.map((image) => (
               <figure key={image.src} className={`overflow-hidden rounded-xl border border-border bg-surface ${image.className}`}>
-                <img src={image.src} alt={image.alt} loading="lazy" className="h-auto w-full object-cover" />
+                <img src={image.src} alt={image.alt} loading="lazy" decoding="async" className="h-auto w-full object-cover" />
               </figure>
             ))}
           </div>
