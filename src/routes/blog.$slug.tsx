@@ -1,12 +1,14 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { articleHead } from "@/components/ArticleLayout";
 import { blogPosts } from "@/lib/blog-posts";
+import { getArticleContent } from "@/lib/article-content.server";
 
 export const Route = createFileRoute("/blog/$slug")({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
     const post = blogPosts.find((p) => p.slug === params.slug);
     if (!post) throw notFound();
-    return { post };
+    const article = await getArticleContent({ data: params.slug });
+    return { post, article };
   },
   head: ({ params, loaderData }) => {
     if (!loaderData) {

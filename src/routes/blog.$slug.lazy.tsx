@@ -1,17 +1,12 @@
 import { ArticleLayout } from "@/components/ArticleLayout";
-import { use } from "react";
 import { createLazyFileRoute } from "@tanstack/react-router";
-
-const articlesPromise = import("@/content/articles");
 
 export const Route = createLazyFileRoute("/blog/$slug")({
   component: BlogPost,
 });
 
 function BlogPost() {
-  const { post } = Route.useLoaderData();
-  const { articles } = use(articlesPromise);
-  const Content = articles[post.slug];
+  const { post, article } = Route.useLoaderData();
 
   return (
     <ArticleLayout
@@ -23,7 +18,7 @@ function BlogPost() {
       dir={post.lang === "ar" ? "rtl" : "ltr"}
       faq={post.faq}
     >
-      <Content />
+      <div dangerouslySetInnerHTML={{ __html: article.html }} />
     </ArticleLayout>
   );
 }
