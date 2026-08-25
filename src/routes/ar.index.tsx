@@ -30,6 +30,7 @@ export const Route = createFileRoute("/ar/")({
       { rel: "canonical", href: "https://amrelbusaily.vercel.app/ar" },
       { rel: "alternate", hrefLang: "ar", href: "https://amrelbusaily.vercel.app/ar" },
       { rel: "alternate", hrefLang: "en", href: "https://amrelbusaily.vercel.app/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://amrelbusaily.vercel.app/" },
     ],
     scripts: [
       {
@@ -42,7 +43,6 @@ export const Route = createFileRoute("/ar/")({
           url: "https://amrelbusaily.vercel.app/ar",
           image: `https://amrelbusaily.vercel.app${amrPortrait.url}`,
           jobTitle: "خبير SEO وتسويق رقمي وAI Growth",
-          address: { "@type": "PostalAddress", addressLocality: "القاهرة", addressCountry: "EG" },
           knowsAbout: [
             "تحسين محركات البحث",
             "السيو التقني",
@@ -183,7 +183,7 @@ const experience = [
   {
     role: "مؤسس وخبير SEO",
     org: "A2M Digital Marketing Agency",
-    place: "القاهرة",
+    place: "عن بُعد أولًا",
     period: "يناير 2022 — حتى الآن",
     points: [
       "تأسيس A2M المتخصصة في سيو التجارة الإلكترونية وتسويق المحتوى والنمو الرقمي عبر +50 مشروع.",
@@ -193,7 +193,7 @@ const experience = [
   },
   {
     role: "خبير SEO أول",
-    org: "القاهرة",
+    org: "استشارات مستقلة",
     place: "",
     period: "يناير 2023 — حتى الآن",
     points: [
@@ -203,7 +203,7 @@ const experience = [
   {
     role: "متخصص SEO",
     org: "Expidia Digital",
-    place: "القاهرة",
+    place: "عن بُعد أولًا",
     period: "يناير 2020 — حتى الآن",
     points: [
       "قيادة استراتيجيات سيو لأكثر من 15 موقع بنمو 35% ترافيك عضوي وتحسين ترتيب كلمات تنافسية.",
@@ -494,7 +494,7 @@ function HomeAr() {
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-muted-foreground md:flex-row">
           <div>© {new Date().getFullYear()} عمرو البصيلي — جميع الحقوق محفوظة.</div>
-          <div className="font-mono text-xs">SEO · Digital Marketing · AI Growth · E-commerce · Cairo</div>
+          <div className="font-mono text-xs">SEO · Digital Marketing · AI Growth · E-commerce</div>
         </div>
       </footer>
     </div>

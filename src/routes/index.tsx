@@ -42,7 +42,6 @@ export const Route = createFileRoute("/")({
           url: "https://amrelbusaily.vercel.app/",
           image: `https://amrelbusaily.vercel.app${amrPortrait.url}`,
           jobTitle: "SEO & Digital Marketing Specialist",
-          address: { "@type": "PostalAddress", addressLocality: "Cairo", addressCountry: "EG" },
           knowsAbout: [
             "Search Engine Optimization",
             "Technical SEO",
@@ -189,7 +188,7 @@ const experience = [
   {
     role: "Founder & SEO Specialist",
     org: "A2M Digital Marketing Agency",
-    place: "Cairo",
+    place: "Remote-first",
     period: "Jan 2022 — Present",
     points: [
       "Founded and led A2M, focused on e-commerce SEO, content marketing and digital growth across 50+ projects.",
@@ -200,7 +199,7 @@ const experience = [
   },
   {
     role: "Senior SEO Specialist",
-    org: "Cairo",
+    org: "Independent consulting",
     place: "",
     period: "Jan 2023 — Present",
     points: [
@@ -211,7 +210,7 @@ const experience = [
   {
     role: "SEO Specialist",
     org: "Expidia Digital",
-    place: "Cairo",
+    place: "Remote-first",
     period: "Jan 2020 — Present",
     points: [
       "Led SEO strategies for 15+ client websites, achieving 35% growth in organic traffic and improved rankings for competitive keywords.",
@@ -592,7 +591,7 @@ function Home() {
               </div>
               <div className="space-y-3">
                 <ContactRow label="Email" value="amreelbasily@gmail.com" href="mailto:amreelbasily@gmail.com" />
-                <ContactRow label="Location" value="Cairo, Egypt" />
+                <ContactRow label="Delivery model" value="Remote-first" />
               </div>
             </div>
           </div>
@@ -603,7 +602,7 @@ function Home() {
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-muted-foreground md:flex-row">
           <div>© {new Date().getFullYear()} Amr Elbusaily. All rights reserved.</div>
-          <div className="font-mono text-xs">SEO · Digital Marketing · AI Growth · E-commerce · Cairo</div>
+          <div className="font-mono text-xs">SEO · Digital Marketing · AI Growth · E-commerce</div>
         </div>
       </footer>
     </div>
