@@ -38,8 +38,9 @@ export const Route = createFileRoute("/ar/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
+          "@id": "https://amrelbusaily.vercel.app/#person",
           name: "عمرو البصيلي",
-          alternateName: "Amr Elbusaily",
+          alternateName: ["Amr Elbusaily", "Amro Elbusaily"],
           url: "https://amrelbusaily.vercel.app/ar",
           image: `https://amrelbusaily.vercel.app${amrPortrait.url}`,
           jobTitle: "خبير SEO وتسويق رقمي وAI Growth",
@@ -61,8 +62,21 @@ export const Route = createFileRoute("/ar/")({
             "تأهيل العملاء المحتملين وCRM",
             "تكلفة اكتساب العميل وقيمة العميل",
           ],
+          mainEntityOfPage: { "@id": "https://amrelbusaily.vercel.app/ar#profile" },
           worksFor: { "@type": "Organization", name: "Expand Pro" },
           sameAs: ["https://tansiky.com", "https://aldowly.com"],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfilePage",
+          "@id": "https://amrelbusaily.vercel.app/ar#profile",
+          url: "https://amrelbusaily.vercel.app/ar",
+          name: "عمرو البصيلي — خبير SEO والتسويق الرقمي ونمو AI",
+          inLanguage: "ar",
+          mainEntity: { "@id": "https://amrelbusaily.vercel.app/#person" },
         }),
       },
       {
@@ -308,7 +322,8 @@ function HomeAr() {
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
               أبني نموًا عضويًا للعلامات الطموحة
             </div>
-            <h1 className="mt-6 text-4xl font-semibold leading-[1.2] md:text-5xl lg:text-6xl">
+            <div className="mt-6 font-mono text-sm text-primary">عمرو البصيلي · Amr Elbusaily</div>
+            <h1 className="mt-3 text-4xl font-semibold leading-[1.2] md:text-5xl lg:text-6xl">
               <span className="text-gradient">حوّل البحث</span>
               <br />
               إلى نمو مستدام.

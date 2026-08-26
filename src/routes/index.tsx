@@ -38,7 +38,9 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
+          "@id": "https://amrelbusaily.vercel.app/#person",
           name: "Amr Elbusaily",
+          alternateName: ["عمرو البصيلي", "Amro Elbusaily"],
           url: "https://amrelbusaily.vercel.app/",
           image: `https://amrelbusaily.vercel.app${amrPortrait.url}`,
           jobTitle: "SEO & Digital Marketing Specialist",
@@ -59,12 +61,25 @@ export const Route = createFileRoute("/")({
             "CRM and Lead Qualification",
             "Customer Acquisition Cost and Lifetime Value",
           ],
+          mainEntityOfPage: { "@id": "https://amrelbusaily.vercel.app/#profile" },
           worksFor: { "@type": "Organization", name: "Expand Pro" },
           alumniOf: [
             { "@type": "CollegeOrUniversity", name: "Cairo University" },
             { "@type": "CollegeOrUniversity", name: "Zagazig University" },
           ],
           sameAs: ["https://tansiky.com", "https://aldowly.com"],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfilePage",
+          "@id": "https://amrelbusaily.vercel.app/#profile",
+          url: "https://amrelbusaily.vercel.app/",
+          name: "Amr Elbusaily — SEO, Digital Marketing & AI Growth",
+          inLanguage: "en",
+          mainEntity: { "@id": "https://amrelbusaily.vercel.app/#person" },
         }),
       },
       {
@@ -365,7 +380,8 @@ function Home() {
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
               Building organic growth for ambitious brands
             </div>
-            <h1 className="mt-6 text-4xl font-semibold leading-[1.05] md:text-5xl lg:text-6xl">
+            <div className="mt-6 font-mono text-sm text-primary">Amr Elbusaily · عمرو البصيلي</div>
+            <h1 className="mt-3 text-4xl font-semibold leading-[1.05] md:text-5xl lg:text-6xl">
               <span className="text-gradient">Turn search into</span>
               <br />
               sustainable growth.

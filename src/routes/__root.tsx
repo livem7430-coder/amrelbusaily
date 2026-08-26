@@ -84,12 +84,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Amr Elbusaily — SEO, digital marketing and AI growth specialist. 7 years and 50+ projects driving rankings, organic traffic and revenue for e-commerce, SaaS and AI products.",
       },
-      { name: "author", content: "Amr Elbusaily" },
+      { name: "author", content: "Amr Elbusaily (عمرو البصيلي)" },
       {
         name: "google-site-verification",
         content: "61FD79IwGZd4_3w-GK31LLqE435PGNQQcUzvxCOWnFc",
       },
-      { name: "keywords", content: "Amr Elbusaily, SEO specialist Cairo, digital marketing Egypt, AI SEO, technical SEO, local SEO, e-commerce SEO, content marketing, AEO, GEO, marketing automation" },
+      { name: "keywords", content: "Amr Elbusaily, عمرو البصيلي, Amro Elbusaily, SEO specialist, SEO expert, digital marketing, AI SEO, technical SEO, local SEO, e-commerce SEO, content marketing, AEO, GEO, marketing automation" },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
       { property: "og:site_name", content: "Amr Elbusaily" },
       { property: "og:type", content: "website" },
