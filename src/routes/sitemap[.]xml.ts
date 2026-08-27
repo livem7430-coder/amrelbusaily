@@ -35,6 +35,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/ar/international-seo", changefreq: "monthly", priority: "0.9", lastmod: today },
           { path: "/content-strategy", changefreq: "monthly", priority: "0.8", lastmod: today },
           { path: "/ar/content-strategy", changefreq: "monthly", priority: "0.8", lastmod: today },
+          { path: "/ar/ai-seo", changefreq: "monthly", priority: "0.9", lastmod: today },
           ...SERVICE_DETAIL_SLUGS.flatMap((slug) => [
             { path: `/services/${slug}`, changefreq: "monthly", priority: "0.8", lastmod: today },
             { path: `/ar/services/${slug}`, changefreq: "monthly", priority: "0.8", lastmod: today },

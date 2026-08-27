@@ -24,6 +24,7 @@ import { Route as SeoServicesRouteImport } from './routes/seo-services'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ArIndexRouteImport } from './routes/ar.index'
+import { Route as ArAiSeoRouteImport } from './routes/ar.ai-seo'
 import { Route as ArContentSeoRouteImport } from './routes/ar.content-seo'
 import { Route as ArContentStrategyRouteImport } from './routes/ar.content-strategy'
 import { Route as ArFreeConsultationRouteImport } from './routes/ar.free-consultation'
@@ -123,6 +124,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const ArIndexRoute = ArIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArAiSeoRoute = ArAiSeoRouteImport.update({
+  id: '/ai-seo',
+  path: '/ai-seo',
   getParentRoute: () => ArRoute,
 } as any)
 const ArContentSeoRoute = ArContentSeoRouteImport.update({
@@ -267,6 +273,7 @@ export interface FileRoutesByFullPath {
   '/seo-services': typeof SeoServicesRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
@@ -307,6 +314,7 @@ export interface FileRoutesByTo {
   '/seo-geo-eli5': typeof SeoGeoEli5Route
   '/seo-services': typeof SeoServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
@@ -349,6 +357,7 @@ export interface FileRoutesById {
   '/seo-services': typeof SeoServicesRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
@@ -393,6 +402,7 @@ export interface FileRouteTypes {
     | '/seo-services'
     | '/services'
     | '/sitemap.xml'
+    | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
     | '/ar/free-consultation'
@@ -433,6 +443,7 @@ export interface FileRouteTypes {
     | '/seo-geo-eli5'
     | '/seo-services'
     | '/sitemap.xml'
+    | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
     | '/ar/free-consultation'
@@ -474,6 +485,7 @@ export interface FileRouteTypes {
     | '/seo-services'
     | '/services'
     | '/sitemap.xml'
+    | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
     | '/ar/free-consultation'
@@ -632,6 +644,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/ar/'
       preLoaderRoute: typeof ArIndexRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/ai-seo': {
+      id: '/ar/ai-seo'
+      path: '/ai-seo'
+      fullPath: '/ar/ai-seo'
+      preLoaderRoute: typeof ArAiSeoRouteImport
       parentRoute: typeof ArRoute
     }
     '/ar/content-seo': {
@@ -827,6 +846,7 @@ const ArServicesRouteWithChildren = ArServicesRoute._addFileChildren(
 )
 
 interface ArRouteChildren {
+  ArAiSeoRoute: typeof ArAiSeoRoute
   ArContentSeoRoute: typeof ArContentSeoRoute
   ArContentStrategyRoute: typeof ArContentStrategyRoute
   ArFreeConsultationRoute: typeof ArFreeConsultationRoute
@@ -844,6 +864,7 @@ interface ArRouteChildren {
 }
 
 const ArRouteChildren: ArRouteChildren = {
+  ArAiSeoRoute: ArAiSeoRoute,
   ArContentSeoRoute: ArContentSeoRoute,
   ArContentStrategyRoute: ArContentStrategyRoute,
   ArFreeConsultationRoute: ArFreeConsultationRoute,
