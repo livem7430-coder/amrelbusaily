@@ -1,5 +1,6 @@
 import { longFormBlogPosts } from "@/content/long-form-metadata-batch";
 import { aiDigitalProductPosts } from "@/content/ai-digital-products-metadata";
+import { aiEcommerce100Posts } from "@/content/ai-ecommerce-100-metadata";
 
 export interface BlogPost {
   slug: string;
@@ -974,4 +975,5 @@ export const blogPosts: BlogPost[] = [
   },
   ...longFormBlogPosts,
   ...aiDigitalProductPosts,
+  ...aiEcommerce100Posts,
 ];

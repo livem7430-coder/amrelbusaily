@@ -79,6 +79,7 @@ import {
 } from "@/content/technical-foundations-articles";
 import { longFormArticleRegistry } from "@/content/long-form-content-batch";
 import { aiDigitalProductArticles } from "@/content/ai-digital-products-articles";
+import { aiEcommerce100ArticleRegistry } from "@/content/ai-ecommerce-100-articles";
 
 function TechnicalSEO() {
   return (
@@ -546,4 +547,5 @@ export const articles: Record<string, ComponentType> = {
   "image-seo-en": ImageSeoEn,
   ...longFormArticleRegistry,
   ...aiDigitalProductArticles,
+  ...aiEcommerce100ArticleRegistry,
 };
