@@ -18,6 +18,7 @@ import { Route as FreeConsultationRouteImport } from './routes/free-consultation
 import { Route as GrowthMarketingRouteImport } from './routes/growth-marketing'
 import { Route as InternationalSeoRouteImport } from './routes/international-seo'
 import { Route as KeywordResearchRouteImport } from './routes/keyword-research'
+import { Route as OffersRouteImport } from './routes/offers'
 import { Route as SeoCompanyRouteImport } from './routes/seo-company'
 import { Route as SeoExpertRouteImport } from './routes/seo-expert'
 import { Route as SeoGeoEli5RouteImport } from './routes/seo-geo-eli5'
@@ -33,6 +34,7 @@ import { Route as ArFreeConsultationRouteImport } from './routes/ar.free-consult
 import { Route as ArGrowthMarketingRouteImport } from './routes/ar.growth-marketing'
 import { Route as ArInternationalSeoRouteImport } from './routes/ar.international-seo'
 import { Route as ArKeywordResearchRouteImport } from './routes/ar.keyword-research'
+import { Route as ArOffersRouteImport } from './routes/ar.offers'
 import { Route as ArSeoCompanyRouteImport } from './routes/ar.seo-company'
 import { Route as ArSeoExpertRouteImport } from './routes/ar.seo-expert'
 import { Route as ArSeoGeoEli5RouteImport } from './routes/ar.seo-geo-eli5'
@@ -96,6 +98,11 @@ const InternationalSeoRoute = InternationalSeoRouteImport.update({
 const KeywordResearchRoute = KeywordResearchRouteImport.update({
   id: '/keyword-research',
   path: '/keyword-research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OffersRoute = OffersRouteImport.update({
+  id: '/offers',
+  path: '/offers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SeoCompanyRoute = SeoCompanyRouteImport.update({
@@ -171,6 +178,11 @@ const ArInternationalSeoRoute = ArInternationalSeoRouteImport.update({
 const ArKeywordResearchRoute = ArKeywordResearchRouteImport.update({
   id: '/keyword-research',
   path: '/keyword-research',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArOffersRoute = ArOffersRouteImport.update({
+  id: '/offers',
+  path: '/offers',
   getParentRoute: () => ArRoute,
 } as any)
 const ArSeoCompanyRoute = ArSeoCompanyRouteImport.update({
@@ -280,6 +292,7 @@ export interface FileRoutesByFullPath {
   '/growth-marketing': typeof GrowthMarketingRoute
   '/international-seo': typeof InternationalSeoRoute
   '/keyword-research': typeof KeywordResearchRoute
+  '/offers': typeof OffersRoute
   '/seo-company': typeof SeoCompanyRoute
   '/seo-expert': typeof SeoExpertRoute
   '/seo-geo-eli5': typeof SeoGeoEli5Route
@@ -294,6 +307,7 @@ export interface FileRoutesByFullPath {
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/ar/international-seo': typeof ArInternationalSeoRoute
   '/ar/keyword-research': typeof ArKeywordResearchRoute
+  '/ar/offers': typeof ArOffersRoute
   '/ar/seo-company': typeof ArSeoCompanyRoute
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
@@ -324,6 +338,7 @@ export interface FileRoutesByTo {
   '/growth-marketing': typeof GrowthMarketingRoute
   '/international-seo': typeof InternationalSeoRoute
   '/keyword-research': typeof KeywordResearchRoute
+  '/offers': typeof OffersRoute
   '/seo-company': typeof SeoCompanyRoute
   '/seo-expert': typeof SeoExpertRoute
   '/seo-geo-eli5': typeof SeoGeoEli5Route
@@ -337,6 +352,7 @@ export interface FileRoutesByTo {
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/ar/international-seo': typeof ArInternationalSeoRoute
   '/ar/keyword-research': typeof ArKeywordResearchRoute
+  '/ar/offers': typeof ArOffersRoute
   '/ar/seo-company': typeof ArSeoCompanyRoute
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
@@ -368,6 +384,7 @@ export interface FileRoutesById {
   '/growth-marketing': typeof GrowthMarketingRoute
   '/international-seo': typeof InternationalSeoRoute
   '/keyword-research': typeof KeywordResearchRoute
+  '/offers': typeof OffersRoute
   '/seo-company': typeof SeoCompanyRoute
   '/seo-expert': typeof SeoExpertRoute
   '/seo-geo-eli5': typeof SeoGeoEli5Route
@@ -382,6 +399,7 @@ export interface FileRoutesById {
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/ar/international-seo': typeof ArInternationalSeoRoute
   '/ar/keyword-research': typeof ArKeywordResearchRoute
+  '/ar/offers': typeof ArOffersRoute
   '/ar/seo-company': typeof ArSeoCompanyRoute
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-geo-eli5': typeof ArSeoGeoEli5Route
@@ -415,6 +433,7 @@ export interface FileRouteTypes {
     | '/growth-marketing'
     | '/international-seo'
     | '/keyword-research'
+    | '/offers'
     | '/seo-company'
     | '/seo-expert'
     | '/seo-geo-eli5'
@@ -429,6 +448,7 @@ export interface FileRouteTypes {
     | '/ar/growth-marketing'
     | '/ar/international-seo'
     | '/ar/keyword-research'
+    | '/ar/offers'
     | '/ar/seo-company'
     | '/ar/seo-expert'
     | '/ar/seo-geo-eli5'
@@ -459,6 +479,7 @@ export interface FileRouteTypes {
     | '/growth-marketing'
     | '/international-seo'
     | '/keyword-research'
+    | '/offers'
     | '/seo-company'
     | '/seo-expert'
     | '/seo-geo-eli5'
@@ -472,6 +493,7 @@ export interface FileRouteTypes {
     | '/ar/growth-marketing'
     | '/ar/international-seo'
     | '/ar/keyword-research'
+    | '/ar/offers'
     | '/ar/seo-company'
     | '/ar/seo-expert'
     | '/ar/seo-geo-eli5'
@@ -502,6 +524,7 @@ export interface FileRouteTypes {
     | '/growth-marketing'
     | '/international-seo'
     | '/keyword-research'
+    | '/offers'
     | '/seo-company'
     | '/seo-expert'
     | '/seo-geo-eli5'
@@ -516,6 +539,7 @@ export interface FileRouteTypes {
     | '/ar/growth-marketing'
     | '/ar/international-seo'
     | '/ar/keyword-research'
+    | '/ar/offers'
     | '/ar/seo-company'
     | '/ar/seo-expert'
     | '/ar/seo-geo-eli5'
@@ -548,6 +572,7 @@ export interface RootRouteChildren {
   GrowthMarketingRoute: typeof GrowthMarketingRoute
   InternationalSeoRoute: typeof InternationalSeoRoute
   KeywordResearchRoute: typeof KeywordResearchRoute
+  OffersRoute: typeof OffersRoute
   SeoCompanyRoute: typeof SeoCompanyRoute
   SeoExpertRoute: typeof SeoExpertRoute
   SeoGeoEli5Route: typeof SeoGeoEli5Route
@@ -627,6 +652,13 @@ declare module '@tanstack/react-router' {
       path: '/keyword-research'
       fullPath: '/keyword-research'
       preLoaderRoute: typeof KeywordResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offers': {
+      id: '/offers'
+      path: '/offers'
+      fullPath: '/offers'
+      preLoaderRoute: typeof OffersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/seo-company': {
@@ -732,6 +764,13 @@ declare module '@tanstack/react-router' {
       path: '/keyword-research'
       fullPath: '/ar/keyword-research'
       preLoaderRoute: typeof ArKeywordResearchRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/offers': {
+      id: '/ar/offers'
+      path: '/offers'
+      fullPath: '/ar/offers'
+      preLoaderRoute: typeof ArOffersRouteImport
       parentRoute: typeof ArRoute
     }
     '/ar/seo-company': {
@@ -893,6 +932,7 @@ interface ArRouteChildren {
   ArGrowthMarketingRoute: typeof ArGrowthMarketingRoute
   ArInternationalSeoRoute: typeof ArInternationalSeoRoute
   ArKeywordResearchRoute: typeof ArKeywordResearchRoute
+  ArOffersRoute: typeof ArOffersRoute
   ArSeoCompanyRoute: typeof ArSeoCompanyRoute
   ArSeoExpertRoute: typeof ArSeoExpertRoute
   ArSeoGeoEli5Route: typeof ArSeoGeoEli5Route
@@ -912,6 +952,7 @@ const ArRouteChildren: ArRouteChildren = {
   ArGrowthMarketingRoute: ArGrowthMarketingRoute,
   ArInternationalSeoRoute: ArInternationalSeoRoute,
   ArKeywordResearchRoute: ArKeywordResearchRoute,
+  ArOffersRoute: ArOffersRoute,
   ArSeoCompanyRoute: ArSeoCompanyRoute,
   ArSeoExpertRoute: ArSeoExpertRoute,
   ArSeoGeoEli5Route: ArSeoGeoEli5Route,
@@ -948,6 +989,7 @@ const rootRouteChildren: RootRouteChildren = {
   GrowthMarketingRoute: GrowthMarketingRoute,
   InternationalSeoRoute: InternationalSeoRoute,
   KeywordResearchRoute: KeywordResearchRoute,
+  OffersRoute: OffersRoute,
   SeoCompanyRoute: SeoCompanyRoute,
   SeoExpertRoute: SeoExpertRoute,
   SeoGeoEli5Route: SeoGeoEli5Route,
