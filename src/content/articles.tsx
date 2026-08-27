@@ -9,6 +9,7 @@ import {
   EcommerceGrowthEn,
 } from "@/content/seo-growth-articles";
 import { GrowthMarketingServicesAr, GrowthMarketingServicesEn } from "@/content/growth-marketing-articles";
+import { scaleArticleRegistry } from "@/content/scale-article-batch";
 import {
   LocalSeoEgyptAr,
   LocalSeoEgyptEn,
@@ -548,4 +549,5 @@ export const articles: Record<string, ComponentType> = {
   ...longFormArticleRegistry,
   ...aiDigitalProductArticles,
   ...aiEcommerce100ArticleRegistry,
+  ...scaleArticleRegistry,
 };
