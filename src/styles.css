@@ -47,6 +47,22 @@
   --ring: oklch(0.86 0.19 145);
 }
 
+:root.light {
+  color-scheme: light;
+  --background: oklch(0.98 0.008 120);
+  --foreground: oklch(0.20 0.02 160);
+  --surface: oklch(0.995 0.004 120);
+  --surface-2: oklch(0.94 0.012 140);
+  --border: oklch(0.86 0.018 150);
+  --muted: oklch(0.93 0.012 140);
+  --muted-foreground: oklch(0.43 0.025 155);
+  --primary: oklch(0.55 0.17 145);
+  --primary-foreground: oklch(0.99 0.005 120);
+  --accent: oklch(0.62 0.15 75);
+  --accent-foreground: oklch(0.20 0.02 160);
+  --ring: oklch(0.55 0.17 145);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -78,7 +94,7 @@
 }
 
 @utility text-gradient {
-  background: linear-gradient(120deg, oklch(0.97 0.01 120), oklch(0.86 0.19 145));
+  background: linear-gradient(120deg, var(--foreground), var(--primary));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
