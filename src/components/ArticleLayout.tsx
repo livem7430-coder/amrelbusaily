@@ -22,6 +22,7 @@ export function ArticleLayout({
   faq?: { q: string; a: string }[];
 }) {
   const blogHref = lang === "ar" ? "/blog/ar" : "/blog/en";
+  const servicesHref = lang === "ar" ? "/ar/services" : "/services";
 
   return (
     <div className="min-h-screen" dir={dir} lang={lang}>
@@ -82,12 +83,20 @@ export function ArticleLayout({
               ? "خلي عمرو البصيلي يراجع موقعك"
               : "Have Amr Elbusaily audit your site"}
           </h3>
-          <a
-            href="mailto:amreelbasily@gmail.com"
-            className="mt-5 inline-block rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground"
-          >
-            {lang === "ar" ? "تواصل الآن" : "Get in touch"}
-          </a>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <a
+              href="mailto:amreelbasily@gmail.com"
+              className="inline-block rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground"
+            >
+              {lang === "ar" ? "تواصل الآن" : "Get in touch"}
+            </a>
+            <Link
+              to={servicesHref}
+              className="inline-block rounded-md border border-border px-5 py-3 text-sm font-medium text-muted-foreground transition hover:border-primary hover:text-primary"
+            >
+              {lang === "ar" ? "استكشف خدمات SEO" : "Explore SEO services"}
+            </Link>
+          </div>
         </div>
       </article>
 
@@ -137,6 +146,7 @@ export function articleHead({
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Article",
+        "@id": `${url}#article`,
         headline: title,
         description,
         inLanguage: lang,
@@ -146,18 +156,34 @@ export function articleHead({
             articleSection: "SEO, Digital Marketing, AI Growth & E-commerce",
         author: {
           "@type": "Person",
+          "@id": `${base}/#person`,
           name: "Amr Elbusaily",
-          url: "https://amrelbusaily.vercel.app/",
+          alternateName: "عمرو البصيلي",
+          url: `${base}/`,
         },
         publisher: {
           "@type": "Person",
+          "@id": `${base}/#person`,
           name: "Amr Elbusaily",
+          alternateName: "عمرو البصيلي",
           url: `${base}/`,
         },
-        mainEntityOfPage: url,
+        mainEntityOfPage: { "@type": "WebPage", "@id": url },
       }),
     },
   ];
+  scripts.push({
+    type: "application/ld+json",
+    children: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: lang === "ar" ? "الرئيسية" : "Home", item: `${base}${lang === "ar" ? "/ar" : "/"}` },
+        { "@type": "ListItem", position: 2, name: lang === "ar" ? "المدونة" : "Blog", item: `${base}${lang === "ar" ? "/blog/ar" : "/blog/en"}` },
+        { "@type": "ListItem", position: 3, name: title, item: url },
+      ],
+    }),
+  });
   if (faq?.length) {
     scripts.push({
       type: "application/ld+json",
@@ -177,12 +203,13 @@ export function articleHead({
     meta: [
       { title: `${title} | Amr Elbusaily` },
       { name: "description", content: description },
+      { name: "author", content: "Amr Elbusaily (عمرو البصيلي)" },
       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:image", content: image },
       { name: "twitter:image", content: image },
-      { name: "keywords", content: `${title}, SEO, digital marketing, AI growth, e-commerce SEO` },
+      { name: "keywords", content: `${title}, Amr Elbusaily, عمرو البصيلي, SEO, digital marketing, AI growth, e-commerce SEO` },
       { property: "og:type", content: "article" },
       { property: "og:url", content: url },
       { property: "og:locale", content: lang === "ar" ? "ar_EG" : "en_US" },

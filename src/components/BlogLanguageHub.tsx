@@ -189,6 +189,7 @@ export function blogLanguageHead(lang: BlogLanguage) {
     meta: [
       { title: isArabic ? "مقالات SEO بالعربي | عمرو البصيلي" : "SEO Articles in English | Amr Elbusaily" },
       { name: "description", content: isArabic ? copy.ar.description : copy.en.description },
+      { name: "author", content: "Amr Elbusaily (عمرو البصيلي)" },
       { property: "og:title", content: isArabic ? "مقالات SEO بالعربي | عمرو البصيلي" : "SEO Articles in English | Amr Elbusaily" },
       { property: "og:description", content: isArabic ? copy.ar.description : copy.en.description },
       { property: "og:type", content: "website" },
@@ -201,6 +202,24 @@ export function blogLanguageHead(lang: BlogLanguage) {
       { rel: "alternate", hrefLang: "en", href: `${base}/blog/en` },
       { rel: "alternate", hrefLang: "x-default", href: `${base}/blog/en` },
     ],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Blog", name: isArabic ? "مدونة SEO بالعربي — عمرو البصيلي" : "SEO Blog — Amr Elbusaily", url: `${base}${path}`, inLanguage: lang, author: { "@type": "Person", name: "Amr Elbusaily", url: `${base}/` } }) }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "@id": `${base}${path}#blog`,
+        name: isArabic ? "مدونة SEO بالعربي — عمرو البصيلي" : "SEO Blog — Amr Elbusaily",
+        url: `${base}${path}`,
+        inLanguage: lang,
+        author: { "@type": "Person", "@id": `${base}/#person`, name: "Amr Elbusaily", alternateName: "عمرو البصيلي", url: `${base}/` },
+      }) },
+      { type: "application/ld+json", children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: isArabic ? "الرئيسية" : "Home", item: `${base}${isArabic ? "/ar" : "/"}` },
+          { "@type": "ListItem", position: 2, name: isArabic ? "المدونة" : "Blog", item: `${base}${path}` },
+        ],
+      }) },
+    ],
   };
 }
