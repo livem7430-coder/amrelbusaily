@@ -287,7 +287,7 @@ function HomeAr() {
             <Link to="/ar/services" className="hover:text-foreground">الخدمات</Link>
             <a href="#experience" className="hover:text-foreground">الخبرة</a>
             <a href="#skills" className="hover:text-foreground">المهارات</a>
-            <Link to="/blog" className="hover:text-foreground">المدونة</Link>
+            <Link to="/blog/ar" className="hover:text-foreground">المدونة</Link>
             <Link to="/ar/course" className="hover:text-foreground">كورس SEO</Link>
             <Link to="/ar/seo-geo-eli5" className="hover:text-foreground">شرح SEO وGEO</Link>
             <Link to="/ar/free-consultation" className="text-primary hover:opacity-80">استشارة مجانية</Link>
@@ -307,8 +307,9 @@ function HomeAr() {
       <div className="border-b border-border/60 bg-background/95 px-6 py-3 md:hidden">
         <nav aria-label="التنقل السريع" className="mx-auto flex max-w-6xl gap-2 overflow-x-auto pb-1 text-xs text-muted-foreground">
           <Link to="/ar/services" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">الخدمات</Link>
+          <Link to="/ar/offers" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">العروض</Link>
           <a href="#results" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">النتائج</a>
-          <Link to="/blog" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">المدونة</Link>
+          <Link to="/blog/ar" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">المدونة</Link>
           <Link to="/ar/course" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">الكورس</Link>
           <Link to="/ar/free-consultation" className="shrink-0 rounded-full bg-primary px-3 py-2 font-medium text-primary-foreground">ابدأ مشروعك</Link>
         </nav>

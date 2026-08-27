@@ -364,6 +364,7 @@ function Home() {
       <div className="border-b border-border/60 bg-background/95 px-6 py-3 md:hidden">
         <nav aria-label="Quick navigation" className="mx-auto flex max-w-6xl gap-2 overflow-x-auto pb-1 text-xs text-muted-foreground">
           <Link to="/services" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Services</Link>
+          <Link to="/offers" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Offers</Link>
           <a href="#results" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Results</a>
           <Link to="/blog" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Blog</Link>
           <Link to="/course" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Course</Link>

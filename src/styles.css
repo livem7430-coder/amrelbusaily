@@ -67,11 +67,26 @@
   * {
     border-color: var(--color-border);
   }
+  html {
+    scroll-behavior: smooth;
+  }
   html, body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+  [id] {
+    scroll-margin-top: 6.5rem;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
@@ -91,6 +106,15 @@
   box-shadow:
     0 0 0 1px oklch(0.86 0.19 145 / 0.3),
     0 20px 60px -20px oklch(0.86 0.19 145 / 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 
 @utility text-gradient {
