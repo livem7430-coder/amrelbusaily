@@ -101,7 +101,7 @@ export function AiSeoHubPage() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="/ar" className="flex items-center gap-2 font-display font-semibold"><span className="grid h-8 w-8 place-items-center rounded-md bg-primary font-mono text-sm text-primary-foreground">AE</span><span>عمرو البصيلي</span></a>
           <nav className="flex items-center gap-4 text-sm text-muted-foreground">
-            <a href="/ar/blog" className="hover:text-foreground">المقالات</a>
+            <a href="/blog/ar" className="hover:text-foreground">المقالات</a>
             <a href="/ar/services/ai-seo-aeo-geo" className="hover:text-foreground">خدمة AI SEO</a>
             <a href="/ai-seo" className="font-mono text-xs hover:text-foreground">EN</a>
           </nav>
