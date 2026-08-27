@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArRouteImport } from './routes/ar'
 import { Route as ContentSeoRouteImport } from './routes/content-seo'
 import { Route as ContentStrategyRouteImport } from './routes/content-strategy'
+import { Route as EcommerceSeoRouteImport } from './routes/ecommerce-seo'
 import { Route as FreeConsultationRouteImport } from './routes/free-consultation'
 import { Route as GrowthMarketingRouteImport } from './routes/growth-marketing'
 import { Route as InternationalSeoRouteImport } from './routes/international-seo'
@@ -27,6 +28,7 @@ import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ArAiSeoRouteImport } from './routes/ar.ai-seo'
 import { Route as ArContentSeoRouteImport } from './routes/ar.content-seo'
 import { Route as ArContentStrategyRouteImport } from './routes/ar.content-strategy'
+import { Route as ArEcommerceSeoRouteImport } from './routes/ar.ecommerce-seo'
 import { Route as ArFreeConsultationRouteImport } from './routes/ar.free-consultation'
 import { Route as ArGrowthMarketingRouteImport } from './routes/ar.growth-marketing'
 import { Route as ArInternationalSeoRouteImport } from './routes/ar.international-seo'
@@ -69,6 +71,11 @@ const ContentSeoRoute = ContentSeoRouteImport.update({
 const ContentStrategyRoute = ContentStrategyRouteImport.update({
   id: '/content-strategy',
   path: '/content-strategy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EcommerceSeoRoute = EcommerceSeoRouteImport.update({
+  id: '/ecommerce-seo',
+  path: '/ecommerce-seo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FreeConsultationRoute = FreeConsultationRouteImport.update({
@@ -139,6 +146,11 @@ const ArContentSeoRoute = ArContentSeoRouteImport.update({
 const ArContentStrategyRoute = ArContentStrategyRouteImport.update({
   id: '/content-strategy',
   path: '/content-strategy',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArEcommerceSeoRoute = ArEcommerceSeoRouteImport.update({
+  id: '/ecommerce-seo',
+  path: '/ecommerce-seo',
   getParentRoute: () => ArRoute,
 } as any)
 const ArFreeConsultationRoute = ArFreeConsultationRouteImport.update({
@@ -263,6 +275,7 @@ export interface FileRoutesByFullPath {
   '/ar': typeof ArRouteWithChildren
   '/content-seo': typeof ContentSeoRoute
   '/content-strategy': typeof ContentStrategyRoute
+  '/ecommerce-seo': typeof EcommerceSeoRoute
   '/free-consultation': typeof FreeConsultationRoute
   '/growth-marketing': typeof GrowthMarketingRoute
   '/international-seo': typeof InternationalSeoRoute
@@ -276,6 +289,7 @@ export interface FileRoutesByFullPath {
   '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
+  '/ar/ecommerce-seo': typeof ArEcommerceSeoRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/ar/international-seo': typeof ArInternationalSeoRoute
@@ -305,6 +319,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/content-seo': typeof ContentSeoRoute
   '/content-strategy': typeof ContentStrategyRoute
+  '/ecommerce-seo': typeof EcommerceSeoRoute
   '/free-consultation': typeof FreeConsultationRoute
   '/growth-marketing': typeof GrowthMarketingRoute
   '/international-seo': typeof InternationalSeoRoute
@@ -317,6 +332,7 @@ export interface FileRoutesByTo {
   '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
+  '/ar/ecommerce-seo': typeof ArEcommerceSeoRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/ar/international-seo': typeof ArInternationalSeoRoute
@@ -347,6 +363,7 @@ export interface FileRoutesById {
   '/ar': typeof ArRouteWithChildren
   '/content-seo': typeof ContentSeoRoute
   '/content-strategy': typeof ContentStrategyRoute
+  '/ecommerce-seo': typeof EcommerceSeoRoute
   '/free-consultation': typeof FreeConsultationRoute
   '/growth-marketing': typeof GrowthMarketingRoute
   '/international-seo': typeof InternationalSeoRoute
@@ -360,6 +377,7 @@ export interface FileRoutesById {
   '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
+  '/ar/ecommerce-seo': typeof ArEcommerceSeoRoute
   '/ar/free-consultation': typeof ArFreeConsultationRoute
   '/ar/growth-marketing': typeof ArGrowthMarketingRoute
   '/ar/international-seo': typeof ArInternationalSeoRoute
@@ -392,6 +410,7 @@ export interface FileRouteTypes {
     | '/ar'
     | '/content-seo'
     | '/content-strategy'
+    | '/ecommerce-seo'
     | '/free-consultation'
     | '/growth-marketing'
     | '/international-seo'
@@ -405,6 +424,7 @@ export interface FileRouteTypes {
     | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
+    | '/ar/ecommerce-seo'
     | '/ar/free-consultation'
     | '/ar/growth-marketing'
     | '/ar/international-seo'
@@ -434,6 +454,7 @@ export interface FileRouteTypes {
     | '/'
     | '/content-seo'
     | '/content-strategy'
+    | '/ecommerce-seo'
     | '/free-consultation'
     | '/growth-marketing'
     | '/international-seo'
@@ -446,6 +467,7 @@ export interface FileRouteTypes {
     | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
+    | '/ar/ecommerce-seo'
     | '/ar/free-consultation'
     | '/ar/growth-marketing'
     | '/ar/international-seo'
@@ -475,6 +497,7 @@ export interface FileRouteTypes {
     | '/ar'
     | '/content-seo'
     | '/content-strategy'
+    | '/ecommerce-seo'
     | '/free-consultation'
     | '/growth-marketing'
     | '/international-seo'
@@ -488,6 +511,7 @@ export interface FileRouteTypes {
     | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
+    | '/ar/ecommerce-seo'
     | '/ar/free-consultation'
     | '/ar/growth-marketing'
     | '/ar/international-seo'
@@ -519,6 +543,7 @@ export interface RootRouteChildren {
   ArRoute: typeof ArRouteWithChildren
   ContentSeoRoute: typeof ContentSeoRoute
   ContentStrategyRoute: typeof ContentStrategyRoute
+  EcommerceSeoRoute: typeof EcommerceSeoRoute
   FreeConsultationRoute: typeof FreeConsultationRoute
   GrowthMarketingRoute: typeof GrowthMarketingRoute
   InternationalSeoRoute: typeof InternationalSeoRoute
@@ -567,6 +592,13 @@ declare module '@tanstack/react-router' {
       path: '/content-strategy'
       fullPath: '/content-strategy'
       preLoaderRoute: typeof ContentStrategyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ecommerce-seo': {
+      id: '/ecommerce-seo'
+      path: '/ecommerce-seo'
+      fullPath: '/ecommerce-seo'
+      preLoaderRoute: typeof EcommerceSeoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/free-consultation': {
@@ -665,6 +697,13 @@ declare module '@tanstack/react-router' {
       path: '/content-strategy'
       fullPath: '/ar/content-strategy'
       preLoaderRoute: typeof ArContentStrategyRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/ecommerce-seo': {
+      id: '/ar/ecommerce-seo'
+      path: '/ecommerce-seo'
+      fullPath: '/ar/ecommerce-seo'
+      preLoaderRoute: typeof ArEcommerceSeoRouteImport
       parentRoute: typeof ArRoute
     }
     '/ar/free-consultation': {
@@ -849,6 +888,7 @@ interface ArRouteChildren {
   ArAiSeoRoute: typeof ArAiSeoRoute
   ArContentSeoRoute: typeof ArContentSeoRoute
   ArContentStrategyRoute: typeof ArContentStrategyRoute
+  ArEcommerceSeoRoute: typeof ArEcommerceSeoRoute
   ArFreeConsultationRoute: typeof ArFreeConsultationRoute
   ArGrowthMarketingRoute: typeof ArGrowthMarketingRoute
   ArInternationalSeoRoute: typeof ArInternationalSeoRoute
@@ -867,6 +907,7 @@ const ArRouteChildren: ArRouteChildren = {
   ArAiSeoRoute: ArAiSeoRoute,
   ArContentSeoRoute: ArContentSeoRoute,
   ArContentStrategyRoute: ArContentStrategyRoute,
+  ArEcommerceSeoRoute: ArEcommerceSeoRoute,
   ArFreeConsultationRoute: ArFreeConsultationRoute,
   ArGrowthMarketingRoute: ArGrowthMarketingRoute,
   ArInternationalSeoRoute: ArInternationalSeoRoute,
@@ -902,6 +943,7 @@ const rootRouteChildren: RootRouteChildren = {
   ArRoute: ArRouteWithChildren,
   ContentSeoRoute: ContentSeoRoute,
   ContentStrategyRoute: ContentStrategyRoute,
+  EcommerceSeoRoute: EcommerceSeoRoute,
   FreeConsultationRoute: FreeConsultationRoute,
   GrowthMarketingRoute: GrowthMarketingRoute,
   InternationalSeoRoute: InternationalSeoRoute,
