@@ -103,7 +103,7 @@ export function AiSeoHubPage() {
           <nav className="flex items-center gap-4 text-sm text-muted-foreground">
             <a href="/blog/ar" className="hover:text-foreground">المقالات</a>
             <a href="/ar/services/ai-seo-aeo-geo" className="hover:text-foreground">خدمة AI SEO</a>
-            <a href="/ai-seo" className="font-mono text-xs hover:text-foreground">EN</a>
+            <a href="/services/ai-seo-aeo-geo" className="font-mono text-xs hover:text-foreground">EN</a>
           </nav>
         </div>
       </header>
