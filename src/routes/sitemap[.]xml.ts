@@ -55,12 +55,8 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/ar/growth-marketing", changefreq: "monthly", priority: "0.8", lastmod: today },
           { path: "/seo-geo-eli5", changefreq: "monthly", priority: "0.8", lastmod: today },
           { path: "/ar/seo-geo-eli5", changefreq: "monthly", priority: "0.8", lastmod: today },
-          {
-            path: "/free-consultation",
-            changefreq: "monthly",
-            priority: "0.9",
-            lastmod: today,
-          },
+          { path: "/free-consultation", changefreq: "monthly", priority: "0.9", lastmod: today },
+          { path: "/ar/free-consultation", changefreq: "monthly", priority: "0.9", lastmod: today },
           ...blogPosts.map((p) => ({
             path: `/blog/${p.slug}`,
             changefreq: "monthly",
@@ -72,13 +68,49 @@ export const Route = createFileRoute("/sitemap.xml")({
             { path: `/ar/course/${lesson.id}`, changefreq: "monthly", priority: "0.6", lastmod: COURSE_UPDATED },
           ]),
         ];
-        const urls = entries.map(
-          (e) =>
-            `  <url>\n    <loc>${BASE_URL}${e.path}</loc>\n    <lastmod>${e.lastmod}</lastmod>\n    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`,
-        );
+        const known = new Set(entries.map((e) => e.path));
+        const blogAlt = new Map<string, string>();
+        for (const post of blogPosts) {
+          if (post.altSlug) blogAlt.set(`/blog/${post.slug}`, `/blog/${post.altSlug}`);
+        }
+        const alternateOf = (path: string): string | null => {
+          if (blogAlt.has(path)) return blogAlt.get(path)!;
+          const counterpart =
+            path === "/ar"
+              ? "/"
+              : path.startsWith("/ar/")
+                ? path.slice(3)
+                : path === "/"
+                  ? "/ar"
+                  : `/ar${path}`;
+          return known.has(counterpart) ? counterpart : null;
+        };
+        const langOf = (path: string) =>
+          path === "/ar" || path.startsWith("/ar/") || path.endsWith("-ar") ? "ar" : "en";
+
+        const urls = entries.map((e) => {
+          const alt = alternateOf(e.path);
+          const lang = langOf(e.path);
+          const alternates = alt
+            ? [
+                `    <xhtml:link rel="alternate" hreflang="${lang}" href="${BASE_URL}${e.path}" />`,
+                `    <xhtml:link rel="alternate" hreflang="${lang === "ar" ? "en" : "ar"}" href="${BASE_URL}${alt}" />`,
+                `    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}${lang === "ar" ? alt : e.path}" />`,
+              ]
+            : [];
+          return [
+            `  <url>`,
+            `    <loc>${BASE_URL}${e.path}</loc>`,
+            `    <lastmod>${e.lastmod}</lastmod>`,
+            `    <changefreq>${e.changefreq}</changefreq>`,
+            `    <priority>${e.priority}</priority>`,
+            ...alternates,
+            `  </url>`,
+          ].join("\n");
+        });
         const xml = [
           `<?xml version="1.0" encoding="UTF-8"?>`,
-          `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+          `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">`,
           ...urls,
           `</urlset>`,
         ].join("\n");
