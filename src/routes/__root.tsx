@@ -130,8 +130,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isArabic =
+    pathname === "/ar" || pathname.startsWith("/ar/") || /-ar\/?$/.test(pathname);
+
   return (
-    <html lang="en">
+    <html lang={isArabic ? "ar" : "en"} dir={isArabic ? "rtl" : "ltr"}>
       <head>
         <HeadContent />
       </head>
