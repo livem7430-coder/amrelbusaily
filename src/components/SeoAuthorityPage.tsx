@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 
-type SeoLanguage = "ar" | "en";
+export type SeoLanguage = "ar" | "en";
 type SeoPageMode = "expert" | "company" | "services";
 
-type SeoCopy = {
+export type SeoCopy = {
   title: string;
   description: string;
   eyebrow: string;
@@ -345,6 +345,10 @@ export function seoAuthorityHead(lang: SeoLanguage, mode: SeoPageMode) {
 
 export function SeoAuthorityPage({ lang, mode }: { lang: SeoLanguage; mode: SeoPageMode }) {
   const copy = getCopy(lang, mode);
+  return <SeoAuthorityLayout lang={lang} copy={copy} />;
+}
+
+export function SeoAuthorityLayout({ lang, copy }: { lang: SeoLanguage; copy: SeoCopy }) {
   const isAr = lang === "ar";
   return (
     <div className="min-h-screen" dir={isAr ? "rtl" : "ltr"} lang={lang}>

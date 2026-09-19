@@ -5,19 +5,19 @@ import { ResultsShowcase } from "@/components/ResultsShowcase";
 export const Route = createFileRoute("/ar/")({
   head: () => ({
     meta: [
-      { title: "عمرو البصيلي — خبير SEO والتسويق الرقمي ونمو AI" },
+      { title: "خبير سيو | عمرو البصيلي — SEO والتسويق الرقمي ونمو AI" },
       {
         name: "description",
         content:
-          "عمرو البصيلي خبير SEO وتسويق رقمي وGrowth Marketing، متخصص في نمو شركات الخدمات وشركات B2B عبر توليد الطلب، المحتوى، الـfunnel، CRM، الأتمتة، وسيو المتاجر والبحث بالذكاء الاصطناعي.",
+          "خبير سيو وتسويق رقمي وGrowth Marketing: عمرو البصيلي متخصص في نمو شركات الخدمات وشركات B2B والمتاجر الإلكترونية عبر السيو التقني، المحتوى، توليد الطلب، والبحث بالذكاء الاصطناعي — في مصر والسعودية والخليج.",
       },
-      { property: "og:title", content: "عمرو البصيلي — خبير SEO والتسويق الرقمي ونمو AI" },
+      { property: "og:title", content: "خبير سيو | عمرو البصيلي — SEO والتسويق الرقمي ونمو AI" },
       {
         property: "og:description",
         content:
-          "خبير تسويق ونمو رقمي مصري: SEO، Growth Marketing، توليد الطلب لشركات الخدمات وB2B، استراتيجية المحتوى، السيو المحلي والتقني، AI SEO، وتحسين نمو المتاجر الإلكترونية.",
+          "خبير سيو وتسويق رقمي: SEO، Growth Marketing، توليد الطلب لشركات الخدمات وB2B، استراتيجية المحتوى، السيو المحلي والتقني، AI SEO، وتحسين نمو المتاجر — مصر والسعودية والإمارات والخليج.",
       },
-      { name: "keywords", content: "عمرو البصيلي، خبير SEO في مصر، Growth Marketing، تسويق B2B، توليد الطلب، نمو شركات الخدمات، تسويق رقمي، AI SEO، سيو تقني، سيو محلي، سيو المتاجر، استراتيجية محتوى، نمو التجارة الإلكترونية" },
+      { name: "keywords", content: "خبير سيو، خبير سيو في السعودية، خبير سيو في الإمارات، عمرو البصيلي، خبير SEO في مصر، Growth Marketing، تسويق B2B، توليد الطلب، نمو شركات الخدمات، تسويق رقمي، AI SEO، سيو تقني، سيو محلي، سيو المتاجر، استراتيجية محتوى، نمو التجارة الإلكترونية" },
       { property: "og:type", content: "profile" },
       { property: "og:url", content: "https://amrelbusaily.vercel.app/ar" },
       { property: "og:locale", content: "ar_EG" },
@@ -74,7 +74,7 @@ export const Route = createFileRoute("/ar/")({
           "@type": "ProfilePage",
           "@id": "https://amrelbusaily.vercel.app/ar#profile",
           url: "https://amrelbusaily.vercel.app/ar",
-          name: "عمرو البصيلي — خبير SEO والتسويق الرقمي ونمو AI",
+          name: "خبير سيو | عمرو البصيلي — SEO والتسويق الرقمي ونمو AI",
           inLanguage: "ar",
           mainEntity: { "@id": "https://amrelbusaily.vercel.app/#person" },
         }),
@@ -325,9 +325,9 @@ function HomeAr() {
             </div>
             <div className="mt-6 font-mono text-sm text-primary">عمرو البصيلي · Amr Elbusaily</div>
             <h1 className="mt-3 text-4xl font-semibold leading-[1.2] md:text-5xl lg:text-6xl">
-              <span className="text-gradient">حوّل البحث</span>
+              <span className="text-gradient">خبير سيو</span>
               <br />
-              إلى نمو مستدام.
+              يحوّل البحث إلى نمو مستدام.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
               أنا عمرو البصيلي، استشاري SEO ونمو رقمي. أساعد العلامات الطموحة على تحويل الظهور في محركات البحث،
