@@ -1118,6 +1118,156 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "best-seo-expert-kuwait-ar",
+    title: "خبير سيو في الكويت: معايير الاختيار والأسئلة قبل التعاقد",
+    description:
+      "دليل اختيار خبير سيو في الكويت: خصوصية السوق الكويتي، معايير التقييم، الأسئلة اللي تسألها، والأخطاء الشائعة — قبل ما تدفع دينار واحد.",
+    date: "2026-09-19",
+    readTime: "9 دقائق",
+    lang: "ar",
+    altSlug: "best-seo-expert-kuwait-en",
+    faq: [
+      { q: "إزاي أختار خبير سيو في الكويت؟", a: "قارن بالمعايير مش بالوعود: نتايج موثقة بلقطات Search Console، خطة 90 يوم مكتوبة، فهم للسوق المحلي، شفافية في الأساليب، وتواصل مباشر مع المنفذ." },,
+      { q: "كم تكلفة السيو في الكويت؟", a: "بتعتمد على حجم الموقع والمنافسة في مجالك. ابدأ بأوديت واستشارة مجانية، وبعدها اطلب عرض بنطاق محدد من غير التزامات طويلة." },,
+      { q: "هل السيو ينفع مع السوق الكويتي الصغير؟", a: "أيوه وبقوة: المنافسة المحلية أقل من الرياض ودبي، والكلمات المحلية بتتحرك أسرع — السيو المحلي المظبوط بيجيب نتايج في شهور قليلة." },
+    ],
+  },
+  {
+    slug: "best-seo-expert-kuwait-en",
+    title: "SEO Expert in Kuwait: Selection Criteria and Questions Before You Sign",
+    description:
+      "How to choose an SEO expert in Kuwait: what makes the Kuwaiti market different, evaluation criteria, the questions to ask, and common mistakes - before you pay a single dinar.",
+    date: "2026-09-19",
+    readTime: "9 min read",
+    lang: "en",
+    altSlug: "best-seo-expert-kuwait-ar",
+    faq: [
+      { q: "How do I choose an SEO expert in Kuwait?", a: "Compare by criteria, not promises: results documented with Search Console snapshots, a written 90-day plan, local market understanding, method transparency, and direct contact with the executor." },,
+      { q: "What does SEO cost in Kuwait?", a: "It depends on site size and competition in your niche. Start with a free audit and consultation, then request a clearly scoped offer without long-term lock-ins." },,
+      { q: "Does SEO work in a small market like Kuwait?", a: "Yes, strongly: local competition is lower than Riyadh or Dubai, and local keywords move faster - well-executed local SEO produces results within months." },
+    ],
+  },
+  {
+    slug: "best-seo-expert-qatar-ar",
+    title: "خبير سيو في قطر: إزاي تختار صح في سوق ثنائي اللغة",
+    description:
+      "دليل اختيار خبير سيو في قطر: خصوصية سوق الدوحة، المعايير، الأسئلة قبل التعاقد، وأخطاء المواقع ثنائية اللغة الشائعة.",
+    date: "2026-09-19",
+    readTime: "9 دقائق",
+    lang: "ar",
+    altSlug: "best-seo-expert-qatar-en",
+    faq: [
+      { q: "إيه أهم معيار في اختيار خبير سيو في قطر؟", a: "النتايج الموثقة بلقطات Search Console مع خطة 90 يوم مكتوبة، وخبرة حقيقية بالأسواق الخليجية الصغيرة عالية القيمة والمواقع ثنائية اللغة." },,
+      { q: "ليه المواقع القطرية بتقع في مشكلة المحتوى المكرر؟", a: "لأن أغلبها معمول ترجمة حرفية عربي/إنجليزي من غير hreflang مظبوط، فجوجل بيعتبر النسختين محتوى مكرر. الحل بنية لغات سليمة من الأول." },,
+      { q: "قد إيه وقت يحتاج السيو في قطر؟", a: "عادة 3 لـ6 شهور للنتايج الواضحة. المنافسة المحلية أقل من الإمارات والسعودية، والكلمات المحلية بتتحرك أسرع." },
+    ],
+  },
+  {
+    slug: "best-seo-expert-qatar-en",
+    title: "SEO Expert in Qatar: How to Choose Right in a Bilingual Market",
+    description:
+      "A guide to choosing an SEO expert in Qatar: what is specific about the Doha market, criteria, pre-signing questions, and common bilingual-site mistakes.",
+    date: "2026-09-19",
+    readTime: "9 min read",
+    lang: "en",
+    altSlug: "best-seo-expert-qatar-ar",
+    faq: [
+      { q: "What is the top criterion for choosing an SEO expert in Qatar?", a: "Results documented with Search Console snapshots plus a written 90-day plan, and real experience with small high-value Gulf markets and bilingual websites." },,
+      { q: "Why do Qatari sites hit duplicate content issues?", a: "Most are built as literal Arabic/English translations without correct hreflang, so Google treats both versions as duplicates. Clean language architecture from the start fixes it." },,
+      { q: "How long does SEO take in Qatar?", a: "Usually 3 to 6 months for meaningful results. Local competition is lower than the UAE and Saudi Arabia, and local keywords move faster." },
+    ],
+  },
+  {
+    slug: "best-seo-expert-bahrain-ar",
+    title: "خبير سيو في البحرين: المعايير والأسئلة والأخطاء الشائعة",
+    description:
+      "دليل اختيار خبير سيو في البحرين: السوق المتركز عالي التحويل، معايير التقييم، أسئلة ما قبل التعاقد، وأخطاء الاعتماد على السوشيال فقط.",
+    date: "2026-09-19",
+    readTime: "9 دقائق",
+    lang: "ar",
+    altSlug: "best-seo-expert-bahrain-en",
+    faq: [
+      { q: "هل السيو مجدي في سوق بحجم البحرين؟", a: "أيوه: حجم البحث أقل لكن التحويل على الكلمات المحلية أعلى لأن النية أوضح، والمنافسة أضعف — فرصة حقيقية للتصدر السريع." },,
+      { q: "إيه أسرع مكسب سيو لشركة بحرينية؟", a: "ملف Google Business Profile مظبوط بالكامل مع تقييمات حقيقية — بيجيب مكالمات وزيارات من أول شهر، وبعده صفحات الخدمات المحلية." },,
+      { q: "إزاي أتأكد إن الخبير فاهم السوق الخليجي؟", a: "اسأله عن الفروق بين الجمهور العربي والإنجليزي في البحرين، والدلائل المحلية المهمة، واطلب أمثلة كلمات محلية يستهدفها لمجالك." },
+    ],
+  },
+  {
+    slug: "best-seo-expert-bahrain-en",
+    title: "SEO Expert in Bahrain: Criteria, Questions and Common Mistakes",
+    description:
+      "How to choose an SEO expert in Bahrain: the concentrated high-conversion market, evaluation criteria, pre-signing questions, and the cost of social-only marketing.",
+    date: "2026-09-19",
+    readTime: "9 min read",
+    lang: "en",
+    altSlug: "best-seo-expert-bahrain-ar",
+    faq: [
+      { q: "Is SEO worthwhile in a market the size of Bahrain?", a: "Yes: search volume is lower but conversion on local keywords is higher because intent is clearer, and competition is weaker - a real chance to rank quickly." },,
+      { q: "What is the fastest SEO win for a Bahraini company?", a: "A fully optimized Google Business Profile with genuine reviews - it brings calls and visits from the first month, followed by local service pages." },,
+      { q: "How do I verify an expert understands the Gulf market?", a: "Ask about the differences between Bahrain's Arabic and English audiences, which local directories matter, and request example local keywords for your niche." },
+    ],
+  },
+  {
+    slug: "best-seo-expert-oman-ar",
+    title: "خبير سيو في عُمان: سوق البادئ والفرص غير المستغلة",
+    description:
+      "دليل اختيار خبير سيو في عُمان: ليه السوق العُماني فرصة أول متحرك، المعايير، الأسئلة، وأخطاء المواقع التعريفية والمحتوى السياحي المهمل.",
+    date: "2026-09-19",
+    readTime: "9 دقائق",
+    lang: "ar",
+    altSlug: "best-seo-expert-oman-en",
+    faq: [
+      { q: "ليه عُمان فرصة سيو قوية دلوقتي؟", a: "لأن قطاعات كاملة في مسقط وصلالة مفيهاش لاعب مهيمن على نتائج البحث — اللي بيبني صح النهارده بيتصدر بسرعة وبيبقى صعب الإزاحة." },,
+      { q: "إيه أكبر غلطة بتعملها المواقع العُمانية؟", a: "الاكتفاء بموقع تعريفي من غير محتوى، وإهمال البحث السياحي — ملايين بيبحثوا عن عُمان كوجهة والمحتوى المحلي اللي بيلتقط الطلب شبه معدوم." },,
+      { q: "هل الشغل عن بُعد ينفع لشركة في مسقط؟", a: "أيوه تمامًا: الأوديت والمحتوى والتحليلات شغل رقمي بطبيعته، والتواصل المباشر والتقارير الشهرية بيغطوا كل احتياج." },
+    ],
+  },
+  {
+    slug: "best-seo-expert-oman-en",
+    title: "SEO Expert in Oman: A First-Mover Market and Untapped Opportunities",
+    description:
+      "How to choose an SEO expert in Oman: why the Omani market is a first-mover opportunity, criteria, questions, and the mistakes of brochure sites and neglected tourism content.",
+    date: "2026-09-19",
+    readTime: "9 min read",
+    lang: "en",
+    altSlug: "best-seo-expert-oman-ar",
+    faq: [
+      { q: "Why is Oman a strong SEO opportunity right now?", a: "Because entire sectors in Muscat and Salalah have no dominant search player - whoever builds correctly today ranks fast and becomes hard to dislodge." },,
+      { q: "What is the biggest mistake Omani websites make?", a: "Settling for a brochure site with no content, and neglecting tourism search - millions search for Oman as a destination and local content capturing that demand barely exists." },,
+      { q: "Does remote SEO work for a company in Muscat?", a: "Completely: audits, content and analytics are digital by nature, and direct contact plus monthly reports cover every need." },
+    ],
+  },
+  {
+    slug: "salla-zid-seo-ar",
+    title: "سيو متاجر سلة وزد: خطة عملية للتصدر رغم قيود المنصة",
+    description:
+      "دليل سيو متاجر سلة وزد: قيود المنصة وإزاي تشتغل جواها، صفحات الفئات والمنتجات، المدونة، السيو المحلي، والروابط الخارجية للمتاجر الخليجية.",
+    date: "2026-09-19",
+    readTime: "9 دقائق",
+    lang: "ar",
+    altSlug: "salla-zid-seo-en",
+    faq: [
+      { q: "هل السيو ينفع على منصة سلة أو زد رغم القيود التقنية؟", a: "أيوه: التحكم المحدود في البنية التقنية بيعوضه المحتوى القوي — أوصاف الفئات، محتوى المنتجات الأصلي، المدونة، والروابط الخارجية." },,
+      { q: "إيه أهم صفحة في متجر سلة من ناحية السيو؟", a: "صفحات الفئات: بتستهدف الكلمات التجارية الواسعة، ووصف فئة 150-300 كلمة مكتوب صح بيفرق جدًا — وأغلب المتاجر بتسيبه فاضي." },,
+      { q: "إزاي أجيب روابط خارجية لمتجري؟", a: "من مورديك (صفحة موزع معتمد)، مراجعات المدونين والمؤثرين بروابط، الدلائل التجارية السعودية، ومحتوى يستحق الاقتباس — وابتعد عن حزم الروابط الرخيصة." },
+    ],
+  },
+  {
+    slug: "salla-zid-seo-en",
+    title: "Salla and Zid SEO: A Practical Plan to Rank Despite Platform Limits",
+    description:
+      "An SEO guide for Salla and Zid stores: working within platform constraints, category and product pages, blogging, local SEO, and external links for Gulf stores.",
+    date: "2026-09-19",
+    readTime: "9 min read",
+    lang: "en",
+    altSlug: "salla-zid-seo-ar",
+    faq: [
+      { q: "Does SEO work on Salla or Zid despite technical limits?", a: "Yes: limited technical control is offset by strong content - category descriptions, original product content, blogging and external links." },,
+      { q: "What is the most important page for SEO on a Salla store?", a: "Category pages: they target broad commercial keywords, and a well-written 150-300 word description makes a real difference - most stores leave it empty." },,
+      { q: "How do I get external links for my store?", a: "From your suppliers (authorized distributor page), linked blogger and influencer reviews, Saudi business directories, and content worth citing - avoid cheap link packages." },
+    ],
+  },
   ...longFormBlogPosts,
   ...aiDigitalProductPosts,
   ...aiEcommerce100Posts,

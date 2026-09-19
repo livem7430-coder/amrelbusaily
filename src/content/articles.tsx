@@ -89,6 +89,13 @@ import {
   SeoSmallBudgetAr,
   SeoSmallBudgetEn,
 } from "@/content/seo-practical-guides-articles";
+import {
+  BestSeoExpertKuwaitAr, BestSeoExpertKuwaitEn,
+  BestSeoExpertQatarAr, BestSeoExpertQatarEn,
+  BestSeoExpertBahrainAr, BestSeoExpertBahrainEn,
+  BestSeoExpertOmanAr, BestSeoExpertOmanEn,
+  SallaZidSeoAr, SallaZidSeoEn,
+} from "@/content/geo-expert-batch1-articles";
 
 function TechnicalSEO() {
   return (
@@ -490,6 +497,16 @@ export const articles: Record<string, ComponentType> = {
   "google-search-console-guide-en": GoogleSearchConsoleGuideEn,
   "seo-small-budget-ar": SeoSmallBudgetAr,
   "seo-small-budget-en": SeoSmallBudgetEn,
+  "best-seo-expert-kuwait-ar": BestSeoExpertKuwaitAr,
+  "best-seo-expert-kuwait-en": BestSeoExpertKuwaitEn,
+  "best-seo-expert-qatar-ar": BestSeoExpertQatarAr,
+  "best-seo-expert-qatar-en": BestSeoExpertQatarEn,
+  "best-seo-expert-bahrain-ar": BestSeoExpertBahrainAr,
+  "best-seo-expert-bahrain-en": BestSeoExpertBahrainEn,
+  "best-seo-expert-oman-ar": BestSeoExpertOmanAr,
+  "best-seo-expert-oman-en": BestSeoExpertOmanEn,
+  "salla-zid-seo-ar": SallaZidSeoAr,
+  "salla-zid-seo-en": SallaZidSeoEn,
   "technical-seo-guide-ar": TechnicalSEO,
   "ecommerce-seo-ar": EcommerceSEO,
   "aeo-ai-search-ar": AEOArticle,

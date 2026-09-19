@@ -34,7 +34,7 @@ Goal: own the SEO topic space in Arabic and English, from the head term to long-
 | link building / بناء الروابط | /blog/link-building-guide-ar·en | batch |
 | local SEO guide | /blog/local-seo-guide-ar·en | batch |
 | Google Business Profile | /blog/google-business-profile-guide-ar·en | batch |
-| SEO content writing | /blog/seo-content-writing-guide-ar·en | batch |
+| Topical authority | /blog/topical-authority-seo-ar·en | batch |
 | سيو العيادات | /blog/seo-for-clinics-ar·en | batch |
 | سيو العقارات | /blog/seo-for-real-estate-ar·en | batch |
 | سيو مكاتب المحاماة | /blog/seo-for-lawyers-ar·en | batch |
