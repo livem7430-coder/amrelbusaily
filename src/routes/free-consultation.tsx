@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
 import { Portrait } from "@/components/Portrait";
 
 const url = "https://amrelbusaily.vercel.app/free-consultation";
@@ -18,11 +17,11 @@ export const Route = createFileRoute("/free-consultation")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: url },
       { property: "og:locale", content: "en_US" },
-      { property: "og:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
+      { property: "og:image", content: `https://amrelbusaily.vercel.app/og-image.jpg` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Free SEO Consultation — Sadaqah Jariyah" },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
+      { name: "twitter:image", content: `https://amrelbusaily.vercel.app/og-image.jpg` },
     ],
     links: [
       { rel: "canonical", href: url },

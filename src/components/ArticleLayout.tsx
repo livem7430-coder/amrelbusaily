@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
 
 export function ArticleLayout({
   title,
@@ -128,7 +127,7 @@ export function articleHead({
 }) {
   const base = "https://amrelbusaily.vercel.app";
   const url = `${base}/blog/${slug}`;
-  const image = `${base}${amrPortrait.url}`;
+  const image = `${base}/og-image.jpg`;
   const links: { rel: string; href: string; hrefLang?: string }[] = [
     { rel: "canonical", href: url },
   ];

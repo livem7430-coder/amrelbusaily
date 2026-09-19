@@ -81,6 +81,14 @@ import {
 import { longFormArticleRegistry } from "@/content/long-form-content-batch";
 import { aiDigitalProductArticles } from "@/content/ai-digital-products-articles";
 import { aiEcommerce100ArticleRegistry } from "@/content/ai-ecommerce-100-articles";
+import {
+  SeoMistakesAr,
+  SeoMistakesEn,
+  GoogleSearchConsoleGuideAr,
+  GoogleSearchConsoleGuideEn,
+  SeoSmallBudgetAr,
+  SeoSmallBudgetEn,
+} from "@/content/seo-practical-guides-articles";
 
 function TechnicalSEO() {
   return (
@@ -476,6 +484,12 @@ function SEOvsAIEn() {
 }
 
 export const articles: Record<string, ComponentType> = {
+  "seo-mistakes-ar": SeoMistakesAr,
+  "seo-mistakes-en": SeoMistakesEn,
+  "google-search-console-guide-ar": GoogleSearchConsoleGuideAr,
+  "google-search-console-guide-en": GoogleSearchConsoleGuideEn,
+  "seo-small-budget-ar": SeoSmallBudgetAr,
+  "seo-small-budget-en": SeoSmallBudgetEn,
   "technical-seo-guide-ar": TechnicalSEO,
   "ecommerce-seo-ar": EcommerceSEO,
   "aeo-ai-search-ar": AEOArticle,

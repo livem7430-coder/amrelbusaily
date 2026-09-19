@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
 import { Portrait } from "@/components/Portrait";
 import { ResultsShowcase } from "@/components/ResultsShowcase";
 
@@ -22,9 +21,9 @@ export const Route = createFileRoute("/ar/")({
       { property: "og:type", content: "profile" },
       { property: "og:url", content: "https://amrelbusaily.vercel.app/ar" },
       { property: "og:locale", content: "ar_EG" },
-      { property: "og:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
+      { property: "og:image", content: `https://amrelbusaily.vercel.app/og-image.jpg` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
+      { name: "twitter:image", content: `https://amrelbusaily.vercel.app/og-image.jpg` },
     ],
     links: [
       { rel: "canonical", href: "https://amrelbusaily.vercel.app/ar" },
@@ -42,7 +41,7 @@ export const Route = createFileRoute("/ar/")({
           name: "عمرو البصيلي",
           alternateName: ["Amr Elbusaily", "Amro Elbusaily"],
           url: "https://amrelbusaily.vercel.app/ar",
-          image: `https://amrelbusaily.vercel.app${amrPortrait.url}`,
+          image: `https://amrelbusaily.vercel.app/og-image.jpg`,
           jobTitle: "خبير SEO وتسويق رقمي وAI Growth",
           knowsAbout: [
             "تحسين محركات البحث",
@@ -64,6 +63,7 @@ export const Route = createFileRoute("/ar/")({
           ],
           mainEntityOfPage: { "@id": "https://amrelbusaily.vercel.app/ar#profile" },
           worksFor: { "@type": "Organization", name: "Expand Pro" },
+          founder: { "@type": "Organization", name: "A2M Digital Marketing Agency" },
           sameAs: ["https://tansiky.com", "https://aldowly.com"],
         }),
       },

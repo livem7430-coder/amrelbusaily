@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import amrPortrait from "@/assets/amr-portrait.jpg.asset.json";
 import { Portrait } from "@/components/Portrait";
 import { ResultsShowcase } from "@/components/ResultsShowcase";
 
@@ -20,11 +19,11 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "profile" },
       { property: "og:url", content: "https://amrelbusaily.vercel.app/" },
-      { property: "og:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
+      { property: "og:image", content: `https://amrelbusaily.vercel.app/og-image.jpg` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Amr Elbusaily — SEO, Digital Marketing & AI Growth" },
       { name: "twitter:description", content: "SEO, growth marketing, B2B demand generation and AI growth for more qualified traffic, leads and sales." },
-      { name: "twitter:image", content: `https://amrelbusaily.vercel.app${amrPortrait.url}` },
+      { name: "twitter:image", content: `https://amrelbusaily.vercel.app/og-image.jpg` },
     ],
     links: [
       { rel: "canonical", href: "https://amrelbusaily.vercel.app/" },
@@ -42,7 +41,7 @@ export const Route = createFileRoute("/")({
           name: "Amr Elbusaily",
           alternateName: ["عمرو البصيلي", "Amro Elbusaily"],
           url: "https://amrelbusaily.vercel.app/",
-          image: `https://amrelbusaily.vercel.app${amrPortrait.url}`,
+          image: `https://amrelbusaily.vercel.app/og-image.jpg`,
           jobTitle: "SEO & Digital Marketing Specialist",
           knowsAbout: [
             "Search Engine Optimization",
@@ -63,6 +62,7 @@ export const Route = createFileRoute("/")({
           ],
           mainEntityOfPage: { "@id": "https://amrelbusaily.vercel.app/#profile" },
           worksFor: { "@type": "Organization", name: "Expand Pro" },
+          founder: { "@type": "Organization", name: "A2M Digital Marketing Agency" },
           alumniOf: [
             { "@type": "CollegeOrUniversity", name: "Cairo University" },
             { "@type": "CollegeOrUniversity", name: "Zagazig University" },

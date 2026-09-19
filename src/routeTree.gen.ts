@@ -9,120 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ServicesRouteImport } from './routes/services'
-import { Route as SeoServicesRouteImport } from './routes/seo-services'
-import { Route as SeoGeoEli5RouteImport } from './routes/seo-geo-eli5'
-import { Route as SeoExpertRouteImport } from './routes/seo-expert'
-import { Route as SeoCompanyRouteImport } from './routes/seo-company'
-import { Route as OffersRouteImport } from './routes/offers'
-import { Route as KeywordResearchRouteImport } from './routes/keyword-research'
-import { Route as InternationalSeoRouteImport } from './routes/international-seo'
-import { Route as GrowthMarketingRouteImport } from './routes/growth-marketing'
-import { Route as FreeConsultationRouteImport } from './routes/free-consultation'
-import { Route as EcommerceSeoRouteImport } from './routes/ecommerce-seo'
-import { Route as ContentStrategyRouteImport } from './routes/content-strategy'
-import { Route as ContentSeoRouteImport } from './routes/content-seo'
-import { Route as ArRouteImport } from './routes/ar'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ServicesIndexRouteImport } from './routes/services.index'
-import { Route as CourseIndexRouteImport } from './routes/course.index'
-import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as ArRouteImport } from './routes/ar'
+import { Route as ContentSeoRouteImport } from './routes/content-seo'
+import { Route as ContentStrategyRouteImport } from './routes/content-strategy'
+import { Route as EcommerceSeoRouteImport } from './routes/ecommerce-seo'
+import { Route as FreeConsultationRouteImport } from './routes/free-consultation'
+import { Route as GrowthMarketingRouteImport } from './routes/growth-marketing'
+import { Route as InternationalSeoRouteImport } from './routes/international-seo'
+import { Route as KeywordResearchRouteImport } from './routes/keyword-research'
+import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
+import { Route as OffersRouteImport } from './routes/offers'
+import { Route as SeoCompanyRouteImport } from './routes/seo-company'
+import { Route as SeoExpertRouteImport } from './routes/seo-expert'
+import { Route as SeoGeoEli5RouteImport } from './routes/seo-geo-eli5'
+import { Route as SeoServicesRouteImport } from './routes/seo-services'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ArIndexRouteImport } from './routes/ar.index'
-import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
-import { Route as CourseLessonIdRouteImport } from './routes/course.$lessonId'
-import { Route as BlogInternationalContentPlanRouteImport } from './routes/blog.international-content-plan'
-import { Route as BlogEnRouteImport } from './routes/blog.en'
-import { Route as BlogContentPlanRouteImport } from './routes/blog.content-plan'
-import { Route as BlogArRouteImport } from './routes/blog.ar'
-import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
-import { Route as ArServicesRouteImport } from './routes/ar.services'
-import { Route as ArSeoServicesRouteImport } from './routes/ar.seo-services'
-import { Route as ArSeoGeoEli5RouteImport } from './routes/ar.seo-geo-eli5'
-import { Route as ArSeoExpertRouteImport } from './routes/ar.seo-expert'
-import { Route as ArSeoCompanyRouteImport } from './routes/ar.seo-company'
-import { Route as ArOffersRouteImport } from './routes/ar.offers'
-import { Route as ArKeywordResearchRouteImport } from './routes/ar.keyword-research'
-import { Route as ArInternationalSeoRouteImport } from './routes/ar.international-seo'
-import { Route as ArGrowthMarketingRouteImport } from './routes/ar.growth-marketing'
-import { Route as ArFreeConsultationRouteImport } from './routes/ar.free-consultation'
-import { Route as ArEcommerceSeoRouteImport } from './routes/ar.ecommerce-seo'
-import { Route as ArContentStrategyRouteImport } from './routes/ar.content-strategy'
-import { Route as ArContentSeoRouteImport } from './routes/ar.content-seo'
 import { Route as ArAiSeoRouteImport } from './routes/ar.ai-seo'
-import { Route as ArServicesIndexRouteImport } from './routes/ar.services.index'
+import { Route as ArContentSeoRouteImport } from './routes/ar.content-seo'
+import { Route as ArContentStrategyRouteImport } from './routes/ar.content-strategy'
+import { Route as ArEcommerceSeoRouteImport } from './routes/ar.ecommerce-seo'
+import { Route as ArFreeConsultationRouteImport } from './routes/ar.free-consultation'
+import { Route as ArGrowthMarketingRouteImport } from './routes/ar.growth-marketing'
+import { Route as ArInternationalSeoRouteImport } from './routes/ar.international-seo'
+import { Route as ArKeywordResearchRouteImport } from './routes/ar.keyword-research'
+import { Route as ArOffersRouteImport } from './routes/ar.offers'
+import { Route as ArSeoCompanyRouteImport } from './routes/ar.seo-company'
+import { Route as ArSeoExpertRouteImport } from './routes/ar.seo-expert'
+import { Route as ArSeoGeoEli5RouteImport } from './routes/ar.seo-geo-eli5'
+import { Route as ArSeoServicesRouteImport } from './routes/ar.seo-services'
+import { Route as ArServicesRouteImport } from './routes/ar.services'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as BlogArRouteImport } from './routes/blog.ar'
+import { Route as BlogContentPlanRouteImport } from './routes/blog.content-plan'
+import { Route as BlogEnRouteImport } from './routes/blog.en'
+import { Route as BlogInternationalContentPlanRouteImport } from './routes/blog.international-content-plan'
+import { Route as CourseIndexRouteImport } from './routes/course.index'
+import { Route as CourseLessonIdRouteImport } from './routes/course.$lessonId'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as ArCourseIndexRouteImport } from './routes/ar.course.index'
-import { Route as ArServicesSlugRouteImport } from './routes/ar.services.$slug'
 import { Route as ArCourseLessonIdRouteImport } from './routes/ar.course.$lessonId'
+import { Route as ArServicesIndexRouteImport } from './routes/ar.services.index'
+import { Route as ArServicesSlugRouteImport } from './routes/ar.services.$slug'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SeoServicesRoute = SeoServicesRouteImport.update({
-  id: '/seo-services',
-  path: '/seo-services',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SeoGeoEli5Route = SeoGeoEli5RouteImport.update({
-  id: '/seo-geo-eli5',
-  path: '/seo-geo-eli5',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SeoExpertRoute = SeoExpertRouteImport.update({
-  id: '/seo-expert',
-  path: '/seo-expert',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SeoCompanyRoute = SeoCompanyRouteImport.update({
-  id: '/seo-company',
-  path: '/seo-company',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OffersRoute = OffersRouteImport.update({
-  id: '/offers',
-  path: '/offers',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KeywordResearchRoute = KeywordResearchRouteImport.update({
-  id: '/keyword-research',
-  path: '/keyword-research',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InternationalSeoRoute = InternationalSeoRouteImport.update({
-  id: '/international-seo',
-  path: '/international-seo',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GrowthMarketingRoute = GrowthMarketingRouteImport.update({
-  id: '/growth-marketing',
-  path: '/growth-marketing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FreeConsultationRoute = FreeConsultationRouteImport.update({
-  id: '/free-consultation',
-  path: '/free-consultation',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EcommerceSeoRoute = EcommerceSeoRouteImport.update({
-  id: '/ecommerce-seo',
-  path: '/ecommerce-seo',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContentStrategyRoute = ContentStrategyRouteImport.update({
-  id: '/content-strategy',
-  path: '/content-strategy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContentSeoRoute = ContentSeoRouteImport.update({
-  id: '/content-seo',
-  path: '/content-seo',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArRoute = ArRouteImport.update({
@@ -130,24 +66,79 @@ const ArRoute = ArRouteImport.update({
   path: '/ar',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ContentSeoRoute = ContentSeoRouteImport.update({
+  id: '/content-seo',
+  path: '/content-seo',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesIndexRoute = ServicesIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ServicesRoute,
-} as any)
-const CourseIndexRoute = CourseIndexRouteImport.update({
-  id: '/course/',
-  path: '/course/',
+const ContentStrategyRoute = ContentStrategyRouteImport.update({
+  id: '/content-strategy',
+  path: '/content-strategy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogIndexRoute = BlogIndexRouteImport.update({
-  id: '/blog/',
-  path: '/blog/',
+const EcommerceSeoRoute = EcommerceSeoRouteImport.update({
+  id: '/ecommerce-seo',
+  path: '/ecommerce-seo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreeConsultationRoute = FreeConsultationRouteImport.update({
+  id: '/free-consultation',
+  path: '/free-consultation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GrowthMarketingRoute = GrowthMarketingRouteImport.update({
+  id: '/growth-marketing',
+  path: '/growth-marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InternationalSeoRoute = InternationalSeoRouteImport.update({
+  id: '/international-seo',
+  path: '/international-seo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KeywordResearchRoute = KeywordResearchRouteImport.update({
+  id: '/keyword-research',
+  path: '/keyword-research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
+  id: '/llms.txt',
+  path: '/llms.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OffersRoute = OffersRouteImport.update({
+  id: '/offers',
+  path: '/offers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeoCompanyRoute = SeoCompanyRouteImport.update({
+  id: '/seo-company',
+  path: '/seo-company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeoExpertRoute = SeoExpertRouteImport.update({
+  id: '/seo-expert',
+  path: '/seo-expert',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeoGeoEli5Route = SeoGeoEli5RouteImport.update({
+  id: '/seo-geo-eli5',
+  path: '/seo-geo-eli5',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeoServicesRoute = SeoServicesRouteImport.update({
+  id: '/seo-services',
+  path: '/seo-services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArIndexRoute = ArIndexRouteImport.update({
@@ -155,14 +146,99 @@ const ArIndexRoute = ArIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ArRoute,
 } as any)
-const ServicesSlugRoute = ServicesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ServicesRoute,
+const ArAiSeoRoute = ArAiSeoRouteImport.update({
+  id: '/ai-seo',
+  path: '/ai-seo',
+  getParentRoute: () => ArRoute,
 } as any)
-const CourseLessonIdRoute = CourseLessonIdRouteImport.update({
-  id: '/course/$lessonId',
-  path: '/course/$lessonId',
+const ArContentSeoRoute = ArContentSeoRouteImport.update({
+  id: '/content-seo',
+  path: '/content-seo',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArContentStrategyRoute = ArContentStrategyRouteImport.update({
+  id: '/content-strategy',
+  path: '/content-strategy',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArEcommerceSeoRoute = ArEcommerceSeoRouteImport.update({
+  id: '/ecommerce-seo',
+  path: '/ecommerce-seo',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArFreeConsultationRoute = ArFreeConsultationRouteImport.update({
+  id: '/free-consultation',
+  path: '/free-consultation',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArGrowthMarketingRoute = ArGrowthMarketingRouteImport.update({
+  id: '/growth-marketing',
+  path: '/growth-marketing',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArInternationalSeoRoute = ArInternationalSeoRouteImport.update({
+  id: '/international-seo',
+  path: '/international-seo',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArKeywordResearchRoute = ArKeywordResearchRouteImport.update({
+  id: '/keyword-research',
+  path: '/keyword-research',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArOffersRoute = ArOffersRouteImport.update({
+  id: '/offers',
+  path: '/offers',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArSeoCompanyRoute = ArSeoCompanyRouteImport.update({
+  id: '/seo-company',
+  path: '/seo-company',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArSeoExpertRoute = ArSeoExpertRouteImport.update({
+  id: '/seo-expert',
+  path: '/seo-expert',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArSeoGeoEli5Route = ArSeoGeoEli5RouteImport.update({
+  id: '/seo-geo-eli5',
+  path: '/seo-geo-eli5',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArSeoServicesRoute = ArSeoServicesRouteImport.update({
+  id: '/seo-services',
+  path: '/seo-services',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArServicesRoute = ArServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => ArRoute,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./routes/blog.$slug.lazy').then((d) => d.Route))
+const BlogArRoute = BlogArRouteImport.update({
+  id: '/blog/ar',
+  path: '/blog/ar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogContentPlanRoute = BlogContentPlanRouteImport.update({
+  id: '/blog/content-plan',
+  path: '/blog/content-plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogEnRoute = BlogEnRouteImport.update({
+  id: '/blog/en',
+  path: '/blog/en',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogInternationalContentPlanRoute =
@@ -171,94 +247,34 @@ const BlogInternationalContentPlanRoute =
     path: '/blog/international-content-plan',
     getParentRoute: () => rootRouteImport,
   } as any)
-const BlogEnRoute = BlogEnRouteImport.update({
-  id: '/blog/en',
-  path: '/blog/en',
+const CourseIndexRoute = CourseIndexRouteImport.update({
+  id: '/course/',
+  path: '/course/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogContentPlanRoute = BlogContentPlanRouteImport.update({
-  id: '/blog/content-plan',
-  path: '/blog/content-plan',
+const CourseLessonIdRoute = CourseLessonIdRouteImport.update({
+  id: '/course/$lessonId',
+  path: '/course/$lessonId',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogArRoute = BlogArRouteImport.update({
-  id: '/blog/ar',
-  path: '/blog/ar',
-  getParentRoute: () => rootRouteImport,
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
 } as any)
-const BlogSlugRoute = BlogSlugRouteImport.update({
-  id: '/blog/$slug',
-  path: '/blog/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/blog.$slug.lazy').then((d) => d.Route))
-const ArServicesRoute = ArServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ArCourseIndexRoute = ArCourseIndexRouteImport.update({
+  id: '/course/',
+  path: '/course/',
   getParentRoute: () => ArRoute,
 } as any)
-const ArSeoServicesRoute = ArSeoServicesRouteImport.update({
-  id: '/seo-services',
-  path: '/seo-services',
-  getParentRoute: () => ArRoute,
-} as any)
-const ArSeoGeoEli5Route = ArSeoGeoEli5RouteImport.update({
-  id: '/seo-geo-eli5',
-  path: '/seo-geo-eli5',
-  getParentRoute: () => ArRoute,
-} as any)
-const ArSeoExpertRoute = ArSeoExpertRouteImport.update({
-  id: '/seo-expert',
-  path: '/seo-expert',
-  getParentRoute: () => ArRoute,
-} as any)
-const ArSeoCompanyRoute = ArSeoCompanyRouteImport.update({
-  id: '/seo-company',
-  path: '/seo-company',
-  getParentRoute: () => ArRoute,
-} as any)
-const ArOffersRoute = ArOffersRouteImport.update({
-  id: '/offers',
-  path: '/offers',
-  getParentRoute: () => ArRoute,
-} as any)
-const ArKeywordResearchRoute = ArKeywordResearchRouteImport.update({
-  id: '/keyword-research',
-  path: '/keyword-research',
-  getParentRoute: () => ArRoute,
-} as any)
-const ArInternationalSeoRoute = ArInternationalSeoRouteImport.update({
-  id: '/international-seo',
-  path: '/international-seo',
-  getParentRoute: () => ArRoute,
-} as any)
-const ArGrowthMarketingRoute = ArGrowthMarketingRouteImport.update({
-  id: '/growth-marketing',
-  path: '/growth-marketing',
-  getParentRoute: () => ArRoute,
-} as any)
-const ArFreeConsultationRoute = ArFreeConsultationRouteImport.update({
-  id: '/free-consultation',
-  path: '/free-consultation',
-  getParentRoute: () => ArRoute,
-} as any)
-const ArEcommerceSeoRoute = ArEcommerceSeoRouteImport.update({
-  id: '/ecommerce-seo',
-  path: '/ecommerce-seo',
-  getParentRoute: () => ArRoute,
-} as any)
-const ArContentStrategyRoute = ArContentStrategyRouteImport.update({
-  id: '/content-strategy',
-  path: '/content-strategy',
-  getParentRoute: () => ArRoute,
-} as any)
-const ArContentSeoRoute = ArContentSeoRouteImport.update({
-  id: '/content-seo',
-  path: '/content-seo',
-  getParentRoute: () => ArRoute,
-} as any)
-const ArAiSeoRoute = ArAiSeoRouteImport.update({
-  id: '/ai-seo',
-  path: '/ai-seo',
+const ArCourseLessonIdRoute = ArCourseLessonIdRouteImport.update({
+  id: '/course/$lessonId',
+  path: '/course/$lessonId',
   getParentRoute: () => ArRoute,
 } as any)
 const ArServicesIndexRoute = ArServicesIndexRouteImport.update({
@@ -266,20 +282,10 @@ const ArServicesIndexRoute = ArServicesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ArServicesRoute,
 } as any)
-const ArCourseIndexRoute = ArCourseIndexRouteImport.update({
-  id: '/course/',
-  path: '/course/',
-  getParentRoute: () => ArRoute,
-} as any)
 const ArServicesSlugRoute = ArServicesSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => ArServicesRoute,
-} as any)
-const ArCourseLessonIdRoute = ArCourseLessonIdRouteImport.update({
-  id: '/course/$lessonId',
-  path: '/course/$lessonId',
-  getParentRoute: () => ArRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -292,6 +298,7 @@ export interface FileRoutesByFullPath {
   '/growth-marketing': typeof GrowthMarketingRoute
   '/international-seo': typeof InternationalSeoRoute
   '/keyword-research': typeof KeywordResearchRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/offers': typeof OffersRoute
   '/seo-company': typeof SeoCompanyRoute
   '/seo-expert': typeof SeoExpertRoute
@@ -338,6 +345,7 @@ export interface FileRoutesByTo {
   '/growth-marketing': typeof GrowthMarketingRoute
   '/international-seo': typeof InternationalSeoRoute
   '/keyword-research': typeof KeywordResearchRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/offers': typeof OffersRoute
   '/seo-company': typeof SeoCompanyRoute
   '/seo-expert': typeof SeoExpertRoute
@@ -384,6 +392,7 @@ export interface FileRoutesById {
   '/growth-marketing': typeof GrowthMarketingRoute
   '/international-seo': typeof InternationalSeoRoute
   '/keyword-research': typeof KeywordResearchRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/offers': typeof OffersRoute
   '/seo-company': typeof SeoCompanyRoute
   '/seo-expert': typeof SeoExpertRoute
@@ -433,6 +442,7 @@ export interface FileRouteTypes {
     | '/growth-marketing'
     | '/international-seo'
     | '/keyword-research'
+    | '/llms.txt'
     | '/offers'
     | '/seo-company'
     | '/seo-expert'
@@ -479,6 +489,7 @@ export interface FileRouteTypes {
     | '/growth-marketing'
     | '/international-seo'
     | '/keyword-research'
+    | '/llms.txt'
     | '/offers'
     | '/seo-company'
     | '/seo-expert'
@@ -524,6 +535,7 @@ export interface FileRouteTypes {
     | '/growth-marketing'
     | '/international-seo'
     | '/keyword-research'
+    | '/llms.txt'
     | '/offers'
     | '/seo-company'
     | '/seo-expert'
@@ -572,6 +584,7 @@ export interface RootRouteChildren {
   GrowthMarketingRoute: typeof GrowthMarketingRoute
   InternationalSeoRoute: typeof InternationalSeoRoute
   KeywordResearchRoute: typeof KeywordResearchRoute
+  LlmsDottxtRoute: typeof LlmsDottxtRoute
   OffersRoute: typeof OffersRoute
   SeoCompanyRoute: typeof SeoCompanyRoute
   SeoExpertRoute: typeof SeoExpertRoute
@@ -591,102 +604,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/seo-services': {
-      id: '/seo-services'
-      path: '/seo-services'
-      fullPath: '/seo-services'
-      preLoaderRoute: typeof SeoServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/seo-geo-eli5': {
-      id: '/seo-geo-eli5'
-      path: '/seo-geo-eli5'
-      fullPath: '/seo-geo-eli5'
-      preLoaderRoute: typeof SeoGeoEli5RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/seo-expert': {
-      id: '/seo-expert'
-      path: '/seo-expert'
-      fullPath: '/seo-expert'
-      preLoaderRoute: typeof SeoExpertRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/seo-company': {
-      id: '/seo-company'
-      path: '/seo-company'
-      fullPath: '/seo-company'
-      preLoaderRoute: typeof SeoCompanyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/offers': {
-      id: '/offers'
-      path: '/offers'
-      fullPath: '/offers'
-      preLoaderRoute: typeof OffersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/keyword-research': {
-      id: '/keyword-research'
-      path: '/keyword-research'
-      fullPath: '/keyword-research'
-      preLoaderRoute: typeof KeywordResearchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/international-seo': {
-      id: '/international-seo'
-      path: '/international-seo'
-      fullPath: '/international-seo'
-      preLoaderRoute: typeof InternationalSeoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/growth-marketing': {
-      id: '/growth-marketing'
-      path: '/growth-marketing'
-      fullPath: '/growth-marketing'
-      preLoaderRoute: typeof GrowthMarketingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/free-consultation': {
-      id: '/free-consultation'
-      path: '/free-consultation'
-      fullPath: '/free-consultation'
-      preLoaderRoute: typeof FreeConsultationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ecommerce-seo': {
-      id: '/ecommerce-seo'
-      path: '/ecommerce-seo'
-      fullPath: '/ecommerce-seo'
-      preLoaderRoute: typeof EcommerceSeoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/content-strategy': {
-      id: '/content-strategy'
-      path: '/content-strategy'
-      fullPath: '/content-strategy'
-      preLoaderRoute: typeof ContentStrategyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/content-seo': {
-      id: '/content-seo'
-      path: '/content-seo'
-      fullPath: '/content-seo'
-      preLoaderRoute: typeof ContentSeoRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ar': {
@@ -696,32 +618,109 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/content-seo': {
+      id: '/content-seo'
+      path: '/content-seo'
+      fullPath: '/content-seo'
+      preLoaderRoute: typeof ContentSeoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/': {
-      id: '/services/'
-      path: '/'
-      fullPath: '/services/'
-      preLoaderRoute: typeof ServicesIndexRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/course/': {
-      id: '/course/'
-      path: '/course'
-      fullPath: '/course/'
-      preLoaderRoute: typeof CourseIndexRouteImport
+    '/content-strategy': {
+      id: '/content-strategy'
+      path: '/content-strategy'
+      fullPath: '/content-strategy'
+      preLoaderRoute: typeof ContentStrategyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/': {
-      id: '/blog/'
-      path: '/blog'
-      fullPath: '/blog/'
-      preLoaderRoute: typeof BlogIndexRouteImport
+    '/ecommerce-seo': {
+      id: '/ecommerce-seo'
+      path: '/ecommerce-seo'
+      fullPath: '/ecommerce-seo'
+      preLoaderRoute: typeof EcommerceSeoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/free-consultation': {
+      id: '/free-consultation'
+      path: '/free-consultation'
+      fullPath: '/free-consultation'
+      preLoaderRoute: typeof FreeConsultationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/growth-marketing': {
+      id: '/growth-marketing'
+      path: '/growth-marketing'
+      fullPath: '/growth-marketing'
+      preLoaderRoute: typeof GrowthMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/international-seo': {
+      id: '/international-seo'
+      path: '/international-seo'
+      fullPath: '/international-seo'
+      preLoaderRoute: typeof InternationalSeoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/keyword-research': {
+      id: '/keyword-research'
+      path: '/keyword-research'
+      fullPath: '/keyword-research'
+      preLoaderRoute: typeof KeywordResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llms.txt': {
+      id: '/llms.txt'
+      path: '/llms.txt'
+      fullPath: '/llms.txt'
+      preLoaderRoute: typeof LlmsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offers': {
+      id: '/offers'
+      path: '/offers'
+      fullPath: '/offers'
+      preLoaderRoute: typeof OffersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seo-company': {
+      id: '/seo-company'
+      path: '/seo-company'
+      fullPath: '/seo-company'
+      preLoaderRoute: typeof SeoCompanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seo-expert': {
+      id: '/seo-expert'
+      path: '/seo-expert'
+      fullPath: '/seo-expert'
+      preLoaderRoute: typeof SeoExpertRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seo-geo-eli5': {
+      id: '/seo-geo-eli5'
+      path: '/seo-geo-eli5'
+      fullPath: '/seo-geo-eli5'
+      preLoaderRoute: typeof SeoGeoEli5RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seo-services': {
+      id: '/seo-services'
+      path: '/seo-services'
+      fullPath: '/seo-services'
+      preLoaderRoute: typeof SeoServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ar/': {
@@ -731,137 +730,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArIndexRouteImport
       parentRoute: typeof ArRoute
     }
-    '/services/$slug': {
-      id: '/services/$slug'
-      path: '/$slug'
-      fullPath: '/services/$slug'
-      preLoaderRoute: typeof ServicesSlugRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/course/$lessonId': {
-      id: '/course/$lessonId'
-      path: '/course/$lessonId'
-      fullPath: '/course/$lessonId'
-      preLoaderRoute: typeof CourseLessonIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/international-content-plan': {
-      id: '/blog/international-content-plan'
-      path: '/blog/international-content-plan'
-      fullPath: '/blog/international-content-plan'
-      preLoaderRoute: typeof BlogInternationalContentPlanRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/en': {
-      id: '/blog/en'
-      path: '/blog/en'
-      fullPath: '/blog/en'
-      preLoaderRoute: typeof BlogEnRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/content-plan': {
-      id: '/blog/content-plan'
-      path: '/blog/content-plan'
-      fullPath: '/blog/content-plan'
-      preLoaderRoute: typeof BlogContentPlanRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/ar': {
-      id: '/blog/ar'
-      path: '/blog/ar'
-      fullPath: '/blog/ar'
-      preLoaderRoute: typeof BlogArRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/$slug': {
-      id: '/blog/$slug'
-      path: '/blog/$slug'
-      fullPath: '/blog/$slug'
-      preLoaderRoute: typeof BlogSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ar/services': {
-      id: '/ar/services'
-      path: '/services'
-      fullPath: '/ar/services'
-      preLoaderRoute: typeof ArServicesRouteImport
-      parentRoute: typeof ArRoute
-    }
-    '/ar/seo-services': {
-      id: '/ar/seo-services'
-      path: '/seo-services'
-      fullPath: '/ar/seo-services'
-      preLoaderRoute: typeof ArSeoServicesRouteImport
-      parentRoute: typeof ArRoute
-    }
-    '/ar/seo-geo-eli5': {
-      id: '/ar/seo-geo-eli5'
-      path: '/seo-geo-eli5'
-      fullPath: '/ar/seo-geo-eli5'
-      preLoaderRoute: typeof ArSeoGeoEli5RouteImport
-      parentRoute: typeof ArRoute
-    }
-    '/ar/seo-expert': {
-      id: '/ar/seo-expert'
-      path: '/seo-expert'
-      fullPath: '/ar/seo-expert'
-      preLoaderRoute: typeof ArSeoExpertRouteImport
-      parentRoute: typeof ArRoute
-    }
-    '/ar/seo-company': {
-      id: '/ar/seo-company'
-      path: '/seo-company'
-      fullPath: '/ar/seo-company'
-      preLoaderRoute: typeof ArSeoCompanyRouteImport
-      parentRoute: typeof ArRoute
-    }
-    '/ar/offers': {
-      id: '/ar/offers'
-      path: '/offers'
-      fullPath: '/ar/offers'
-      preLoaderRoute: typeof ArOffersRouteImport
-      parentRoute: typeof ArRoute
-    }
-    '/ar/keyword-research': {
-      id: '/ar/keyword-research'
-      path: '/keyword-research'
-      fullPath: '/ar/keyword-research'
-      preLoaderRoute: typeof ArKeywordResearchRouteImport
-      parentRoute: typeof ArRoute
-    }
-    '/ar/international-seo': {
-      id: '/ar/international-seo'
-      path: '/international-seo'
-      fullPath: '/ar/international-seo'
-      preLoaderRoute: typeof ArInternationalSeoRouteImport
-      parentRoute: typeof ArRoute
-    }
-    '/ar/growth-marketing': {
-      id: '/ar/growth-marketing'
-      path: '/growth-marketing'
-      fullPath: '/ar/growth-marketing'
-      preLoaderRoute: typeof ArGrowthMarketingRouteImport
-      parentRoute: typeof ArRoute
-    }
-    '/ar/free-consultation': {
-      id: '/ar/free-consultation'
-      path: '/free-consultation'
-      fullPath: '/ar/free-consultation'
-      preLoaderRoute: typeof ArFreeConsultationRouteImport
-      parentRoute: typeof ArRoute
-    }
-    '/ar/ecommerce-seo': {
-      id: '/ar/ecommerce-seo'
-      path: '/ecommerce-seo'
-      fullPath: '/ar/ecommerce-seo'
-      preLoaderRoute: typeof ArEcommerceSeoRouteImport
-      parentRoute: typeof ArRoute
-    }
-    '/ar/content-strategy': {
-      id: '/ar/content-strategy'
-      path: '/content-strategy'
-      fullPath: '/ar/content-strategy'
-      preLoaderRoute: typeof ArContentStrategyRouteImport
+    '/ar/ai-seo': {
+      id: '/ar/ai-seo'
+      path: '/ai-seo'
+      fullPath: '/ar/ai-seo'
+      preLoaderRoute: typeof ArAiSeoRouteImport
       parentRoute: typeof ArRoute
     }
     '/ar/content-seo': {
@@ -871,11 +744,172 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArContentSeoRouteImport
       parentRoute: typeof ArRoute
     }
-    '/ar/ai-seo': {
-      id: '/ar/ai-seo'
-      path: '/ai-seo'
-      fullPath: '/ar/ai-seo'
-      preLoaderRoute: typeof ArAiSeoRouteImport
+    '/ar/content-strategy': {
+      id: '/ar/content-strategy'
+      path: '/content-strategy'
+      fullPath: '/ar/content-strategy'
+      preLoaderRoute: typeof ArContentStrategyRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/ecommerce-seo': {
+      id: '/ar/ecommerce-seo'
+      path: '/ecommerce-seo'
+      fullPath: '/ar/ecommerce-seo'
+      preLoaderRoute: typeof ArEcommerceSeoRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/free-consultation': {
+      id: '/ar/free-consultation'
+      path: '/free-consultation'
+      fullPath: '/ar/free-consultation'
+      preLoaderRoute: typeof ArFreeConsultationRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/growth-marketing': {
+      id: '/ar/growth-marketing'
+      path: '/growth-marketing'
+      fullPath: '/ar/growth-marketing'
+      preLoaderRoute: typeof ArGrowthMarketingRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/international-seo': {
+      id: '/ar/international-seo'
+      path: '/international-seo'
+      fullPath: '/ar/international-seo'
+      preLoaderRoute: typeof ArInternationalSeoRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/keyword-research': {
+      id: '/ar/keyword-research'
+      path: '/keyword-research'
+      fullPath: '/ar/keyword-research'
+      preLoaderRoute: typeof ArKeywordResearchRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/offers': {
+      id: '/ar/offers'
+      path: '/offers'
+      fullPath: '/ar/offers'
+      preLoaderRoute: typeof ArOffersRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/seo-company': {
+      id: '/ar/seo-company'
+      path: '/seo-company'
+      fullPath: '/ar/seo-company'
+      preLoaderRoute: typeof ArSeoCompanyRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/seo-expert': {
+      id: '/ar/seo-expert'
+      path: '/seo-expert'
+      fullPath: '/ar/seo-expert'
+      preLoaderRoute: typeof ArSeoExpertRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/seo-geo-eli5': {
+      id: '/ar/seo-geo-eli5'
+      path: '/seo-geo-eli5'
+      fullPath: '/ar/seo-geo-eli5'
+      preLoaderRoute: typeof ArSeoGeoEli5RouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/seo-services': {
+      id: '/ar/seo-services'
+      path: '/seo-services'
+      fullPath: '/ar/seo-services'
+      preLoaderRoute: typeof ArSeoServicesRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/services': {
+      id: '/ar/services'
+      path: '/services'
+      fullPath: '/ar/services'
+      preLoaderRoute: typeof ArServicesRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/ar': {
+      id: '/blog/ar'
+      path: '/blog/ar'
+      fullPath: '/blog/ar'
+      preLoaderRoute: typeof BlogArRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/content-plan': {
+      id: '/blog/content-plan'
+      path: '/blog/content-plan'
+      fullPath: '/blog/content-plan'
+      preLoaderRoute: typeof BlogContentPlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/en': {
+      id: '/blog/en'
+      path: '/blog/en'
+      fullPath: '/blog/en'
+      preLoaderRoute: typeof BlogEnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/international-content-plan': {
+      id: '/blog/international-content-plan'
+      path: '/blog/international-content-plan'
+      fullPath: '/blog/international-content-plan'
+      preLoaderRoute: typeof BlogInternationalContentPlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/course/': {
+      id: '/course/'
+      path: '/course'
+      fullPath: '/course/'
+      preLoaderRoute: typeof CourseIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/course/$lessonId': {
+      id: '/course/$lessonId'
+      path: '/course/$lessonId'
+      fullPath: '/course/$lessonId'
+      preLoaderRoute: typeof CourseLessonIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/$slug': {
+      id: '/services/$slug'
+      path: '/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/ar/course/': {
+      id: '/ar/course/'
+      path: '/course'
+      fullPath: '/ar/course/'
+      preLoaderRoute: typeof ArCourseIndexRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/course/$lessonId': {
+      id: '/ar/course/$lessonId'
+      path: '/course/$lessonId'
+      fullPath: '/ar/course/$lessonId'
+      preLoaderRoute: typeof ArCourseLessonIdRouteImport
       parentRoute: typeof ArRoute
     }
     '/ar/services/': {
@@ -885,26 +919,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArServicesIndexRouteImport
       parentRoute: typeof ArServicesRoute
     }
-    '/ar/course/': {
-      id: '/ar/course/'
-      path: '/course'
-      fullPath: '/ar/course/'
-      preLoaderRoute: typeof ArCourseIndexRouteImport
-      parentRoute: typeof ArRoute
-    }
     '/ar/services/$slug': {
       id: '/ar/services/$slug'
       path: '/$slug'
       fullPath: '/ar/services/$slug'
       preLoaderRoute: typeof ArServicesSlugRouteImport
       parentRoute: typeof ArServicesRoute
-    }
-    '/ar/course/$lessonId': {
-      id: '/ar/course/$lessonId'
-      path: '/course/$lessonId'
-      fullPath: '/ar/course/$lessonId'
-      preLoaderRoute: typeof ArCourseLessonIdRouteImport
-      parentRoute: typeof ArRoute
     }
   }
 }
@@ -989,6 +1009,7 @@ const rootRouteChildren: RootRouteChildren = {
   GrowthMarketingRoute: GrowthMarketingRoute,
   InternationalSeoRoute: InternationalSeoRoute,
   KeywordResearchRoute: KeywordResearchRoute,
+  LlmsDottxtRoute: LlmsDottxtRoute,
   OffersRoute: OffersRoute,
   SeoCompanyRoute: SeoCompanyRoute,
   SeoExpertRoute: SeoExpertRoute,

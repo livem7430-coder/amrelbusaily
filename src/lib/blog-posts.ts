@@ -974,6 +974,150 @@ export const blogPosts: BlogPost[] = [
       { q: "Does WebP solve image performance by itself?", a: "No. Use an appropriate size, compression, reserved layout space and measure the effect on page speed." },
     ],
   },
+  {
+    slug: "seo-mistakes-ar",
+    title: "أكتر 10 أخطاء SEO بتضيع ترتيبك — وإزاي تصلحها",
+    description:
+      "الأخطاء العشرة اللي بشوفها بتتكرر في كل أوديت: نية البحث، تنافس الصفحات على نفس الكلمة، السيو التقني، الروابط الداخلية، السرعة — وإزاي تصلح كل واحدة.",
+    date: "2026-09-19",
+    readTime: "10 دقائق",
+    lang: "ar",
+    altSlug: "seo-mistakes-en",
+    faq: [
+      {
+        q: "إيه أكبر غلطة SEO بيقع فيها أصحاب المواقع؟",
+        a: "استهداف كلمات مفتاحية من غير فحص نية البحث: لو المتصدرين صفحات منتجات وأنت ناشر مقال، مش هتتصدر مهما كان المحتوى قوي. ابحث عن الكلمة الأول وشوف نوع الصفحات المتصدرة.",
+      },
+      {
+        q: "هل شراء الباك لينكس مضر فعلاً؟",
+        a: "أيوه. جوجل بيفلتر الروابط المشبوهة، والعقوبة اليدوية ممكن تمسح شغل سنين. البديل: محتوى يستحق الاقتباس وعلاقات عامة رقمية ومشاركات ضيف في مواقع ليها جمهور حقيقي.",
+      },
+      {
+        q: "SEO بياخد وقت قد إيه عشان يبان أثره؟",
+        a: "عادة من 3 لـ6 شهور، خصوصاً على الدومينات الجديدة. أكبر غلط هو إنك توقف بعد شهر بدون نتايج — بالظبط قبل ما المجهود يثمر.",
+      },
+    ],
+  },
+  {
+    slug: "seo-mistakes-en",
+    title: "10 Common SEO Mistakes That Quietly Kill Your Rankings",
+    description:
+      "The 10 SEO mistakes I see in almost every audit: search intent, cannibalization, technical debt, internal links, speed - and exactly how to fix each one.",
+    date: "2026-09-19",
+    readTime: "10 min read",
+    lang: "en",
+    altSlug: "seo-mistakes-ar",
+    faq: [
+      {
+        q: "What is the most common SEO mistake site owners make?",
+        a: "Targeting keywords without checking search intent. If the top results are product pages and you publish a blog post, you will not rank regardless of quality. Search the keyword first and match the winning page type.",
+      },
+      {
+        q: "Is buying backlinks really harmful?",
+        a: "Yes. Google filters suspicious link patterns, and a manual action can erase years of work. Earn links through citable content, digital PR and guest contributions on sites with real audiences.",
+      },
+      {
+        q: "How long does SEO take to show results?",
+        a: "Typically 3 to 6 months, especially on newer domains. The most common failure is quitting after one month with no results - right before the effort compounds.",
+      },
+    ],
+  },
+  {
+    slug: "google-search-console-guide-ar",
+    title: "شرح Google Search Console خطوة بخطوة: من التسطيب لخطة العمل اليومية",
+    description:
+      "دليل عملي لـGoogle Search Console: التسطيب الصح، تقرير الأداء والفهرسة، فحص الروابط، Core Web Vitals، وروتين أسبوعي يطلعلك فرص تصدر حقيقية.",
+    date: "2026-09-19",
+    readTime: "9 دقائق",
+    lang: "ar",
+    altSlug: "google-search-console-guide-en",
+    faq: [
+      {
+        q: "إزاي أظبط Google Search Console صح؟",
+        a: "سجل كـDomain Property مش URL Prefix عشان تغطي كل نسخ الموقع، وتحقق عن طريق DNS record، وبعدها ارفع الـsitemap.xml من قسم Sitemaps.",
+      },
+      {
+        q: "إيه أهم تقرير في Search Console؟",
+        a: "تقرير Performance: فلتر بالـQueries ودور على كلمات عندها Impressions عالية وPosition بين 5 و15 — دي أسرع فرص تصدر بتحسينات بسيطة.",
+      },
+      {
+        q: "ليه صفحاتي مش بتتفهرس؟",
+        a: "افتح تقرير Pages تحت Indexing وشوف السبب: Crawled not indexed معناه مشكلة جودة أو تكرار، Discovered not indexed معناه مشكلة بنية أو سرعة، والمكرر محتاج canonical مظبوط.",
+      },
+    ],
+  },
+  {
+    slug: "google-search-console-guide-en",
+    title: "Google Search Console Explained: Setup, Reports and a Weekly SEO Routine",
+    description:
+      "A practical Google Search Console guide: correct setup, the Performance and Pages reports, URL inspection, Core Web Vitals, and a weekly routine that surfaces real ranking wins.",
+    date: "2026-09-19",
+    readTime: "9 min read",
+    lang: "en",
+    altSlug: "google-search-console-guide-ar",
+    faq: [
+      {
+        q: "How do I set up Google Search Console correctly?",
+        a: "Register as a Domain property rather than a URL-prefix property so all site versions are covered, verify via a DNS record, then submit your sitemap.xml under Sitemaps.",
+      },
+      {
+        q: "What is the most important Search Console report?",
+        a: "The Performance report. Filter by Queries and look for keywords with high impressions and positions between 5 and 15 - those are your fastest ranking wins.",
+      },
+      {
+        q: "Why are my pages not getting indexed?",
+        a: "Open the Pages report under Indexing and read the reason: Crawled not indexed points to quality or duplication, Discovered not indexed to architecture or speed, and duplicates need proper canonicals.",
+      },
+    ],
+  },
+  {
+    slug: "seo-small-budget-ar",
+    title: "SEO بميزانية صغيرة: إيه تعمل الأول بترتيب صحيح",
+    description:
+      "خطة SEO عملية من غير ميزانية: الأساس التقني، الكلمات الطويلة، محتوى قوي، SEO محلي، أدوات مجانية — وبامتى يستاهل تستثمر فلوس فعلاً.",
+    date: "2026-09-19",
+    readTime: "9 دقائق",
+    lang: "ar",
+    altSlug: "seo-small-budget-en",
+    faq: [
+      {
+        q: "أقدر أعمل SEO من غير فلوس خالص؟",
+        a: "أيوه في البداية: الأساس التقني، الكلمات الطويلة، محتوى قوي، وGoogle Business Profile كلهم مجانيين وبيحتاجوا وقت أكتر من فلوس. الفلوس بتيجي بعدين لتسريع اللي شغال.",
+      },
+      {
+        q: "إيه أسرع مكسب SEO مجاني للمشاريع الصغيرة؟",
+        a: "Google Business Profile للمشاريع المحلية: ملف كامل بالصور والخدمات، تقييمات حقيقية، وبوستات أسبوعية — ده أعلى استثمار مجاني في الظهور المحلي.",
+      },
+      {
+        q: "امتى أشتري أدوات SEO مدفوعة؟",
+        a: "لما الأساسيات تكون شغالة وعايز تسرّع: شهر واحد من أداة زي Ahrefs لبحث كلمات شامل، أو محتوى احترافي للكلمات التجارية. الأدوات بتضاعف اللي شغال مش بتصلح اللي مكسور.",
+      },
+    ],
+  },
+  {
+    slug: "seo-small-budget-en",
+    title: "SEO on a Small Budget: What to Do First, in the Right Order",
+    description:
+      "A practical small-budget SEO plan: technical fundamentals, long-tail keywords, strong content, local SEO, free tools - and when spending money actually pays back.",
+    date: "2026-09-19",
+    readTime: "9 min read",
+    lang: "en",
+    altSlug: "seo-small-budget-ar",
+    faq: [
+      {
+        q: "Can I do SEO with no money at all?",
+        a: "Yes, at the start: technical fundamentals, long-tail keywords, strong content and Google Business Profile are all free and cost time rather than money. Money comes later to accelerate what already works.",
+      },
+      {
+        q: "What is the fastest free SEO win for a small business?",
+        a: "Google Business Profile for local businesses: a complete profile with photos and services, real reviews and weekly posts is the highest-return free investment in local visibility.",
+      },
+      {
+        q: "When should I buy paid SEO tools?",
+        a: "Once the fundamentals are working and you want to move faster: one month of a tool like Ahrefs for deep keyword research, or professional content for commercial keywords. Tools multiply what works; they do not fix what is broken.",
+      },
+    ],
+  },
   ...longFormBlogPosts,
   ...aiDigitalProductPosts,
   ...aiEcommerce100Posts,
