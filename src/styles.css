@@ -146,3 +146,10 @@
   h1 { letter-spacing: -0.035em; }
   section > div { scroll-margin-top: 8rem; }
 }
+
+@layer components {
+  .article-prose > p:first-child { font-size: 1.125rem; line-height: 2; color: var(--foreground); }
+  .article-prose h2 { padding-top: .25rem; }
+  .article-prose li::marker { color: var(--primary); }
+  .article-prose a { text-underline-offset: .24em; text-decoration-thickness: 1px; }
+}
