@@ -153,3 +153,12 @@
   .article-prose li::marker { color: var(--primary); }
   .article-prose a { text-underline-offset: .24em; text-decoration-thickness: 1px; }
 }
+
+/* Arabic shaping safety: tracking breaks connected script in headings and labels. */
+:where([lang="ar"], [dir="rtl"]) :where(h1, h2, h3, h4, p, a, span, div, li, summary, button, label) {
+  letter-spacing: 0 !important;
+}
+:where([lang="ar"], [dir="rtl"]) {
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures contextual;
+}
