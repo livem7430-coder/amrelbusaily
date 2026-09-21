@@ -280,18 +280,14 @@ function HomeAr() {
             <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground font-mono text-sm">
               AE
             </span>
-            <span>عمرو البصيلي</span>
+            <span><span className="block leading-none">عمرو البصيلي</span><span className="mt-1 hidden font-mono text-[9px] font-normal uppercase tracking-[0.16em] text-muted-foreground sm:block">SEO & AI Growth</span></span>
           </a>
-          <nav className="hidden gap-7 text-sm text-muted-foreground md:flex">
-            <a href="#work" className="hover:text-foreground">الأعمال</a>
+          <nav aria-label="التنقل الرئيسي" className="hidden items-center gap-6 text-sm text-muted-foreground lg:flex">
+            <a href="#results" className="hover:text-foreground">النتائج</a>
             <Link to="/ar/services" className="hover:text-foreground">الخدمات</Link>
-            <a href="#experience" className="hover:text-foreground">الخبرة</a>
-            <a href="#skills" className="hover:text-foreground">المهارات</a>
-            <Link to="/blog/ar" className="hover:text-foreground">المدونة</Link>
-            <Link to="/ar/course" className="hover:text-foreground">كورس SEO</Link>
-            <Link to="/ar/seo-geo-eli5" className="hover:text-foreground">شرح SEO وGEO</Link>
-            <Link to="/ar/free-consultation" className="text-primary hover:opacity-80">استشارة مجانية</Link>
-            <a href="#contact" className="hover:text-foreground">تواصل</a>
+            <a href="#work" className="hover:text-foreground">الأعمال</a>
+            <Link to="/blog/ar" className="hover:text-foreground">المقالات</Link>
+            <Link to="/ar/free-consultation" className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 font-medium text-primary hover:bg-primary/15">استشارة مجانية</Link>
           </nav>
           <div className="flex items-center gap-3">
             <Link to="/" className="text-xs font-mono text-muted-foreground hover:text-foreground">EN</Link>
@@ -336,13 +332,12 @@ function HomeAr() {
               وSaaS والمنتجات الرقمية.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#contact" className="rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground glow-primary hover:opacity-90">
-                ابدأ مشروعك
-              </a>
-              <a                 href="#results"
-                className="rounded-md border border-border bg-surface px-5 py-3 text-sm text-foreground hover:bg-surface-2">
-                شوف النتائج
-              </a>
+              <Link to="/ar/free-consultation" className="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground glow-primary transition hover:-translate-y-0.5 hover:opacity-95">خد مراجعة SEO مجانية</Link>
+              <Link to="/ar/services" className="rounded-lg border border-border bg-surface/80 px-5 py-3 text-sm font-medium text-foreground transition hover:-translate-y-0.5 hover:border-primary/50 hover:bg-surface-2">شوف الخدمات</Link>
+            </div>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
+              <span className="inline-flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />تعامل مباشر مع الخبير</span>
+              <span>عربي + English</span><span>مصر + الخليج</span>
             </div>
           </div>
 
