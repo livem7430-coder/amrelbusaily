@@ -162,3 +162,9 @@
   font-kerning: normal;
   font-variant-ligatures: common-ligatures contextual;
 }
+
+/* Use an Arabic-capable shaping stack instead of Latin display/mono faces. */
+:where([lang="ar"], [dir="rtl"]),
+:where([lang="ar"], [dir="rtl"]) :where(h1, h2, h3, h4, p, a, span, div, li, summary, button, label) {
+  font-family: Tahoma, Arial, "Noto Sans Arabic", sans-serif !important;
+}
