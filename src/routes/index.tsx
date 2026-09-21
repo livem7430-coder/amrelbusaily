@@ -337,18 +337,14 @@ function Home() {
             <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground font-mono text-sm">
               AE
             </span>
-            <span>Amr Elbusaily</span>
+            <span><span className="block leading-none">Amr Elbusaily</span><span className="mt-1 hidden font-mono text-[9px] font-normal uppercase tracking-[0.16em] text-muted-foreground sm:block">SEO & AI Growth</span></span>
           </a>
-          <nav className="hidden gap-7 text-sm text-muted-foreground md:flex">
-            <a href="#work" className="hover:text-foreground">Work</a>
+          <nav aria-label="Primary navigation" className="hidden items-center gap-6 text-sm text-muted-foreground lg:flex">
+            <a href="#results" className="hover:text-foreground">Results</a>
             <Link to="/services" className="hover:text-foreground">Services</Link>
-            <a href="#experience" className="hover:text-foreground">Experience</a>
-            <a href="#skills" className="hover:text-foreground">Skills</a>
-            <Link to="/blog" className="hover:text-foreground">Blog</Link>
-            <Link to="/course" className="hover:text-foreground">SEO Course</Link>
-            <Link to="/seo-geo-eli5" className="hover:text-foreground">SEO + GEO ELI5</Link>
-            <Link to="/free-consultation" className="text-primary hover:opacity-80">Free consultation</Link>
-            <a href="#contact" className="hover:text-foreground">Contact</a>
+            <a href="#work" className="hover:text-foreground">Work</a>
+            <Link to="/blog" className="hover:text-foreground">Insights</Link>
+            <Link to="/free-consultation" className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 font-medium text-primary hover:bg-primary/15">Free consultation</Link>
           </nav>
           <div className="flex items-center gap-3">
             <Link to="/ar" className="text-xs font-mono text-muted-foreground hover:text-foreground">AR</Link>
@@ -394,18 +390,12 @@ function Home() {
               in e-commerce, SaaS and digital products.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#contact"
-                className="rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground glow-primary transition hover:opacity-90"
-              >
-                Start a project
-              </a>
-              <a
-                href="#results"
-                className="rounded-md border border-border bg-surface px-5 py-3 text-sm font-medium text-foreground transition hover:bg-surface-2"
-              >
-                See results
-              </a>
+              <Link to="/free-consultation" className="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground glow-primary transition hover:-translate-y-0.5 hover:opacity-95">Get a free SEO review</Link>
+              <Link to="/services" className="rounded-lg border border-border bg-surface/80 px-5 py-3 text-sm font-medium text-foreground transition hover:-translate-y-0.5 hover:border-primary/50 hover:bg-surface-2">Explore services</Link>
+            </div>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
+              <span className="inline-flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />Direct with the specialist</span>
+              <span>Arabic + English</span><span>Egypt + GCC</span>
             </div>
           </div>
 
