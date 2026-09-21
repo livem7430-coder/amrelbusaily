@@ -1,3 +1,4 @@
+import { buyerIntentSeoArticles } from "@/content/buyer-intent-seo-batch";
 import type { ComponentType } from "react";
 
 import {
@@ -581,4 +582,5 @@ export const articles: Record<string, ComponentType> = {
   ...aiDigitalProductArticles,
   ...aiEcommerce100ArticleRegistry,
   ...scaleArticleRegistry,
+  ...buyerIntentSeoArticles,
 };
