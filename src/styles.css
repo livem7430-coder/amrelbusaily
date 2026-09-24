@@ -96,13 +96,6 @@
     letter-spacing: -0.02em;
     text-wrap: balance;
   }
-  /* Arabic must never be letter-spaced: it breaks glyph joining */
-  html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, html[dir="rtl"] h4 {
-    letter-spacing: normal;
-  }
-  html[dir="rtl"] [class*="tracking-"] {
-    letter-spacing: normal;
-  }
   p {
     text-wrap: pretty;
   }
@@ -173,5 +166,5 @@
 /* Use an Arabic-capable shaping stack instead of Latin display/mono faces. */
 :where([lang="ar"], [dir="rtl"]),
 :where([lang="ar"], [dir="rtl"]) :where(h1, h2, h3, h4, p, a, span, div, li, summary, button, label) {
-  font-family: Tahoma, Arial, "Noto Sans Arabic", sans-serif !important;
+  font-family: "IBM Plex Sans Arabic", "Noto Sans Arabic", Tahoma, Arial, sans-serif !important;
 }
