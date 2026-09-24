@@ -20,6 +20,7 @@ import { Route as InternationalSeoRouteImport } from './routes/international-seo
 import { Route as KeywordResearchRouteImport } from './routes/keyword-research'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as OffersRouteImport } from './routes/offers'
+import { Route as PackagesRouteImport } from './routes/packages'
 import { Route as SeoCompanyRouteImport } from './routes/seo-company'
 import { Route as SeoExpertRouteImport } from './routes/seo-expert'
 import { Route as SeoExpertSaudiRouteImport } from './routes/seo-expert-saudi'
@@ -38,6 +39,7 @@ import { Route as ArGrowthMarketingRouteImport } from './routes/ar.growth-market
 import { Route as ArInternationalSeoRouteImport } from './routes/ar.international-seo'
 import { Route as ArKeywordResearchRouteImport } from './routes/ar.keyword-research'
 import { Route as ArOffersRouteImport } from './routes/ar.offers'
+import { Route as ArPackagesRouteImport } from './routes/ar.packages'
 import { Route as ArSeoCompanyRouteImport } from './routes/ar.seo-company'
 import { Route as ArSeoExpertRouteImport } from './routes/ar.seo-expert'
 import { Route as ArSeoExpertSaudiRouteImport } from './routes/ar.seo-expert-saudi'
@@ -113,6 +115,11 @@ const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
 const OffersRoute = OffersRouteImport.update({
   id: '/offers',
   path: '/offers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PackagesRoute = PackagesRouteImport.update({
+  id: '/packages',
+  path: '/packages',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SeoCompanyRoute = SeoCompanyRouteImport.update({
@@ -203,6 +210,11 @@ const ArKeywordResearchRoute = ArKeywordResearchRouteImport.update({
 const ArOffersRoute = ArOffersRouteImport.update({
   id: '/offers',
   path: '/offers',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArPackagesRoute = ArPackagesRouteImport.update({
+  id: '/packages',
+  path: '/packages',
   getParentRoute: () => ArRoute,
 } as any)
 const ArSeoCompanyRoute = ArSeoCompanyRouteImport.update({
@@ -324,6 +336,7 @@ export interface FileRoutesByFullPath {
   '/keyword-research': typeof KeywordResearchRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/offers': typeof OffersRoute
+  '/packages': typeof PackagesRoute
   '/seo-company': typeof SeoCompanyRoute
   '/seo-expert': typeof SeoExpertRoute
   '/seo-expert-saudi': typeof SeoExpertSaudiRoute
@@ -341,6 +354,7 @@ export interface FileRoutesByFullPath {
   '/ar/international-seo': typeof ArInternationalSeoRoute
   '/ar/keyword-research': typeof ArKeywordResearchRoute
   '/ar/offers': typeof ArOffersRoute
+  '/ar/packages': typeof ArPackagesRoute
   '/ar/seo-company': typeof ArSeoCompanyRoute
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-expert-saudi': typeof ArSeoExpertSaudiRoute
@@ -375,6 +389,7 @@ export interface FileRoutesByTo {
   '/keyword-research': typeof KeywordResearchRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/offers': typeof OffersRoute
+  '/packages': typeof PackagesRoute
   '/seo-company': typeof SeoCompanyRoute
   '/seo-expert': typeof SeoExpertRoute
   '/seo-expert-saudi': typeof SeoExpertSaudiRoute
@@ -391,6 +406,7 @@ export interface FileRoutesByTo {
   '/ar/international-seo': typeof ArInternationalSeoRoute
   '/ar/keyword-research': typeof ArKeywordResearchRoute
   '/ar/offers': typeof ArOffersRoute
+  '/ar/packages': typeof ArPackagesRoute
   '/ar/seo-company': typeof ArSeoCompanyRoute
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-expert-saudi': typeof ArSeoExpertSaudiRoute
@@ -426,6 +442,7 @@ export interface FileRoutesById {
   '/keyword-research': typeof KeywordResearchRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/offers': typeof OffersRoute
+  '/packages': typeof PackagesRoute
   '/seo-company': typeof SeoCompanyRoute
   '/seo-expert': typeof SeoExpertRoute
   '/seo-expert-saudi': typeof SeoExpertSaudiRoute
@@ -443,6 +460,7 @@ export interface FileRoutesById {
   '/ar/international-seo': typeof ArInternationalSeoRoute
   '/ar/keyword-research': typeof ArKeywordResearchRoute
   '/ar/offers': typeof ArOffersRoute
+  '/ar/packages': typeof ArPackagesRoute
   '/ar/seo-company': typeof ArSeoCompanyRoute
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-expert-saudi': typeof ArSeoExpertSaudiRoute
@@ -480,6 +498,7 @@ export interface FileRouteTypes {
     | '/keyword-research'
     | '/llms.txt'
     | '/offers'
+    | '/packages'
     | '/seo-company'
     | '/seo-expert'
     | '/seo-expert-saudi'
@@ -497,6 +516,7 @@ export interface FileRouteTypes {
     | '/ar/international-seo'
     | '/ar/keyword-research'
     | '/ar/offers'
+    | '/ar/packages'
     | '/ar/seo-company'
     | '/ar/seo-expert'
     | '/ar/seo-expert-saudi'
@@ -531,6 +551,7 @@ export interface FileRouteTypes {
     | '/keyword-research'
     | '/llms.txt'
     | '/offers'
+    | '/packages'
     | '/seo-company'
     | '/seo-expert'
     | '/seo-expert-saudi'
@@ -547,6 +568,7 @@ export interface FileRouteTypes {
     | '/ar/international-seo'
     | '/ar/keyword-research'
     | '/ar/offers'
+    | '/ar/packages'
     | '/ar/seo-company'
     | '/ar/seo-expert'
     | '/ar/seo-expert-saudi'
@@ -581,6 +603,7 @@ export interface FileRouteTypes {
     | '/keyword-research'
     | '/llms.txt'
     | '/offers'
+    | '/packages'
     | '/seo-company'
     | '/seo-expert'
     | '/seo-expert-saudi'
@@ -598,6 +621,7 @@ export interface FileRouteTypes {
     | '/ar/international-seo'
     | '/ar/keyword-research'
     | '/ar/offers'
+    | '/ar/packages'
     | '/ar/seo-company'
     | '/ar/seo-expert'
     | '/ar/seo-expert-saudi'
@@ -634,6 +658,7 @@ export interface RootRouteChildren {
   KeywordResearchRoute: typeof KeywordResearchRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
   OffersRoute: typeof OffersRoute
+  PackagesRoute: typeof PackagesRoute
   SeoCompanyRoute: typeof SeoCompanyRoute
   SeoExpertRoute: typeof SeoExpertRoute
   SeoExpertSaudiRoute: typeof SeoExpertSaudiRoute
@@ -729,6 +754,13 @@ declare module '@tanstack/react-router' {
       path: '/offers'
       fullPath: '/offers'
       preLoaderRoute: typeof OffersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/packages': {
+      id: '/packages'
+      path: '/packages'
+      fullPath: '/packages'
+      preLoaderRoute: typeof PackagesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/seo-company': {
@@ -855,6 +887,13 @@ declare module '@tanstack/react-router' {
       path: '/offers'
       fullPath: '/ar/offers'
       preLoaderRoute: typeof ArOffersRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/packages': {
+      id: '/ar/packages'
+      path: '/packages'
+      fullPath: '/ar/packages'
+      preLoaderRoute: typeof ArPackagesRouteImport
       parentRoute: typeof ArRoute
     }
     '/ar/seo-company': {
@@ -1031,6 +1070,7 @@ interface ArRouteChildren {
   ArInternationalSeoRoute: typeof ArInternationalSeoRoute
   ArKeywordResearchRoute: typeof ArKeywordResearchRoute
   ArOffersRoute: typeof ArOffersRoute
+  ArPackagesRoute: typeof ArPackagesRoute
   ArSeoCompanyRoute: typeof ArSeoCompanyRoute
   ArSeoExpertRoute: typeof ArSeoExpertRoute
   ArSeoExpertSaudiRoute: typeof ArSeoExpertSaudiRoute
@@ -1053,6 +1093,7 @@ const ArRouteChildren: ArRouteChildren = {
   ArInternationalSeoRoute: ArInternationalSeoRoute,
   ArKeywordResearchRoute: ArKeywordResearchRoute,
   ArOffersRoute: ArOffersRoute,
+  ArPackagesRoute: ArPackagesRoute,
   ArSeoCompanyRoute: ArSeoCompanyRoute,
   ArSeoExpertRoute: ArSeoExpertRoute,
   ArSeoExpertSaudiRoute: ArSeoExpertSaudiRoute,
@@ -1093,6 +1134,7 @@ const rootRouteChildren: RootRouteChildren = {
   KeywordResearchRoute: KeywordResearchRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
   OffersRoute: OffersRoute,
+  PackagesRoute: PackagesRoute,
   SeoCompanyRoute: SeoCompanyRoute,
   SeoExpertRoute: SeoExpertRoute,
   SeoExpertSaudiRoute: SeoExpertSaudiRoute,

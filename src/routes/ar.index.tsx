@@ -285,6 +285,7 @@ function HomeAr() {
           <nav aria-label="التنقل الرئيسي" className="hidden items-center gap-6 text-sm text-muted-foreground lg:flex">
             <a href="#results" className="hover:text-foreground">النتائج</a>
             <Link to="/ar/services" className="hover:text-foreground">الخدمات</Link>
+            <Link to="/ar/packages" className="hover:text-foreground">باقاتي</Link>
             <a href="#work" className="hover:text-foreground">الأعمال</a>
             <Link to="/blog/ar" className="hover:text-foreground">المقالات</Link>
             <Link to="/ar/free-consultation" className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 font-medium text-primary hover:bg-primary/15">استشارة مجانية</Link>
@@ -304,6 +305,7 @@ function HomeAr() {
         <nav aria-label="التنقل السريع" className="mx-auto flex max-w-6xl gap-2 overflow-x-auto pb-1 text-xs text-muted-foreground">
           <Link to="/ar/services" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">الخدمات</Link>
           <Link to="/ar/offers" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">العروض</Link>
+          <Link to="/ar/packages" className="shrink-0 rounded-full border border-primary/30 bg-primary/10 px-3 py-2 text-primary hover:bg-primary/15">باقاتي</Link>
           <a href="#results" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">النتائج</a>
           <Link to="/blog/ar" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">المدونة</Link>
           <Link to="/ar/course" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">الكورس</Link>

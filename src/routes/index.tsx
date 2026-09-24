@@ -342,6 +342,7 @@ function Home() {
           <nav aria-label="Primary navigation" className="hidden items-center gap-6 text-sm text-muted-foreground lg:flex">
             <a href="#results" className="hover:text-foreground">Results</a>
             <Link to="/services" className="hover:text-foreground">Services</Link>
+            <Link to="/packages" className="hover:text-foreground">Packages</Link>
             <a href="#work" className="hover:text-foreground">Work</a>
             <Link to="/blog" className="hover:text-foreground">Insights</Link>
             <Link to="/free-consultation" className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 font-medium text-primary hover:bg-primary/15">Free consultation</Link>
@@ -361,6 +362,7 @@ function Home() {
         <nav aria-label="Quick navigation" className="mx-auto flex max-w-6xl gap-2 overflow-x-auto pb-1 text-xs text-muted-foreground">
           <Link to="/services" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Services</Link>
           <Link to="/offers" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Offers</Link>
+          <Link to="/packages" className="shrink-0 rounded-full border border-primary/30 bg-primary/10 px-3 py-2 text-primary hover:bg-primary/15">Packages</Link>
           <a href="#results" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Results</a>
           <Link to="/blog" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Blog</Link>
           <Link to="/course" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Course</Link>
