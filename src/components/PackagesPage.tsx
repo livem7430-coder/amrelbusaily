@@ -1,15 +1,15 @@
 import type { ReactNode } from "react";
-import { Check, Search, Megaphone, Rocket } from "lucide-react";
+import { Check, Search, Megaphone, Rocket, Store } from "lucide-react";
 
 const base = "https://amrelbusaily.vercel.app";
 type Lang = "ar" | "en";
 
 type PackageTier = {
-  icon: "search" | "megaphone" | "rocket";
+  icon: "search" | "megaphone" | "rocket" | "store";
   name: string;
   tag: string;
   priceSar: string;
-  priceEgp: string;
+  priceUsd: string;
   priceNote: string;
   description: string;
   fit: string;
@@ -31,13 +31,13 @@ const content = {
     offers: "/ar/offers",
     packagesLabel: "الباقات",
     title: "باقاتي — باقات SEO والإعلانات والنمو بأسعار واضحة | عمرو البصيلي",
-    description: "باقات شهرية واضحة السعر بالريال السعودي والجنيه المصري: تأسيس SEO، إدارة إعلانات Google وMeta، وباقة نمو شاملة تشمل AEO/GEO والمحتوى وتحسين التحويل. ابدأ من 1,500 ريال أو 15,000 جنيه.",
+    description: "باقات شهرية واضحة السعر بالريال السعودي والدولار الأمريكي: تأسيس SEO، إدارة إعلانات Google وMeta، وباقة نمو شاملة تشمل AEO/GEO والمحتوى وتحسين التحويل. ابدأ من 1,500 ريال أو 400 دولار.",
     ogTitle: "باقاتي — باقات SEO والإعلانات والنمو",
-    ogDescription: "ثلاث باقات شهرية بأسعار واضحة بالريال والجنيه: تأسيس SEO، السيو والإعلانات المدفوعة، والنمو الشامل. اختر الباقة المناسبة لمرحلة مشروعك.",
+    ogDescription: "ثلاث باقات شهرية بأسعار واضحة بالريال والدولار: تأسيس SEO، السيو والإعلانات المدفوعة، والنمو الشامل. اختر الباقة المناسبة لمرحلة مشروعك.",
     eyebrow: "PACKAGES · باقات العمل",
     h1: "باقاتي.\nأسعار واضحة، وشغل أوضح.",
-    intro: "ثلاث باقات شهرية تغطي ما أعمل عليه فعلًا كل يوم: السيو، الإعلانات المدفوعة على Google وMeta، وتسويق المتاجر الإلكترونية. كل باقة مسمّاة على اسم الشغل اللي فيها، والسعر معلن بالريال السعودي والجنيه المصري من غير مفاجآت.",
-    currencyNote: "الأسعار شهرية — بالريال السعودي أو ما يعادلها بالجنيه المصري",
+    intro: "ثلاث باقات شهرية تغطي ما أعمل عليه فعلًا كل يوم: السيو، الإعلانات المدفوعة على Google وMeta، وتسويق المتاجر الإلكترونية. كل باقة مسمّاة على اسم الشغل اللي فيها، والسعر معلن بالريال السعودي والدولار الأمريكي من غير مفاجآت.",
+    currencyNote: "الأسعار شهرية — بالريال السعودي أو ما يعادلها بالدولار الأمريكي",
     heroPrimaryCta: "اختار باقتك",
     heroSecondaryCta: "استشارة مجانية قبل ما تختار",
     tiersLabel: "الباقات الثلاث",
@@ -46,8 +46,8 @@ const content = {
     mostPopular: "الأكثر طلبًا",
     perMonth: "شهريًا",
     sarLabel: "ريال سعودي",
-    egpEquivalent: "أو ما يعادلها",
-    egpLabel: "جنيه مصري",
+    usdEquivalent: "أو ما يعادلها",
+    usdLabel: "دولار أمريكي",
     bestFor: "مناسبة لـ",
     whatsIncluded: "اللي بتحصل عليه",
     startNow: "ابدأ بالباقة دي",
@@ -57,7 +57,7 @@ const content = {
         name: "باقة تأسيس السيو",
         tag: "SEO Foundation",
         priceSar: "1,500",
-        priceEgp: "15,000",
+        priceUsd: "400",
         priceNote: "يبدأ من",
         description: "بناء الأساس الصح: تدقيق تقني، بحث كلمات، وتحسين الصفحات اللي تستاهل تظهر الأول.",
         fit: "المواقع والمتاجر اللي لسه بتبدأ، أو اللي عندها محتوى كتير من غير ترتيب يستاهله.",
@@ -76,7 +76,7 @@ const content = {
         name: "باقة السيو والإعلانات",
         tag: "SEO + Paid Ads",
         priceSar: "2,500",
-        priceEgp: "25,000",
+        priceUsd: "667",
         priceNote: "",
         description: "قناتين مع بعض: ظهور مجاني بيكبر على المدى الطويل، وإعلانات مدفوعة بتجيب نتائج من الأسبوع الأول.",
         fit: "المشاريع اللي عايزة مبيعات دلوقتي مش بس بعد شهور — متاجر وخدمات محلية وشركات ناشئة.",
@@ -96,7 +96,7 @@ const content = {
         name: "باقة النمو الشامل",
         tag: "Full Growth",
         priceSar: "5,000",
-        priceEgp: "50,000",
+        priceUsd: "1,333",
         priceNote: "",
         description: "فريق نمو كامل في باقة واحدة: سيو، ظهور في نتائج الذكاء الاصطناعي، إعلانات، محتوى، وتحسين تحويل.",
         fit: "المتاجر والشركات الجادة اللي عايزة حد يمسك النمو كله من الألف للياء — زي ما عملت مع 50+ مشروع.",
@@ -111,10 +111,29 @@ const content = {
         cta: "ابدأ النمو الشامل",
       },
     ] as PackageTier[],
+    storePackage: {
+      icon: "store" as const,
+      name: "باقة التجارة الإلكترونية",
+      tag: "Store Build + SEO",
+      priceUsd: "500",
+      priceSar: "1,875",
+      priceNote: "دفعة واحدة — مش مشترك شهري",
+      description: "متجر إلكتروني كامل جاهز يستقبل طلبات، مبني صح من اليوم الأول: تصميم، صفحات، دفع وشحن، وسيو متاجر مهيأ يجيب زيارات من جوجل.",
+      fit: "للي عايز يبدأ بيع أونلاين بمتجر محترم، أو عنده متجر قايم بس مبني غلط ومش بيظهر في البحث.",
+      includes: [
+        "بناء متجر إلكتروني كامل بتصميم احترافي سريع على الموبايل",
+        "تهيئة سيو المتاجر: بنية فئات وصفحات منتجات مهيأة لمحركات البحث",
+        "ربط بوابات الدفع وشركات الشحن ومناطق التوصيل",
+        "ربط Google Search Console والتحليلات وبكسل الإعلانات",
+        "صفحات أساسية (الرئيسية، من نحن، التواصل، السياسات)",
+        "تسليم وتدريب على إدارة المتجر وإضافة المنتجات",
+      ],
+      cta: "اطلب متجرك",
+    },
     honestyLabel: "مشمول وغير مشمول",
-    honestyTitle: "وضوح كامل قبل ما تدفع جنيه واحد",
+    honestyTitle: "وضوح كامل قبل ما تدفع أي حاجة",
     honestyCards: [
-      { title: "ميزانية الإعلانات عليك", body: "أسعار الباقات هي أتعاب الإدارة والتنفيذ. ميزانية الإعلانات نفسها بتتحاسب من حسابك الإعلاني مباشرة — وبتحددها انت على حسب قدرتك، وأنا بوصّل كل جنيه لأقصى نتيجة." },
+      { title: "ميزانية الإعلانات عليك", body: "أسعار الباقات هي أتعاب الإدارة والتنفيذ. ميزانية الإعلانات نفسها بتتحاسب من حسابك الإعلاني مباشرة — وبتحددها انت على حسب قدرتك، وأنا بوصّل كل ريال لأقصى نتيجة." },
       { title: "مفيش وعود مضروبة", body: "محدش يقدر يضمن ترتيب أول على جوجل أو رقم مبيعات ثابت، وأي حد بيقول كده بيضحك عليك. اللي أقدر أضمنه: شغل صح، تقارير واضحة، وتحسن تقيسه بنفسك شهر بعد شهر." },
       { title: "مفيش التزام طويل", body: "الباقات شهرية وتقدر توقف في آخر أي شهر. السيو بياخد وقت (غالبًا 3-6 شهور للنتائج القوية)، بس القرار دايمًا قرارك." },
     ],
@@ -133,7 +152,7 @@ const content = {
       ["أقدر أوقف الاشتراك في أي وقت؟", "أيوه. مفيش عقود طويلة ولا غرامات. بتجدد كل شهر بس لو شايف قيمة في الشغل."],
       ["أنهي باقة أنسب لمتجر إلكتروني؟", "لو المتجر جديد ابدأ بباقة تأسيس السيو. لو عندك ميزانية إعلانات وعايز مبيعات أسرع، باقة السيو والإعلانات هي الأنسب لأغلب المتاجر."],
       ["إيه الفرق بين السيو و AEO/GEO؟", "السيو بيخليك تظهر في نتائج جوجل. AEO/GEO بيجهز موقعك يظهر في إجابات محركات الذكاء الاصطناعي زي ChatGPT وGemini — وهو جزء من باقة النمو الشامل."],
-      ["بتحسب بالريال ولا بالجنيه؟", "الاتنين نفس الباقة. للعملاء في السعودية والخليج بالريال السعودي، وللعملاء في مصر بالجنيه المصري — اختار اللي يناسبك."],
+      ["بتحسب بالريال ولا بالدولار؟", "الاتنين نفس الباقة. للعملاء في السعودية والخليج بالريال السعودي، وللعملاء من أي دولة تانية بالدولار الأمريكي — اختار اللي يناسبك."],
       ["هل في خصم للالتزام الأطول؟", "للعملاء اللي بيلتزموا 3 شهور أو أكتر في ترتيبات مريحة — اسألني عنها في رسالتك."],
     ] as [string, string][],
     nextTitle: "لسه محتار أنهي باقة؟",
@@ -153,13 +172,13 @@ const content = {
     offers: "/offers",
     packagesLabel: "Packages",
     title: "My Packages — SEO, Ads & Growth Packages with Clear Pricing | Amr Elbusaily",
-    description: "Monthly packages with clear pricing in Saudi Riyal and Egyptian Pounds: SEO foundation, Google & Meta ads management, and a full growth package covering AEO/GEO, content and CRO. Starting at 1,500 SAR / 15,000 EGP.",
+    description: "Monthly packages with clear pricing in Saudi Riyal and US Dollars: SEO foundation, Google & Meta ads management, and a full growth package covering AEO/GEO, content and CRO. Starting at 1,500 SAR / 400 USD.",
     ogTitle: "My Packages — SEO, Ads & Growth Packages",
-    ogDescription: "Three monthly packages with clear pricing in SAR and EGP: SEO foundation, SEO + paid ads, and full growth. Pick the package that fits your stage.",
+    ogDescription: "Three monthly packages with clear pricing in SAR and USD: SEO foundation, SEO + paid ads, and full growth. Pick the package that fits your stage.",
     eyebrow: "PACKAGES · MY PACKAGES",
     h1: "My packages.\nClear prices, clearer work.",
-    intro: "Three monthly packages covering what I actually do every day: SEO, paid ads on Google and Meta, and e-commerce marketing. Each package is named after the work inside it, priced openly in Saudi Riyal and Egyptian Pounds.",
-    currencyNote: "Monthly pricing — in Saudi Riyal or the Egyptian Pound equivalent",
+    intro: "Three monthly packages covering what I actually do every day: SEO, paid ads on Google and Meta, and e-commerce marketing. Each package is named after the work inside it, priced openly in Saudi Riyal and US Dollars.",
+    currencyNote: "Monthly pricing — in Saudi Riyal or the US Dollar equivalent",
     heroPrimaryCta: "Pick your package",
     heroSecondaryCta: "Free consultation first",
     tiersLabel: "The three packages",
@@ -168,8 +187,8 @@ const content = {
     mostPopular: "Most popular",
     perMonth: "/month",
     sarLabel: "SAR",
-    egpEquivalent: "or",
-    egpLabel: "EGP",
+    usdEquivalent: "or",
+    usdLabel: "USD",
     bestFor: "Best for",
     whatsIncluded: "What you get",
     startNow: "Start with this package",
@@ -179,7 +198,7 @@ const content = {
         name: "SEO Foundation Package",
         tag: "SEO Foundation",
         priceSar: "1,500",
-        priceEgp: "15,000",
+        priceUsd: "400",
         priceNote: "from",
         description: "Build the right foundation: technical audit, keyword research, and on-page work on the pages that deserve to rank first.",
         fit: "Sites and stores just starting out, or with plenty of content but no rankings to show for it.",
@@ -198,7 +217,7 @@ const content = {
         name: "SEO + Paid Ads Package",
         tag: "SEO + Paid Ads",
         priceSar: "2,500",
-        priceEgp: "25,000",
+        priceUsd: "667",
         priceNote: "",
         description: "Two channels together: organic visibility that compounds long-term, and paid ads that bring results from week one.",
         fit: "Businesses that need sales now, not only months from now — stores, local services, and startups.",
@@ -218,7 +237,7 @@ const content = {
         name: "Full Growth Package",
         tag: "Full Growth",
         priceSar: "5,000",
-        priceEgp: "50,000",
+        priceUsd: "1,333",
         priceNote: "",
         description: "A full growth team in one package: SEO, AI-search visibility, ads, content, and conversion optimization.",
         fit: "Stores and companies that want one person owning growth end to end — the same way I ran 50+ projects.",
@@ -233,10 +252,29 @@ const content = {
         cta: "Start full growth",
       },
     ] as PackageTier[],
+    storePackage: {
+      icon: "store" as const,
+      name: "E-commerce Store Package",
+      tag: "Store Build + SEO",
+      priceUsd: "500",
+      priceSar: "1,875",
+      priceNote: "One-time project - not a monthly plan",
+      description: "A complete online store ready to take orders, built right from day one: design, pages, payments and shipping, plus store SEO that brings Google traffic.",
+      fit: "For anyone starting to sell online with a proper store, or whose current store was built wrong and never shows up in search.",
+      includes: [
+        "Full e-commerce store build with a fast, mobile-first design",
+        "Store SEO setup: category structure and product pages built for search",
+        "Payment gateway, shipping carrier, and delivery zone setup",
+        "Google Search Console, analytics, and ad pixel integration",
+        "Core pages (home, about, contact, policies)",
+        "Handover and training on managing the store and adding products",
+      ],
+      cta: "Order your store",
+    },
     honestyLabel: "Included and not included",
-    honestyTitle: "Full clarity before you pay a single pound",
+    honestyTitle: "Full clarity before you pay anything",
     honestyCards: [
-      { title: "Ad spend is on you", body: "Package prices cover management and execution. Ad spend itself is billed directly from your own ad account — you set the budget, I make every pound work as hard as possible." },
+      { title: "Ad spend is on you", body: "Package prices cover management and execution. Ad spend itself is billed directly from your own ad account — you set the budget, I make every riyal work as hard as possible." },
       { title: "No fake promises", body: "Nobody can guarantee a #1 ranking or a fixed sales number, and anyone who says otherwise is bluffing. What I can guarantee: honest work, clear reports, and improvement you can measure month over month." },
       { title: "No long lock-in", body: "Packages are monthly and you can stop at the end of any month. SEO takes time (usually 3-6 months for strong results), but the decision is always yours." },
     ],
@@ -255,7 +293,7 @@ const content = {
       ["Can I cancel anytime?", "Yes. No long contracts and no penalties. You renew each month only if you see value in the work."],
       ["Which package fits an online store?", "New stores should start with the SEO Foundation package. If you have an ad budget and want faster sales, the SEO + Paid Ads package fits most stores best."],
       ["What is the difference between SEO and AEO/GEO?", "SEO gets you into Google results. AEO/GEO prepares your site to appear in AI answers like ChatGPT and Gemini — it is part of the Full Growth package."],
-      ["Do you bill in SAR or EGP?", "Both are the same package. Clients in Saudi Arabia and the Gulf pay in Saudi Riyal; clients in Egypt pay in Egyptian Pounds — pick what suits you."],
+      ["Do you bill in SAR or USD?", "Both are the same package. Clients in Saudi Arabia and the Gulf pay in Saudi Riyal; clients anywhere else pay in US Dollars — pick what suits you."],
       ["Is there a discount for longer commitments?", "For clients committing to 3 months or more, there are comfortable arrangements — ask me about it in your message."],
     ] as [string, string][],
     nextTitle: "Still not sure which package?",
@@ -283,6 +321,7 @@ function ActionLink({ href, children, primary = false, className = "" }: { href:
 }
 
 function TierIcon({ icon, className }: { icon: PackageTier["icon"]; className?: string }) {
+  if (icon === "store") return <Store className={className} aria-hidden="true" />;
   if (icon === "megaphone") return <Megaphone className={className} aria-hidden="true" />;
   if (icon === "rocket") return <Rocket className={className} aria-hidden="true" />;
   return <Search className={className} aria-hidden="true" />;
@@ -299,21 +338,38 @@ function makeSchema(data: (typeof content)[Lang]) {
       {
         "@type": "ItemList",
         "@id": `${url}#packages`,
-        itemListElement: data.tiers.map((tier, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          item: {
-            "@type": "Offer",
-            name: tier.name,
-            description: tier.description,
-            url,
-            seller: { "@id": `${base}/#person` },
-            priceSpecification: [
-              { "@type": "UnitPriceSpecification", price: tier.priceSar.replace(",", ""), priceCurrency: "SAR", unitText: data.lang === "ar" ? "شهريًا" : "per month" },
-              { "@type": "UnitPriceSpecification", price: tier.priceEgp.replace(",", ""), priceCurrency: "EGP", unitText: data.lang === "ar" ? "شهريًا" : "per month" },
-            ],
+        itemListElement: [
+          ...data.tiers.map((tier, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            item: {
+              "@type": "Offer",
+              name: tier.name,
+              description: tier.description,
+              url,
+              seller: { "@id": `${base}/#person` },
+              priceSpecification: [
+                { "@type": "UnitPriceSpecification", price: tier.priceSar.replace(",", ""), priceCurrency: "SAR", unitText: data.lang === "ar" ? "شهريًا" : "per month" },
+                { "@type": "UnitPriceSpecification", price: tier.priceUsd.replace(",", ""), priceCurrency: "USD", unitText: data.lang === "ar" ? "شهريًا" : "per month" },
+              ],
+            },
+          })),
+          {
+            "@type": "ListItem",
+            position: 4,
+            item: {
+              "@type": "Offer",
+              name: data.storePackage.name,
+              description: data.storePackage.description,
+              url,
+              seller: { "@id": `${base}/#person` },
+              priceSpecification: [
+                { "@type": "UnitPriceSpecification", price: data.storePackage.priceUsd.replace(",", ""), priceCurrency: "USD" },
+                { "@type": "UnitPriceSpecification", price: data.storePackage.priceSar.replace(",", ""), priceCurrency: "SAR" },
+              ],
+            },
           },
-        })),
+        ],
       },
       { "@type": "FAQPage", "@id": `${url}#faq`, mainEntity: data.faqs.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
     ],
@@ -421,7 +477,7 @@ export function PackagesPage({ lang }: { lang: Lang }) {
                       <span className="text-sm text-muted-foreground">{data.perMonth}</span>
                     </div>
                     <div className="mt-2 text-sm text-muted-foreground">
-                      {data.egpEquivalent} <span className="font-semibold text-foreground">{tier.priceEgp}</span> {data.egpLabel} {data.perMonth}
+                      {data.usdEquivalent} <span className="font-semibold text-foreground">{tier.priceUsd}</span> {data.usdLabel} {data.perMonth}
                     </div>
                   </div>
                   <p className="mt-5 leading-8 text-muted-foreground">{tier.description}</p>
@@ -449,6 +505,50 @@ export function PackagesPage({ lang }: { lang: Lang }) {
                   </div>
                 </article>
               ))}
+            </div>
+
+            {/* One-time store build package */}
+            <div className="mt-6">
+              <article className="relative overflow-hidden rounded-2xl border border-border bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_0_40px_-14px_var(--primary-glow)] md:p-10">
+                <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+                  <div>
+                    <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-primary">
+                      <Store className="h-4 w-4" aria-hidden="true" />
+                      {data.storePackage.tag}
+                    </span>
+                    <h3 className="mt-4 text-2xl font-semibold leading-snug md:text-3xl">{data.storePackage.name}</h3>
+                    <div className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span className="font-display text-5xl font-bold tracking-tight text-primary">{data.storePackage.priceUsd}</span>
+                      <span className="text-sm font-medium text-foreground">{data.usdLabel}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {data.usdEquivalent} <span className="font-semibold text-foreground">{data.storePackage.priceSar}</span> {data.sarLabel}
+                      </span>
+                    </div>
+                    <div className="mt-2 inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs text-primary">{data.storePackage.priceNote}</div>
+                    <p className="mt-5 leading-8 text-muted-foreground">{data.storePackage.description}</p>
+                    <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                      <strong className="text-foreground">{data.bestFor}: </strong>
+                      {data.storePackage.fit}
+                    </p>
+                    <div className="mt-6">
+                      <ActionLink
+                        href={`mailto:amreelbasily@gmail.com?subject=${encodeURIComponent(`${data.emailSubject} — ${data.storePackage.name}`)}`}
+                        primary
+                      >
+                        {data.storePackage.cta}
+                      </ActionLink>
+                    </div>
+                  </div>
+                  <ul className="grid gap-3 sm:grid-cols-2">
+                    {data.storePackage.includes.map((item) => (
+                      <li key={item} className="flex items-start gap-2.5 rounded-xl border border-border/70 bg-background/40 p-4 text-sm leading-7">
+                        <Check className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                        <span className="text-muted-foreground">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
             </div>
           </div>
         </section>
