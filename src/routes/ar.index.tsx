@@ -394,6 +394,28 @@ function HomeAr() {
         </div>
       </section>
 
+
+      <section id="salla-zid-services" aria-labelledby="salla-zid-heading" className="scroll-mt-24 border-t border-border bg-surface/30">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <p className="font-mono text-xs uppercase text-primary">لأصحاب المتاجر في الخليج</p>
+          <h2 id="salla-zid-heading" className="mt-3 text-3xl font-semibold leading-relaxed md:text-4xl">خدمات لمتاجر سلة وزد: من الفحص إلى التنفيذ</h2>
+          <p className="mt-5 max-w-3xl text-base leading-8 text-muted-foreground">أنا عمرو البصيلي. أساعد أصحاب المتاجر على ترتيب أولويات السيو والمحتوى والإعلانات، وتنفيذ ما تسمح به المنصة وربط العمل بقياس واضح. لا أعد بترتيب أول أو رقم مبيعات ثابت.</p>
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+            <div className="rounded-xl border border-border bg-surface p-6"><h3 className="text-lg font-semibold">سيو سلة وزد</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">أوديت للفهرسة وبحث كلمات بنية شراء، ثم تحسين عناوين وأوصاف المنتجات والتصنيفات والروابط الداخلية حسب أدوات منصتك.</p></div>
+            <div className="rounded-xl border border-border bg-surface p-6"><h3 className="text-lg font-semibold">محتوى يساعد قرار الشراء</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">تحسين معلومات المنتج وأدلة الشراء والمقارنة، مع خطة كلمات تمنع تكرار نفس نية البحث بين الصفحات.</p></div>
+            <div className="rounded-xl border border-border bg-surface p-6"><h3 className="text-lg font-semibold">إعلانات وقياس التحويل</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">إدارة Google وMeta وربط القياس المتاح، ومراجعة صفحات الهبوط والسلة. ميزانية الإعلان منفصلة عن أتعاب الإدارة.</p></div>
+            <div className="rounded-xl border border-border bg-surface p-6"><h3 className="text-lg font-semibold">تجهيز المتجر للإطلاق</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">إعداد الصفحات والمنتجات والدفع والشحن والتحليلات بحسب نطاق العمل والباقة المتاحة، مع اختبار رحلة العميل على الهاتف.</p></div>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3 text-sm">
+            <a href="/ar/free-consultation" className="rounded-md px-4 py-3 bg-primary text-primary-foreground">اطلب مراجعة متجرك</a>
+            <a href="/ar/packages" className="rounded-md px-4 py-3 border border-border text-primary hover:border-primary">شاهد الباقات والأسعار</a>
+            <a href="/blog/salla-seo-service-scope-ar" className="rounded-md px-4 py-3 border border-border text-primary hover:border-primary">ما الذي تشملُه خدمة سيو سلة؟</a>
+            <a href="/blog/zid-seo-audit-service-ar" className="rounded-md px-4 py-3 border border-border text-primary hover:border-primary">كيف يبدأ أوديت سيو زد؟</a>
+          </div>
+          <p className="mt-5 text-sm leading-7 text-muted-foreground">التنفيذ يبدأ بعد تحديد عدد المنتجات والصفحات والصلاحيات. اشتراك المنصة والتطبيقات المدفوعة وميزانية الإعلان ليست وعودًا ضمن الخدمة؛ يتم الاتفاق عليها قبل أي تكلفة إضافية.</p>
+        </div>
+      </section>
+
       <section id="learn" className="border-t border-border bg-surface/30">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionHeader eyebrow="اتعلم وكبّر" title="اختار الخطوة المناسبة لنية البحث بتاعتك" />
