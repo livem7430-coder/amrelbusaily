@@ -1,0 +1,23 @@
+# Portfolio SEO work log
+
+## 2026-10-01
+- Inherited Black Friday batch from commit f875f6449bc300772f2327e8f7d7992120aaf651: seasonal store plan and sale-price/product-data guide, AR+EN. Deployment verification owned by its publisher.
+- Corrected existing technical guide's unsupported FAQPage CTR promise; retained useful content and unchanged design. Official source: https://developers.google.com/search/updates, June 15 FAQ documentation removal.
+- Added source/checklist baseline in guidelines.md.
+- Next distinct topics to validate against full existing inventory: Merchant API migration decision guide for custom-integrated merchants, genuine review-data eligibility, out-of-stock URL handling. Do not duplicate category/product/filter guides already published.
+- No Search Console or analytics data verified. Do not claim ranking, traffic, leads or sales. Live reachability is not indexing evidence.
+- Google updates checked: Search Central updates/blog and Search Status Dashboard. Displayed freshness requires caution; no October no-update assertion.
+- Published two Arabic Salla/Zid service articles and new matching AR/EN homepage section. Final main d5a9f91. Actual desktop/mobile screenshots inspected; source/canonical/author/sitemap checked. Live /blog/salla-seo-service-scope-ar and /blog/zid-seo-audit-service-ar; section /ar#salla-zid-services and /#salla-zid-services.
+- Guidelines/work-log remain uncommitted local prep. GitHub upload prefixes staged filenames, so abandoned upload without committing; use clean new-file UI next time. Parent holds attachments.
+
+## 2026-10-01 nightly pass
+- Committed product-review trust/Google-stars validation guide in 9aa337a; not live because deployment failed. Distinct from review collection, generic product SEO and Merchant Center product rejections. 1,227 Arabic body words, no volume/results promise.
+- Official sources: Salla review-request help, Google review-snippet rules, Product Ratings policies/eligibility/specifications. July 24 2026 changelog adds fake/undisclosed incentivized review guidance. Incentives need disclosure; file submission requires its own attribute. Shopping feed eligibility is not organic rich-snippet eligibility.
+- Build passed, committed file readback byte-identical. Production checks recorded after deployment below.
+- AI docs conflict: newer optimization guide and Search Console help describe generative AI control/report; older AI-features guide retains combined Web reporting. No account access or account setting verified; no account-specific prescription made.
+- Google changelog fetched through August 2026; fetched status dashboard shows no incidents but is dated September 3 2026. Not proof of October 1 service health. Blog landing page fetched but lists topic hubs rather than dated new announcements.
+- Sources: https://developers.google.com/search/updates ; https://developers.google.com/search/docs/appearance/structured-data/review-snippet ; https://support.google.com/merchants/answer/6098512?hl=en ; https://support.google.com/merchants/answer/14549080?hl=en ; https://support.google.com/merchants/answer/14622359?hl=en-QA ; https://support.google.com/webmasters/answer/16908024?hl=en ; https://developers.google.com/search/docs/fundamentals/ai-optimization-guide ; https://developers.google.com/search/docs/appearance/ai-features ; https://status.search.google.com/
+- Additional fetched official blog https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports displays June 3, 2026 (fetch metadata says June 1). It describes an initial subset rollout and reports for impressions/pages/countries/devices/dates, with metrics subject to evolution. Prefer displayed article date and current help; account availability remains unverified.
+- Production blocker: GitHub Production deployment history marked 9aa337a and 495aa58 Failed to deploy (completed); new article returned HTTP 404. Production canonical/schema/sitemap/hub/pixel checks not completed. Last successful prior content commit bee61e6 remains deployed. Do not treat repository publication as live completion.
+- Current Vercel detail URL https://vercel.com/amr-fdb1/amrelbusaily/71rA2eLuPCmbaSU7RVerKTqARToe returned 404 under saved login live2017now@gmail.com. Cause unverified; no retries or account changes. Parent asked to resolve project-owner access. Production verification handed back pending access; nightly schedule retained.
+- Current report help https://support.google.com/webmasters/answer/16984139?hl=en still describes per-property rollout and impression eligibility, separate from worldwide control availability.
