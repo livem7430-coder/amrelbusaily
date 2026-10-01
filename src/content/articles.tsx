@@ -263,10 +263,9 @@ function AEOArticle() {
         <li>تفاصيل وأمثلة بعد كده.</li>
       </ol>
 
-      <h2>2. استخدم FAQ Schema</h2>
+      <h2>2. خلي الأسئلة والأجوبة واضحة على الصفحة</h2>
       <p>
-        FAQPage Schema بيخلي محركات البحث والـAI يفهموا هيكل الأسئلة والأجوبة في صفحتك. ده بيزود
-        فرصة الظهور في Featured Snippets وAI Answers.
+        اكتب كل سؤال في عنوان واضح وجاوب عليه مباشرة في أول فقرة. ملحوظة مهمة: ترميز FAQPage لم يعد يعرض نتائج أسئلة شائعة منسقة في بحث Google منذ مايو 2026، وGoogle أكدت إن AI Overviews وAI Mode مش محتاجين أي ترميز خاص، يكفي إن صفحتك مفهرسة ومؤهلة للظهور بمقتطف عادي. خلي أي ترميز بتضيفه مطابق للنص الظاهر، وركّز على وضوح الإجابة للقارئ بدل مطاردة ترميز معين.
       </p>
 
       <h2>3. E-E-A-T: خبرة، تجربة، سلطة، ثقة</h2>
@@ -426,7 +425,7 @@ function SEOvsAIAr() {
       <h2>إزاي تجهز موقعك للمرحلة الجاية</h2>
       <ul>
         <li>اكتب إجابات مباشرة في 40–60 كلمة تحت كل سؤال، وبعدها التفاصيل.</li>
-        <li>ضيف <strong>FAQPage</strong> و<strong>Article</strong> و<strong>Organization</strong> Schema.</li>
+        <li>ضيف <strong>Article</strong> و<strong>Organization</strong> Schema، أما <strong>FAQPage</strong> فلم يعد يغيّر ظهورك في بحث Google.</li>
         <li>ماتحجبش GPTBot وPerplexityBot وGoogle-Extended من robots.txt.</li>
         <li>اشتغل على محتوى فيه خبرة حقيقية وبيانات وتجارب — ده اللي الـAI بيفضله.</li>
         <li>ركز على Topic Clusters بدل مقالات متفرقة.</li>
@@ -477,7 +476,7 @@ function SEOvsAIEn() {
       <h2>How to future-proof your site</h2>
       <ul>
         <li>Answer each question directly in 40–60 words, then expand with detail.</li>
-        <li>Ship <strong>FAQPage</strong>, <strong>Article</strong> and <strong>Organization</strong> schema.</li>
+        <li>Ship <strong>Article</strong> and <strong>Organization</strong> schema; <strong>FAQPage</strong> no longer changes how Google shows your page.</li>
         <li>Do not block GPTBot, PerplexityBot or Google-Extended in robots.txt.</li>
         <li>Publish first-hand expertise, data and real case results — that is what AI prefers to cite.</li>
         <li>Build topic clusters instead of scattered posts.</li>
