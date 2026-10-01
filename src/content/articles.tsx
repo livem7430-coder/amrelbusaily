@@ -141,9 +141,11 @@ function TechnicalSEO() {
         <li><strong>Organization / Person</strong> — للصفحة الرئيسية.</li>
         <li><strong>Product</strong> — لصفحات المنتجات في المتاجر.</li>
         <li><strong>Article</strong> — للمقالات والمدونة.</li>
-        <li><strong>FAQPage</strong> — لصفحات الأسئلة الشائعة (بيزود الـCTR بشكل ملحوظ).</li>
+        <li><strong>FAQPage</strong> - يمكنه وصف أسئلة ظاهرة في الصفحة، لكنه لم يعد يعرض نتائج FAQ محسنة في بحث Google. احتفظ بأسئلة مفيدة للقارئ، ولا تعد بزيادة النقرات بسبب هذا الترميز.</li>
         <li><strong>BreadcrumbList</strong> — لتحسين ظهور الروابط في نتائج البحث.</li>
       </ul>
+
+      <p>مراجعة إرشادات Google: 1 أكتوبر 2026. أعلنت Google إزالة نتائج FAQ المحسنة في <a href="https://developers.google.com/search/updates">سجل تحديثات التوثيق بتاريخ 15 يونيو 2026</a>. اختيار نوع البيانات المنظمة وحده لا يضمن ظهور نتيجة محسنة أو تحسن الترتيب.</p>
 
       <h2>4. البنية الداخلية والروابط</h2>
       <p>
