@@ -455,6 +455,28 @@ function Home() {
       </section>
 
       {/* LEARN & GROW */}
+
+      <section id="salla-zid-services" aria-labelledby="salla-zid-heading" className="scroll-mt-24 border-t border-border bg-surface/30">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <p className="font-mono text-xs uppercase text-primary">For Gulf store owners</p>
+          <h2 id="salla-zid-heading" className="mt-3 text-3xl font-semibold leading-relaxed md:text-4xl">Services for Salla and Zid stores: audit to implementation</h2>
+          <p className="mt-5 max-w-3xl text-base leading-8 text-muted-foreground">I’m Amr Elbusaily. I help store owners prioritize SEO, content and paid campaigns, implement what their platform supports and measure the work. No first-place ranking or fixed sales promise.</p>
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+            <div className="rounded-xl border border-border bg-surface p-6"><h3 className="text-lg font-semibold">Salla and Zid SEO</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">An indexing audit and buyer-intent keyword map, followed by product, category and internal-link improvements using your platform’s available controls.</p></div>
+            <div className="rounded-xl border border-border bg-surface p-6"><h3 className="text-lg font-semibold">Content for buying decisions</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">Useful product information, comparisons and buying guides, with distinct page intent rather than repeated keyword pages.</p></div>
+            <div className="rounded-xl border border-border bg-surface p-6"><h3 className="text-lg font-semibold">Ads and conversion measurement</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">Google and Meta campaign management, available tracking and landing-page reviews. Advertising spend is separate from management fees.</p></div>
+            <div className="rounded-xl border border-border bg-surface p-6"><h3 className="text-lg font-semibold">Store launch preparation</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">Pages, products, payment, shipping and analytics setup within an agreed scope and available plan, plus a mobile customer-journey check.</p></div>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3 text-sm">
+            <a href="/free-consultation" className="rounded-md px-4 py-3 bg-primary text-primary-foreground">Request a store review</a>
+            <a href="/packages" className="rounded-md px-4 py-3 border border-border text-primary hover:border-primary">View packages and pricing</a>
+            <a href="/blog/salla-seo-service-scope-ar" className="rounded-md px-4 py-3 border border-border text-primary hover:border-primary">Salla SEO service guide (Arabic)</a>
+            <a href="/blog/zid-seo-audit-service-ar" className="rounded-md px-4 py-3 border border-border text-primary hover:border-primary">Zid SEO audit guide (Arabic)</a>
+          </div>
+          <p className="mt-5 text-sm leading-7 text-muted-foreground">Scope depends on product counts, pages and access. Platform subscriptions, paid apps and advertising spend must be agreed before any additional cost.</p>
+        </div>
+      </section>
+
       <section id="learn" className="border-t border-border bg-surface/30">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionHeader eyebrow="Learn & grow" title="Choose the next step that fits your intent" />
