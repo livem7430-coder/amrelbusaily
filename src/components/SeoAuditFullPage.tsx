@@ -100,7 +100,7 @@ async function call(body: Record<string, unknown>): Promise<any> {
 }
 
 const printCss = `@media print{
-  header,.no-print,footer{display:none!important}
+  header,.no-print,footer,.fixed{display:none!important}
   html,body,.print-root,.print-root *{background:#fff!important;color:#111!important;box-shadow:none!important;border-color:#ccc!important}
   .print-root{min-height:0!important}
   .print-card{break-inside:avoid;page-break-inside:avoid}
@@ -186,7 +186,7 @@ export function SeoAuditFullPage({ lang }: { lang: Lang }) {
                 {d.feats.map((f) => (<li key={f} className="flex items-center gap-3 rounded-xl border border-border bg-surface/70 px-4 py-3 text-sm"><Check className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />{f}</li>))}
               </ul>
               <div className="mx-auto mt-8 flex max-w-xl flex-col items-center gap-2">
-                <a href={BUY_URL} target="_blank" rel="noopener" className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-7 text-sm font-semibold text-primary-foreground glow-primary transition hover:opacity-90">
+                <a href={BUY_URL} target="_blank" rel="noopener" className="inline-flex h-12 w-full max-w-[15rem] items-center justify-center gap-2 rounded-xl bg-primary px-4 text-center text-sm font-semibold sm:w-auto sm:max-w-none sm:px-7 text-primary-foreground glow-primary transition hover:opacity-90">
                   <Lock className="h-4 w-4" aria-hidden="true" />{d.buy} · {d.price}
                 </a>
                 <p className="text-xs text-muted-foreground">{d.buyNote}</p>
@@ -262,7 +262,7 @@ export function SeoAuditFullPage({ lang }: { lang: Lang }) {
                   </table>
                 </div>
                 <div className="mt-8 text-center">
-                  <a href={BUY_URL} target="_blank" rel="noopener" className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-7 text-sm font-semibold text-primary-foreground glow-primary hover:opacity-90"><Lock className="h-4 w-4" aria-hidden="true" />{d.buy} · {d.price}</a>
+                  <a href={BUY_URL} target="_blank" rel="noopener" className="inline-flex h-12 w-full max-w-[15rem] items-center justify-center gap-2 rounded-xl bg-primary px-4 text-center text-sm font-semibold sm:w-auto sm:max-w-none sm:px-7 text-primary-foreground glow-primary hover:opacity-90"><Lock className="h-4 w-4" aria-hidden="true" />{d.buy} · {d.price}</a>
                 </div>
               </div>
             </section>
@@ -362,4 +362,4 @@ export function SeoAuditFullPage({ lang }: { lang: Lang }) {
       </main>
     </div>
   );
-  }
+      }
