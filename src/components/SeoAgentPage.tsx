@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, Check, ChevronDown, ClipboardList, Loader2, Copy, Download, FileCheck2, History, Info, Lock, MessageCircle, ArrowUp, Globe, MessagesSquare, ShieldCheck, Sparkles, Upload, UserCheck } from "lucide-react";
+import { useEffect, useMemo, useState, useRef } from "react";
+import { ArrowRight, Check, ChevronDown, ClipboardList, Loader2, Copy, Download, FileCheck2, History, Info, Lock, MessageCircle, ArrowUp, Globe, MessagesSquare, Microscope, ImageIcon, Menu, Plus, Trash2, X, ShieldCheck, Sparkles, Upload, UserCheck } from "lucide-react";
 import { describe, type Lang } from "@/lib/seo-audit-copy";
 import type { AuditResult } from "@/lib/seo-audit.server";
 
@@ -143,7 +143,15 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
   const [err, setErr] = useState("");
   const [url, setUrl] = useState("");
   const [mode, setMode] = useState<"chat" | "agent">("chat");
-  const [chat, setChat] = useState<Array<{ r: "u" | "a"; t: string; wa?: string }>>([]);
+  type Msg = { r: "u" | "a"; t: string; wa?: string };
+  type CMode = "chat" | "research" | "image";
+  type Conv = { id: string; title: string; mode: CMode; msgs: Msg[] };
+  const [convs, setConvs] = useState<Conv[]>([]);
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const [cmode, setCmode] = useState<CMode>("chat");
+  const [side, setSide] = useState(false);
+  const convsLoaded = useRef(false);
+  const chat = convs.find((c) => c.id === activeId)?.msgs ?? [];
   const [chatIn, setChatIn] = useState("");
   const [chatBusy, setChatBusy] = useState(false);
   const [run, setRun] = useState<{ busy: boolean; step: number; res: AuditResult | null; err: string } | null>(null);
@@ -219,27 +227,47 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
   const jump = [["#loop", T("How it works", "كيف يعمل")], ["#phases", T("Phases", "المراحل")], ["#order", T("Work order", "طلب العمل")], ["#queue", T("Approvals", "الموافقات")], ["#safety", T("Safety", "الأمان")]];
   const toggle = (<div role="tablist" aria-label={T("Mode", "الوضع")} className="inline-flex shrink-0 rounded-full border border-border bg-surface p-1">{([["chat", T("Chat", "شات"), MessagesSquare], ["agent", "Agent", Sparkles]] as const).map(([m, label, Ic]) => (<button key={m} type="button" role="tab" aria-selected={mode === m} onClick={() => setMode(m)} className={`inline-flex h-9 items-center gap-2 rounded-full px-4 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 ${mode === m ? "bg-primary text-primary-foreground shadow" : "text-muted-foreground hover:text-foreground"}`}><Ic className="h-4 w-4" aria-hidden="true" />{label}</button>))}</div>);
   const subnav = (<div className="sticky top-[57px] z-30 border-b border-border/60 bg-background/80 backdrop-blur-md"><div className="mx-auto flex max-w-6xl items-center gap-3 overflow-x-auto px-5 py-2 md:px-6 [scrollbar-width:none]">{toggle}{mode === "agent" && <nav aria-label={T("On this page", "في هذه الصفحة")} className="flex gap-1">{jump.map(([h, t]) => (<a key={h} href={h} className="shrink-0 rounded-full px-3.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary">{t}</a>))}</nav>}</div></div>);
-  const askFaq = (qq: string, a: string) => setChat((c) => [...c, { r: "u", t: qq }, { r: "a", t: a }]);
-  const fallbackReply = (t: string) => { const hit = d.faq.find(([qq]) => t.length > 3 && qq.toLowerCase().includes(t.toLowerCase())); return hit ? { r: "a" as const, t: hit[1] } : { r: "a" as const, t: T("I can answer the common questions below right here. For anything specific, send your message to Amr's agent on WhatsApp and you will get a real reply there. Nothing is sent until you press the button.", "أجاوب هنا على الأسئلة الشائعة أدناه. لأي سؤال محدد، ابعت رسالتك لوكيل عمرو على واتساب وهييجيلك رد حقيقي هناك. لا يُرسل شيء قبل ما تضغط الزر."), wa: waLink(t) }; };
-  const sendChat = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const t = chatIn.trim().slice(0, 500);
+  useEffect(() => { try { const raw = localStorage.getItem("agent-chats"); if (raw) { const o = JSON.parse(raw); if (Array.isArray(o)) setConvs(o.filter((c) => c && typeof c.id === "string" && typeof c.title === "string" && Array.isArray(c.msgs)).slice(0, 30).map((c) => ({ id: c.id, title: c.title.slice(0, 60), mode: c.mode === "research" || c.mode === "image" ? c.mode : "chat", msgs: c.msgs.filter((m: Msg) => m && (m.r === "u" || m.r === "a") && typeof m.t === "string").slice(-40) }))); } } catch { /* ignore */ } convsLoaded.current = true; }, []);
+  useEffect(() => { if (!convsLoaded.current) return; try { localStorage.setItem("agent-chats", JSON.stringify(convs.slice(0, 30))); } catch { /* ignore */ } }, [convs]);
+  const newChat = () => { setActiveId(null); setSide(false); };
+  const openConv = (c: Conv) => { setActiveId(c.id); setCmode(c.mode); setSide(false); };
+  const delConv = (id: string) => { setConvs((cs) => cs.filter((c) => c.id !== id)); if (activeId === id) setActiveId(null); };
+  const updConv = (id: string, fn: (m: Msg[]) => Msg[]) => setConvs((cs) => cs.map((c) => (c.id === id ? { ...c, msgs: fn(c.msgs).slice(-40) } : c)));
+  const fallbackReply = (t: string) => { const hit = d.faq.find(([qq]) => t.length > 3 && qq.toLowerCase().includes(t.toLowerCase())); return hit ? { r: "a" as const, t: hit[1] } : { r: "a" as const, t: T("The AI answer is not available right now. I can still answer the common questions about the SEO AGENT. For anything else, send your message to Amr's agent on WhatsApp and you will get a real reply there. Nothing is sent until you press the button.", "رد الذكاء الاصطناعي مش متاح دلوقتي. لسه أقدر أجاوب الأسئلة الشائعة عن SEO AGENT. لأي حاجة تانية ابعت رسالتك لوكيل عمرو على واتساب وهييجيلك رد حقيقي هناك. لا يُرسل شيء قبل ما تضغط الزر."), wa: waLink(t) }; };
+  const sendChat = (e: React.FormEvent) => { e.preventDefault(); void sendText(chatIn); };
+  const sendText = async (raw: string) => {
+    const t = raw.trim().slice(0, 500);
     if (!t || chatBusy) return;
-    const next = [...chat, { r: "u" as const, t }];
-    setChat(next); setChatIn(""); setChatBusy(true);
+    let id = activeId;
+    const userMsg: Msg = { r: "u", t };
+    if (!id) { id = `c${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`; const nc: Conv = { id, title: t.slice(0, 48), mode: cmode, msgs: [userMsg] }; setConvs((cs) => [nc, ...cs].slice(0, 30)); setActiveId(id); }
+    else updConv(id, (m) => [...m, userMsg]);
+    const history = [...chat, userMsg].slice(-8).map((m) => ({ r: m.r, t: m.t }));
+    setChatIn(""); setChatBusy(true);
+    const cid = id;
     try {
-      const res = await fetch("/api/seo-agent-chat", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ messages: next.slice(-8).map((m) => ({ r: m.r, t: m.t })) }) });
+      const res = await fetch("/api/seo-agent-chat", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ messages: history, mode: cmode }) });
       const data = await res.json();
-      setChat((c) => [...c, data?.ok && typeof data.text === "string" ? { r: "a" as const, t: data.text } : fallbackReply(t)]);
-    } catch { setChat((c) => [...c, fallbackReply(t)]); } finally { setChatBusy(false); }
+      updConv(cid, (m) => [...m, data?.ok && typeof data.text === "string" ? { r: "a" as const, t: data.text } : fallbackReply(t)]);
+    } catch { updConv(cid, (m) => [...m, fallbackReply(t)]); } finally { setChatBusy(false); }
   };
   useEffect(() => { if (mode !== "chat" || chat.length === 0) return; window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" }); }, [chat, chatBusy, mode]);
   const empty = chat.length === 0 && !chatBusy;
   const sugIcons = [Sparkles, Globe, UserCheck, History];
+  const sugsBy: Record<CMode, string[]> = lang === "ar"
+    ? { chat: ["اشرحلي فكرة صعبة ببساطة", "ساعدني أكتب رسالة أو إيميل", "إزاي أحسّن ظهور موقعي في جوجل؟", "اقترح لي أفكار لمشروع جديد"], research: ["مقارنة بين منصات التجارة الإلكترونية في مصر", "إزاي بيشتغل محرك بحث جوجل؟", "اتجاهات التسويق الرقمي للمتاجر الصغيرة"], image: ["لوجو بسيط لمتجر قهوة", "صورة منتج على خلفية بيضاء", "بوستر لعرض رمضان"] }
+    : { chat: ["Explain a hard idea simply", "Help me write a message or email", "How do I rank my site higher on Google?", "Suggest ideas for a new project"], research: ["Compare e-commerce platforms for a small store", "How does Google Search work?", "Digital marketing trends for small shops"], image: ["A simple logo for a coffee shop", "A product photo on a white background", "A poster for a seasonal sale"] };
+  const sugs = sugsBy[cmode];
+  const modeMeta: Record<CMode, { label: string; Ic: typeof Sparkles; title: string; sub: string; ph: string }> = {
+    chat: { label: T("Chat", "شات"), Ic: MessagesSquare, title: T("What can I help you with?", "أقدر أساعدك في إيه؟"), sub: T("Ask me anything, free and with no signup. For real work on your website, switch to Agent.", "اسألني في أي موضوع، مجانًا وبدون تسجيل. وللشغل الفعلي على موقعك، حوّل على Agent."), ph: T("Ask me anything", "اسألني أي حاجة") },
+    research: { label: T("Deep research", "بحث متعمق"), Ic: Microscope, title: T("What should I research?", "تحب أبحث في إيه؟"), sub: T("I plan the questions, then write one structured report. It uses the model's own knowledge, not live web search, so verify key facts.", "بخطط الأسئلة وبعدين بكتب تقرير واحد منظم. بيعتمد على معرفة النموذج مش بحث مباشر على الويب، فراجع المعلومات المهمة."), ph: T("Describe the topic to research", "اكتب الموضوع اللي تبحث فيه") },
+    image: { label: T("Images", "صور"), Ic: ImageIcon, title: T("What image do you want?", "عايز صورة إيه؟"), sub: T("Image generation is not switched on yet. Describe the image and I will write a detailed prompt you can use in any image tool.", "توليد الصور لسه مش مفعّل. صف الصورة وأنا هكتبلك وصف تفصيلي تستخدمه في أي أداة صور."), ph: T("Describe the image", "صف الصورة") },
+  };
+  const modePills = (<div role="tablist" aria-label={T("Chat type", "نوع المحادثة")} className="mb-3 flex flex-wrap justify-center gap-2">{(Object.keys(modeMeta) as CMode[]).map((k) => { const { label, Ic } = modeMeta[k]; return (<button key={k} type="button" role="tab" aria-selected={cmode === k} disabled={chatBusy} onClick={() => setCmode(k)} className={`inline-flex h-9 items-center gap-2 rounded-full border px-4 text-sm font-medium transition disabled:opacity-60 ${cmode === k ? "border-primary bg-primary/10 text-primary" : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"}`}><Ic className="h-4 w-4" aria-hidden="true" />{label}</button>); })}</div>);
   const composer = (<form onSubmit={sendChat} className="w-full">
     <div className="rounded-[1.75rem] border border-border bg-surface p-3 shadow-[0_10px_44px_-14px_rgba(0,0,0,0.28)] transition focus-within:border-primary/60 focus-within:ring-4 focus-within:ring-primary/10">
       <label htmlFor="ag-chat" className="sr-only">{T("Your message", "رسالتك")}</label>
-      <textarea id="ag-chat" autoFocus={!empty} rows={empty ? 2 : 1} value={chatIn} maxLength={500} onChange={(e) => setChatIn(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); e.currentTarget.form?.requestSubmit(); } }} placeholder={empty ? T("Ask anything about SEO", "اسأل أي حاجة عن السيو") : T("Reply to the SEO AGENT", "رد على SEO AGENT")} className="block max-h-40 w-full resize-none bg-transparent px-3 py-2 text-base leading-7 placeholder:text-muted-foreground/70 focus:outline-none" />
+      <textarea id="ag-chat" autoFocus={!empty} rows={empty ? 2 : 1} value={chatIn} maxLength={500} onChange={(e) => setChatIn(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); e.currentTarget.form?.requestSubmit(); } }} placeholder={empty ? modeMeta[cmode].ph : T("Reply", "اكتب ردك")} className="block max-h-40 w-full resize-none bg-transparent px-3 py-2 text-base leading-7 placeholder:text-muted-foreground/70 focus:outline-none" />
       <div className="flex items-center justify-between gap-2 pt-1">
         <div className="flex min-w-0 items-center gap-2"><span className="inline-flex items-center gap-1.5 truncate rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"><Sparkles className="h-3.5 w-3.5 text-primary" aria-hidden="true" />{T("Free, no signup", "مجاني، بدون تسجيل")}</span><button type="button" onClick={() => setMode("agent")} className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-medium text-primary transition hover:bg-primary/20">{T("Work on my site", "اشتغل على موقعي")}<ArrowRight className="h-3 w-3 rtl:rotate-180" aria-hidden="true" /></button></div>
         <button type="submit" disabled={chatBusy || !chatIn.trim()} aria-label={T("Send", "إرسال")} className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition hover:opacity-90 disabled:opacity-35">{chatBusy ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <ArrowUp className="h-4 w-4" aria-hidden="true" />}</button>
@@ -247,24 +275,34 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
     </div>
   </form>);
   const avatar = (<span className="mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary/15 text-primary"><Sparkles className="h-4 w-4" aria-hidden="true" /></span>);
-  const chatPanel = (<section className="relative flex min-h-[calc(100dvh-7.6rem)] flex-col overflow-hidden border-b border-border">
+  const sideBody = (<div className="flex h-full min-h-0 flex-col gap-3 p-3 pb-24">
+    <button type="button" disabled={chatBusy} onClick={newChat} className="inline-flex h-11 w-full items-center gap-2 rounded-xl border border-border bg-background px-4 text-sm font-medium transition hover:border-primary/60 hover:text-primary disabled:opacity-50"><Plus className="h-4 w-4" aria-hidden="true" />{T("New chat", "محادثة جديدة")}</button>
+    <div className="px-2 pt-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">{T("History", "السجل")}</div>
+    <nav aria-label={T("Conversations", "المحادثات")} className="-mx-1 min-h-0 flex-1 space-y-1 overflow-y-auto px-1">
+      {convs.length === 0 && <p className="px-2 text-sm leading-6 text-muted-foreground">{T("No conversations yet. They are saved only in this browser.", "مفيش محادثات لسه. بتتحفظ في متصفحك بس.")}</p>}
+      {convs.map((c) => { const Ic = modeMeta[c.mode].Ic; return (<div key={c.id} className={`group flex items-center gap-1 rounded-xl pe-1 transition ${c.id === activeId ? "bg-primary/10 text-foreground" : "text-muted-foreground hover:bg-surface-2 hover:text-foreground"}`}><button type="button" disabled={chatBusy} onClick={() => openConv(c)} aria-current={c.id === activeId ? "true" : undefined} className="flex min-w-0 flex-1 items-center gap-2 px-3 py-2.5 text-start text-sm disabled:opacity-60"><Ic className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" /><span className="truncate">{c.title}</span></button><button type="button" disabled={chatBusy} onClick={() => delConv(c.id)} aria-label={T("Delete conversation", "امسح المحادثة")} className="grid h-8 w-8 shrink-0 place-items-center rounded-lg text-muted-foreground opacity-100 transition hover:bg-background hover:text-foreground md:opacity-0 md:group-hover:opacity-100 md:focus-visible:opacity-100"><Trash2 className="h-3.5 w-3.5" aria-hidden="true" /></button></div>); })}
+    </nav>
+    <button type="button" onClick={() => setMode("agent")} className="inline-flex h-11 w-full items-center justify-between gap-2 rounded-xl border border-primary/40 bg-primary/10 px-4 text-sm font-medium text-primary transition hover:bg-primary/20">{T("Work on my site", "اشتغل على موقعي")}<ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" /></button>
+  </div>);
+  const chatPanel = (<section className="relative flex min-h-[calc(100dvh-7.6rem)] min-w-0 flex-1 flex-col overflow-hidden border-b border-border">
+    <button type="button" onClick={() => setSide(true)} aria-label={T("Open conversations", "افتح المحادثات")} className="absolute start-3 top-3 z-10 grid h-10 w-10 place-items-center rounded-full border border-border bg-surface text-muted-foreground transition hover:text-foreground md:hidden"><Menu className="h-5 w-5" aria-hidden="true" /></button>
     <div className="pointer-events-none absolute inset-x-0 top-0 -z-0 h-[32rem] bg-[radial-gradient(60%_70%_at_50%_0%,var(--primary-glow),transparent)] opacity-60" aria-hidden="true" />
     {empty ? (
       <div className="relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-5 pb-20 pt-10 text-center">
         <span className="grid h-14 w-14 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-lg glow-primary"><Sparkles className="h-7 w-7" aria-hidden="true" /></span>
-        <h1 className="mt-6 font-display text-4xl font-semibold leading-tight tracking-tight md:text-5xl">{T("How can I help with your SEO?", "أقدر أساعدك إزاي في السيو؟")}</h1>
-        <p className="mt-3 max-w-lg text-sm leading-7 text-muted-foreground md:text-base">{T("Free SEO answers, no signup. When you are ready for real work on your site, switch to Agent.", "إجابات سيو مجانية بدون تسجيل. وقت ما تبقى جاهز للشغل الفعلي على موقعك، حوّل على Agent.")}</p>
-        <div className="mt-8 w-full text-start">{composer}</div>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">{d.faq.map(([qq, a], i) => { const Ic = sugIcons[i % sugIcons.length]; return (<button key={qq} type="button" onClick={() => askFaq(qq, a)} className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-4 py-2 text-start text-sm text-muted-foreground transition hover:-translate-y-0.5 hover:border-primary/60 hover:text-foreground"><Ic className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />{qq}</button>); })}</div>
+        <h1 className="mt-6 font-display text-4xl font-semibold leading-tight tracking-tight md:text-5xl">{modeMeta[cmode].title}</h1>
+        <p className="mt-3 max-w-lg text-sm leading-7 text-muted-foreground md:text-base">{modeMeta[cmode].sub}</p>
+        <div className="mt-8 w-full text-start">{modePills}{composer}</div>
+        <div className="mt-6 flex flex-wrap justify-center gap-2">{sugs.map((qq, i) => { const Ic = sugIcons[i % sugIcons.length]; return (<button key={qq} type="button" disabled={chatBusy} onClick={() => void sendText(qq)} className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-4 py-2 text-start text-sm text-muted-foreground transition hover:-translate-y-0.5 hover:border-primary/60 hover:text-foreground"><Ic className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />{qq}</button>); })}</div>
       </div>
     ) : (<>
       <div id="ag-chat-log" className="relative mx-auto w-full max-w-3xl flex-1 space-y-7 px-5 pb-6 pt-8" aria-live="polite">
-        <div className="flex justify-end"><button type="button" disabled={chatBusy} onClick={() => setChat([])} className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground transition hover:border-primary hover:text-primary disabled:opacity-50"><MessagesSquare className="h-3.5 w-3.5" aria-hidden="true" />{T("New chat", "محادثة جديدة")}</button></div>
+        <div className="flex justify-end"><button type="button" disabled={chatBusy} onClick={newChat} className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground transition hover:border-primary hover:text-primary disabled:opacity-50"><MessagesSquare className="h-3.5 w-3.5" aria-hidden="true" />{T("New chat", "محادثة جديدة")}</button></div>
         {chat.map((m, i) => (m.r === "u" ? (<div key={i} className="flex justify-end"><div className="max-w-[85%] whitespace-pre-wrap break-words rounded-3xl rounded-ee-lg bg-surface-2 px-5 py-3 text-[15px] leading-7">{m.t}</div></div>) : (<div key={i} className="flex gap-3">{avatar}<div className="min-w-0 flex-1 pt-1 text-[15px] leading-8"><div className="space-y-3">{renderMsg(m.t)}</div>{m.wa && <a href={m.wa} target="_blank" rel="noopener" className="mt-4 inline-flex h-10 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"><MessageCircle className="h-4 w-4" aria-hidden="true" />{d.send}</a>}</div></div>)))}
         {chatBusy && (<div className="flex items-center gap-3">{avatar}<span className="inline-flex items-center gap-1.5 pt-1" role="status"><span className="sr-only">{T("Thinking", "بفكر")}</span>{[0, 1, 2].map((n) => (<span key={n} className="h-2 w-2 animate-pulse rounded-full bg-primary/70" style={{ animationDelay: `${n * 180}ms` }} />))}</span></div>)}
         <div id="ag-chat-end" />
       </div>
-      <div className="sticky bottom-0 z-20 bg-gradient-to-t from-background via-background/95 to-transparent px-5 pb-20 pt-8 sm:pb-6"><div className="mx-auto w-full max-w-3xl">{composer}</div></div>
+      <div className="sticky bottom-0 z-20 bg-gradient-to-t from-background via-background/95 to-transparent px-5 pb-20 pt-8 sm:pb-6"><div className="mx-auto w-full max-w-3xl">{modePills}{composer}</div></div>
     </>)}
   </section>);
 
@@ -305,7 +343,11 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
       {nav}
       {subnav}
       <main>
-        {mode === "chat" ? chatPanel : (<>
+        {mode === "chat" ? (<div className="mx-auto flex w-full max-w-[90rem]">
+          <aside className="sticky top-[120px] hidden h-[calc(100dvh-120px)] w-72 shrink-0 border-e border-border bg-surface/40 md:block">{sideBody}</aside>
+          {side && (<div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label={T("Conversations", "المحادثات")}><button type="button" aria-label={T("Close", "إغلاق")} onClick={() => setSide(false)} className="absolute inset-0 bg-black/50" /><div className="absolute inset-y-0 start-0 w-[82%] max-w-xs border-e border-border bg-background shadow-2xl"><button type="button" aria-label={T("Close", "إغلاق")} onClick={() => setSide(false)} className="absolute end-2 top-2 grid h-9 w-9 place-items-center rounded-full text-muted-foreground hover:text-foreground"><X className="h-4 w-4" aria-hidden="true" /></button><div className="h-full pt-10">{sideBody}</div></div></div>)}
+          {chatPanel}
+        </div>) : (<>
         <section className="relative overflow-hidden border-b border-border"><div className="absolute inset-0 grid-bg" aria-hidden="true" /><div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-primary/10 to-transparent" aria-hidden="true" />
           <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 py-12 md:px-6 md:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
             <div data-ag>
