@@ -19,7 +19,7 @@ const ui = {
     trust: ["Checks run on your live page", "No signup, no email needed", "The report is not saved"],
     how: ["Paste your URL", "We fetch the page HTML and related files", "Get a report in your language"],
     howTitle: "How it works",
-    scoreLabel: "Basic-check score", of: "of 100", guideline: "Guideline", scoreNote: "Score of this tool's basic checks only. It is not a Google score and does not predict rankings.",
+    scoreLabel: "Basic-check score", of: "of 100", guideline: "Guideline", aiTitle: "AI summary of the results", aiNote: "Written by an AI from the check results above only. It adds no new findings. Verify before acting.", scoreNote: "Score of this tool's basic checks only. It is not a Google score and does not predict rankings.",
     pass: "Passed", warn: "Needs work", fail: "Problems",
     groups: { index: "Indexing and crawling", content: "On-page content", links: "Links", tech: "Technical setup", speed: "Speed and page-experience basics", data: "Structured data and sharing", trust: "Trust signals" } as Record<string, string>,
     unTitle: "What this tool does not measure", unList: ["Real-user Core Web Vitals (LCP, INP, CLS): check PageSpeed Insights or Search Console", "Whether Google has actually indexed the page: use Search Console", "Backlinks, domain authority and keyword rankings", "Content quality, originality and search-intent match", "Site-wide issues: only this page, robots.txt, the sitemap and a small link sample are checked", "Content added by JavaScript after load, and visual layout or pop-ups"],
@@ -47,7 +47,7 @@ const ui = {
     trust: ["الفحوصات تجري على صفحتك الحية", "بدون تسجيل أو إيميل", "التقرير لا يُحفظ"],
     how: ["الصق الرابط", "نجلب كود الصفحة والملفات المرتبطة بها", "تحصل على تقرير بلغتك"],
     howTitle: "كيف تعمل الأداة",
-    scoreLabel: "درجة الفحوصات الأساسية", of: "من 100", guideline: "إرشاد", scoreNote: "هذه درجة فحوصات هذه الأداة الأساسية فقط. ليست درجة من جوجل ولا تتنبأ بالترتيب.",
+    scoreLabel: "درجة الفحوصات الأساسية", of: "من 100", guideline: "إرشاد", aiTitle: "ملخص بالذكاء الاصطناعي للنتائج", aiNote: "كتبه الذكاء الاصطناعي من نتائج الفحص أعلاه فقط ولا يضيف نتائج جديدة. راجعه قبل التنفيذ.", scoreNote: "هذه درجة فحوصات هذه الأداة الأساسية فقط. ليست درجة من جوجل ولا تتنبأ بالترتيب.",
     pass: "سليم", warn: "يحتاج تحسين", fail: "مشاكل",
     groups: { index: "الأرشفة والزحف", content: "محتوى الصفحة", links: "الروابط", tech: "الإعداد التقني", speed: "أساسيات السرعة وتجربة الصفحة", data: "البيانات المنظمة والمشاركة", trust: "إشارات الثقة" } as Record<string, string>,
     unTitle: "ما لا تقيسه هذه الأداة", unList: ["مؤشرات Core Web Vitals الفعلية من المستخدمين (LCP وINP وCLS): راجع PageSpeed Insights أو Search Console", "هل أرشفت جوجل الصفحة فعلًا: استخدم Search Console", "الروابط الخلفية وسلطة النطاق وترتيب الكلمات المفتاحية", "جودة المحتوى وأصالته ومطابقته لنية البحث", "مشاكل الموقع ككل: نفحص هذه الصفحة وrobots.txt وخريطة الموقع وعيّنة صغيرة من الروابط فقط", "المحتوى الذي يضيفه JavaScript بعد التحميل، والشكل البصري والنوافذ المنبثقة"],
@@ -119,17 +119,21 @@ export function SeoAuditPage({ lang }: { lang: Lang }) {
   const [step, setStep] = useState(0);
   const [result, setResult] = useState<AuditResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [ai, setAi] = useState<{ summary: string; priorities: { id: string; advice: string }[] } | null>(null);
 
   async function submit(e: FormEvent) {
     e.preventDefault();
     if (!url.trim() || busy) return;
-    setBusy(true); setError(null); setResult(null); setStep(0);
+    setBusy(true); setError(null); setResult(null); setAi(null); setStep(0);
     const timer = setInterval(() => setStep((s) => Math.min(s + 1, d.steps.length - 1)), 1500);
     try {
       const res = await fetch("/api/seo-audit", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ url }) });
       const data = await res.json();
       if (data.ok) {
         setResult(data);
+        // Optional AI narration of the measured checks; silently skipped if unavailable.
+        fetch("/api/seo-audit-ai", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ lang: data.lang, checks: data.checks }) })
+          .then((r) => r.json()).then((a) => { if (a?.ok) setAi({ summary: a.summary, priorities: a.priorities }); }).catch(() => undefined);
         setTimeout(() => document.getElementById("report")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
       } else setError(d.errors[data.error] ?? d.errors.generic);
     } catch {
@@ -224,6 +228,21 @@ export function SeoAuditPage({ lang }: { lang: Lang }) {
                   </div>
                 </div>
               </div>
+
+              {ai && (
+                <div className="mt-10 rounded-2xl border border-primary/30 bg-primary/5 p-6">
+                  <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">{rd.aiTitle}</div>
+                  <p className="mt-3 text-sm leading-7">{ai.summary}</p>
+                  {ai.priorities.length > 0 && (
+                    <ol className="mt-4 space-y-3">
+                      {ai.priorities.map((p, i) => (
+                        <li key={p.id} className="flex gap-3 text-sm leading-7"><span className="font-mono text-primary">{i + 1}</span><span><strong>{rows.find((r) => r.c.id === p.id)?.t}</strong>: {p.advice}</span></li>
+                      ))}
+                    </ol>
+                  )}
+                  <p className="mt-4 text-xs text-muted-foreground">{rd.aiNote}</p>
+                </div>
+              )}
 
               <div className="mt-10">
                 <h2 className="flex items-center gap-2 text-2xl font-semibold"><Gauge className="h-6 w-6 text-primary" aria-hidden="true" />{rd.fixFirst}</h2>
