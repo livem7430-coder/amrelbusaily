@@ -245,7 +245,6 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
         <button type="submit" disabled={chatBusy || !chatIn.trim()} aria-label={T("Send", "إرسال")} className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition hover:opacity-90 disabled:opacity-35">{chatBusy ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <ArrowUp className="h-4 w-4" aria-hidden="true" />}</button>
       </div>
     </div>
-    <p className="mt-3 px-16 text-center text-[11px] sm:px-3 leading-5 text-muted-foreground">{T("Do not enter passwords, API keys or personal/payment details. Messages are sent to Google Gemini for AI replies when enabled; AI answers may be wrong. Chat cannot publish changes or access your site.", "لا تدخل كلمات مرور أو مفاتيح API أو بيانات شخصية أو دفع. تُرسل الرسائل إلى Google Gemini للرد بالذكاء الاصطناعي عند تفعيله؛ وقد تكون الإجابات خاطئة. الشات لا ينشر تعديلات ولا يدخل إلى موقعك.")}</p>
   </form>);
   const avatar = (<span className="mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary/15 text-primary"><Sparkles className="h-4 w-4" aria-hidden="true" /></span>);
   const chatPanel = (<section className="relative flex min-h-[calc(100dvh-7.6rem)] flex-col overflow-hidden border-b border-border">
@@ -265,7 +264,7 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
         {chatBusy && (<div className="flex items-center gap-3">{avatar}<span className="inline-flex items-center gap-1.5 pt-1" role="status"><span className="sr-only">{T("Thinking", "بفكر")}</span>{[0, 1, 2].map((n) => (<span key={n} className="h-2 w-2 animate-pulse rounded-full bg-primary/70" style={{ animationDelay: `${n * 180}ms` }} />))}</span></div>)}
         <div id="ag-chat-end" />
       </div>
-      <div className="sticky bottom-0 z-20 bg-gradient-to-t from-background via-background/95 to-transparent px-5 pb-4 pt-8"><div className="mx-auto w-full max-w-3xl">{composer}</div></div>
+      <div className="sticky bottom-0 z-20 bg-gradient-to-t from-background via-background/95 to-transparent px-5 pb-20 pt-8 sm:pb-6"><div className="mx-auto w-full max-w-3xl">{composer}</div></div>
     </>)}
   </section>);
 
