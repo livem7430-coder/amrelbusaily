@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Portrait } from "@/components/Portrait";
+import { SeoAgentBanner } from "@/components/SeoAgentBanner";
 import { SeoAuditPromo } from "@/components/SeoAuditPromo";
 import { ResultsShowcase } from "@/components/ResultsShowcase";
 
@@ -371,6 +372,7 @@ function Home() {
         </nav>
       </div>
       <main id="main-content">
+      <SeoAgentBanner lang="en" />
       {/* HERO */}
       <section id="top" className="relative overflow-hidden">
         <div className="absolute inset-0 grid-bg" aria-hidden />
