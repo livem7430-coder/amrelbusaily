@@ -236,22 +236,23 @@ export function SeoSuitePage({ lang }: { lang: Lang }) {
       };
       await Promise.all([ew(), ew()]);
       if (fatal) { setError(d.errors[fatal] ?? d.errors.generic); return; }
-      // stage 3: AI writes fixes, 4 pages per call (max 3 calls)
+      // stage 3: AI writes fixes, 6 pages per call (max 2 calls)
       setStage(3);
       const fixes: Fix[] = []; let anyAi = false;
-      const batches = Math.ceil(facts.length / 4);
+      const batches = Math.ceil(facts.length / 6);
       for (let b = 0; b < batches; b++) {
         setPhase(d.writing(b + 1, batches));
-        const r = await call({ action: "fixes", key: k, pages: facts.slice(b * 4, b * 4 + 4) });
+        const r = await call({ action: "fixes", key: k, pages: facts.slice(b * 6, b * 6 + 6) });
         if (!r.ok) { setError(d.errors[r.error] ?? d.errors.generic); return; }
         fixes.push(...r.fixes); anyAi = anyAi || r.ai;
       }
       setStage(4);
+      await new Promise((r) => setTimeout(r, 2500));
       const kws: Array<Kw | null> = []; let kwAi = false;
       for (let b = 0; b < batches; b++) {
         setPhase(d.writing(b + 1, batches));
-        const r = await call({ action: "keywords", key: k, pages: facts.slice(b * 4, b * 4 + 4) });
-        if (!r.ok) { if (["license_invalid", "license_refunded", "rate_limited", "license_unavailable"].includes(r.error)) { setError(d.errors[r.error] ?? d.errors.generic); return; } kws.push(...facts.slice(b * 4, b * 4 + 4).map(() => null)); continue; }
+        const r = await call({ action: "keywords", key: k, pages: facts.slice(b * 6, b * 6 + 6) });
+        if (!r.ok) { if (["license_invalid", "license_refunded", "rate_limited", "license_unavailable"].includes(r.error)) { setError(d.errors[r.error] ?? d.errors.generic); return; } kws.push(...facts.slice(b * 6, b * 6 + 6).map(() => null)); continue; }
         kws.push(...r.keywords); kwAi = kwAi || r.ai;
       }
       const imgs: Run["imgs"] = [];
@@ -406,15 +407,15 @@ export function SeoSuitePage({ lang }: { lang: Lang }) {
               <h2 className="mb-2 text-2xl font-semibold">{d.tabs[1]}</h2>
               <p className="mb-4 flex items-center gap-2 text-sm text-muted-foreground"><Sparkles className="h-4 w-4 text-primary" aria-hidden="true" />{run.ai ? d.aiOn : d.aiOff}</p>
               <div className="space-y-5">{run.fixes.map((f) => (
-                <article key={f.url} className="print-card rounded-2xl border border-border bg-surface p-5">
+                <article key={f.url} className="print-card min-w-0 max-w-full overflow-hidden rounded-2xl border border-border bg-surface p-5">
                   <h3 className="break-all text-sm font-semibold" dir="ltr" style={{ textAlign: d.dir === "rtl" ? "right" : "left" }}>{host(f.url)}</h3>
-                  <div className="mt-3 grid gap-3">
+                  <div className="mt-3 grid grid-cols-1 gap-3 [&>*]:min-w-0">
                     {field(d.title2, f.title.current, f.title.suggested, f.title.source)}
                     <Serp url={f.url} title={f.title.suggested ?? f.title.current ?? ""} desc={f.meta.suggested ?? f.meta.current ?? ""} d={d} />
                     {field(d.meta, f.meta.current, f.meta.suggested, f.meta.source)}
                     {f.description && field(d.desc, null, f.description.suggested, f.description.source)}
                     {f.alts.length > 0 && (<div className="rounded-lg border border-border bg-background/50 p-3"><div className="text-xs font-semibold">{d.alts} ({f.alts.length})</div><ul className="mt-2 space-y-2">{f.alts.map((a) => (<li key={a.src} className="flex flex-wrap items-center justify-between gap-2 text-sm"><span className="min-w-0 break-words"><span className="block break-all text-[11px] text-muted-foreground" dir="ltr">{a.src.slice(-60)}</span>{a.suggested}</span><span className="flex items-center gap-2"><Badge src={a.source} d={d} /><CopyBtn text={a.suggested} label={d.copy} done={d.copied} /></span></li>))}</ul></div>)}
-                    {f.schema && (<div className="rounded-lg border border-border bg-background/50 p-3"><div className="flex items-center justify-between gap-2"><span className="text-xs font-semibold">{d.schema}</span><CopyBtn text={`<script type="application/ld+json">\n${JSON.stringify(f.schema, null, 2)}\n</script>`} label={d.copy} done={d.copied} /></div><pre className="mt-2 max-h-56 overflow-auto rounded-md bg-background p-3 text-[11px] leading-5" dir="ltr">{JSON.stringify(f.schema, null, 2)}</pre></div>)}
+                    {f.schema && (<div className="rounded-lg border border-border bg-background/50 p-3"><div className="flex items-center justify-between gap-2"><span className="text-xs font-semibold">{d.schema}</span><CopyBtn text={`<script type="application/ld+json">\n${JSON.stringify(f.schema, null, 2).replace(/</g, "\\u003c")}\n</script>`} label={d.copy} done={d.copied} /></div><pre className="mt-2 max-h-56 overflow-auto rounded-md bg-background p-3 text-[11px] leading-5 max-w-full whitespace-pre-wrap break-all" dir="ltr">{JSON.stringify(f.schema, null, 2)}</pre></div>)}
                   </div>
                 </article>))}</div>
             </div>
@@ -457,7 +458,7 @@ export function SeoSuitePage({ lang }: { lang: Lang }) {
                 const faq = faqQs.length ? { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqQs.map((q) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: "" } })) } : null;
                 const blocks: Array<[string, string, string | null, string]> = [[d.robots, f.robots, "robots.txt", "text/plain"], [d.sitemap, f.sm, "sitemap.xml", "application/xml"], [d.orgTitle, `<script type="application/ld+json">\n${JSON.stringify(org, null, 2).replace(/</g, "\\u003c")}\n</script>`, null, ""], [d.crumbTitle, bc.map((b) => `<script type="application/ld+json">\n${JSON.stringify(b, null, 2).replace(/</g, "\\u003c")}\n</script>`).join("\n"), null, ""]];
                 if (faq) blocks.push([d.faqTitle2, `<script type="application/ld+json">\n${JSON.stringify(faq, null, 2).replace(/</g, "\\u003c")}\n</script>`, null, ""]);
-                return blocks.map(([t, text, file, mime]) => (<div key={t} className="print-card rounded-xl border border-border bg-surface p-4"><div className="flex flex-wrap items-center justify-between gap-2"><span className="text-sm font-semibold">{t}</span><span className="flex gap-2"><CopyBtn text={text} label={d.copy} done={d.copied} />{file && <button type="button" onClick={() => download(file, text, mime)} className="no-print inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium hover:border-primary hover:text-primary"><Download className="h-3.5 w-3.5" aria-hidden="true" />{d.download}</button>}</span></div>{t === d.crumbTitle && <p className="mt-1 text-xs text-muted-foreground">{d.crumbNote}</p>}{t === d.faqTitle2 && <p className="mt-1 text-xs text-muted-foreground">{d.faqNote}</p>}<pre className="mt-2 max-h-56 overflow-auto rounded-md bg-background p-3 text-xs" dir="ltr">{text.slice(0, 2500)}</pre></div>));
+                return blocks.map(([t, text, file, mime]) => (<div key={t} className="print-card rounded-xl border border-border bg-surface p-4"><div className="flex flex-wrap items-center justify-between gap-2"><span className="text-sm font-semibold">{t}</span><span className="flex gap-2"><CopyBtn text={text} label={d.copy} done={d.copied} />{file && <button type="button" onClick={() => download(file, text, mime)} className="no-print inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium hover:border-primary hover:text-primary"><Download className="h-3.5 w-3.5" aria-hidden="true" />{d.download}</button>}</span></div>{t === d.crumbTitle && <p className="mt-1 text-xs text-muted-foreground">{d.crumbNote}</p>}{t === d.faqTitle2 && <p className="mt-1 text-xs text-muted-foreground">{d.faqNote}</p>}<pre className="mt-2 max-h-56 overflow-auto rounded-md bg-background p-3 text-xs max-w-full whitespace-pre-wrap break-all" dir="ltr">{text.slice(0, 2500)}</pre></div>));
               })()}</div>
             </div>
 
@@ -484,4 +485,4 @@ export function SeoSuitePage({ lang }: { lang: Lang }) {
       </main>
     </div>
   );
-                  }
+      }
