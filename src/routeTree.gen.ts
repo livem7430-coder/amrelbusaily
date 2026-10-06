@@ -32,6 +32,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ApiSeoAuditRouteImport } from './routes/api.seo-audit'
 import { Route as ApiSeoAuditAiRouteImport } from './routes/api.seo-audit-ai'
+import { Route as ApiSeoAuditFullRouteImport } from './routes/api.seo-audit-full'
 import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ArAiSeoRouteImport } from './routes/ar.ai-seo'
 import { Route as ArContentSeoRouteImport } from './routes/ar.content-seo'
@@ -59,10 +60,12 @@ import { Route as BlogEnRouteImport } from './routes/blog.en'
 import { Route as BlogInternationalContentPlanRouteImport } from './routes/blog.international-content-plan'
 import { Route as CourseIndexRouteImport } from './routes/course.index'
 import { Route as CourseLessonIdRouteImport } from './routes/course.$lessonId'
+import { Route as SeoAuditFullRouteImport } from './routes/seo-audit_.full'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as ArCourseIndexRouteImport } from './routes/ar.course.index'
 import { Route as ArCourseLessonIdRouteImport } from './routes/ar.course.$lessonId'
+import { Route as ArSeoAuditFullRouteImport } from './routes/ar.seo-audit_.full'
 import { Route as ArServicesIndexRouteImport } from './routes/ar.services.index'
 import { Route as ArServicesSlugRouteImport } from './routes/ar.services.$slug'
 
@@ -179,6 +182,11 @@ const ApiSeoAuditRoute = ApiSeoAuditRouteImport.update({
 const ApiSeoAuditAiRoute = ApiSeoAuditAiRouteImport.update({
   id: '/api/seo-audit-ai',
   path: '/api/seo-audit-ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSeoAuditFullRoute = ApiSeoAuditFullRouteImport.update({
+  id: '/api/seo-audit-full',
+  path: '/api/seo-audit-full',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArIndexRoute = ArIndexRouteImport.update({
@@ -317,6 +325,11 @@ const CourseLessonIdRoute = CourseLessonIdRouteImport.update({
   path: '/course/$lessonId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SeoAuditFullRoute = SeoAuditFullRouteImport.update({
+  id: '/seo-audit_/full',
+  path: '/seo-audit/full',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -335,6 +348,11 @@ const ArCourseIndexRoute = ArCourseIndexRouteImport.update({
 const ArCourseLessonIdRoute = ArCourseLessonIdRouteImport.update({
   id: '/course/$lessonId',
   path: '/course/$lessonId',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArSeoAuditFullRoute = ArSeoAuditFullRouteImport.update({
+  id: '/seo-audit_/full',
+  path: '/seo-audit/full',
   getParentRoute: () => ArRoute,
 } as any)
 const ArServicesIndexRoute = ArServicesIndexRouteImport.update({
@@ -372,6 +390,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/seo-audit': typeof ApiSeoAuditRoute
   '/api/seo-audit-ai': typeof ApiSeoAuditAiRoute
+  '/api/seo-audit-full': typeof ApiSeoAuditFullRoute
   '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
@@ -396,12 +415,14 @@ export interface FileRoutesByFullPath {
   '/blog/en': typeof BlogEnRoute
   '/blog/international-content-plan': typeof BlogInternationalContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
+  '/seo-audit/full': typeof SeoAuditFullRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/course/': typeof CourseIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/ar/course/$lessonId': typeof ArCourseLessonIdRoute
+  '/ar/seo-audit/full': typeof ArSeoAuditFullRoute
   '/ar/services/$slug': typeof ArServicesSlugRoute
   '/ar/course/': typeof ArCourseIndexRoute
   '/ar/services/': typeof ArServicesIndexRoute
@@ -428,6 +449,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/seo-audit': typeof ApiSeoAuditRoute
   '/api/seo-audit-ai': typeof ApiSeoAuditAiRoute
+  '/api/seo-audit-full': typeof ApiSeoAuditFullRoute
   '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
@@ -451,12 +473,14 @@ export interface FileRoutesByTo {
   '/blog/en': typeof BlogEnRoute
   '/blog/international-content-plan': typeof BlogInternationalContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
+  '/seo-audit/full': typeof SeoAuditFullRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/ar': typeof ArIndexRoute
   '/blog': typeof BlogIndexRoute
   '/course': typeof CourseIndexRoute
   '/services': typeof ServicesIndexRoute
   '/ar/course/$lessonId': typeof ArCourseLessonIdRoute
+  '/ar/seo-audit/full': typeof ArSeoAuditFullRoute
   '/ar/services/$slug': typeof ArServicesSlugRoute
   '/ar/course': typeof ArCourseIndexRoute
   '/ar/services': typeof ArServicesIndexRoute
@@ -486,6 +510,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/seo-audit': typeof ApiSeoAuditRoute
   '/api/seo-audit-ai': typeof ApiSeoAuditAiRoute
+  '/api/seo-audit-full': typeof ApiSeoAuditFullRoute
   '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
@@ -510,12 +535,14 @@ export interface FileRoutesById {
   '/blog/en': typeof BlogEnRoute
   '/blog/international-content-plan': typeof BlogInternationalContentPlanRoute
   '/course/$lessonId': typeof CourseLessonIdRoute
+  '/seo-audit_/full': typeof SeoAuditFullRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/ar/': typeof ArIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/course/': typeof CourseIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/ar/course/$lessonId': typeof ArCourseLessonIdRoute
+  '/ar/seo-audit_/full': typeof ArSeoAuditFullRoute
   '/ar/services/$slug': typeof ArServicesSlugRoute
   '/ar/course/': typeof ArCourseIndexRoute
   '/ar/services/': typeof ArServicesIndexRoute
@@ -546,6 +573,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/api/seo-audit'
     | '/api/seo-audit-ai'
+    | '/api/seo-audit-full'
     | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
@@ -570,12 +598,14 @@ export interface FileRouteTypes {
     | '/blog/en'
     | '/blog/international-content-plan'
     | '/course/$lessonId'
+    | '/seo-audit/full'
     | '/services/$slug'
     | '/ar/'
     | '/blog/'
     | '/course/'
     | '/services/'
     | '/ar/course/$lessonId'
+    | '/ar/seo-audit/full'
     | '/ar/services/$slug'
     | '/ar/course/'
     | '/ar/services/'
@@ -602,6 +632,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/api/seo-audit'
     | '/api/seo-audit-ai'
+    | '/api/seo-audit-full'
     | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
@@ -625,12 +656,14 @@ export interface FileRouteTypes {
     | '/blog/en'
     | '/blog/international-content-plan'
     | '/course/$lessonId'
+    | '/seo-audit/full'
     | '/services/$slug'
     | '/ar'
     | '/blog'
     | '/course'
     | '/services'
     | '/ar/course/$lessonId'
+    | '/ar/seo-audit/full'
     | '/ar/services/$slug'
     | '/ar/course'
     | '/ar/services'
@@ -659,6 +692,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/api/seo-audit'
     | '/api/seo-audit-ai'
+    | '/api/seo-audit-full'
     | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
@@ -683,12 +717,14 @@ export interface FileRouteTypes {
     | '/blog/en'
     | '/blog/international-content-plan'
     | '/course/$lessonId'
+    | '/seo-audit_/full'
     | '/services/$slug'
     | '/ar/'
     | '/blog/'
     | '/course/'
     | '/services/'
     | '/ar/course/$lessonId'
+    | '/ar/seo-audit_/full'
     | '/ar/services/$slug'
     | '/ar/course/'
     | '/ar/services/'
@@ -718,12 +754,14 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ApiSeoAuditRoute: typeof ApiSeoAuditRoute
   ApiSeoAuditAiRoute: typeof ApiSeoAuditAiRoute
+  ApiSeoAuditFullRoute: typeof ApiSeoAuditFullRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogArRoute: typeof BlogArRoute
   BlogContentPlanRoute: typeof BlogContentPlanRoute
   BlogEnRoute: typeof BlogEnRoute
   BlogInternationalContentPlanRoute: typeof BlogInternationalContentPlanRoute
   CourseLessonIdRoute: typeof CourseLessonIdRoute
+  SeoAuditFullRoute: typeof SeoAuditFullRoute
   BlogIndexRoute: typeof BlogIndexRoute
   CourseIndexRoute: typeof CourseIndexRoute
 }
@@ -889,6 +927,13 @@ declare module '@tanstack/react-router' {
       path: '/api/seo-audit-ai'
       fullPath: '/api/seo-audit-ai'
       preLoaderRoute: typeof ApiSeoAuditAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/seo-audit-full': {
+      id: '/api/seo-audit-full'
+      path: '/api/seo-audit-full'
+      fullPath: '/api/seo-audit-full'
+      preLoaderRoute: typeof ApiSeoAuditFullRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ar/': {
@@ -1080,6 +1125,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CourseLessonIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/seo-audit_/full': {
+      id: '/seo-audit_/full'
+      path: '/seo-audit/full'
+      fullPath: '/seo-audit/full'
+      preLoaderRoute: typeof SeoAuditFullRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/': {
       id: '/services/'
       path: '/'
@@ -1106,6 +1158,13 @@ declare module '@tanstack/react-router' {
       path: '/course/$lessonId'
       fullPath: '/ar/course/$lessonId'
       preLoaderRoute: typeof ArCourseLessonIdRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/seo-audit_/full': {
+      id: '/ar/seo-audit_/full'
+      path: '/seo-audit/full'
+      fullPath: '/ar/seo-audit/full'
+      preLoaderRoute: typeof ArSeoAuditFullRouteImport
       parentRoute: typeof ArRoute
     }
     '/ar/services/': {
@@ -1160,6 +1219,7 @@ interface ArRouteChildren {
   ArServicesRoute: typeof ArServicesRouteWithChildren
   ArIndexRoute: typeof ArIndexRoute
   ArCourseLessonIdRoute: typeof ArCourseLessonIdRoute
+  ArSeoAuditFullRoute: typeof ArSeoAuditFullRoute
   ArCourseIndexRoute: typeof ArCourseIndexRoute
 }
 
@@ -1184,6 +1244,7 @@ const ArRouteChildren: ArRouteChildren = {
   ArServicesRoute: ArServicesRouteWithChildren,
   ArIndexRoute: ArIndexRoute,
   ArCourseLessonIdRoute: ArCourseLessonIdRoute,
+  ArSeoAuditFullRoute: ArSeoAuditFullRoute,
   ArCourseIndexRoute: ArCourseIndexRoute,
 }
 
@@ -1227,12 +1288,14 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ApiSeoAuditRoute: ApiSeoAuditRoute,
   ApiSeoAuditAiRoute: ApiSeoAuditAiRoute,
+  ApiSeoAuditFullRoute: ApiSeoAuditFullRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogArRoute: BlogArRoute,
   BlogContentPlanRoute: BlogContentPlanRoute,
   BlogEnRoute: BlogEnRoute,
   BlogInternationalContentPlanRoute: BlogInternationalContentPlanRoute,
   CourseLessonIdRoute: CourseLessonIdRoute,
+  SeoAuditFullRoute: SeoAuditFullRoute,
   BlogIndexRoute: BlogIndexRoute,
   CourseIndexRoute: CourseIndexRoute,
 }
@@ -1248,4 +1311,4 @@ declare module '@tanstack/react-start' {
     router: Awaited<ReturnType<typeof getRouter>>
     config: Awaited<ReturnType<typeof startInstance.getOptions>>
   }
-        }
+      }
