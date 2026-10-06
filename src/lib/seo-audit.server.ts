@@ -608,3 +608,30 @@ export async function extractPage(input: string): Promise<PageFacts | AuditError
   const lang: "ar" | "en" = htmlLang.startsWith("ar") || (/[\u0600-\u06FF]/.test(title + text) && !/[a-zA-Z]{4}/.test(title)) ? "ar" : "en";
   return { ok: true, url: start.href, finalUrl: finalUrl.href, lang, title, description, h1, text, schemaTypes: [...schemaTypes].slice(0, 20), product, images };
 }
+
+/** Image weight check: HEAD each image (SSRF-guarded) and read Content-Length. Never downloads bodies. */
+export async function imageWeights(urls: string[]): Promise<Array<{ url: string; bytes: number | null; type: string | null }>> {
+  const list = [...new Set(urls)].filter((u) => typeof u === "string" && u.length <= 500).slice(0, 24);
+  const out: Array<{ url: string; bytes: number | null; type: string | null }> = new Array(list.length);
+  let next = 0;
+  const worker = async () => {
+    while (true) {
+      const i = next++; if (i >= list.length) return;
+      let bytes: number | null = null, type: string | null = null;
+      try {
+        const u = new URL(list[i]);
+        if (u.protocol === "http:" || u.protocol === "https:") {
+          const r = await fetchFollow(u, 6000, { method: "HEAD" });
+          if (typeof r !== "string" && r.status >= 200 && r.status < 300) {
+            const n = Number(r.headers["content-length"]);
+            bytes = Number.isFinite(n) && n > 0 ? n : null;
+            type = (r.headers["content-type"] ?? "").split(";")[0] || null;
+          }
+        }
+      } catch { /* leave null */ }
+      out[i] = { url: list[i], bytes, type };
+    }
+  };
+  await Promise.all([worker(), worker(), worker(), worker()]);
+  return out;
+}
