@@ -4,7 +4,7 @@ type Theme = "dark" | "light";
 const STORAGE_KEY = "amrelbusaily-theme";
 
 function getSystemTheme(): Theme {
-  return typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  try { return typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"; } catch { return "dark"; }
 }
 
 function applyTheme(theme: Theme) {
@@ -16,7 +16,8 @@ export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_KEY);
+    let saved: string | null = null;
+    try { saved = window.localStorage.getItem(STORAGE_KEY); } catch { /* storage blocked: use the system theme */ }
     const initial = saved === "light" || saved === "dark" ? saved : getSystemTheme();
     setTheme(initial);
     applyTheme(initial);
@@ -26,7 +27,7 @@ export function ThemeToggle() {
     const next: Theme = theme === "dark" ? "light" : "dark";
     setTheme(next);
     applyTheme(next);
-    window.localStorage.setItem(STORAGE_KEY, next);
+    try { window.localStorage.setItem(STORAGE_KEY, next); } catch { /* storage blocked: theme still applies for this visit */ }
   }
 
   const isLight = theme === "light";
