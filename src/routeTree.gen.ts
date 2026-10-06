@@ -31,6 +31,7 @@ import { Route as SeoServicesRouteImport } from './routes/seo-services'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ApiSeoAuditRouteImport } from './routes/api.seo-audit'
+import { Route as ApiSeoAuditAiRouteImport } from './routes/api.seo-audit-ai'
 import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ArAiSeoRouteImport } from './routes/ar.ai-seo'
 import { Route as ArContentSeoRouteImport } from './routes/ar.content-seo'
@@ -173,6 +174,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const ApiSeoAuditRoute = ApiSeoAuditRouteImport.update({
   id: '/api/seo-audit',
   path: '/api/seo-audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSeoAuditAiRoute = ApiSeoAuditAiRouteImport.update({
+  id: '/api/seo-audit-ai',
+  path: '/api/seo-audit-ai',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArIndexRoute = ArIndexRouteImport.update({
@@ -365,6 +371,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/seo-audit': typeof ApiSeoAuditRoute
+  '/api/seo-audit-ai': typeof ApiSeoAuditAiRoute
   '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
@@ -420,6 +427,7 @@ export interface FileRoutesByTo {
   '/seo-services': typeof SeoServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/seo-audit': typeof ApiSeoAuditRoute
+  '/api/seo-audit-ai': typeof ApiSeoAuditAiRoute
   '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
@@ -477,6 +485,7 @@ export interface FileRoutesById {
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/seo-audit': typeof ApiSeoAuditRoute
+  '/api/seo-audit-ai': typeof ApiSeoAuditAiRoute
   '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
@@ -536,6 +545,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/api/seo-audit'
+    | '/api/seo-audit-ai'
     | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
@@ -591,6 +601,7 @@ export interface FileRouteTypes {
     | '/seo-services'
     | '/sitemap.xml'
     | '/api/seo-audit'
+    | '/api/seo-audit-ai'
     | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
@@ -647,6 +658,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/api/seo-audit'
+    | '/api/seo-audit-ai'
     | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
@@ -705,6 +717,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ApiSeoAuditRoute: typeof ApiSeoAuditRoute
+  ApiSeoAuditAiRoute: typeof ApiSeoAuditAiRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogArRoute: typeof BlogArRoute
   BlogContentPlanRoute: typeof BlogContentPlanRoute
@@ -869,6 +882,13 @@ declare module '@tanstack/react-router' {
       path: '/api/seo-audit'
       fullPath: '/api/seo-audit'
       preLoaderRoute: typeof ApiSeoAuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/seo-audit-ai': {
+      id: '/api/seo-audit-ai'
+      path: '/api/seo-audit-ai'
+      fullPath: '/api/seo-audit-ai'
+      preLoaderRoute: typeof ApiSeoAuditAiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ar/': {
@@ -1206,6 +1226,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ApiSeoAuditRoute: ApiSeoAuditRoute,
+  ApiSeoAuditAiRoute: ApiSeoAuditAiRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogArRoute: BlogArRoute,
   BlogContentPlanRoute: BlogContentPlanRoute,
@@ -1227,4 +1248,4 @@ declare module '@tanstack/react-start' {
     router: Awaited<ReturnType<typeof getRouter>>
     config: Awaited<ReturnType<typeof startInstance.getOptions>>
   }
-        }
+    }
