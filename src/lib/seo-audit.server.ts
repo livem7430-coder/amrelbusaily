@@ -505,3 +505,52 @@ export async function runAudit(input: string): Promise<AuditResult | AuditError>
     facts: { title: title.slice(0, 120), platform: detectPlatform(html, headers), fetchedAt: new Date().toISOString() },
   };
 }
+
+/* ---------- full-site URL discovery (sitemap first, then homepage links) ---------- */
+export async function discoverUrls(input: string, max = 25): Promise<{ ok: true; origin: string; urls: string[]; source: "sitemap" | "homepage" | "both" } | AuditError> {
+  const start = normalizeUrl(input);
+  if (!start) return { ok: false, error: "invalid_url" };
+  const home = await fetchFollow(new URL("/", start), 9000);
+  if (typeof home === "string") return { ok: false, error: home === "blocked" ? "blocked" : home === "timeout" ? "timeout" : "unreachable" };
+  const host = home.finalUrl.hostname.replace(/^www\./, "");
+  const origin = home.finalUrl.origin;
+  const same = (u: URL) => (u.protocol === "http:" || u.protocol === "https:") && u.hostname.replace(/^www\./, "") === host;
+  const clean = (u: URL) => { u.hash = ""; return u.href.replace(/\/$/, "") || u.href; };
+  const out = new Map<string, true>();
+  const add = (raw: string, base: URL) => {
+    try { const u = new URL(raw.trim(), base); if (same(u) && !ASSET_EXT.test(u.pathname) && !/\.(md|txt|php)$/i.test(u.pathname)) out.set(clean(u), true); } catch { /* skip */ }
+  };
+  out.set(clean(new URL(home.finalUrl.href)), true);
+  let fromSitemap = 0;
+  const robots = await fetchFollow(new URL("/robots.txt", origin), 6000, { maxBytes: 200_000 });
+  let smUrl = new URL("/sitemap.xml", origin);
+  if (typeof robots === "object" && robots.status === 200) {
+    const m = robots.body.match(/^\s*sitemap:\s*(\S+)/im);
+    if (m) { try { const u = new URL(m[1], origin); if (same(u)) smUrl = u; } catch { /* default */ } }
+  }
+  const queue = [smUrl];
+  const seenMaps = new Set<string>();
+  while (queue.length && seenMaps.size < 4 && out.size < max * 3) {
+    const u = queue.shift()!;
+    if (seenMaps.has(u.href)) continue;
+    seenMaps.add(u.href);
+    const r = await fetchFollow(u, 7000, { maxBytes: 1_500_000 });
+    if (typeof r === "string" || r.status !== 200) continue;
+    const locs = [...r.body.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/gi)].map((m) => decode(m[1]));
+    for (const l of locs) {
+      if (/\.xml(\.gz)?(\?|$)/i.test(l)) { try { const s = new URL(l, u); if (same(s)) queue.push(s); } catch { /* skip */ } }
+      else { const before = out.size; add(l, u); if (out.size > before) fromSitemap++; }
+    }
+  }
+  let fromHome = 0;
+  for (const m of home.body.matchAll(/<a\b[^>]*\bhref\s*=\s*["']([^"'#][^"']*)["']/gi)) {
+    if (/^(mailto|tel|javascript):/i.test(m[1])) continue;
+    const before = out.size; add(decode(m[1]), home.finalUrl); if (out.size > before) fromHome++;
+  }
+  const list = [...out.keys()];
+  // keep the homepage first, then spread the rest by shortest path (top-level pages first)
+  const first = list[0];
+  const rest = list.slice(1).sort((a, b) => a.split("/").length - b.split("/").length);
+  const urls = [first, ...rest].slice(0, max);
+  return { ok: true, origin, urls, source: fromSitemap && fromHome ? "both" : fromSitemap ? "sitemap" : "homepage" };
+}
