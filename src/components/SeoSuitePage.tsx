@@ -12,13 +12,13 @@ const PRICE = { en: "500 SAR one-time", ar: "500 ريال مرة واحدة" };
 const ui = {
   en: {
     dir: "ltr", home: "/", free: "/seo-audit", full: "/seo-audit/full", other: "/ar/seo-suite", lang: "AR", name: "Amr Elbusaily", packages: "/packages", consult: "/free-consultation",
-    title: "AI SEO Suite for E-commerce Stores | Full Audit + Ready-to-Paste Fixes",
-    description: "Audit your whole store, then let AI write the fixes: titles, meta descriptions, product descriptions, image alt text and Product schema, ready to copy or export. One-time purchase.",
-    badge: "AI-POWERED · SEO SUITE", h1: "Audit your store. Let AI write the fixes.",
+    title: "AI SEO Suite for Any Website | Full Audit + Ready-to-Paste Fixes",
+    description: "Audit your whole website or store, then let AI write the fixes: titles, meta descriptions, page and product descriptions, image alt text and Product schema, ready to copy or export. One-time purchase.",
+    badge: "AI-POWERED · SEO SUITE", h1: "Audit your website. Let AI write the fixes.",
     intro: "The Suite crawls up to 25 pages, measures real technical problems, then uses AI to write the replacement titles, meta descriptions, product descriptions, image alt text and Product schema for your pages. Copy each fix, or export everything in one click.",
     chips: ["Whole-site audit", "AI-written fixes", "AI keyword map", "Content briefs", "Internal links", "One-click export"],
     buy: "Get the Suite", price: PRICE.en, buyNote: "Opens Gumroad. Your license key arrives by email after payment.",
-    haveKey: "Already have a key? Enter it with your store address.", keyLabel: "License key", keyPh: "Paste your license key", urlLabel: "Store URL", urlPh: "yourstore.com", run: "Run the Suite", running: "Running…",
+    haveKey: "Already have a key? Enter it with your website address.", keyLabel: "License key", keyPh: "Paste your license key", urlLabel: "Website URL", urlPh: "yourwebsite.com", run: "Run the Suite", running: "Running…",
     stages: ["Find pages", "Measure problems", "Read page content", "AI writes fixes", "AI keyword map"], found: (n: number) => `${n} pages found`, auditing: (a: number, b: number) => `Measuring page ${a} of ${b}`, reading: (a: number, b: number) => `Reading page ${a} of ${b}`, writing: (a: number, b: number) => `AI is writing fixes, batch ${a} of ${b}`,
     errors: { license_required: "Enter your license key.", license_invalid: "This license key was not recognized for the SEO Suite.", license_refunded: "This purchase was refunded, so the key no longer works.", license_unavailable: "We could not reach the license service. Try again in a minute.", not_configured: "The Suite is not open yet. Please check back soon.", rate_limited: "Too many requests. Wait a minute and try again.", invalid_url: "That does not look like a valid address.", blocked: "This address cannot be audited.", unreachable: "We could not reach that site.", timeout: "The site took too long to respond.", not_html: "That address did not return a web page.", generic: "Something went wrong. Please try again." } as Record<string, string>,
     flowTitle: "From problems to fixes, automatically", flow: [["Measure", "Real checks on every page: indexing, titles, meta, headings, links, structured data, images."], ["Read", "The Suite reads each page's current title, description, product data and images."], ["Write", "AI drafts the replacement copy from those facts only, in the page's own language."], ["Export", "Copy a fix, or download everything as JSON or CSV."]],
@@ -36,13 +36,13 @@ const ui = {
   },
   ar: {
     dir: "rtl", home: "/ar", free: "/ar/seo-audit", full: "/ar/seo-audit/full", other: "/seo-suite", lang: "EN", name: "عمرو البصيلي", packages: "/ar/packages", consult: "/ar/free-consultation",
-    title: "حزمة SEO بالذكاء الاصطناعي للمتاجر الإلكترونية | فحص شامل + تعديلات جاهزة",
-    description: "افحص متجرك بالكامل ثم دع الذكاء الاصطناعي يكتب التعديلات: العناوين والوصف وأوصاف المنتجات ونصوص الصور وسكيما المنتج، جاهزة للنسخ أو التصدير. دفعة واحدة.",
-    badge: "بالذكاء الاصطناعي · حزمة السيو", h1: "افحص متجرك ودع الذكاء الاصطناعي يكتب الحلول",
+    title: "حزمة SEO بالذكاء الاصطناعي لأي موقع | فحص شامل + تعديلات جاهزة",
+    description: "افحص موقعك أو متجرك بالكامل ثم دع الذكاء الاصطناعي يكتب التعديلات: العناوين والوصف وأوصاف المنتجات ونصوص الصور وسكيما المنتج، جاهزة للنسخ أو التصدير. دفعة واحدة.",
+    badge: "بالذكاء الاصطناعي · حزمة السيو", h1: "افحص موقعك ودع الذكاء الاصطناعي يكتب الحلول",
     intro: "تفحص الحزمة حتى 25 صفحة وتقيس المشاكل التقنية الفعلية، ثم يكتب الذكاء الاصطناعي العناوين ووصف الميتا وأوصاف المنتجات ونصوص الصور وسكيما المنتج البديلة لصفحاتك. انسخ كل تعديل أو صدّر الكل بضغطة.",
     chips: ["فحص الموقع بالكامل", "تعديلات بالذكاء الاصطناعي", "خريطة كلمات مفتاحية", "ملخصات محتوى", "روابط داخلية", "تصدير بضغطة"],
     buy: "احصل على الحزمة", price: PRICE.ar, buyNote: "يفتح Gumroad. يصلك مفتاح الترخيص بالبريد بعد الدفع.",
-    haveKey: "لديك مفتاح؟ أدخله مع رابط متجرك.", keyLabel: "مفتاح الترخيص", keyPh: "الصق مفتاح الترخيص", urlLabel: "رابط المتجر", urlPh: "yourstore.com", run: "شغّل الحزمة", running: "جارٍ التشغيل…",
+    haveKey: "لديك مفتاح؟ أدخله مع رابط موقعك.", keyLabel: "مفتاح الترخيص", keyPh: "الصق مفتاح الترخيص", urlLabel: "رابط الموقع", urlPh: "yourwebsite.com", run: "شغّل الحزمة", running: "جارٍ التشغيل…",
     stages: ["تحديد الصفحات", "قياس المشاكل", "قراءة محتوى الصفحات", "الذكاء الاصطناعي يكتب الحلول", "خريطة الكلمات بالـ AI"], found: (n: number) => `تم العثور على ${n} صفحة`, auditing: (a: number, b: number) => `قياس الصفحة ${a} من ${b}`, reading: (a: number, b: number) => `قراءة الصفحة ${a} من ${b}`, writing: (a: number, b: number) => `الذكاء الاصطناعي يكتب الحلول، الدفعة ${a} من ${b}`,
     errors: { license_required: "أدخل مفتاح الترخيص.", license_invalid: "هذا المفتاح غير معروف لحزمة السيو.", license_refunded: "تم استرداد هذه العملية، لذلك لم يعد المفتاح يعمل.", license_unavailable: "تعذر الوصول إلى خدمة التراخيص. حاول بعد دقيقة.", not_configured: "الحزمة لم تُفتح بعد. عد قريبًا.", rate_limited: "طلبات كثيرة. انتظر دقيقة ثم حاول.", invalid_url: "هذا لا يبدو رابطًا صحيحًا.", blocked: "لا يمكن فحص هذا العنوان.", unreachable: "لم نتمكن من الوصول إلى الموقع.", timeout: "استغرق الموقع وقتًا طويلًا في الرد.", not_html: "هذا العنوان لم يرجع صفحة ويب.", generic: "حدث خطأ. حاول مرة أخرى." } as Record<string, string>,
     flowTitle: "من المشاكل إلى الحلول تلقائيًا", flow: [["قياس", "فحوصات فعلية لكل صفحة: الأرشفة والعناوين والوصف والعناوين الفرعية والروابط والبيانات المنظمة والصور."], ["قراءة", "تقرأ الحزمة عنوان كل صفحة ووصفها وبيانات المنتج والصور الحالية."], ["كتابة", "يكتب الذكاء الاصطناعي النص البديل من هذه الحقائق فقط وبلغة الصفحة نفسها."], ["تصدير", "انسخ أي تعديل أو نزّل الكل بصيغة JSON أو CSV."]],
@@ -485,4 +485,4 @@ export function SeoSuitePage({ lang }: { lang: Lang }) {
       </main>
     </div>
   );
-      }
+                  }
