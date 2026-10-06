@@ -168,3 +168,10 @@
 :where([lang="ar"], [dir="rtl"]) :where(h1, h2, h3, h4, p, a, span, div, li, summary, button, label) {
   font-family: "IBM Plex Sans Arabic", "Noto Sans Arabic", Tahoma, Arial, sans-serif !important;
 }
+
+/* SEO AGENT page: calm scroll reveal. Content stays visible without JS. */
+.ag-js [data-ag] { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
+.ag-js [data-ag].ag-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .ag-js [data-ag] { opacity: 1; transform: none; transition: none; }
+    }
