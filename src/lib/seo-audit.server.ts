@@ -218,6 +218,10 @@ const GENERIC_ANCHOR = /^(click here|here|read more|more|learn more|link|this|ا
 const ASSET_EXT = /\.(jpe?g|png|gif|webp|avif|svg|ico|css|js|pdf|zip|mp4|mp3|woff2?|xml|json)(\?|$)/i;
 
 /* ---------- audit ---------- */
+/** Bot-protection / challenge pages are not the site's real content: never audit or rewrite them. */
+const INTERSTITIAL = /verifying your connection|just a moment|attention required|checking (your|if you).{0,20}browser|access denied|are you a robot|verify you are (a )?human|security check|ddos protection|enable javascript and cookies|لحظة من فضلك|التحقق من أنك/i;
+export const isInterstitial = (title: string, h1: string[] = []) => INTERSTITIAL.test(title) || h1.some((x) => INTERSTITIAL.test(x));
+
 export async function runAudit(input: string): Promise<AuditResult | AuditError> {
   const start = normalizeUrl(input);
   if (!start) return { ok: false, error: "invalid_url" };
@@ -372,6 +376,7 @@ export async function runAudit(input: string): Promise<AuditResult | AuditError>
   /* on-page */
   const titles = [...html.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)];
   const title = titles[0] ? decode(titles[0][1].replace(/<[^>]+>/g, "")) : "";
+  if (isInterstitial(title)) return { ok: false, error: "blocked" };
   add("title", !title ? "fail" : title.length < 25 || title.length > 65 ? "warn" : "pass", { length: title.length, value: title.slice(0, 120) });
   const descTags = [...html.matchAll(/<meta\b[^>]*>/gi)].filter((m) => (attr(m[0], "name") ?? "").toLowerCase() === "description");
   const desc = metaContent(html, "description");
@@ -379,6 +384,7 @@ export async function runAudit(input: string): Promise<AuditResult | AuditError>
   const dup = (titles.length > 1 ? 1 : 0) + (descTags.length > 1 ? 1 : 0);
   if (dup) add("duplicateTags", "warn", { titles: titles.length, descriptions: descTags.length });
   const h1s = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map((m) => decode(m[1].replace(/<[^>]+>/g, ""))).filter(Boolean);
+  if (isInterstitial("", h1s)) return { ok: false, error: "blocked" };
   add("h1", h1s.length === 0 ? "fail" : h1s.length > 1 ? "warn" : "pass", { count: h1s.length, value: h1s[0]?.slice(0, 100) ?? null });
   const h2count = (html.match(/<h2\b/gi) ?? []).length;
   add("h2", h2count === 0 ? "warn" : "pass", { count: h2count });
@@ -571,8 +577,10 @@ export async function extractPage(input: string): Promise<PageFacts | AuditError
   if (!/<html|<!doctype/i.test(html.slice(0, 2000)) && !/html/i.test(page.headers["content-type"] ?? "")) return { ok: false, error: "not_html" };
   const finalUrl = page.finalUrl;
   const title = decode(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? "").slice(0, 300);
+  if (isInterstitial(title)) return { ok: false, error: "blocked" };
   const description = (metaContent(html, "description") ?? "").slice(0, 500);
   const h1 = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map((m) => strip(m[1])).filter(Boolean).slice(0, 3).map((s) => s.slice(0, 200));
+  if (isInterstitial("", h1)) return { ok: false, error: "blocked" };
   const body = html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? html.match(/<body\b[\s\S]*?<\/body>/i)?.[0] ?? html;
   const pageText = strip(body.replace(/<(header|footer|nav)\b[\s\S]*?<\/\1>/gi, " ")).slice(0, 900);
   const schemaTypes = new Set<string>();
