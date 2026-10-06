@@ -21,6 +21,7 @@ import { Route as KeywordResearchRouteImport } from './routes/keyword-research'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as OffersRouteImport } from './routes/offers'
 import { Route as PackagesRouteImport } from './routes/packages'
+import { Route as SeoAuditRouteImport } from './routes/seo-audit'
 import { Route as SeoCompanyRouteImport } from './routes/seo-company'
 import { Route as SeoExpertRouteImport } from './routes/seo-expert'
 import { Route as SeoExpertSaudiRouteImport } from './routes/seo-expert-saudi'
@@ -29,6 +30,7 @@ import { Route as SeoGeoEli5RouteImport } from './routes/seo-geo-eli5'
 import { Route as SeoServicesRouteImport } from './routes/seo-services'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ApiSeoAuditRouteImport } from './routes/api.seo-audit'
 import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ArAiSeoRouteImport } from './routes/ar.ai-seo'
 import { Route as ArContentSeoRouteImport } from './routes/ar.content-seo'
@@ -40,6 +42,7 @@ import { Route as ArInternationalSeoRouteImport } from './routes/ar.internationa
 import { Route as ArKeywordResearchRouteImport } from './routes/ar.keyword-research'
 import { Route as ArOffersRouteImport } from './routes/ar.offers'
 import { Route as ArPackagesRouteImport } from './routes/ar.packages'
+import { Route as ArSeoAuditRouteImport } from './routes/ar.seo-audit'
 import { Route as ArSeoCompanyRouteImport } from './routes/ar.seo-company'
 import { Route as ArSeoExpertRouteImport } from './routes/ar.seo-expert'
 import { Route as ArSeoExpertSaudiRouteImport } from './routes/ar.seo-expert-saudi'
@@ -122,6 +125,11 @@ const PackagesRoute = PackagesRouteImport.update({
   path: '/packages',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SeoAuditRoute = SeoAuditRouteImport.update({
+  id: '/seo-audit',
+  path: '/seo-audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SeoCompanyRoute = SeoCompanyRouteImport.update({
   id: '/seo-company',
   path: '/seo-company',
@@ -160,6 +168,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSeoAuditRoute = ApiSeoAuditRouteImport.update({
+  id: '/api/seo-audit',
+  path: '/api/seo-audit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArIndexRoute = ArIndexRouteImport.update({
@@ -215,6 +228,11 @@ const ArOffersRoute = ArOffersRouteImport.update({
 const ArPackagesRoute = ArPackagesRouteImport.update({
   id: '/packages',
   path: '/packages',
+  getParentRoute: () => ArRoute,
+} as any)
+const ArSeoAuditRoute = ArSeoAuditRouteImport.update({
+  id: '/seo-audit',
+  path: '/seo-audit',
   getParentRoute: () => ArRoute,
 } as any)
 const ArSeoCompanyRoute = ArSeoCompanyRouteImport.update({
@@ -337,6 +355,7 @@ export interface FileRoutesByFullPath {
   '/llms.txt': typeof LlmsDottxtRoute
   '/offers': typeof OffersRoute
   '/packages': typeof PackagesRoute
+  '/seo-audit': typeof SeoAuditRoute
   '/seo-company': typeof SeoCompanyRoute
   '/seo-expert': typeof SeoExpertRoute
   '/seo-expert-saudi': typeof SeoExpertSaudiRoute
@@ -345,6 +364,7 @@ export interface FileRoutesByFullPath {
   '/seo-services': typeof SeoServicesRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/seo-audit': typeof ApiSeoAuditRoute
   '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
@@ -355,6 +375,7 @@ export interface FileRoutesByFullPath {
   '/ar/keyword-research': typeof ArKeywordResearchRoute
   '/ar/offers': typeof ArOffersRoute
   '/ar/packages': typeof ArPackagesRoute
+  '/ar/seo-audit': typeof ArSeoAuditRoute
   '/ar/seo-company': typeof ArSeoCompanyRoute
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-expert-saudi': typeof ArSeoExpertSaudiRoute
@@ -390,6 +411,7 @@ export interface FileRoutesByTo {
   '/llms.txt': typeof LlmsDottxtRoute
   '/offers': typeof OffersRoute
   '/packages': typeof PackagesRoute
+  '/seo-audit': typeof SeoAuditRoute
   '/seo-company': typeof SeoCompanyRoute
   '/seo-expert': typeof SeoExpertRoute
   '/seo-expert-saudi': typeof SeoExpertSaudiRoute
@@ -397,6 +419,7 @@ export interface FileRoutesByTo {
   '/seo-geo-eli5': typeof SeoGeoEli5Route
   '/seo-services': typeof SeoServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/seo-audit': typeof ApiSeoAuditRoute
   '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
@@ -407,6 +430,7 @@ export interface FileRoutesByTo {
   '/ar/keyword-research': typeof ArKeywordResearchRoute
   '/ar/offers': typeof ArOffersRoute
   '/ar/packages': typeof ArPackagesRoute
+  '/ar/seo-audit': typeof ArSeoAuditRoute
   '/ar/seo-company': typeof ArSeoCompanyRoute
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-expert-saudi': typeof ArSeoExpertSaudiRoute
@@ -443,6 +467,7 @@ export interface FileRoutesById {
   '/llms.txt': typeof LlmsDottxtRoute
   '/offers': typeof OffersRoute
   '/packages': typeof PackagesRoute
+  '/seo-audit': typeof SeoAuditRoute
   '/seo-company': typeof SeoCompanyRoute
   '/seo-expert': typeof SeoExpertRoute
   '/seo-expert-saudi': typeof SeoExpertSaudiRoute
@@ -451,6 +476,7 @@ export interface FileRoutesById {
   '/seo-services': typeof SeoServicesRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/seo-audit': typeof ApiSeoAuditRoute
   '/ar/ai-seo': typeof ArAiSeoRoute
   '/ar/content-seo': typeof ArContentSeoRoute
   '/ar/content-strategy': typeof ArContentStrategyRoute
@@ -461,6 +487,7 @@ export interface FileRoutesById {
   '/ar/keyword-research': typeof ArKeywordResearchRoute
   '/ar/offers': typeof ArOffersRoute
   '/ar/packages': typeof ArPackagesRoute
+  '/ar/seo-audit': typeof ArSeoAuditRoute
   '/ar/seo-company': typeof ArSeoCompanyRoute
   '/ar/seo-expert': typeof ArSeoExpertRoute
   '/ar/seo-expert-saudi': typeof ArSeoExpertSaudiRoute
@@ -499,6 +526,7 @@ export interface FileRouteTypes {
     | '/llms.txt'
     | '/offers'
     | '/packages'
+    | '/seo-audit'
     | '/seo-company'
     | '/seo-expert'
     | '/seo-expert-saudi'
@@ -507,6 +535,7 @@ export interface FileRouteTypes {
     | '/seo-services'
     | '/services'
     | '/sitemap.xml'
+    | '/api/seo-audit'
     | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
@@ -517,6 +546,7 @@ export interface FileRouteTypes {
     | '/ar/keyword-research'
     | '/ar/offers'
     | '/ar/packages'
+    | '/ar/seo-audit'
     | '/ar/seo-company'
     | '/ar/seo-expert'
     | '/ar/seo-expert-saudi'
@@ -552,6 +582,7 @@ export interface FileRouteTypes {
     | '/llms.txt'
     | '/offers'
     | '/packages'
+    | '/seo-audit'
     | '/seo-company'
     | '/seo-expert'
     | '/seo-expert-saudi'
@@ -559,6 +590,7 @@ export interface FileRouteTypes {
     | '/seo-geo-eli5'
     | '/seo-services'
     | '/sitemap.xml'
+    | '/api/seo-audit'
     | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
@@ -569,6 +601,7 @@ export interface FileRouteTypes {
     | '/ar/keyword-research'
     | '/ar/offers'
     | '/ar/packages'
+    | '/ar/seo-audit'
     | '/ar/seo-company'
     | '/ar/seo-expert'
     | '/ar/seo-expert-saudi'
@@ -604,6 +637,7 @@ export interface FileRouteTypes {
     | '/llms.txt'
     | '/offers'
     | '/packages'
+    | '/seo-audit'
     | '/seo-company'
     | '/seo-expert'
     | '/seo-expert-saudi'
@@ -612,6 +646,7 @@ export interface FileRouteTypes {
     | '/seo-services'
     | '/services'
     | '/sitemap.xml'
+    | '/api/seo-audit'
     | '/ar/ai-seo'
     | '/ar/content-seo'
     | '/ar/content-strategy'
@@ -622,6 +657,7 @@ export interface FileRouteTypes {
     | '/ar/keyword-research'
     | '/ar/offers'
     | '/ar/packages'
+    | '/ar/seo-audit'
     | '/ar/seo-company'
     | '/ar/seo-expert'
     | '/ar/seo-expert-saudi'
@@ -659,6 +695,7 @@ export interface RootRouteChildren {
   LlmsDottxtRoute: typeof LlmsDottxtRoute
   OffersRoute: typeof OffersRoute
   PackagesRoute: typeof PackagesRoute
+  SeoAuditRoute: typeof SeoAuditRoute
   SeoCompanyRoute: typeof SeoCompanyRoute
   SeoExpertRoute: typeof SeoExpertRoute
   SeoExpertSaudiRoute: typeof SeoExpertSaudiRoute
@@ -667,6 +704,7 @@ export interface RootRouteChildren {
   SeoServicesRoute: typeof SeoServicesRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ApiSeoAuditRoute: typeof ApiSeoAuditRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogArRoute: typeof BlogArRoute
   BlogContentPlanRoute: typeof BlogContentPlanRoute
@@ -763,6 +801,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PackagesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/seo-audit': {
+      id: '/seo-audit'
+      path: '/seo-audit'
+      fullPath: '/seo-audit'
+      preLoaderRoute: typeof SeoAuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/seo-company': {
       id: '/seo-company'
       path: '/seo-company'
@@ -817,6 +862,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/seo-audit': {
+      id: '/api/seo-audit'
+      path: '/api/seo-audit'
+      fullPath: '/api/seo-audit'
+      preLoaderRoute: typeof ApiSeoAuditRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ar/': {
@@ -894,6 +946,13 @@ declare module '@tanstack/react-router' {
       path: '/packages'
       fullPath: '/ar/packages'
       preLoaderRoute: typeof ArPackagesRouteImport
+      parentRoute: typeof ArRoute
+    }
+    '/ar/seo-audit': {
+      id: '/ar/seo-audit'
+      path: '/seo-audit'
+      fullPath: '/ar/seo-audit'
+      preLoaderRoute: typeof ArSeoAuditRouteImport
       parentRoute: typeof ArRoute
     }
     '/ar/seo-company': {
@@ -1071,6 +1130,7 @@ interface ArRouteChildren {
   ArKeywordResearchRoute: typeof ArKeywordResearchRoute
   ArOffersRoute: typeof ArOffersRoute
   ArPackagesRoute: typeof ArPackagesRoute
+  ArSeoAuditRoute: typeof ArSeoAuditRoute
   ArSeoCompanyRoute: typeof ArSeoCompanyRoute
   ArSeoExpertRoute: typeof ArSeoExpertRoute
   ArSeoExpertSaudiRoute: typeof ArSeoExpertSaudiRoute
@@ -1094,6 +1154,7 @@ const ArRouteChildren: ArRouteChildren = {
   ArKeywordResearchRoute: ArKeywordResearchRoute,
   ArOffersRoute: ArOffersRoute,
   ArPackagesRoute: ArPackagesRoute,
+  ArSeoAuditRoute: ArSeoAuditRoute,
   ArSeoCompanyRoute: ArSeoCompanyRoute,
   ArSeoExpertRoute: ArSeoExpertRoute,
   ArSeoExpertSaudiRoute: ArSeoExpertSaudiRoute,
@@ -1135,6 +1196,7 @@ const rootRouteChildren: RootRouteChildren = {
   LlmsDottxtRoute: LlmsDottxtRoute,
   OffersRoute: OffersRoute,
   PackagesRoute: PackagesRoute,
+  SeoAuditRoute: SeoAuditRoute,
   SeoCompanyRoute: SeoCompanyRoute,
   SeoExpertRoute: SeoExpertRoute,
   SeoExpertSaudiRoute: SeoExpertSaudiRoute,
@@ -1143,6 +1205,7 @@ const rootRouteChildren: RootRouteChildren = {
   SeoServicesRoute: SeoServicesRoute,
   ServicesRoute: ServicesRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ApiSeoAuditRoute: ApiSeoAuditRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogArRoute: BlogArRoute,
   BlogContentPlanRoute: BlogContentPlanRoute,
@@ -1164,4 +1227,4 @@ declare module '@tanstack/react-start' {
     router: Awaited<ReturnType<typeof getRouter>>
     config: Awaited<ReturnType<typeof startInstance.getOptions>>
   }
-}
+        }
