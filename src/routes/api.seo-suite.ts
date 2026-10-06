@@ -48,28 +48,41 @@ async function verifyLicense(key: string): Promise<Verdict> {
   } catch { return "unavailable"; }
 }
 
+let cooldownUntil = 0;
+let aiStatus = "ok"; // last AI outcome, returned to the client as a diagnostic code only
 async function callGemini(prompt: string): Promise<unknown[] | null> {
   const key = process.env.GEMINI_API_KEY, model = process.env.GEMINI_MODEL;
-  if (!key || process.env.GEMINI_AI_ENABLED !== "true" || !model || !/^[a-zA-Z0-9.-]{1,100}$/.test(model)) return null;
+  if (!key || process.env.GEMINI_AI_ENABLED !== "true" || !model || !/^[a-zA-Z0-9.-]{1,100}$/.test(model)) { aiStatus = "not_configured"; return null; }
   const today = new Date().toISOString().slice(0, 10);
   if (day !== today) { day = today; dayCount = 0; }
-  if (dayCount >= AI_DAILY_CAP) return null;
-  for (let attempt = 0; attempt < 2; attempt++) {
+  if (dayCount >= AI_DAILY_CAP) { aiStatus = "daily_cap"; return null; }
+  if (Date.now() < cooldownUntil) { aiStatus = "cooldown"; return null; }
+  for (let attempt = 0; attempt < 3; attempt++) {
+    if (dayCount >= AI_DAILY_CAP) { aiStatus = "daily_cap"; return null; }
     dayCount++;
     try {
       const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-        method: "POST", signal: AbortSignal.timeout(20000), headers: { "content-type": "application/json", "x-goog-api-key": key },
-        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json", temperature: 0.4, maxOutputTokens: 3000 } }),
+        method: "POST", signal: AbortSignal.timeout(40000), headers: { "content-type": "application/json", "x-goog-api-key": key },
+        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json", temperature: 0.4, maxOutputTokens: 8192 } }),
       });
-      if (res.status === 429) { dayCount = AI_DAILY_CAP; return null; }
-      if (res.status === 503 && attempt === 0) { await new Promise((r) => setTimeout(r, 1500)); continue; }
-      if (!res.ok) return null;
+      if (res.status === 429) {
+        const body = await res.text().catch(() => "");
+        const perDay = /PerDay|per day/i.test(body);
+        const m = body.match(/"retryDelay":\s*"(\d+)/);
+        const wait = m ? Number(m[1]) : 0;
+        if (!perDay && wait > 0 && wait <= 12 && attempt < 2) { await new Promise((r) => setTimeout(r, (wait + 1) * 1000)); continue; }
+        if (perDay) dayCount = AI_DAILY_CAP; else cooldownUntil = Date.now() + Math.min(Math.max(wait, 30), 90) * 1000;
+        aiStatus = perDay ? "quota_day" : "rate_limited"; return null;
+      }
+      if ((res.status === 503 || res.status === 500) && attempt < 2) { await new Promise((r) => setTimeout(r, 1500 * (attempt + 1))); continue; }
+      if (!res.ok) { aiStatus = `http_${res.status}`; return null; }
       const d = (await res.json()) as { candidates?: { content?: { parts?: { text?: string }[] } }[] };
       const parsed = JSON.parse(d.candidates?.[0]?.content?.parts?.map((p) => p.text ?? "").join("") ?? "");
-      return Array.isArray(parsed) ? parsed : null;
-    } catch { return null; }
+      if (!Array.isArray(parsed)) { aiStatus = "bad_output"; return null; }
+      aiStatus = "ok"; return parsed;
+    } catch { aiStatus = "error"; return null; }
   }
-  return null;
+  aiStatus = "busy"; return null;
 }
 
 // Treat browser-supplied facts as untrusted input. Keep the same bounded shape as extraction.
@@ -112,32 +125,34 @@ export const Route = createFileRoute("/api/seo-suite")({
           case "page": { const r = await s.runAudit(url); return json(r, st(r)); }
           case "extract": { const r = await s.extractPage(url); return json(r, st(r)); }
           case "fixes": {
-            if (!Array.isArray(b.pages) || b.pages.length < 1 || b.pages.length > 4) return json({ ok: false, error: "bad_request" }, 400);
+            if (!Array.isArray(b.pages) || b.pages.length < 1 || b.pages.length > 6) return json({ ok: false, error: "bad_request" }, 400);
             const t = await import("@/lib/seo-suite.server");
             const facts = safeFacts(b.pages);
             if (!facts) return json({ ok: false, error: "bad_request" }, 400);
             for (const f of facts) if (!f || typeof f.finalUrl !== "string" || typeof f.title !== "string" || !Array.isArray(f.images) || !Array.isArray(f.h1)) return json({ ok: false, error: "bad_request" }, 400);
             let fixes = facts.map((f) => t.templateFix(f));
             let ai = false;
+            let status = "key_rate_limited";
             if (!limited(aiKeyHits, await sha(key), 8, 600_000)) {
               const out = await callGemini(t.aiPrompt(facts, fixes));
+              status = aiStatus;
               if (out) { fixes = t.mergeAi(fixes, facts, out as never[]); ai = true; }
             }
-            return json({ ok: true, ai, fixes });
+            return json({ ok: true, ai, fixes, aiStatus: ai ? "ok" : status });
           }
           case "images": {
             if (!Array.isArray(b.urls) || b.urls.length < 1 || b.urls.length > 24 || b.urls.some((x) => typeof x !== "string")) return json({ ok: false, error: "bad_request" }, 400);
             return json({ ok: true, images: await s.imageWeights(b.urls as string[]) });
           }
           case "keywords": {
-            if (!Array.isArray(b.pages) || b.pages.length < 1 || b.pages.length > 4) return json({ ok: false, error: "bad_request" }, 400);
+            if (!Array.isArray(b.pages) || b.pages.length < 1 || b.pages.length > 6) return json({ ok: false, error: "bad_request" }, 400);
             const t = await import("@/lib/seo-suite.server");
             const facts = safeFacts(b.pages);
             if (!facts) return json({ ok: false, error: "bad_request" }, 400);
             for (const f of facts) if (!f || typeof f.finalUrl !== "string" || typeof f.title !== "string" || typeof f.text !== "string" || !Array.isArray(f.h1)) return json({ ok: false, error: "bad_request" }, 400);
-            if (limited(aiKeyHits, await sha(key), 8, 600_000)) return json({ ok: true, ai: false, keywords: facts.map(() => null) });
+            if (limited(aiKeyHits, await sha(key), 8, 600_000)) return json({ ok: true, ai: false, keywords: facts.map(() => null), aiStatus: "key_rate_limited" });
             const out = await callGemini(t.kwPrompt(facts));
-            return json({ ok: true, ai: !!out, keywords: out ? t.mergeKw(facts, out as never[]) : facts.map(() => null) });
+            return json({ ok: true, ai: !!out, aiStatus: out ? "ok" : aiStatus, keywords: out ? t.mergeKw(facts, out as never[]) : facts.map(() => null) });
           }
           default: return json({ ok: false, error: "bad_request" }, 400);
         }
