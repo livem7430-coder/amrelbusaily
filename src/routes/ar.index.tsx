@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Portrait } from "@/components/Portrait";
+import { SeoAuditPromo } from "@/components/SeoAuditPromo";
 import { ResultsShowcase } from "@/components/ResultsShowcase";
 
 export const Route = createFileRoute("/ar/")({
@@ -394,6 +395,8 @@ function HomeAr() {
         </div>
       </section>
 
+
+      <SeoAuditPromo lang="ar" />
 
       <section id="salla-zid-services" aria-labelledby="salla-zid-heading" className="scroll-mt-24 border-t border-border bg-surface/30">
         <div className="mx-auto max-w-6xl px-6 py-20">
