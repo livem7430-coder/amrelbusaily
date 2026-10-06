@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, Check, ChevronDown, ClipboardList, Loader2, Copy, Download, FileCheck2, History, Info, Lock, MessageCircle, ShieldCheck, Sparkles, Upload, UserCheck } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, ClipboardList, Loader2, Copy, Download, FileCheck2, History, Info, Lock, MessageCircle, MessagesSquare, Send, ShieldCheck, Sparkles, Upload, UserCheck } from "lucide-react";
 import { describe, type Lang } from "@/lib/seo-audit-copy";
 import type { AuditResult } from "@/lib/seo-audit.server";
 
@@ -140,6 +140,10 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
   const [dec, setDec] = useState<Record<string, Decision>>({});
   const [err, setErr] = useState("");
   const [url, setUrl] = useState("");
+  const [mode, setMode] = useState<"chat" | "agent">("chat");
+  const [chat, setChat] = useState<Array<{ r: "u" | "a"; t: string; wa?: string }>>([]);
+  const [chatIn, setChatIn] = useState("");
+  const [chatBusy, setChatBusy] = useState(false);
   const [run, setRun] = useState<{ busy: boolean; step: number; res: AuditResult | null; err: string } | null>(null);
 
   useEffect(() => { try { const raw = localStorage.getItem("agent-queue"); if (raw) { const o = JSON.parse(raw); if (o?.q && typeof o.q.site === "string" && Array.isArray(o.q.items) && o.q.items.length <= 400 && o.q.items.every((it: Item) => it && typeof it.id === "string" && typeof it.url === "string" && typeof it.current === "string" && typeof it.suggested === "string" && ["title", "meta", "description", "alt", "schema"].includes(it.field) && ["ai", "template"].includes(it.src))) { setQ(o.q); setDec(Object.fromEntries(o.q.items.filter((it: Item) => ["approved", "rejected"].includes(o.dec?.[it.id])).map((it: Item) => [it.id, o.dec[it.id]]))); } } } catch { /* ignore */ } }, []);
@@ -206,12 +210,43 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
     const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("ag-in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
     els.forEach((e) => io.observe(e));
     return () => io.disconnect();
-  }, [lang, q]);
+  }, [lang, q, mode]);
 
   const nav = (<header className="sticky top-0 z-40 border-b border-border/60 bg-background/75 backdrop-blur-md"><div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 md:px-6"><a href={d.home} className="flex items-center gap-2 font-display font-semibold"><span className="grid h-8 w-8 place-items-center rounded-md bg-primary font-mono text-sm text-primary-foreground">AE</span><span>{d.name}</span></a><nav className="flex items-center gap-4 text-sm text-muted-foreground"><a href={d.suite} className="hidden hover:text-foreground sm:inline">{d.back}</a><a href={d.free} className="hidden hover:text-foreground sm:inline">{T("Free audit", "الفحص المجاني")}</a><a href={d.other} className="rounded-md border border-border px-2 py-1 font-mono text-xs hover:border-primary hover:text-foreground">{d.lang}</a></nav></div></header>);
 
   const jump = [["#loop", T("How it works", "كيف يعمل")], ["#phases", T("Phases", "المراحل")], ["#order", T("Work order", "طلب العمل")], ["#queue", T("Approvals", "الموافقات")], ["#safety", T("Safety", "الأمان")]];
-  const subnav = (<div className="sticky top-[57px] z-30 border-b border-border/60 bg-background/80 backdrop-blur-md"><nav aria-label={T("On this page", "في هذه الصفحة")} className="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-5 py-2 md:px-6 [scrollbar-width:none]">{jump.map(([h, t]) => (<a key={h} href={h} className="shrink-0 rounded-full px-3.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary">{t}</a>))}</nav></div>);
+  const toggle = (<div role="tablist" aria-label={T("Mode", "الوضع")} className="inline-flex shrink-0 rounded-full border border-border bg-surface p-1">{([["chat", T("Chat", "شات"), MessagesSquare], ["agent", "Agent", Sparkles]] as const).map(([m, label, Ic]) => (<button key={m} type="button" role="tab" aria-selected={mode === m} onClick={() => setMode(m)} className={`inline-flex h-9 items-center gap-2 rounded-full px-4 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 ${mode === m ? "bg-primary text-primary-foreground shadow" : "text-muted-foreground hover:text-foreground"}`}><Ic className="h-4 w-4" aria-hidden="true" />{label}</button>))}</div>);
+  const subnav = (<div className="sticky top-[57px] z-30 border-b border-border/60 bg-background/80 backdrop-blur-md"><div className="mx-auto flex max-w-6xl items-center gap-3 overflow-x-auto px-5 py-2 md:px-6 [scrollbar-width:none]">{toggle}{mode === "agent" && <nav aria-label={T("On this page", "في هذه الصفحة")} className="flex gap-1">{jump.map(([h, t]) => (<a key={h} href={h} className="shrink-0 rounded-full px-3.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary">{t}</a>))}</nav>}</div></div>);
+  const askFaq = (qq: string, a: string) => setChat((c) => [...c, { r: "u", t: qq }, { r: "a", t: a }]);
+  const fallbackReply = (t: string) => { const hit = d.faq.find(([qq]) => t.length > 3 && qq.toLowerCase().includes(t.toLowerCase())); return hit ? { r: "a" as const, t: hit[1] } : { r: "a" as const, t: T("I can answer the common questions below right here. For anything specific, send your message to Amr's agent on WhatsApp and you will get a real reply there. Nothing is sent until you press the button.", "أجاوب هنا على الأسئلة الشائعة أدناه. لأي سؤال محدد، ابعت رسالتك لوكيل عمرو على واتساب وهييجيلك رد حقيقي هناك. لا يُرسل شيء قبل ما تضغط الزر."), wa: waLink(t) }; };
+  const sendChat = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const t = chatIn.trim().slice(0, 500);
+    if (!t || chatBusy) return;
+    const next = [...chat, { r: "u" as const, t }];
+    setChat(next); setChatIn(""); setChatBusy(true);
+    try {
+      const res = await fetch("/api/seo-agent-chat", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ messages: next.slice(-8).map((m) => ({ r: m.r, t: m.t })) }) });
+      const data = await res.json();
+      setChat((c) => [...c, data?.ok && typeof data.text === "string" ? { r: "a" as const, t: data.text } : fallbackReply(t)]);
+    } catch { setChat((c) => [...c, fallbackReply(t)]); } finally { setChatBusy(false); }
+  };
+  useEffect(() => { const el = document.getElementById("ag-chat-log"); if (el) el.scrollTop = el.scrollHeight; }, [chat, chatBusy]);
+  const chatPanel = (<section className="relative overflow-hidden border-b border-border"><div className="absolute inset-0 grid-bg" aria-hidden="true" /><div className="relative mx-auto max-w-3xl px-5 py-10 md:px-6 md:py-14">
+    <div className="text-center"><div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 font-mono text-xs tracking-[0.15em] text-primary"><MessagesSquare className="h-3.5 w-3.5" aria-hidden="true" />{T("CHAT", "شات")}</div><h1 className="mt-5 text-3xl font-semibold leading-tight md:text-4xl">{T("Talk to the SEO AGENT", "اتكلم مع SEO AGENT")}</h1><p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-muted-foreground">{T("Ask anything about SEO, no signup and nothing to set up. Ready to work on your site? Switch to Agent.", "اسأل أي حاجة عن السيو، بدون تسجيل وبدون أي إعداد. جاهز تشتغل على موقعك؟ حوّل على Agent.")}</p></div>
+    <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl shadow-black/20">
+      <div className="flex items-center justify-between border-b border-border bg-background/40 px-4 py-3"><span className="inline-flex items-center gap-2 text-xs font-medium"><span className="grid h-6 w-6 place-items-center rounded-md bg-primary text-primary-foreground"><Sparkles className="h-3.5 w-3.5" aria-hidden="true" /></span>SEO AGENT</span>{chat.length > 0 && <button type="button" disabled={chatBusy} onClick={() => setChat([])} className="text-[11px] text-muted-foreground hover:text-primary">{T("Clear", "مسح")}</button>}</div>
+      <div id="ag-chat-log" className="max-h-[28rem] min-h-[16rem] space-y-4 overflow-y-auto p-5" aria-live="polite">
+        <div className="max-w-[90%] rounded-2xl rounded-es-md border border-border bg-background/50 px-4 py-3 text-sm leading-7">{T("Hi, I am the SEO AGENT. Ask me about SEO or how I work. To audit and work on your actual site, switch to Agent.", "أهلًا، أنا SEO AGENT. اسألني عن السيو أو طريقة شغلي. لفحص موقعك والشغل عليه فعليًا حوّل على Agent.")}</div>
+        {chat.map((m, i) => (m.r === "u" ? (<div key={i} className="flex justify-end"><div className="max-w-[85%] break-words rounded-2xl rounded-ee-md bg-primary/15 px-4 py-2.5 text-sm leading-7 text-primary">{m.t}</div></div>) : (<div key={i} className="max-w-[90%] rounded-2xl rounded-es-md border border-border bg-background/50 px-4 py-3 text-sm leading-7"><p>{m.t}</p>{m.wa && <a href={m.wa} target="_blank" rel="noopener" className="mt-3 inline-flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground"><MessageCircle className="h-4 w-4" aria-hidden="true" />{d.send}</a>}</div>)))}
+        {chatBusy && (<div className="inline-flex items-center gap-2 rounded-2xl rounded-es-md border border-border bg-background/50 px-4 py-3 text-sm text-muted-foreground"><Loader2 className="h-4 w-4 animate-spin text-primary" aria-hidden="true" />{T("Thinking", "بفكر")}</div>)}
+      </div>
+      <div className="flex flex-wrap gap-2 border-t border-border px-5 py-3">{d.faq.map(([qq, a]) => (<button key={qq} type="button" onClick={() => askFaq(qq, a)} className="rounded-full border border-border bg-background/40 px-3.5 py-1.5 text-start text-xs text-muted-foreground transition hover:border-primary hover:text-primary">{qq}</button>))}</div>
+      <p className="border-t border-border px-5 py-3 text-xs leading-6 text-muted-foreground">{T("Do not enter passwords, API keys or personal/payment details. Messages are sent to Google Gemini for AI replies when enabled; AI answers may be wrong. Chat cannot publish changes or access your site.", "لا تدخل كلمات مرور أو مفاتيح API أو بيانات شخصية أو دفع. تُرسل الرسائل إلى Google Gemini للرد بالذكاء الاصطناعي عند تفعيله؛ وقد تكون الإجابات خاطئة. الشات لا ينشر تعديلات ولا يدخل إلى موقعك.")}</p><form onSubmit={sendChat} className="flex gap-2 border-t border-border p-3"><label htmlFor="ag-chat" className="sr-only">{T("Your message", "رسالتك")}</label><input id="ag-chat" value={chatIn} maxLength={500} onChange={(e) => setChatIn(e.target.value)} placeholder={T("Write a message", "اكتب رسالة")} className="h-12 min-w-0 flex-1 rounded-xl border border-border bg-background/60 px-4 text-sm transition-colors placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25" /><button type="submit" disabled={chatBusy} className="inline-flex h-12 items-center gap-2 rounded-xl bg-primary px-5 disabled:opacity-60 text-sm font-semibold text-primary-foreground transition hover:opacity-95"><Send className="h-4 w-4 rtl:-scale-x-100" aria-hidden="true" /><span className="sr-only sm:not-sr-only">{T("Send", "إرسال")}</span></button></form>
+    </div>
+    <p className="mt-4 text-center text-xs leading-6 text-muted-foreground">{T("Answers SEO questions with a free AI model when it is available. Common questions are always answered instantly, and anything else can go to Amr's agent on WhatsApp.", "يجيب عن أسئلة السيو بنموذج ذكاء اصطناعي مجاني عندما يكون متاحًا. الأسئلة الشائعة تُجاب فورًا دائمًا، وأي شيء آخر يمكن إرساله لوكيل عمرو على واتساب.")}</p>
+    <div className="mt-6 flex justify-center"><button type="button" onClick={() => setMode("agent")} className={btnP}><Sparkles className="h-4 w-4" aria-hidden="true" />{T("Switch to Agent", "حوّل على Agent")}<ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" /></button></div>
+  </div></section>);
 
   const sample = (<div className="relative" aria-hidden="true"><div className="absolute -inset-6 -z-10 rounded-[2rem] bg-primary/10 blur-3xl" />
     <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl shadow-black/30">
@@ -250,6 +285,7 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
       {nav}
       {subnav}
       <main>
+        {mode === "chat" ? chatPanel : (<>
         <section className="relative overflow-hidden border-b border-border"><div className="absolute inset-0 grid-bg" aria-hidden="true" /><div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-primary/10 to-transparent" aria-hidden="true" />
           <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 py-12 md:px-6 md:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
             <div data-ag>
@@ -316,6 +352,8 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
           </div>)}
         </div></section>
 
+        </>)}
+
         <section id="safety" className={sec}><div className={wrap}>{head(T("Trust", "الثقة"), d.safeTitle)}
           <ul className="mt-12 grid gap-4 md:grid-cols-2">{d.safe.map((x, i) => (<li key={x} data-ag style={{ transitionDelay: `${(i % 2) * 70}ms` }} className="flex items-start gap-4 rounded-2xl border border-border bg-surface p-5 text-sm leading-7 transition hover:border-primary/40"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary"><ShieldCheck className="h-4 w-4" aria-hidden="true" /></span><span className="pt-1">{x}</span></li>))}</ul>
           <div data-ag className="mx-auto mt-14 max-w-3xl"><h3 className="text-center text-lg font-semibold">{d.connTitle}</h3><p className="mt-1 text-center text-sm text-muted-foreground">{d.connSub}</p>
@@ -324,7 +362,7 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
 
         <section className="border-b border-border bg-surface/30"><div className="mx-auto max-w-3xl px-5 py-16 md:px-6 md:py-24">{head(T("FAQ", "أسئلة"), d.faqTitle)}<div data-ag className="mt-10 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">{d.faq.map(([qq, a]) => (<details key={qq} className="group p-5 open:bg-primary/5"><summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium [&::-webkit-details-marker]:hidden">{qq}<ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" aria-hidden="true" /></summary><p className="mt-3 text-sm leading-7 text-muted-foreground">{a}</p></details>))}</div></div></section>
 
-        <section className="relative overflow-hidden"><div className="absolute inset-0 grid-bg opacity-60" aria-hidden="true" /><div data-ag className="relative mx-auto max-w-3xl px-5 py-20 text-center md:px-6 md:py-28"><h2 className="text-3xl font-semibold leading-tight md:text-4xl">{d.final}</h2><div className="mt-8 flex justify-center"><a href="#order" className={btnP}>{d.cta}<ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" /></a></div></div></section>
+        <section className="relative overflow-hidden"><div className="absolute inset-0 grid-bg opacity-60" aria-hidden="true" /><div data-ag className="relative mx-auto max-w-3xl px-5 py-20 text-center md:px-6 md:py-28"><h2 className="text-3xl font-semibold leading-tight md:text-4xl">{d.final}</h2><div className="mt-8 flex justify-center"><a href="#order" onClick={() => setMode("agent")} className={btnP}>{d.cta}<ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" /></a></div></div></section>
       </main>
     </div>
   );
