@@ -183,7 +183,7 @@ function attr(tag: string, name: string): string | null {
   return m ? (m[2] ?? m[3] ?? m[4] ?? "") : null;
 }
 function decode(s: string): string {
-  return s.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n))).replace(/\s+/g, " ").trim();
+  return s.replace(/&ndash;/g, "-").replace(/&mdash;/g, "-").replace(/&nbsp;/g, " ").replace(/&hellip;/g, "...").replace(/&[lr]squo;/g, "'").replace(/&[lr]dquo;/g, '"').replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n))).replace(/\s+/g, " ").trim();
 }
 function strip(html: string): string {
   return decode(html.replace(/<!--[\s\S]*?-->/g, " ").replace(/<(script|style|noscript|svg|template)[\s\S]*?<\/\1>/gi, " ").replace(/<[^>]+>/g, " "));
@@ -553,4 +553,58 @@ export async function discoverUrls(input: string, max = 25): Promise<{ ok: true;
   const rest = list.slice(1).sort((a, b) => a.split("/").length - b.split("/").length);
   const urls = [first, ...rest].slice(0, max);
   return { ok: true, origin, urls, source: fromSitemap && fromHome ? "both" : fromSitemap ? "sitemap" : "homepage" };
+}
+
+/* ---------- page facts for the SEO Suite (what is on the page now, nothing inferred) ---------- */
+export type PageFacts = {
+  ok: true; url: string; finalUrl: string; lang: "ar" | "en";
+  title: string; description: string; h1: string[]; text: string; schemaTypes: string[];
+  product: { name: string; price: string | null; currency: string | null; image: string | null; sku: string | null; brand: string | null; availability: string | null; description: string | null } | null;
+  images: Array<{ src: string; alt: string | null }>;
+};
+export async function extractPage(input: string): Promise<PageFacts | AuditError> {
+  const start = normalizeUrl(input);
+  if (!start) return { ok: false, error: "invalid_url" };
+  const page = await fetchFollow(start, 9000);
+  if (typeof page === "string") return { ok: false, error: page === "blocked" ? "blocked" : page === "timeout" ? "timeout" : "unreachable" };
+  const html = page.body;
+  if (!/<html|<!doctype/i.test(html.slice(0, 2000)) && !/html/i.test(page.headers["content-type"] ?? "")) return { ok: false, error: "not_html" };
+  const finalUrl = page.finalUrl;
+  const title = decode(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? "").slice(0, 300);
+  const description = (metaContent(html, "description") ?? "").slice(0, 500);
+  const h1 = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map((m) => strip(m[1])).filter(Boolean).slice(0, 3).map((s) => s.slice(0, 200));
+  const body = html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? html.match(/<body\b[\s\S]*?<\/body>/i)?.[0] ?? html;
+  const pageText = strip(body.replace(/<(header|footer|nav)\b[\s\S]*?<\/\1>/gi, " ")).slice(0, 900);
+  const schemaTypes = new Set<string>();
+  let product: PageFacts["product"] = null;
+  for (const m of html.matchAll(/<script\b[^>]*type\s*=\s*["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    let j: unknown; try { j = JSON.parse(m[1]); } catch { continue; }
+    walk(j, (o) => {
+      for (const t of typesOf(o)) schemaTypes.add(t);
+      if (!product && typesOf(o).includes("Product") && typeof o.name === "string") {
+        const offer = (Array.isArray(o.offers) ? o.offers[0] : o.offers) as Json | undefined;
+        const img = Array.isArray(o.image) ? o.image[0] : o.image;
+        const brand = o.brand && typeof o.brand === "object" ? (o.brand as Json).name : o.brand;
+        const s = (v: unknown) => (typeof v === "string" || typeof v === "number" ? String(v).slice(0, 300) : null);
+        product = { name: o.name.slice(0, 200), price: s(offer?.price), currency: s(offer?.priceCurrency), image: typeof img === "string" ? img.slice(0, 500) : null, sku: s(o.sku), brand: s(brand), availability: s(offer?.availability), description: s(o.description) };
+      }
+    });
+  }
+  const seen = new Set<string>();
+  const images: PageFacts["images"] = [];
+  for (const m of html.matchAll(/<img\b[^>]*>/gi)) {
+    const raw = attr(m[0], "src") ?? attr(m[0], "data-src") ?? "";
+    if (!raw || raw.startsWith("data:")) continue;
+    let abs: string; try { abs = new URL(raw, finalUrl).href; } catch { continue; }
+    if (seen.has(abs) || /\.(svg|gif)(\?|$)/i.test(abs)) continue;
+    seen.add(abs);
+    const alt = attr(m[0], "alt");
+    images.push({ src: abs.slice(0, 500), alt: alt === null ? null : decode(alt).slice(0, 200) });
+    if (images.length >= 12) break;
+  }
+  const htmlLang = (html.match(/<html\b[^>]*\blang\s*=\s*["']?([a-zA-Z-]+)/i)?.[1] ?? "").toLowerCase();
+  const pd = (product as unknown as { description?: string | null } | null)?.description ?? "";
+  const text = pd.length >= 80 ? pd.slice(0, 900) : pageText;
+  const lang: "ar" | "en" = htmlLang.startsWith("ar") || (/[\u0600-\u06FF]/.test(title + text) && !/[a-zA-Z]{4}/.test(title)) ? "ar" : "en";
+  return { ok: true, url: start.href, finalUrl: finalUrl.href, lang, title, description, h1, text, schemaTypes: [...schemaTypes].slice(0, 20), product, images };
 }
