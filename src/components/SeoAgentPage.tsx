@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, Check, ChevronDown, ClipboardList, Loader2, Copy, Download, FileCheck2, History, Info, Lock, MessageCircle, MessagesSquare, Send, ShieldCheck, Sparkles, Upload, UserCheck } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, ClipboardList, Loader2, Copy, Download, FileCheck2, History, Info, Lock, MessageCircle, ArrowUp, Globe, MessagesSquare, ShieldCheck, Sparkles, Upload, UserCheck } from "lucide-react";
 import { describe, type Lang } from "@/lib/seo-audit-copy";
 import type { AuditResult } from "@/lib/seo-audit.server";
 
@@ -231,22 +231,41 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
       setChat((c) => [...c, data?.ok && typeof data.text === "string" ? { r: "a" as const, t: data.text } : fallbackReply(t)]);
     } catch { setChat((c) => [...c, fallbackReply(t)]); } finally { setChatBusy(false); }
   };
-  useEffect(() => { const el = document.getElementById("ag-chat-log"); if (el) el.scrollTop = el.scrollHeight; }, [chat, chatBusy]);
-  const chatPanel = (<section className="relative overflow-hidden border-b border-border"><div className="absolute inset-0 grid-bg" aria-hidden="true" /><div className="relative mx-auto max-w-3xl px-5 py-10 md:px-6 md:py-14">
-    <div className="text-center"><div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 font-mono text-xs tracking-[0.15em] text-primary"><MessagesSquare className="h-3.5 w-3.5" aria-hidden="true" />{T("CHAT", "شات")}</div><h1 className="mt-5 text-3xl font-semibold leading-tight md:text-4xl">{T("Talk to the SEO AGENT", "اتكلم مع SEO AGENT")}</h1><p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-muted-foreground">{T("Ask anything about SEO, no signup and nothing to set up. Ready to work on your site? Switch to Agent.", "اسأل أي حاجة عن السيو، بدون تسجيل وبدون أي إعداد. جاهز تشتغل على موقعك؟ حوّل على Agent.")}</p></div>
-    <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl shadow-black/20">
-      <div className="flex items-center justify-between border-b border-border bg-background/40 px-4 py-3"><span className="inline-flex items-center gap-2 text-xs font-medium"><span className="grid h-6 w-6 place-items-center rounded-md bg-primary text-primary-foreground"><Sparkles className="h-3.5 w-3.5" aria-hidden="true" /></span>SEO AGENT</span>{chat.length > 0 && <button type="button" disabled={chatBusy} onClick={() => setChat([])} className="text-[11px] text-muted-foreground hover:text-primary">{T("Clear", "مسح")}</button>}</div>
-      <div id="ag-chat-log" className="max-h-[28rem] min-h-[16rem] space-y-4 overflow-y-auto p-5" aria-live="polite">
-        <div className="max-w-[90%] rounded-2xl rounded-es-md border border-border bg-background/50 px-4 py-3 text-sm leading-7">{T("Hi, I am the SEO AGENT. Ask me about SEO or how I work. To audit and work on your actual site, switch to Agent.", "أهلًا، أنا SEO AGENT. اسألني عن السيو أو طريقة شغلي. لفحص موقعك والشغل عليه فعليًا حوّل على Agent.")}</div>
-        {chat.map((m, i) => (m.r === "u" ? (<div key={i} className="flex justify-end"><div className="max-w-[85%] break-words rounded-2xl rounded-ee-md bg-primary/15 px-4 py-2.5 text-sm leading-7 text-primary">{m.t}</div></div>) : (<div key={i} className="max-w-[90%] rounded-2xl rounded-es-md border border-border bg-background/50 px-4 py-3 text-sm leading-7"><p>{m.t}</p>{m.wa && <a href={m.wa} target="_blank" rel="noopener" className="mt-3 inline-flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground"><MessageCircle className="h-4 w-4" aria-hidden="true" />{d.send}</a>}</div>)))}
-        {chatBusy && (<div className="inline-flex items-center gap-2 rounded-2xl rounded-es-md border border-border bg-background/50 px-4 py-3 text-sm text-muted-foreground"><Loader2 className="h-4 w-4 animate-spin text-primary" aria-hidden="true" />{T("Thinking", "بفكر")}</div>)}
+  useEffect(() => { if (mode !== "chat" || chat.length === 0) return; document.getElementById("ag-chat-end")?.scrollIntoView({ behavior: "smooth", block: "end" }); }, [chat, chatBusy, mode]);
+  const empty = chat.length === 0 && !chatBusy;
+  const sugIcons = [Sparkles, Globe, UserCheck, History];
+  const composer = (<form onSubmit={sendChat} className="w-full">
+    <div className="rounded-[1.75rem] border border-border bg-surface p-3 shadow-[0_10px_44px_-14px_rgba(0,0,0,0.28)] transition focus-within:border-primary/60 focus-within:ring-4 focus-within:ring-primary/10">
+      <label htmlFor="ag-chat" className="sr-only">{T("Your message", "رسالتك")}</label>
+      <textarea id="ag-chat" autoFocus={!empty} rows={empty ? 2 : 1} value={chatIn} maxLength={500} onChange={(e) => setChatIn(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); e.currentTarget.form?.requestSubmit(); } }} placeholder={empty ? T("Ask anything about SEO", "اسأل أي حاجة عن السيو") : T("Reply to the SEO AGENT", "رد على SEO AGENT")} className="block max-h-40 w-full resize-none bg-transparent px-3 py-2 text-base leading-7 placeholder:text-muted-foreground/70 focus:outline-none" />
+      <div className="flex items-center justify-between gap-2 pt-1">
+        <div className="flex min-w-0 items-center gap-2"><span className="inline-flex items-center gap-1.5 truncate rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"><Sparkles className="h-3.5 w-3.5 text-primary" aria-hidden="true" />{T("Free, no signup", "مجاني، بدون تسجيل")}</span><button type="button" onClick={() => setMode("agent")} className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-medium text-primary transition hover:bg-primary/20">{T("Work on my site", "اشتغل على موقعي")}<ArrowRight className="h-3 w-3 rtl:rotate-180" aria-hidden="true" /></button></div>
+        <button type="submit" disabled={chatBusy || !chatIn.trim()} aria-label={T("Send", "إرسال")} className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition hover:opacity-90 disabled:opacity-35">{chatBusy ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <ArrowUp className="h-4 w-4" aria-hidden="true" />}</button>
       </div>
-      <div className="flex flex-wrap gap-2 border-t border-border px-5 py-3">{d.faq.map(([qq, a]) => (<button key={qq} type="button" onClick={() => askFaq(qq, a)} className="rounded-full border border-border bg-background/40 px-3.5 py-1.5 text-start text-xs text-muted-foreground transition hover:border-primary hover:text-primary">{qq}</button>))}</div>
-      <p className="border-t border-border px-5 py-3 text-xs leading-6 text-muted-foreground">{T("Do not enter passwords, API keys or personal/payment details. Messages are sent to Google Gemini for AI replies when enabled; AI answers may be wrong. Chat cannot publish changes or access your site.", "لا تدخل كلمات مرور أو مفاتيح API أو بيانات شخصية أو دفع. تُرسل الرسائل إلى Google Gemini للرد بالذكاء الاصطناعي عند تفعيله؛ وقد تكون الإجابات خاطئة. الشات لا ينشر تعديلات ولا يدخل إلى موقعك.")}</p><form onSubmit={sendChat} className="flex gap-2 border-t border-border p-3"><label htmlFor="ag-chat" className="sr-only">{T("Your message", "رسالتك")}</label><input id="ag-chat" value={chatIn} maxLength={500} onChange={(e) => setChatIn(e.target.value)} placeholder={T("Write a message", "اكتب رسالة")} className="h-12 min-w-0 flex-1 rounded-xl border border-border bg-background/60 px-4 text-sm transition-colors placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25" /><button type="submit" disabled={chatBusy} className="inline-flex h-12 items-center gap-2 rounded-xl bg-primary px-5 disabled:opacity-60 text-sm font-semibold text-primary-foreground transition hover:opacity-95"><Send className="h-4 w-4 rtl:-scale-x-100" aria-hidden="true" /><span className="sr-only sm:not-sr-only">{T("Send", "إرسال")}</span></button></form>
     </div>
-    <p className="mt-4 text-center text-xs leading-6 text-muted-foreground">{T("Answers SEO questions with a free AI model when it is available. Common questions are always answered instantly, and anything else can go to Amr's agent on WhatsApp.", "يجيب عن أسئلة السيو بنموذج ذكاء اصطناعي مجاني عندما يكون متاحًا. الأسئلة الشائعة تُجاب فورًا دائمًا، وأي شيء آخر يمكن إرساله لوكيل عمرو على واتساب.")}</p>
-    <div className="mt-6 flex justify-center"><button type="button" onClick={() => setMode("agent")} className={btnP}><Sparkles className="h-4 w-4" aria-hidden="true" />{T("Switch to Agent", "حوّل على Agent")}<ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" /></button></div>
-  </div></section>);
+    <p className="mt-3 px-16 text-center text-[11px] sm:px-3 leading-5 text-muted-foreground">{T("Do not enter passwords, API keys or personal/payment details. Messages are sent to Google Gemini for AI replies when enabled; AI answers may be wrong. Chat cannot publish changes or access your site.", "لا تدخل كلمات مرور أو مفاتيح API أو بيانات شخصية أو دفع. تُرسل الرسائل إلى Google Gemini للرد بالذكاء الاصطناعي عند تفعيله؛ وقد تكون الإجابات خاطئة. الشات لا ينشر تعديلات ولا يدخل إلى موقعك.")}</p>
+  </form>);
+  const avatar = (<span className="mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary/15 text-primary"><Sparkles className="h-4 w-4" aria-hidden="true" /></span>);
+  const chatPanel = (<section className="relative flex min-h-[calc(100dvh-7.6rem)] flex-col overflow-hidden border-b border-border">
+    <div className="pointer-events-none absolute inset-x-0 top-0 -z-0 h-[32rem] bg-[radial-gradient(60%_70%_at_50%_0%,var(--primary-glow),transparent)] opacity-60" aria-hidden="true" />
+    {empty ? (
+      <div className="relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-5 pb-20 pt-10 text-center">
+        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-lg glow-primary"><Sparkles className="h-7 w-7" aria-hidden="true" /></span>
+        <h1 className="mt-6 font-display text-4xl font-semibold leading-tight tracking-tight md:text-5xl">{T("How can I help with your SEO?", "أقدر أساعدك إزاي في السيو؟")}</h1>
+        <p className="mt-3 max-w-lg text-sm leading-7 text-muted-foreground md:text-base">{T("Free SEO answers, no signup. When you are ready for real work on your site, switch to Agent.", "إجابات سيو مجانية بدون تسجيل. وقت ما تبقى جاهز للشغل الفعلي على موقعك، حوّل على Agent.")}</p>
+        <div className="mt-8 w-full text-start">{composer}</div>
+        <div className="mt-6 flex flex-wrap justify-center gap-2">{d.faq.map(([qq, a], i) => { const Ic = sugIcons[i % sugIcons.length]; return (<button key={qq} type="button" onClick={() => askFaq(qq, a)} className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-4 py-2 text-start text-sm text-muted-foreground transition hover:-translate-y-0.5 hover:border-primary/60 hover:text-foreground"><Ic className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />{qq}</button>); })}</div>
+      </div>
+    ) : (<>
+      <div id="ag-chat-log" className="relative mx-auto w-full max-w-3xl flex-1 space-y-7 px-5 pb-6 pt-8" aria-live="polite">
+        <div className="flex justify-end"><button type="button" disabled={chatBusy} onClick={() => setChat([])} className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground transition hover:border-primary hover:text-primary disabled:opacity-50"><MessagesSquare className="h-3.5 w-3.5" aria-hidden="true" />{T("New chat", "محادثة جديدة")}</button></div>
+        {chat.map((m, i) => (m.r === "u" ? (<div key={i} className="flex justify-end"><div className="max-w-[85%] whitespace-pre-wrap break-words rounded-3xl rounded-ee-lg bg-surface-2 px-5 py-3 text-[15px] leading-7">{m.t}</div></div>) : (<div key={i} className="flex gap-3">{avatar}<div className="min-w-0 flex-1 pt-1 text-[15px] leading-8"><p className="whitespace-pre-wrap break-words">{m.t}</p>{m.wa && <a href={m.wa} target="_blank" rel="noopener" className="mt-4 inline-flex h-10 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"><MessageCircle className="h-4 w-4" aria-hidden="true" />{d.send}</a>}</div></div>)))}
+        {chatBusy && (<div className="flex items-center gap-3">{avatar}<span className="inline-flex items-center gap-1.5 pt-1" role="status"><span className="sr-only">{T("Thinking", "بفكر")}</span>{[0, 1, 2].map((n) => (<span key={n} className="h-2 w-2 animate-pulse rounded-full bg-primary/70" style={{ animationDelay: `${n * 180}ms` }} />))}</span></div>)}
+        <div id="ag-chat-end" />
+      </div>
+      <div className="sticky bottom-0 z-20 bg-gradient-to-t from-background via-background/95 to-transparent px-5 pb-4 pt-8"><div className="mx-auto w-full max-w-3xl">{composer}</div></div>
+    </>)}
+  </section>);
 
   const sample = (<div className="relative" aria-hidden="true"><div className="absolute -inset-6 -z-10 rounded-[2rem] bg-primary/10 blur-3xl" />
     <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl shadow-black/30">
@@ -352,8 +371,6 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
           </div>)}
         </div></section>
 
-        </>)}
-
         <section id="safety" className={sec}><div className={wrap}>{head(T("Trust", "الثقة"), d.safeTitle)}
           <ul className="mt-12 grid gap-4 md:grid-cols-2">{d.safe.map((x, i) => (<li key={x} data-ag style={{ transitionDelay: `${(i % 2) * 70}ms` }} className="flex items-start gap-4 rounded-2xl border border-border bg-surface p-5 text-sm leading-7 transition hover:border-primary/40"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary"><ShieldCheck className="h-4 w-4" aria-hidden="true" /></span><span className="pt-1">{x}</span></li>))}</ul>
           <div data-ag className="mx-auto mt-14 max-w-3xl"><h3 className="text-center text-lg font-semibold">{d.connTitle}</h3><p className="mt-1 text-center text-sm text-muted-foreground">{d.connSub}</p>
@@ -363,6 +380,7 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
         <section className="border-b border-border bg-surface/30"><div className="mx-auto max-w-3xl px-5 py-16 md:px-6 md:py-24">{head(T("FAQ", "أسئلة"), d.faqTitle)}<div data-ag className="mt-10 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">{d.faq.map(([qq, a]) => (<details key={qq} className="group p-5 open:bg-primary/5"><summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium [&::-webkit-details-marker]:hidden">{qq}<ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" aria-hidden="true" /></summary><p className="mt-3 text-sm leading-7 text-muted-foreground">{a}</p></details>))}</div></div></section>
 
         <section className="relative overflow-hidden"><div className="absolute inset-0 grid-bg opacity-60" aria-hidden="true" /><div data-ag className="relative mx-auto max-w-3xl px-5 py-20 text-center md:px-6 md:py-28"><h2 className="text-3xl font-semibold leading-tight md:text-4xl">{d.final}</h2><div className="mt-8 flex justify-center"><a href="#order" onClick={() => setMode("agent")} className={btnP}>{d.cta}<ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" /></a></div></div></section>
+        </>)}
       </main>
     </div>
   );
