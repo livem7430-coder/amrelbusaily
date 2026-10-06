@@ -94,7 +94,7 @@ export const Route = createFileRoute("/api/seo-suite")({
       POST: async ({ request }: { request: Request }) => {
         const ip = (request.headers.get("x-forwarded-for") ?? "unknown").split(",")[0].trim();
         if (limited(ipHits, ip, 120, 60_000)) return json({ ok: false, error: "rate_limited" }, 429);
-        let b: { action?: unknown; key?: unknown; url?: unknown; pages?: unknown };
+        let b: { action?: unknown; key?: unknown; url?: unknown; pages?: unknown; urls?: unknown };
         try { const raw = await request.text(); if (raw.length > 120_000) return json({ ok: false, error: "bad_request" }, 400); const p = JSON.parse(raw); if (!p || typeof p !== "object" || Array.isArray(p)) return json({ ok: false, error: "bad_request" }, 400); b = p; } catch { return json({ ok: false, error: "bad_request" }, 400); }
         const key = typeof b.key === "string" ? b.key.trim() : "";
         if (!key) return json({ ok: false, error: "license_required" }, 401);
@@ -124,6 +124,10 @@ export const Route = createFileRoute("/api/seo-suite")({
               if (out) { fixes = t.mergeAi(fixes, facts, out as never[]); ai = true; }
             }
             return json({ ok: true, ai, fixes });
+          }
+          case "images": {
+            if (!Array.isArray(b.urls) || b.urls.length < 1 || b.urls.length > 24 || b.urls.some((x) => typeof x !== "string")) return json({ ok: false, error: "bad_request" }, 400);
+            return json({ ok: true, images: await s.imageWeights(b.urls as string[]) });
           }
           case "keywords": {
             if (!Array.isArray(b.pages) || b.pages.length < 1 || b.pages.length > 4) return json({ ok: false, error: "bad_request" }, 400);
