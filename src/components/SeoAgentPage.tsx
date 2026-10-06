@@ -5,6 +5,8 @@ import type { AuditResult } from "@/lib/seo-audit.server";
 
 const base = "https://amrelbusaily.vercel.app";
 const WA = "https://api.whatsapp.com/send/";
+const inlineMd = (t: string) => t.split(/(\*\*[^*\n]+\*\*|\*[^*\s][^*\n]*\*|`[^`\n]+`)/g).map((p, i) => p.startsWith("**") && p.endsWith("**") && p.length > 4 ? <strong key={i}>{p.slice(2, -2)}</strong> : p.startsWith("`") && p.endsWith("`") && p.length > 2 ? <code key={i} className="rounded bg-surface-2 px-1.5 py-0.5 text-[13px]">{p.slice(1, -1)}</code> : p.startsWith("*") && p.endsWith("*") && p.length > 2 ? <em key={i}>{p.slice(1, -1)}</em> : p);
+const renderMsg = (t: string) => { const out: React.ReactNode[] = []; let para: string[] = []; let list: string[] = []; const isB = (l: string) => /^\s*[-*\u2022]\s+/.test(l); const flushP = () => { if (para.length) { out.push(<p key={out.length} className="break-words">{para.map((l, j) => <span key={j}>{j > 0 && <br />}{inlineMd(l)}</span>)}</p>); para = []; } }; const flushL = () => { if (list.length) { out.push(<ul key={out.length} className="list-disc space-y-1 ps-6">{list.map((l, j) => <li key={j}>{inlineMd(l.replace(/^\s*[-*\u2022]\s+/, ""))}</li>)}</ul>); list = []; } }; t.split("\n").forEach((l) => { if (!l.trim()) { flushP(); flushL(); } else if (isB(l)) { flushP(); list.push(l); } else { flushL(); para.push(l); } }); flushP(); flushL(); return out; };
 const waLink = (text: string) => `${WA}?text=${encodeURIComponent(text.slice(0, 1500))}&username=amrelbusaily&type=username&app_absent=0`;
 
 const ui = {
@@ -231,7 +233,7 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
       setChat((c) => [...c, data?.ok && typeof data.text === "string" ? { r: "a" as const, t: data.text } : fallbackReply(t)]);
     } catch { setChat((c) => [...c, fallbackReply(t)]); } finally { setChatBusy(false); }
   };
-  useEffect(() => { if (mode !== "chat" || chat.length === 0) return; document.getElementById("ag-chat-end")?.scrollIntoView({ behavior: "smooth", block: "end" }); }, [chat, chatBusy, mode]);
+  useEffect(() => { if (mode !== "chat" || chat.length === 0) return; window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" }); }, [chat, chatBusy, mode]);
   const empty = chat.length === 0 && !chatBusy;
   const sugIcons = [Sparkles, Globe, UserCheck, History];
   const composer = (<form onSubmit={sendChat} className="w-full">
@@ -259,7 +261,7 @@ export function SeoAgentPage({ lang }: { lang: Lang }) {
     ) : (<>
       <div id="ag-chat-log" className="relative mx-auto w-full max-w-3xl flex-1 space-y-7 px-5 pb-6 pt-8" aria-live="polite">
         <div className="flex justify-end"><button type="button" disabled={chatBusy} onClick={() => setChat([])} className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground transition hover:border-primary hover:text-primary disabled:opacity-50"><MessagesSquare className="h-3.5 w-3.5" aria-hidden="true" />{T("New chat", "محادثة جديدة")}</button></div>
-        {chat.map((m, i) => (m.r === "u" ? (<div key={i} className="flex justify-end"><div className="max-w-[85%] whitespace-pre-wrap break-words rounded-3xl rounded-ee-lg bg-surface-2 px-5 py-3 text-[15px] leading-7">{m.t}</div></div>) : (<div key={i} className="flex gap-3">{avatar}<div className="min-w-0 flex-1 pt-1 text-[15px] leading-8"><p className="whitespace-pre-wrap break-words">{m.t}</p>{m.wa && <a href={m.wa} target="_blank" rel="noopener" className="mt-4 inline-flex h-10 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"><MessageCircle className="h-4 w-4" aria-hidden="true" />{d.send}</a>}</div></div>)))}
+        {chat.map((m, i) => (m.r === "u" ? (<div key={i} className="flex justify-end"><div className="max-w-[85%] whitespace-pre-wrap break-words rounded-3xl rounded-ee-lg bg-surface-2 px-5 py-3 text-[15px] leading-7">{m.t}</div></div>) : (<div key={i} className="flex gap-3">{avatar}<div className="min-w-0 flex-1 pt-1 text-[15px] leading-8"><div className="space-y-3">{renderMsg(m.t)}</div>{m.wa && <a href={m.wa} target="_blank" rel="noopener" className="mt-4 inline-flex h-10 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"><MessageCircle className="h-4 w-4" aria-hidden="true" />{d.send}</a>}</div></div>)))}
         {chatBusy && (<div className="flex items-center gap-3">{avatar}<span className="inline-flex items-center gap-1.5 pt-1" role="status"><span className="sr-only">{T("Thinking", "بفكر")}</span>{[0, 1, 2].map((n) => (<span key={n} className="h-2 w-2 animate-pulse rounded-full bg-primary/70" style={{ animationDelay: `${n * 180}ms` }} />))}</span></div>)}
         <div id="ag-chat-end" />
       </div>
