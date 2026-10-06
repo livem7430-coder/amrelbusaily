@@ -46,7 +46,7 @@ export const Route = createFileRoute("/api/seo-agent-chat")({
         const key = process.env.GEMINI_API_KEY;
         const model = process.env.GEMINI_MODEL;
         const pref = process.env.GEMINI_CHAT_MODEL;
-        const preferred = pref && /^[a-zA-Z0-9.-]{1,100}$/.test(pref) ? pref : "gemini-3.8-flash";
+        const preferred = pref && /^[a-zA-Z0-9.-]{1,100}$/.test(pref) ? pref : model;
         if (!key || process.env.GEMINI_AI_ENABLED !== "true" || !model || !/^[a-zA-Z0-9.-]{1,100}$/.test(model)) return json({ ok: false, reason: "disabled" });
         const ip = (request.headers.get("x-forwarded-for") ?? "unknown").split(",")[0].trim();
         const now = Date.now();
@@ -79,48 +79,51 @@ export const Route = createFileRoute("/api/seo-agent-chat")({
 
         if (mode === "research") { const rr = (researchHits.get(ip) ?? []).filter((t) => now - t < 600_000); if (rr.length >= 2) return json({ ok: false, reason: "busy" }); rr.push(now); researchHits.set(ip, rr); if (researchHits.size > 2000) researchHits.clear(); dayCount += 2; }
         dayCount++;
-        type G = { ok: true; text: string; model: string } | { ok: false; quota: boolean };
+        type G = { ok: true; text: string; model: string } | { ok: false; quota: boolean; status: string };
+        // Candidates in order: GEMINI_CHAT_MODEL when set, otherwise the configured GEMINI_MODEL. Any failure of one
+        // (HTTP error, empty reply, timeout, exception) moves on to the next candidate, each with its own timeout.
+        const candidates = [...new Set([preferred, model].filter((m): m is string => !!m))];
         const gen = async (system: string, contents: Array<{ role: "user" | "model"; text: string }>, maxTokens: number, temperature: number, ms: number): Promise<G> => {
-          const ctrl = new AbortController();
-          const timer = setTimeout(() => ctrl.abort(), ms);
-          try {
-            // Strongest free-tier model first (Google pricing page lists gemini-3.8-flash as free of charge, 3.x Pro as paid only),
-            // then the model already configured. A rejected model name or a spent per-model quota falls through to the next one.
-            const tried: string[] = [];
-            let res: Response | null = null;
-            for (const mdl of [preferred, model]) {
-              if (tried.includes(mdl)) continue;
-              tried.push(mdl);
-              res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${mdl}:generateContent`, {
+          const seen: string[] = [];
+          let quota = true;
+          for (const mdl of candidates) {
+            const ctrl = new AbortController();
+            const timer = setTimeout(() => ctrl.abort(), ms);
+            let status = "error";
+            try {
+              const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${mdl}:generateContent`, {
                 method: "POST",
                 signal: ctrl.signal,
                 headers: { "content-type": "application/json", "x-goog-api-key": key },
                 body: JSON.stringify({ systemInstruction: { parts: [{ text: system }] }, contents: contents.map((m) => ({ role: m.role, parts: [{ text: m.text }] })), generationConfig: { temperature, maxOutputTokens: maxTokens } }),
               });
-              if (res.ok || ![400, 403, 404, 429].includes(res.status)) break;
-            }
-            if (!res) return { ok: false, quota: false };
-            const used = tried[tried.length - 1];
-            if (res.status === 429) return { ok: false, quota: true };
-            if (!res.ok) return { ok: false, quota: false };
-            const data = (await res.json()) as { candidates?: { content?: { parts?: { text?: string }[] } }[] };
-            const text = (data.candidates?.[0]?.content?.parts?.map((p) => p.text ?? "").join("") ?? "").trim();
-            return text ? { ok: true, text, model: used } : { ok: false, quota: false };
-          } catch { return { ok: false, quota: false }; } finally { clearTimeout(timer); }
+              status = String(res.status);
+              if (res.ok) {
+                const data = (await res.json()) as { candidates?: { content?: { parts?: { text?: string }[] } }[] };
+                const text = (data.candidates?.[0]?.content?.parts?.map((p) => p.text ?? "").join("") ?? "").trim();
+                if (text) return { ok: true, text, model: mdl };
+                status = "empty";
+              }
+            } catch (e) { status = (e as Error)?.name === "AbortError" ? "timeout" : "exception"; } finally { clearTimeout(timer); }
+            if (status !== "429") quota = false;
+            seen.push(`${mdl}:${status}`);
+            console.error(`[seo-agent-chat] model=${mdl} status=${status}`); // provider status only: no key, no prompt text
+          }
+          return { ok: false, quota, status: seen.join(",").slice(0, 200) };
         };
-        const fail = (r: { quota: boolean }) => { if (r.quota) { cooldownUntil = Date.now() + 60_000; return json({ ok: false, reason: "quota" }); } return json({ ok: false, reason: "unavailable" }); };
+        const fail = (r: { quota: boolean; status: string }) => { if (r.quota) { cooldownUntil = Date.now() + 60_000; return json({ ok: false, reason: "quota", providerStatus: r.status }); } return json({ ok: false, reason: "unavailable", providerStatus: r.status }); };
         try {
           if (mode === "research") {
             const topic = msgs[msgs.length - 1].text;
             const plan = await gen(RESEARCH_PLAN, [{ role: "user", text: topic }], 1500, 0.3, 15000);
             if (!plan.ok) return fail(plan);
             const subs = plan.text.split("\n").map((l) => l.replace(/^[\s\-*\d.)]+/, "").trim()).filter(Boolean).slice(0, 4);
-            const rep = await gen(RESEARCH_WRITE, [{ role: "user", text: `Topic: ${topic}\nSub-questions:\n${subs.map((q) => `- ${q}`).join("\n")}` }], 6000, 0.4, 28000);
+            const rep = await gen(RESEARCH_WRITE, [{ role: "user", text: `Topic: ${topic}\nSub-questions:\n${subs.map((q) => `- ${q}`).join("\n")}` }], 4096, 0.4, 28000);
             if (!rep.ok) return fail(rep);
             return json({ ok: true, text: rep.text.slice(0, 4000), model: rep.model });
           }
           const sys = mode === "image" ? `${SYSTEM}\n${MODE_NOTE}` : SYSTEM;
-          const r = await gen(sys, msgs, 3000, 0.6, 20000);
+          const r = await gen(sys, msgs, 2048, 0.6, 20000);
           if (!r.ok) return fail(r);
           return json({ ok: true, text: r.text.slice(0, 2500), model: r.model });
         } catch {
