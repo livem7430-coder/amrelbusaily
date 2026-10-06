@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Portrait } from "@/components/Portrait";
+import { SeoAgentBanner } from "@/components/SeoAgentBanner";
 import { SeoAuditPromo } from "@/components/SeoAuditPromo";
 import { ResultsShowcase } from "@/components/ResultsShowcase";
 
@@ -314,6 +315,7 @@ function HomeAr() {
         </nav>
       </div>
       <main id="main-content">
+      <SeoAgentBanner lang="ar" />
       <section id="top" className="relative overflow-hidden">
         <div className="absolute inset-0 grid-bg" aria-hidden />
         <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.4fr_1fr] md:py-28">
