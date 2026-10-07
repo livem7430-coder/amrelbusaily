@@ -1,11 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { ServicesPage, servicesHead } from "@/components/ServicesPage";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/ar/services")({
-  head: ({ params }) => Object.keys(params).length > 0 ? {} : servicesHead("ar"),
-  component: ArabicServices,
+  component: ArabicServicesLayout,
 });
 
-function ArabicServices() {
-  return <ServicesPage lang="ar" />;
+function ArabicServicesLayout() {
+  return <Outlet />;
 }
