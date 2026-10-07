@@ -75,7 +75,7 @@ export const Route = createFileRoute("/sitemap.xml")({
             path: `/blog/${p.slug}`,
             changefreq: "monthly",
             priority: "0.7",
-            lastmod: p.date,
+            lastmod: p.updated ?? p.date,
           })),
           ...publishedCourseLessons.flatMap((lesson) => [
             { path: `/course/${lesson.id}`, changefreq: "monthly", priority: "0.6", lastmod: COURSE_UPDATED },
