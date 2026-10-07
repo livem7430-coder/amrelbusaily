@@ -8,6 +8,7 @@ export interface BlogPost {
   title: string;
   description: string;
   date: string;
+  updated?: string;
   readTime: string;
   lang: "ar" | "en";
   altSlug?: string;
@@ -1269,7 +1270,7 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   { slug: "hire-seo-expert-en", title: "Hire an SEO Expert: How to Choose the Right Partner", description: "Choose an SEO expert who connects technical work, buyer-intent content and measurement to leads and sales.", date: "2026-09-21", readTime: "8 min read", lang: "en", altSlug: "hire-seo-expert-ar" },
-  { slug: "hire-seo-expert-ar", title: "التعاقد مع خبير سيو: إزاي تختار الشخص الصح", description: "اختار خبير سيو يربط التقنية والمحتوى التجاري والقياس بالعملاء والمبيعات.", date: "2026-09-21", readTime: "8 دقائق", lang: "ar", altSlug: "hire-seo-expert-en" },
+  { slug: "hire-seo-expert-ar", title: "التعاقد مع خبير سيو: إزاي تختار الشخص الصح", description: "اختار خبير سيو يربط التقنية والمحتوى التجاري والقياس بالعملاء والمبيعات.", date: "2026-09-21", updated: "2026-10-07", readTime: "8 دقائق", lang: "ar", altSlug: "hire-seo-expert-en" },
   { slug: "freelance-seo-specialist-en", title: "Freelance SEO Specialist for Hire: Scope and Selection", description: "How to hire a freelance SEO specialist for direct, accountable growth in Egypt and the Gulf.", date: "2026-09-21", readTime: "8 min read", lang: "en", altSlug: "freelance-seo-specialist-ar" },
   { slug: "freelance-seo-specialist-ar", title: "متخصص سيو فريلانسر: النطاق وطريقة الاختيار", description: "إزاي تختار متخصص سيو فريلانسر لشغل مباشر ومسؤول في مصر والخليج.", date: "2026-09-21", readTime: "8 دقائق", lang: "ar", altSlug: "freelance-seo-specialist-en" },
   { slug: "arabic-seo-expert-en", title: "Arabic SEO Expert: Win Bilingual Search Markets", description: "Arabic SEO needs native keyword research, bilingual architecture and market-specific content.", date: "2026-09-21", readTime: "8 min read", lang: "en", altSlug: "arabic-seo-expert-ar" },
