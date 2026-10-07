@@ -114,6 +114,7 @@ export function articleHead({
   slug,
   lang = "ar",
   datePublished,
+  dateModified,
   altSlug,
   faq,
 }: {
@@ -122,6 +123,7 @@ export function articleHead({
   slug: string;
   lang?: string;
   datePublished: string;
+  dateModified?: string;
   altSlug?: string;
   faq?: { q: string; a: string }[];
 }) {
@@ -150,7 +152,7 @@ export function articleHead({
         description,
         inLanguage: lang,
         datePublished,
-        dateModified: datePublished,
+        dateModified: dateModified ?? datePublished,
         image: [image],
             articleSection: "SEO, Digital Marketing, AI Growth & E-commerce",
         author: {
@@ -219,4 +221,4 @@ export function articleHead({
     links,
     scripts,
   };
-}
+            }
