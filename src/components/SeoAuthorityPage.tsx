@@ -1,3 +1,4 @@
+import { SeoBuyerGuide } from "@/components/SeoBuyerGuide";
 import type { ReactNode } from "react";
 
 export type SeoLanguage = "ar" | "en";
@@ -86,7 +87,7 @@ function getCopy(lang: SeoLanguage, mode: SeoPageMode): SeoCopy {
           { q: "هل تعمل مع المواقع العربية والإنجليزية؟", a: "نعم، بشرط بناء صفحات منفصلة لكل لغة عند الحاجة، مع أمثلة وصياغة مناسبة للجمهور وربط hreflang وcanonical بشكل صحيح. الترجمة الحرفية وحدها ليست استراتيجية دولية." },
           { q: "كيف تبدأ الاستشارة؟", a: "نبدأ بفهم النشاط والصفحات ذات القيمة ثم نحدد البيانات المتاحة. بعد ذلك نخرج بالأولويات والمهام ومؤشرات القياس بدل تقرير طويل لا يعرف الفريق كيف ينفذه." },
           { q: "كم سعر خبير السيو؟", a: "السعر يتغير حسب حجم الموقع والمنافسة واللغات ومسؤولية التنفيذ. البداية الصحيحة مراجعة نطاق العمل: أوديت، صفحات خدمات، محتوى، دعم تقني وقياس، ثم عرض واضح بدل رقم عام لا يطابق المشروع." },
-          { q: "كم يحتاج SEO لإظهار نتائج؟", a: "قد تظهر إصلاحات الفهرسة والصفحات مبكرًا، لكن النمو المستقر غالبًا يحتاج من 3 إلى 6 أشهر حسب عمر الموقع والمنافسة وسرعة التنفيذ. نتابع مؤشرات مبكرة مثل الظهور وجودة الاستعلامات قبل التحويلات." },
+          { q: "كم يحتاج SEO لإظهار نتائج؟", a: "التوقيت يختلف حسب نوع التغيير والموقع والمنافسة. بعض التغييرات تُلاحظ سريعًا وأخرى تحتاج شهورًا، وقد لا يظهر أثر ملحوظ. نتفق على مواعيد تنفيذ ومراجعة، ونفصل مؤشرات الفهرسة والظهور عن الطلبات المؤهلة؛ لا نضمن موعدًا للترتيب." },
         ],
         ctaTitle: "ناقش فرصة النمو قبل أن تبدأ",
         ctaBody: "أرسل رابط الموقع ووصفًا مختصرًا لهدفك، وسنحدد ما إذا كان SEO أو المحتوى أو تحسين التحويل هو نقطة البداية الأنسب.",
@@ -348,10 +349,10 @@ export function seoAuthorityHead(lang: SeoLanguage, mode: SeoPageMode) {
 
 export function SeoAuthorityPage({ lang, mode }: { lang: SeoLanguage; mode: SeoPageMode }) {
   const copy = getCopy(lang, mode);
-  return <SeoAuthorityLayout lang={lang} copy={copy} />;
+  return <SeoAuthorityLayout lang={lang} copy={copy} buyerMarket={mode === "expert" ? "expert" : undefined} />;
 }
 
-export function SeoAuthorityLayout({ lang, copy }: { lang: SeoLanguage; copy: SeoCopy }) {
+export function SeoAuthorityLayout({ lang, copy, buyerMarket }: { lang: SeoLanguage; copy: SeoCopy; buyerMarket?: "expert" | "saudi" | "uae" }) {
   const isAr = lang === "ar";
   return (
     <div className="min-h-screen" dir={isAr ? "rtl" : "ltr"} lang={lang}>
@@ -450,6 +451,8 @@ export function SeoAuthorityLayout({ lang, copy }: { lang: SeoLanguage; copy: Se
             </div>
           </div>
         </section>
+
+        {buyerMarket && <SeoBuyerGuide lang={lang} market={buyerMarket} />}
 
         <section className="mx-auto max-w-6xl px-6 py-20">
           <div className="max-w-2xl">
