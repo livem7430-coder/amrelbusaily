@@ -23,7 +23,7 @@ function getMarketCopy(lang: SeoLanguage, market: SeoMarket): SeoCopy {
       eyebrow: "SEO للسوق السعودي",
       heading: "خبير سيو في السعودية يحسّن ظهور متجرك أو شركتك في جوجل بخطة واضحة.",
       intro:
-        "السوق السعودي من أسرع أسواق التجارة الإلكترونية نموًا في المنطقة، والمنافسة على نتائج البحث في الرياض وجدة وباقي المدن بتزيد كل سنة. أنا عمرو البصيلي، خبير سيو بخبرة 7 سنين وأكثر من 50 مشروع، بشتغل مع متاجر وشركات سعودية عن بُعد بمنهجية واضحة: تشخيص صادق، خطة أولويات، وتنفيذ مرتبط بالمبيعات مش بأرقام الظهور بس.",
+        "الوصول لعملاء في السعودية يحتاج صفحات تفهم المنتج أو الخدمة ونطاق التغطية، لا مجرد تكرار أسماء المدن. أنا عمرو البصيلي، خبير سيو بخبرة 7 سنين وأكثر من 50 مشروع، بشتغل مع متاجر وشركات سعودية عن بُعد بمنهجية واضحة: تشخيص صادق، خطة أولويات، وتنفيذ مرتبط بالمبيعات مش بأرقام الظهور بس.",
       answer:
         "لو بتدور على خبير سيو في السعودية: أنا بقدم أوديت تقني كامل، بحث كلمات للسوق السعودي، سيو محلي للرياض وجدة والدمام، وتحسين متاجر سلة وزد، مع تقارير شهرية توضح أثر الشغل على الطلبات والمبيعات — وكل ده عن بُعد وبتواصل مباشر معايا أنا، مش مع فريق مبيعات.",
       audienceTitle: "مين اللي بيستفيد من الشغل ده في السعودية؟",
@@ -40,7 +40,7 @@ function getMarketCopy(lang: SeoLanguage, market: SeoMarket): SeoCopy {
         { title: "بحث كلمات للسوق السعودي", body: "خريطة كلمات مبنية على إزاي السعوديين فعلاً بيبحثوا: صيغ محلية، مدن، ونية شراء واضحة — موزعة على صفحات موقعك من غير تنافس داخلي." },
         { title: "سيو محلي للرياض وجدة", body: "تحسين Google Business Profile، صفحات مدن بمحتوى حقيقي مش نسخ ولزق، واتساق بيانات النشاط (NAP) عبر الدلائل السعودية المهمة." },
         { title: "تحسين متاجر سلة وزد", body: "معالجة القيود المعروفة للمنصات: بنية الروابط، صفحات الفئات، سرعة القوالب، والمحتوى التعريفي اللي بيفرق في الترتيب والتحويل." },
-        { title: "محتوى عربي يتصدر", body: "مقالات وصفحات خدمات مكتوبة بعربي طبيعي يفهمه العميل السعودي — بإجابات مباشرة، أمثلة من السوق، وأسئلة شائعة مع FAQ Schema." },
+        { title: "محتوى عربي يتصدر", body: "مقالات وصفحات خدمات مكتوبة بعربي طبيعي يفهمه العميل السعودي — بإجابات مباشرة، أمثلة من السوق، وأسئلة شائعة تجيب عن قرارات العميل، دون وعود بنتائج FAQ غنية في جوجل." },
         { title: "قياس مربوط بالمبيعات", body: "تقرير شهري يربط الكلمات والصفحات بالطلبات والاستفسارات والإيراد، بحيث تعرف كل ريال شغال فين." },
       ],
       processTitle: "بنشتغل إزاي؟",
@@ -60,9 +60,9 @@ function getMarketCopy(lang: SeoLanguage, market: SeoMarket): SeoCopy {
       faq: [
         { q: "بتقدم خدمات السيو للسعودية عن بُعد إزاي؟", a: "كل الشغل رقمي: أوديت، محتوى، تقارير، ومكالمات مجدولة. التواصل مباشر معايا على واتساب، والتقارير الشهرية توضح الكلمات والصفحات والتحويلات. مكان العميل مش بيفرق في جودة التنفيذ." },
         { q: "كم أسعار خدمات السيو للسوق السعودي؟", a: "السعر بيعتمد على حجم الموقع والمنافسة في مجالك والمدينة المستهدفة. الأوديت الأولي والاستشارة مجانية، وبعدها بقدم عرض واضح بنطاق محدد — من غير التزامات طويلة مجبرية." },
-        { q: "قد إيه وقت عشان تظهر النتايج؟", a: "عادة من 3 لـ6 شهور للنتايج الواضحة، حسب قوة الدومين والمنافسة. الكلمات المحلية الطويلة (زي خدمة + حي أو مدينة) بتتحرك أسرع من الكلمات العامة." },
+        { q: "قد إيه وقت عشان تظهر النتايج؟", a: "المدة تختلف حسب المشكلة والموقع والمنافسة وسرعة التنفيذ. نحدد مواعيد تسليم ومراجعة، لكن لا نضمن توقيتًا للترتيب أو المبيعات. بعض التغييرات تحتاج أسابيع أو شهورًا وقد لا تعطي أثرًا ملحوظًا." },
         { q: "بتشتغل مع متاجر سلة وزد؟", a: "أيوه، عندي خبرة عملية بقيود المنصتين: بنية الروابط، صفحات الفئات، سرعة القوالب، وإزاي تعوض بالمحتوى والسيو الخارجي اللي المنصة متديكش تحكم كامل فيه." },
-        { q: "إيه الفرق بينك وبين وكالة تسويق سعودية؟", a: "التواصل المباشر مع المنفذ، تقارير صادقة بلا تجميل، وتكلفة أقل من الوكالات الكبيرة لأن مفيش طبقات إدارة. وفي المقابل: أنا شخص واحد، فلو محتاج فريق كامل لإدارة كل قنوات التسويق مرة واحدة، هقولك ده بصراحة." },
+        { q: "إيه الفرق بينك وبين وكالة تسويق سعودية؟", a: "التواصل المباشر مع المنفذ، تقارير صادقة بلا تجميل، ونطاق واضح يمكن مقارنته بعروض الوكالات بدل افتراض أن خيارًا واحدًا أرخص دائمًا. وفي المقابل: أنا شخص واحد، فلو محتاج فريق كامل لإدارة كل قنوات التسويق مرة واحدة، هقولك ده بصراحة." },
       ],
       ctaTitle: "جاهز تتصدر نتائج البحث في السعودية؟",
       ctaBody:
@@ -83,9 +83,9 @@ function getMarketCopy(lang: SeoLanguage, market: SeoMarket): SeoCopy {
       description:
         "SEO expert serving Saudi Arabia: technical SEO for Salla and Zid stores, Arabic content that ranks, local SEO for Riyadh and Jeddah, and revenue-tied reporting. Free consultation.",
       eyebrow: "SEO for the Saudi market",
-      heading: "An SEO expert for Saudi Arabia who gets your store or company to the top of Google.",
+      heading: "An SEO expert for Saudi Arabia with a clear plan for better search visibility.",
       intro:
-        "Saudi Arabia is one of the fastest-growing e-commerce markets in the region, and competition for search visibility in Riyadh, Jeddah and beyond rises every year. I am Amr Elbusaily, an SEO specialist with 7 years of experience across 50+ projects, working remotely with Saudi stores and service companies through a clear method: honest diagnosis, prioritized plan, and execution tied to sales rather than vanity metrics.",
+        "Reaching buyers in Saudi Arabia requires useful product and service pages with clear coverage, not repeated city names. I am Amr Elbusaily, an SEO specialist with 7 years of experience across 50+ projects, working remotely with Saudi stores and service companies through a clear method: honest diagnosis, prioritized plan, and execution tied to sales rather than vanity metrics.",
       answer:
         "If you are looking for an SEO expert in Saudi Arabia: I deliver a full technical audit, Saudi-market keyword research, local SEO for Riyadh and Jeddah, and Salla/Zid store optimization, with monthly reporting that ties the work to orders and revenue - all remote, and you talk directly to me, not a sales team.",
       audienceTitle: "Who benefits from this work in Saudi Arabia?",
@@ -102,7 +102,7 @@ function getMarketCopy(lang: SeoLanguage, market: SeoMarket): SeoCopy {
         { title: "Saudi-market keyword research", body: "A keyword map built on how people in Saudi Arabia actually search: local phrasing, city modifiers and clear buying intent, mapped to your pages without internal competition." },
         { title: "Local SEO for Riyadh and Jeddah", body: "Google Business Profile optimization, genuine city pages instead of copy-paste, and consistent business data across the Saudi directories that matter." },
         { title: "Salla and Zid store optimization", body: "Hands-on work around the known platform constraints: link architecture, category pages, theme speed, and the descriptive content that moves rankings and conversion." },
-        { title: "Arabic content that ranks", body: "Articles and service pages written in natural Arabic your Saudi customers actually read - direct answers, market examples, and FAQs with FAQ schema." },
+        { title: "Arabic content that ranks", body: "Articles and service pages written in natural Arabic your Saudi customers actually read - direct answers, market examples, and useful FAQs, without promising Google FAQ rich results." },
         { title: "Revenue-tied measurement", body: "A monthly report connecting keywords and pages to orders, inquiries and revenue, so you know where every riyal of effort goes." },
       ],
       processTitle: "How do we work?",
@@ -122,9 +122,9 @@ function getMarketCopy(lang: SeoLanguage, market: SeoMarket): SeoCopy {
       faq: [
         { q: "How do you deliver SEO for Saudi Arabia remotely?", a: "Everything is digital: audit, content, reports and scheduled calls. You talk to me directly on WhatsApp, and the monthly report shows keywords, pages and conversions. Client location does not change execution quality." },
         { q: "What does SEO cost for the Saudi market?", a: "Pricing depends on site size, competition in your niche and the target city. The initial audit and consultation are free, after which I send a clear scoped offer - no forced long-term commitments." },
-        { q: "How long until results show?", a: "Usually 3 to 6 months for meaningful results, depending on domain strength and competition. Long-tail local keywords (service plus district or city) move faster than broad terms." },
+        { q: "How long until results show?", a: "Timing depends on the change, the site, competition and implementation. We agree delivery and review dates, not guaranteed ranking or revenue dates. Changes may take weeks or months and may not produce a noticeable search impact." },
         { q: "Do you work with Salla and Zid stores?", a: "Yes, I have hands-on experience with both platforms' constraints: link architecture, category pages, theme speed, and how to compensate with content and off-page SEO for what the platform does not expose." },
-        { q: "What is the difference between you and a Saudi marketing agency?", a: "Direct contact with the person executing, honest reporting without polish, and lower cost than large agencies because there are no management layers. In return: I am one person, so if you need a full team running every marketing channel at once, I will tell you that honestly." },
+        { q: "What is the difference between you and a Saudi marketing agency?", a: "Direct contact with the person executing, honest reporting without polish, and a defined scope you can compare with agency offers rather than assuming one model always costs less. In return: I am one person, so if you need a full team running every marketing channel at once, I will tell you that honestly." },
       ],
       ctaTitle: "Ready to rank in Saudi search results?",
       ctaBody:
@@ -164,7 +164,7 @@ function getMarketCopy(lang: SeoLanguage, market: SeoMarket): SeoCopy {
         { title: "استراتيجية ثنائية اللغة", body: "بنية عربي/إنجليزي سليمة: hreflang مظبوط، منع المحتوى المكرر، وخريطة كلمات تفصل نية البحث العربية عن الإنجليزية بدل ترجمة حرفية." },
         { title: "SEO محلي لدبي وأبوظبي", body: "تحسين Google Business Profile، صفحات مناطق بمحتوى حقيقي، واتساق بيانات النشاط عبر الدلائل الإماراتية المهمة." },
         { title: "بحث كلمات للسوق الإماراتي", body: "خريطة كلمات مبنية على المنافسة الفعلية في نتائج البحث الإماراتية، موزعة على الصفحات من غير تنافس داخلي." },
-        { title: "محتوى يتصدر باللغتين", body: "مقالات وصفحات خدمات بإجابات مباشرة وأمثلة من السوق الإماراتي وأسئلة شائعة مع FAQ Schema." },
+        { title: "محتوى يتصدر باللغتين", body: "مقالات وصفحات خدمات بإجابات مباشرة وأمثلة من السوق الإماراتي وأسئلة شائعة تجيب عن قرارات العميل، دون وعود بنتائج FAQ غنية في جوجل." },
         { title: "قياس مربوط بالإيراد", body: "تقرير شهري يربط الكلمات والصفحات بالاستفسارات والمبيعات، منفصل حسب اللغة والإمارة عند الحاجة." },
       ],
       processTitle: "بنشتغل إزاي؟",
@@ -179,14 +179,14 @@ function getMarketCopy(lang: SeoLanguage, market: SeoMarket): SeoCopy {
         "أيوه. الأوديت والمحتوى والتحليلات شغل رقمي بطبيعته، والسوق الإماراتي نفسه بيشتغل عن بُعد بشكل طبيعي. مكالمات مجدولة، تقارير مكتوبة، وتواصل مباشر واتساب — واللي بيفرق هو جودة التشخيص والتنفيذ.",
       trustTitle: "ليه تشتغل معايا أنا مش وكالة دبي؟",
       trustBody:
-        "لأنك بتتكلم مع اللي بينفذ فعلاً. 7 سنين خبرة وأكثر من 50 مشروع، والنتايج موثقة بلقطات Search Console على موقعي. وكالات دبي الكبيرة بتحاسب بالطبقات — أنا بقدم نفس جودة التنفيذ بتكلفة أقل وتواصل مباشر، وبقولك بصراحة لو السيو مش أولويتك دلوقتي.",
+        "لأنك بتتكلم مع اللي بينفذ فعلاً. 7 سنين خبرة وأكثر من 50 مشروع، والنتايج موثقة بلقطات Search Console على موقعي. المقارنة مع الوكالة تكون على نطاق العمل والموارد ومسؤولية التنفيذ، لا على وعد بسعر أقل أو جودة مساوية لكل فريق. وبقولك بصراحة لو السيو مش أولويتك دلوقتي.",
       faqTitle: "أسئلة بتتسأل كتير من الإمارات",
       faq: [
-        { q: "إزاي بتتعامل مع السوق ثنائي اللغة في الإمارات؟", a: "ببنية لغات سليمة من الأول: hreflang مظبوط، فصل نية البحث العربية عن الإنجليزية في خريطة الكلمات، ومحتوى مكتوب لكل جمهور مش مترجم حرفيًا — عشان ميحصلش محتوى مكرر ولا تنافس داخلي." },
+        { q: "إزاي بتتعامل مع السوق ثنائي اللغة في الإمارات؟", a: "ببنية لغات سليمة من الأول: hreflang مظبوط، فصل نية البحث العربية عن الإنجليزية في خريطة الكلمات، ومحتوى مكتوب لكل جمهور مش مترجم حرفيًا — مع مراجعة canonical والصفحات المتقاربة؛ hreflang يوضح النسخ البديلة لكنه لا يصلح كل تكرار أو تنافس داخلي." },
         { q: "كم أسعار خدمات السيو للإمارات؟", a: "السعر بيعتمد على حجم الموقع والمنافسة في مجالك وعدد اللغات والإمارات المستهدفة. الأوديت الأولي والاستشارة مجانية، وبعدها بقدم عرض واضح بنطاق محدد." },
-        { q: "قد إيه وقت عشان تظهر النتايج في دبي؟", a: "عادة من 3 لـ6 شهور، والمنافسة في دبي أعلى من أغلب أسواق المنطقة فالمدى بيعتمد على قوة الدومين والمجال. الكلمات الطويلة المحلية بتتحرك أسرع." },
+        { q: "قد إيه وقت عشان تظهر النتايج في دبي؟", a: "لا يوجد موعد ثابت لكل المواقع. نراجع نوع التغيير واللغة والمنافسة والبيانات المتاحة، ثم نتفق على مواعيد تنفيذ وتقييم؛ استجابة البحث قد تحتاج أسابيع أو شهورًا وليست مضمونة." },
         { q: "بتشتغل مع شركات العقارات في دبي؟", a: "أيوه، العقار من القطاعات اللي بيشتغل فيها السيو المحلي وكلمات المناطق والمشاريع بشكل قوي جدًا، وبشرط وجود محتوى حقيقي عن المناطق مش صفحات مولدة." },
-        { q: "إيه الفرق بينك وبين الوكالات الإماراتية؟", a: "تواصل مباشر مع المنفذ، تقارير صادقة، وتكلفة أقل لأن مفيش طبقات إدارة. ولو محتاج فريق كامل لكل القنوات مرة واحدة، هقولك ده بصراحة من الأول." },
+        { q: "إيه الفرق بينك وبين الوكالات الإماراتية؟", a: "تواصل مباشر مع المنفذ، تقارير صادقة، ونطاق واضح ومسؤوليات متفق عليها، والسعر يقارن على نفس نطاق العمل. ولو محتاج فريق كامل لكل القنوات مرة واحدة، هقولك ده بصراحة من الأول." },
       ],
       ctaTitle: "جاهز تتصدر نتائج البحث في الإمارات؟",
       ctaBody:
@@ -225,7 +225,7 @@ function getMarketCopy(lang: SeoLanguage, market: SeoMarket): SeoCopy {
       { title: "Bilingual SEO strategy", body: "Clean Arabic/English architecture: correct hreflang, no duplicate content, and a keyword map that separates Arabic and English search intent instead of literal translation." },
       { title: "Local SEO for Dubai and Abu Dhabi", body: "Google Business Profile optimization, genuine area pages, and consistent business data across the UAE directories that matter." },
       { title: "UAE-market keyword research", body: "A keyword map built on real competition in UAE search results, distributed across pages without internal competition." },
-      { title: "Content that ranks in both languages", body: "Articles and service pages with direct answers, UAE market examples, and FAQs with FAQ schema." },
+      { title: "Content that ranks in both languages", body: "Articles and service pages with direct answers, UAE market examples, and useful FAQs, without promising Google FAQ rich results." },
       { title: "Revenue-tied measurement", body: "A monthly report connecting keywords and pages to inquiries and sales, split by language and emirate when needed." },
     ],
     processTitle: "How do we work?",
@@ -240,14 +240,14 @@ function getMarketCopy(lang: SeoLanguage, market: SeoMarket): SeoCopy {
       "Yes. Audits, content and analytics are digital by nature, and the UAE market itself works remotely as a norm. Scheduled calls, written reports and direct WhatsApp contact - what makes the difference is the quality of diagnosis and execution.",
     trustTitle: "Why work with me instead of a Dubai agency?",
     trustBody:
-      "Because you talk to the person who does the work. 7 years of experience and 50+ projects, with results documented through Search Console snapshots on this site. Large Dubai agencies bill by layers - I deliver the same execution quality at lower cost with direct contact, and I will tell you honestly if SEO is not your priority right now.",
+      "Because you talk to the person who does the work. 7 years of experience and 50+ projects, with results documented through Search Console snapshots on this site. Compare providers on scope, resources and implementation responsibilities rather than assuming one delivery model is always cheaper, and I will tell you honestly if SEO is not your priority right now.",
     faqTitle: "Questions I get from UAE clients",
     faq: [
-      { q: "How do you handle the UAE's bilingual market?", a: "With clean language architecture from the start: correct hreflang, Arabic and English search intent separated in the keyword map, and content written for each audience rather than literally translated - so there is no duplicate content or internal competition." },
+      { q: "How do you handle the UAE's bilingual market?", a: "With clean language architecture from the start: correct hreflang, Arabic and English search intent separated in the keyword map, and content written for each audience rather than literally translated - with canonical and overlapping-page review; hreflang identifies alternatives but does not fix every duplication or intent problem." },
       { q: "What does SEO cost for the UAE?", a: "Pricing depends on site size, competition in your niche, and the number of languages and emirates targeted. The initial audit and consultation are free, after which I send a clear scoped offer." },
-      { q: "How long until results show in Dubai?", a: "Usually 3 to 6 months. Dubai is more competitive than most regional markets, so the range depends on domain strength and niche. Long-tail local keywords move faster." },
+      { q: "How long until results show in Dubai?", a: "There is no fixed timeline for every site. We agree implementation and review dates based on the work and available evidence; search responses can take weeks or months and are not guaranteed." },
       { q: "Do you work with Dubai real estate companies?", a: "Yes. Real estate is one of the sectors where local SEO and district/project keywords work extremely well, provided there is genuine area content rather than generated pages." },
-      { q: "What is the difference between you and UAE agencies?", a: "Direct contact with the person executing, honest reporting, and lower cost because there are no management layers. If you need a full team running every channel at once, I will say that honestly from the start." },
+      { q: "What is the difference between you and UAE agencies?", a: "Direct contact with the person executing, honest reporting, and clear responsibilities with pricing compared on the same scope. If you need a full team running every channel at once, I will say that honestly from the start." },
     ],
     ctaTitle: "Ready to rank in UAE search results?",
     ctaBody:
@@ -326,5 +326,5 @@ export function geoMarketHead(lang: SeoLanguage, market: SeoMarket) {
 }
 
 export function GeoSeoMarketPage({ lang, market }: { lang: SeoLanguage; market: SeoMarket }) {
-  return <SeoAuthorityLayout lang={lang} copy={getMarketCopy(lang, market)} />;
+  return <SeoAuthorityLayout lang={lang} copy={getMarketCopy(lang, market)} buyerMarket={market} />;
 }
