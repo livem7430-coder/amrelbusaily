@@ -239,10 +239,35 @@ function PlatformScopeBoundary({ slug }: { slug: string }) {
  </section>;
 }
 
+function IndexingEvidenceRecord({ slug }: { slug: string }) {
+ if (slug !== "salla-zid-store-not-showing-google-ar") return null;
+ const rows = [
+  ["الرابط والخاصية", "https://shop.example/products/cotton-shirt ضمن خاصية النطاق الصحيح", "استبدل الرابط التوضيحي برابط المنتج الفعلي؛ لا تخلط نطاق المعاينة بالنطاق المنشور"],
+  ["ما يراه الزائر الآن", "استجابة 200، المنتج ظاهر دون دخول، ولا تحويل إلى صفحة أخرى", "هذا يثبت الوصول في الاختبار فقط، لا الفهرسة"],
+  ["الزحف والتوجيه", "السماح بالزحف، لكن HTML يحتوي noindex غير مقصود", "نقرأ التوجيه من الصفحة المسترجعة؛ لا نستنتجه من اسم خيار داخل اللوحة"],
+  ["canonical والخريطة", "canonical يشير إلى نفس المنتج، والرابط موجود في الخريطة", "هذه إشارات متسقة، لكنها لا تلغي noindex ولا تضمن الفهرسة"],
+  ["الدليل في Search Console", "مثال افتراضي لحالة استبعاد بسبب noindex، مع تسجيل وقت آخر زحف", "ميز بيانات الفهرس عن الاختبار المباشر؛ إن لم يتوفر التقرير اكتب غير متحقق"],
+  ["التصحيح والمالك", "مالك المتجر يعتمد إزالة noindex من هذا المنتج العام فقط؛ المنفذ يختبر الناتج", "الصلاحية أو خيار التعديل يتوقف على المنصة والباقة؛ سجل ما يحتاج دعمًا"],
+  ["التحقق والمتابعة", "بعد النشر: 200، التوجيه غير موجود، canonical صحيح، ثم طلب إعادة زحف إن أمكن", "سجل تاريخ الاختبار والطلب؛ اترك نتيجة الفهرسة معلقة حتى دليل لاحق"]
+ ];
+ return <section>
+ <h2>سجل فحص مكتمل: مثال افتراضي لمنتج مستبعد</h2>
+ <p>هذا تمرين توضيحي، وليس أوديت متجر عميل أو لقطة حقيقية من Search Console. نطاق shop.example مخصص للمثال ولا يُقدَّم كمتجر فعلي. افترض أن قميصًا متاحًا للبيع لا يظهر، ثم امشِ من الدليل إلى التصحيح بدل كتابة «تمت الأرشفة» بعد حفظ الوصف. القيم هنا مفترضة عمدًا؛ في عملك، لا تملأ خانة لم تختبرها.</p>
+ <div className="overflow-x-auto rounded-lg border border-border"><table className="w-full min-w-[650px] text-right text-sm"><thead><tr>{["البند", "القيمة الافتراضية", "ماذا تعني وما حدها؟"].map(x=><th key={x} className="p-3 align-top">{x}</th>)}</tr></thead><tbody>{rows.map(row=><tr key={row[0]} className="border-t border-border">{row.map(x=><td key={x} className="p-3 align-top">{x}</td>)}</tr>)}</tbody></table></div>
+ <p>على الهاتف مرر الجدول أفقيًا داخل إطاره. انسخ أسماء البنود في ورقة عمل، وأضف تاريخ الملاحظة، رابط الدليل أو مرفقه، اسم المنفذ، تاريخ النشر، موعد المراجعة وخطة التراجع. إذا أردت الاحتفاظ بلقطة من الحساب، أخفِ بيانات العملاء وأي معلومات لا يحتاجها الفحص.</p>
+ <h3>كيف تعرف أن الخطوة انتهت؟</h3>
+ <p>ينتهي الإصلاح التقني عندما يُنشر التغيير المعتمد وتُعاد اختبارات الوصول والتوجيه والنسخة المفضلة دون مشكلة جديدة. لا تنتهي متابعة الفهرسة بمجرد نجاح هذه الاختبارات. يمكن أن ينجح الاختبار المباشر ويظل تقرير الفهرس يعرض حالة الزحف السابقة. سجّل النتيجتين بوقتهما، وانتظر دليلًا جديدًا بدل تكرار الطلبات. وإذا لم تتوفر صلاحية Search Console، فالعبارة الدقيقة هي «أصلحنا التوجيه في الصفحة؛ حالة الفهرسة غير متحققة»، وليس «المنتج ظهر في جوجل».</p>
+ <p>في مثال مختلف، إن كانت الصفحة ممنوعة في robots، قد لا يقرأ Googlebot توجيه noindex أصلًا. افحص السببين منفصلين؛ لا تحذف ملف robots كله ولا تفتح صفحات خاصة لتجربة الفهرسة. وإن اختار جوجل canonical آخر، قارن النسختين والروابط والمحتوى بدل اعتبار noindex سببًا ثابتًا لكل حالة. راجع <a href="/blog/zid-seo-audit-service-ar">أوديت زد ومصفوفة مسؤوليات الإصلاح</a> عندما يحتاج العمل دعم المنصة أو مطور القالب.</p>
+ <h3>ربط زد لا يثبت اكتمال الحساب</h3>
+ <p>دليل زد الرسمي للربط، المحدث 13 أغسطس 2026، يوضح مثال URL Prefix والتحقق عبر Analytics أو Tag Manager ثم إرسال الخريطة. استخدم <a href="https://help.zid.sa/integrate-google-search-console/">دليل ربط زد مع Search Console</a> لتحديد مسار المنصة، ثم تحقق من الخاصية والملكية والبيانات المتاحة فعليًا. لا نخمن رابط ملف الخريطة ولا نفترض أن وجود زر الربط يعني اكتمال التحقق، ولا نحول خيارات الدليل إلى حصر لكل طرق التحقق التي يدعمها جوجل.</p>
+ </section>;
+}
+
 function PlatformServiceGuide({ guide }: { guide: (typeof platformServiceGuides)[number] }) {
  return <>
- <p>بقلم <a href="/ar">Amr Elbusaily</a> · مراجعة المصادر: {guide.slug === "salla-seo-service-scope-ar" || guide.slug === "zid-seo-audit-service-ar" ? "7 أكتوبر 2026" : "1 أكتوبر 2026"}</p>
+ <p>بقلم <a href="/ar">Amr Elbusaily</a> · مراجعة المصادر: {guide.slug === "salla-seo-service-scope-ar" || guide.slug === "zid-seo-audit-service-ar" ? "7 أكتوبر 2026" : guide.slug === "salla-zid-store-not-showing-google-ar" ? "8 أكتوبر 2026" : "1 أكتوبر 2026"}</p>
  {guide.sections.map(([heading,...paragraphs]) => <section key={heading}><h2>{heading}</h2>{paragraphs.map(text=><p key={text}>{text}</p>)}</section>)}
+ <IndexingEvidenceRecord slug={guide.slug} />
  <PlatformScopeBoundary slug={guide.slug} />
  <h2>حدد الخدمة المناسبة لمتجرك</h2>
  <p><a href="/ar#salla-zid-services">خدمات متاجر سلة وزد</a> · <a href="/ar/packages">الباقات والأسعار الحالية</a> · <a href="/ar/free-consultation">اطلب مراجعة متجرك</a></p>
@@ -254,5 +279,5 @@ function PlatformServiceGuide({ guide }: { guide: (typeof platformServiceGuides)
 }
 for (const guide of platformServiceGuides) {
  scaleArticleRegistry[guide.slug] = () => <PlatformServiceGuide guide={guide} />;
- scaleArticlePosts.push({ slug: guide.slug, title: guide.title, description: guide.description, date: "2026-10-01", updated: guide.slug === "salla-seo-service-scope-ar" || guide.slug === "zid-seo-audit-service-ar" ? "2026-10-07" : undefined, readTime: guide.readTime, lang: "ar", altSlug: undefined, faq: [...guide.faq] });
+ scaleArticlePosts.push({ slug: guide.slug, title: guide.title, description: guide.description, date: "2026-10-01", updated: guide.slug === "salla-seo-service-scope-ar" || guide.slug === "zid-seo-audit-service-ar" ? "2026-10-07" : guide.slug === "salla-zid-store-not-showing-google-ar" ? "2026-10-08" : undefined, readTime: guide.readTime, lang: "ar", altSlug: undefined, faq: [...guide.faq] });
       }
