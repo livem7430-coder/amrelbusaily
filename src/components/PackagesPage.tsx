@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { Check, Search, Megaphone, Rocket, Store } from "lucide-react";
 
 const base = "https://amrelbusaily.vercel.app";
@@ -450,25 +451,12 @@ export function PackagesPage({ lang }: { lang: Lang }) {
   const isArabic = lang === "ar";
   return (
     <div className="min-h-screen" dir={data.dir} lang={data.lang}>
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/70 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href={data.home} className="flex items-center gap-2 font-display font-semibold">
-            <span className="grid h-8 w-8 place-items-center rounded-md bg-primary font-mono text-sm text-primary-foreground">AE</span>
-            <span>{isArabic ? "عمرو البصيلي" : "Amr Elbusaily"}</span>
-          </a>
-          <nav className="flex items-center gap-4 text-sm text-muted-foreground">
-            <a href={data.services} className="hover:text-foreground">{isArabic ? "الخدمات" : "Services"}</a>
-            <a href={data.offers} className="hover:text-foreground">{isArabic ? "العروض" : "Offers"}</a>
-            <a href={data.blog} className="hidden hover:text-foreground sm:inline">{isArabic ? "المقالات" : "Articles"}</a>
-            <a href={data.other} className="font-mono text-xs hover:text-foreground">{isArabic ? "EN" : "AR"}</a>
-          </nav>
-        </div>
-      </header>
-      <main>
+      <SiteHeader lang={lang} active="packages" altHref={data.other} />
+      <main id="main-content">
         {/* Hero */}
         <section className="relative overflow-hidden border-b border-border">
           <div className="absolute inset-0 grid-bg" aria-hidden="true" />
-          <div className="relative mx-auto max-w-6xl px-6 py-20 text-center md:py-28">
+          <div className="relative mx-auto max-w-6xl px-6 py-20 text-center animate-rise md:py-28">
             <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">{data.eyebrow}</div>
             <h1 className="mx-auto mt-5 max-w-4xl whitespace-pre-line text-4xl font-semibold leading-tight md:text-6xl">{data.h1}</h1>
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-9 text-muted-foreground">{data.intro}</p>
@@ -713,12 +701,7 @@ export function PackagesPage({ lang }: { lang: Lang }) {
           </div>
         </section>
       </main>
-      <footer className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-3 px-6 py-8 text-sm text-muted-foreground">
-          <span>© {new Date().getFullYear()} {isArabic ? "عمرو البصيلي" : "Amr Elbusaily"}</span>
-          <span>{data.footer}</span>
-        </div>
-      </footer>
+      <SiteFooter lang={lang} />
     </div>
   );
-}
+            }
