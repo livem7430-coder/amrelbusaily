@@ -347,7 +347,7 @@ function Home() {
             <Link to="/packages" className="hover:text-foreground">Packages</Link>
             <a href="#work" className="hover:text-foreground">Work</a>
             <Link to="/blog" className="hover:text-foreground">Insights</Link>
-            <Link to="/free-consultation" className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 font-medium text-primary hover:bg-primary/15">Free consultation</Link>
+            <Link to="/free-consultation" className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 font-medium text-primary hover:bg-primary/15">Book a consultation</Link>
           </nav>
           <div className="flex items-center gap-3">
             <Link to="/ar" className="text-xs font-mono text-muted-foreground hover:text-foreground">AR</Link>
@@ -359,9 +359,8 @@ function Home() {
             </a>
           </div>
         </div>
-      </header>
-      <div className="border-b border-border/60 bg-background/95 px-6 py-3 md:hidden">
-        <nav aria-label="Quick navigation" className="mx-auto flex max-w-6xl gap-2 overflow-x-auto pb-1 text-xs text-muted-foreground">
+      <div className="border-t border-border/60 bg-background/95 px-6 py-3 md:hidden">
+        <nav aria-label="Quick navigation" className="mx-auto flex max-w-6xl gap-2 overflow-x-auto no-scrollbar text-xs text-muted-foreground">
           <Link to="/services" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Services</Link>
           <Link to="/offers" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">Offers</Link>
           <Link to="/packages" className="shrink-0 rounded-full border border-primary/30 bg-primary/10 px-3 py-2 text-primary hover:bg-primary/15">Packages</Link>
@@ -371,6 +370,7 @@ function Home() {
           <Link to="/free-consultation" className="shrink-0 rounded-full bg-primary px-3 py-2 font-medium text-primary-foreground">Start a project</Link>
         </nav>
       </div>
+      </header>
       <main id="main-content">
       <SeoAgentBanner lang="en" />
       {/* HERO */}
@@ -388,14 +388,14 @@ function Home() {
               <br />
               sustainable growth.
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground">
+            <p className="mt-6 max-w-xl text-lg text-muted-foreground max-md:pe-14">
               I'm Amr Elbusaily, an SEO and digital growth strategist. I help ambitious brands turn search visibility,
               content and AI into a reliable engine for qualified demand and revenue. Founder of A2M Digital Marketing Agency,
               with <span className="text-foreground">7 years</span> of experience across <span className="text-foreground">50+ projects</span>{" "}
               in e-commerce, SaaS and digital products.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/free-consultation" className="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground glow-primary transition hover:-translate-y-0.5 hover:opacity-95">Get a free SEO review</Link>
+            <div className="mt-8 flex flex-wrap gap-3 max-md:pe-14">
+              <Link to="/seo-audit" className="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground glow-primary transition hover:-translate-y-0.5 hover:opacity-95">Run a free SEO audit</Link>
               <Link to="/services" className="rounded-lg border border-border bg-surface/80 px-5 py-3 text-sm font-medium text-foreground transition hover:-translate-y-0.5 hover:border-primary/50 hover:bg-surface-2">Explore services</Link>
             </div>
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
@@ -636,7 +636,7 @@ function Home() {
       </main>
 
       <footer className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-muted-foreground md:flex-row">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 pb-28 pt-8 text-sm text-muted-foreground md:flex-row md:py-8">
           <div>© {new Date().getFullYear()} Amr Elbusaily. All rights reserved.</div>
           <div className="font-mono text-xs">SEO · Digital Marketing · AI Growth · E-commerce</div>
         </div>
