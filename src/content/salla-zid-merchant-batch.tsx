@@ -15,6 +15,9 @@ const aiSources = [
  ["Google: generative AI optimization guide", "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide"],
  ["Google: Search generative AI control", "https://support.google.com/webmasters/answer/16908024?hl=en"],
  ["Google: generative AI performance report", "https://support.google.com/webmasters/answer/16984139?hl=en"],
+ ["Zid: robots.txt editor and plan limits", "https://help.zid.sa/robots-txt/"],
+ ["Salla: SEO and robots.txt settings", "http://help.salla.sa/article/118146924"],
+ ["Google: updating hosted robots.txt", "https://developers.google.com/crawling/docs/robots-txt/submit-updated-robots-txt"],
  ["OpenAI: crawlers", "https://developers.openai.com/api/docs/bots"],
  ["Google: future shared AI training control", "https://developers.google.com/search/blog/2026/10/ai-training-control"],
 ];
@@ -167,8 +170,22 @@ const aiVisibilityAr: Article = {
     { heading: "خطة عملية لهذا الشهر", paragraphs: [
       "اكتب محتوى يجيب أسئلة عملائك الفعلية بإجابة مباشرة في أول السطر ثم تفصيل بعدها.",
       "نظف بيانات منتجاتك: عناوين وصور وتوفر وسعر متطابقة بين المتجر والخلاصة.",
-      "اجمع تقييمات حقيقية بإجراءات نظامية؛ الإجابات عن أفضل منتج أو متجر تستند إلى إشارات ثقة عامة.",
+      "اجمع تقييمات حقيقية بإجراءات نظامية؛ أظهر مصدر التقييم وسياسة جمعه دون شراء آراء أو اختلاق تجربة.",
       "راجع robots.txt وإعدادات منصتك للتأكد من عدم حظر زواحف البحث عن غير قصد.",
+    ]},
+    { heading: "أين تفحص إعدادات سلة وزد؟", paragraphs: [
+      "توثق سلة محرر Robots.txt داخل صفحة تحسين محركات البحث ثم الإعدادات العامة. وتوثق زد المسار: المتجر الإلكتروني، تحسين محركات البحث، ملف Robot.txt. يذكر دليل زد، المحدث في 25 أغسطس 2026، أن التخصيص متاح لباقة النمو والاحترافية. هذه معلومة عن واجهة المنصة، وليست تأكيدًا على باقة متجرك أو صلاحيات حسابك.",
+      "قبل أي تعديل احتفظ بنسخة من الملف الحالي، وافحص مجموعة الزاحف المقصود والمسار الحقيقي للمنتج. السماح في robots.txt لا يثبت أن جدار الحماية يسمح بالطلب، ولا أن الصفحة مفهرسة. كذلك منع الزحف ليس طريقة مضمونة لإزالة رابط من الفهرس؛ لا تخلط بينه وبين noindex. لا تنشر قاعدة عامة على المتجر كله لعلاج صفحة واحدة.",
+      "إذا لم تجد المحرر، أرسل للدعم اسم الزاحف ورابط صفحة عامة ونص المشكلة، دون كلمة مرور أو بيانات عميل. اطلب توضيح ما يمكن التحكم فيه في باقتك وما إذا كان الحظر في المنصة أو طبقة الحماية. لا تطلب السماح بكل الروبوتات بلا تمييز؛ قرار البحث والتدريب منفصل.",
+    ]},
+    { heading: "ورقة فحص صفحة منتج قبل طلب خدمة AI SEO", paragraphs: [
+      "هذا نموذج عمل مقترح، لا نتيجة عميل. اختر منتجًا متاحًا وتصنيفًا ودليل شراء يخدمان أسئلة مختلفة. لكل صفحة سجل الرابط النهائي، وحالة HTTP، والعنوان، واللغة، والرابط الأساسي canonical، وهل معلومات المقاس والسعر والتوفر ظاهرة كنص. ضع اسم المسؤول والدليل وتاريخ الفحص بجوار كل ملاحظة، ولا تكتف بعبارة الموقع جاهز للذكاء الاصطناعي.",
+      "مثال توضيحي: سؤال هل هذا الحذاء مناسب للمشي اليومي؟ يحتاج مواصفات واستخدامًا وحدودًا ومقاسات، لا فقرة تقول أفضل حذاء عشر مرات. اكتب ما تعرفه من بيانات المنتج، وما يحتاج الرجوع إلى الشركة المصنعة. إن لم تجرّب المنتج فلا تدّع تجربة شخصية، ولا تنقل تقييمًا غير موثق لتبدو الصفحة خبيرة.",
+      "رتب الإصلاحات حسب العائق: صفحة لا تفتح أولًا، ثم منع الزحف أو الفهرسة، ثم نقص بيانات القرار، ثم الروابط الداخلية والتحديث. بعد الإصلاح أعد اختبار الصفحة نفسها. إنشاء عشر مقالات لا يصلح صفحة منتج محجوبة، وزيادة عدد الكلمات لا تعوض معلومة مقاس أو شحن ناقصة.",
+    ]},
+    { heading: "سجل استشهاد يمكن مراجعته بدل لقطة انتقائية", paragraphs: [
+      "اكتب مجموعة صغيرة من أسئلة عملائك قبل الاختبار، منها سؤال مقارنة وسؤال استخدام وسؤال شراء، مع البلد واللغة. سجل السؤال كما كتبته، والأداة ووضع البحث والتاريخ، وهل ظهر رابطك فعلًا وما الرابط النهائي. ذكر اسم المتجر بلا رابط ليس زيارة ولا استشهادًا قابلاً للنقر، وظهورك عند البحث باسمك لا يساوي ظهورك لسؤال عام.",
+      "إذا لم يظهر الموقع، سجل ذلك أيضًا. الإجابات قد تختلف بين الجلسات والأيام؛ لا تحول تجربة واحدة إلى نسبة ظهور عامة. عندما تتوفر صلاحية التحليلات، قارن الإحالات وصفحات الدخول والطلبات المؤهلة بالفترة السابقة، مع توثيق التغييرات الأخرى. تقرير Search Console لا يقيس كل أدوات AI، ولقطة ChatGPT لا تثبت ارتفاع المبيعات.",
     ]},
     { heading: "كيف تقيس دون أوهام؟", paragraphs: [
       "يوثق Google تقرير أداء الذكاء الاصطناعي التوليدي في Search Console لقياس مرات الظهور في AI Overviews وAI Mode حسب الصفحة والبلد والجهاز. قد لا يظهر التقرير إذا لم تتجمع مرات ظهور كافية. لا نقول إن التقرير متاح في حسابك دون فحصه، ولا نقيس Gemini Apps بهذا التقرير.",
@@ -216,8 +233,22 @@ const aiVisibilityEn: Article = {
     { heading: "A practical plan for this month", paragraphs: [
       "Write content that answers your customers' real questions with a direct answer in the first line and detail after it.",
       "Clean your product data: titles, images, availability and price matching between the store and the feed.",
-      "Collect genuine reviews through proper processes; answers about the best product or store lean on public trust signals.",
+      "Collect genuine reviews through proper processes; show the source and collection policy without buying opinions or inventing experience.",
       "Review robots.txt and your platform settings to make sure search crawlers are not blocked by accident.",
+    ]},
+    { heading: "Where to check Salla and Zid controls", paragraphs: [
+      "Salla documents a Robots.txt editor under SEO settings and General settings. Zid documents Online Store, Search Engine Optimization, then Robot.txt. Zid's guide, updated August 25, 2026, says customization is available on Growth and Professional plans. This describes the platform UI, not the plan or permissions of your particular account.",
+      "Save the current file before changing anything. Check the named crawler group against a real product path. A robots.txt allowance does not prove a firewall permits the request or that the page is indexed. Blocking crawling is not a reliable removal method; do not confuse it with noindex or apply a store-wide block to fix one page.",
+      "If the editor is unavailable, send support the crawler name, a public page URL and the observed issue, without passwords or customer data. Ask which controls your plan exposes and whether a block comes from the platform or its protection layer. Do not indiscriminately allow every bot: search and training choices are separate.",
+    ]},
+    { heading: "A sample-page worksheet before buying AI SEO", paragraphs: [
+      "This is a proposed workflow, not a client result. Select an available product, a category and a buying guide serving different questions. Record each final URL, HTTP status, title, language, canonical URL and whether size, price and stock information are readable text. Add an owner, evidence and check date rather than a vague label saying AI-ready.",
+      "Illustrative question: is this shoe suitable for daily walking? A useful page needs specifications, uses, limits and sizing, not repeated claims that it is the best shoe. Use verified product facts and identify questions for the manufacturer. Do not invent first-hand testing or borrow an unverified review to simulate experience.",
+      "Prioritize inaccessible pages first, then crawl or indexing blocks, missing purchase information, internal discovery and freshness. Retest the same page after a fix. Ten new articles do not repair a blocked product page, and more words do not replace missing sizing or shipping information.",
+    ]},
+    { heading: "Keep a citation log rather than a selective screenshot", paragraphs: [
+      "Choose a small set of customer questions before testing, including comparison, use-case and purchase questions, with country and language. Log the exact question, tool, search mode, date and actual final link if shown. A brand mention without a link is not a visit or clickable citation; a branded query is not equivalent to visibility for a general question.",
+      "Record absences too. Answers can vary by session and date, so one test is not a general visibility percentage. With approved analytics access, compare referrals, landing pages and qualified enquiries with the preceding period while recording other changes. Search Console does not measure every AI tool, and a ChatGPT screenshot does not establish a sales increase.",
     ]},
     { heading: "How to measure without illusions", paragraphs: [
       "Google documents a Generative AI performance report with impressions for AI Overviews and AI Mode by page, country and device. It may not appear without enough impressions. Account availability has not been verified here, and this report does not measure Gemini Apps.",
