@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { WhatsAppIconButton } from "../components/WhatsAppIconButton";
+import { BackToTop } from "../components/SiteChrome";
 import { ThemeToggle } from "../components/ThemeToggle";
 
 function NotFoundComponent() {
@@ -153,6 +154,9 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isArabic =
+    pathname === "/ar" || pathname.startsWith("/ar/") || /-ar\/?$/.test(pathname);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -160,6 +164,7 @@ function RootComponent() {
       <Outlet />
       <ThemeToggle />
       <WhatsAppIconButton floating />
+      <BackToTop lang={isArabic ? "ar" : "en"} />
     </QueryClientProvider>
   );
 }
