@@ -290,7 +290,7 @@ function HomeAr() {
             <Link to="/ar/packages" className="hover:text-foreground">باقاتي</Link>
             <a href="#work" className="hover:text-foreground">الأعمال</a>
             <Link to="/blog/ar" className="hover:text-foreground">المقالات</Link>
-            <Link to="/ar/free-consultation" className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 font-medium text-primary hover:bg-primary/15">استشارة مجانية</Link>
+            <Link to="/ar/free-consultation" className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 font-medium text-primary hover:bg-primary/15">احجز استشارة</Link>
           </nav>
           <div className="flex items-center gap-3">
             <Link to="/" className="text-xs font-mono text-muted-foreground hover:text-foreground">EN</Link>
@@ -302,9 +302,8 @@ function HomeAr() {
             </a>
           </div>
         </div>
-      </header>
-      <div className="border-b border-border/60 bg-background/95 px-6 py-3 md:hidden">
-        <nav aria-label="التنقل السريع" className="mx-auto flex max-w-6xl gap-2 overflow-x-auto pb-1 text-xs text-muted-foreground">
+      <div className="border-t border-border/60 bg-background/95 px-6 py-3 md:hidden">
+        <nav aria-label="التنقل السريع" className="mx-auto flex max-w-6xl gap-2 overflow-x-auto no-scrollbar text-xs text-muted-foreground">
           <Link to="/ar/services" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">الخدمات</Link>
           <Link to="/ar/offers" className="shrink-0 rounded-full border border-border px-3 py-2 hover:border-primary hover:text-primary">العروض</Link>
           <Link to="/ar/packages" className="shrink-0 rounded-full border border-primary/30 bg-primary/10 px-3 py-2 text-primary hover:bg-primary/15">باقاتي</Link>
@@ -314,6 +313,7 @@ function HomeAr() {
           <Link to="/ar/free-consultation" className="shrink-0 rounded-full bg-primary px-3 py-2 font-medium text-primary-foreground">ابدأ مشروعك</Link>
         </nav>
       </div>
+      </header>
       <main id="main-content">
       <SeoAgentBanner lang="ar" />
       <section id="top" className="relative overflow-hidden">
@@ -330,14 +330,14 @@ function HomeAr() {
               <br />
               يحوّل البحث إلى نمو مستدام.
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground">
+            <p className="mt-6 max-w-xl text-lg text-muted-foreground max-md:pe-14">
               أنا عمرو البصيلي، استشاري SEO ونمو رقمي. أساعد العلامات الطموحة على تحويل الظهور في محركات البحث،
               والمحتوى، والذكاء الاصطناعي إلى منظومة مستدامة لجذب الطلب والعملاء وزيادة الإيرادات. مؤسس A2M Digital Marketing Agency،
               بخبرة <span className="text-foreground">7 سنوات</span> وأكثر من <span className="text-foreground">50 مشروعًا</span> في التجارة الإلكترونية
               وSaaS والمنتجات الرقمية.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/ar/free-consultation" className="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground glow-primary transition hover:-translate-y-0.5 hover:opacity-95">خد مراجعة SEO مجانية</Link>
+            <div className="mt-8 flex flex-wrap gap-3 max-md:pe-14">
+              <Link to="/ar/seo-audit" className="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground glow-primary transition hover:-translate-y-0.5 hover:opacity-95">افحص موقعك مجانًا</Link>
               <Link to="/ar/services" className="rounded-lg border border-border bg-surface/80 px-5 py-3 text-sm font-medium text-foreground transition hover:-translate-y-0.5 hover:border-primary/50 hover:bg-surface-2">شوف الخدمات</Link>
             </div>
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
@@ -532,7 +532,7 @@ function HomeAr() {
       </main>
 
       <footer className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-muted-foreground md:flex-row">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 pb-28 pt-8 text-sm text-muted-foreground md:flex-row md:py-8">
           <div>© {new Date().getFullYear()} عمرو البصيلي — جميع الحقوق محفوظة.</div>
           <div className="font-mono text-xs">SEO · Digital Marketing · AI Growth · E-commerce</div>
         </div>
