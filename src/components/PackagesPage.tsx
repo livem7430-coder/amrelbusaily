@@ -130,6 +130,21 @@ const content = {
       ],
       cta: "اطلب متجرك",
     },
+    storeServicesPackage: {
+      icon: "store" as const,
+      name: "خدمات المتاجر الإلكترونية",
+      tag: "Store SEO + Design & Titles",
+      priceSar: "999",
+      priceNote: "باقة واحدة",
+      description: "سيو متجرك الإلكتروني وتظبيطه من ناحية التصميم والعناوين في باقة واحدة بسعر واضح.",
+      fit: "لصاحب المتجر الإلكتروني اللي عايز متجره يظهر في البحث ويتظبط تصميمه وعناوينه.",
+      includes: [
+        "سيو المتجر الإلكتروني",
+        "تظبيط تصميم المتجر",
+        "تحسين عناوين المتجر",
+      ],
+      cta: "اطلب الباقة",
+    },
     honestyLabel: "مشمول وغير مشمول",
     honestyTitle: "وضوح كامل قبل ما تدفع أي حاجة",
     honestyCards: [
@@ -271,6 +286,21 @@ const content = {
       ],
       cta: "Order your store",
     },
+    storeServicesPackage: {
+      icon: "store" as const,
+      name: "E-commerce Store Services",
+      tag: "Store SEO + Design & Titles",
+      priceSar: "999",
+      priceNote: "One package",
+      description: "SEO for your online store plus store tuning across design and titles, in one clearly priced package.",
+      fit: "For online store owners who want their store to show up in search and its design and titles tuned.",
+      includes: [
+        "Online store SEO",
+        "Store design tuning",
+        "Store title optimization",
+      ],
+      cta: "Order this package",
+    },
     honestyLabel: "Included and not included",
     honestyTitle: "Full clarity before you pay anything",
     honestyCards: [
@@ -366,6 +396,20 @@ function makeSchema(data: (typeof content)[Lang]) {
               priceSpecification: [
                 { "@type": "UnitPriceSpecification", price: data.storePackage.priceUsd.replace(",", ""), priceCurrency: "USD" },
                 { "@type": "UnitPriceSpecification", price: data.storePackage.priceSar.replace(",", ""), priceCurrency: "SAR" },
+              ],
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 5,
+            item: {
+              "@type": "Offer",
+              name: data.storeServicesPackage.name,
+              description: data.storeServicesPackage.description,
+              url,
+              seller: { "@id": `${base}/#person` },
+              priceSpecification: [
+                { "@type": "UnitPriceSpecification", price: data.storeServicesPackage.priceSar.replace(",", ""), priceCurrency: "SAR" },
               ],
             },
           },
@@ -541,6 +585,50 @@ export function PackagesPage({ lang }: { lang: Lang }) {
                   </div>
                   <ul className="grid gap-3 sm:grid-cols-2">
                     {data.storePackage.includes.map((item) => (
+                      <li key={item} className="flex items-start gap-2.5 rounded-xl border border-border/70 bg-background/40 p-4 text-sm leading-7">
+                        <Check className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                        <span className="text-muted-foreground">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </div>
+
+            {/* E-commerce store services package (999 SAR, one package) */}
+            <div className="mt-6">
+              <article className="relative overflow-hidden rounded-2xl border border-border bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_0_40px_-14px_var(--primary-glow)] md:p-10">
+                <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+                  <div>
+                    <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-primary">
+                      <Store className="h-4 w-4" aria-hidden="true" />
+                      {data.storeServicesPackage.tag}
+                    </span>
+                    <h3 className="mt-4 text-2xl font-semibold leading-snug md:text-3xl">{data.storeServicesPackage.name}</h3>
+                    <div className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span className="font-display text-5xl font-bold tracking-tight text-primary">{data.storeServicesPackage.priceSar}</span>
+                      <span className="text-sm font-medium text-foreground">{data.sarLabel}</span>
+                    </div>
+                    <div className="mt-2 inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs text-primary">{data.storeServicesPackage.priceNote}</div>
+                    <p className="mt-5 leading-8 text-muted-foreground">{data.storeServicesPackage.description}</p>
+                    <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                      <strong className="text-foreground">{data.bestFor}: </strong>
+                      {data.storeServicesPackage.fit}
+                    </p>
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      <ActionLink
+                        href={`mailto:amreelbasily@gmail.com?subject=${encodeURIComponent(`${data.emailSubject} — ${data.storeServicesPackage.name}`)}`}
+                        primary
+                      >
+                        {data.storeServicesPackage.cta}
+                      </ActionLink>
+                      <ActionLink href={isArabic ? "/ar/services/ecommerce-store-services" : "/services/ecommerce-store-services"}>
+                        {isArabic ? "تفاصيل الخدمة" : "Service details"}
+                      </ActionLink>
+                    </div>
+                  </div>
+                  <ul className="grid gap-3 sm:grid-cols-2">
+                    {data.storeServicesPackage.includes.map((item) => (
                       <li key={item} className="flex items-start gap-2.5 rounded-xl border border-border/70 bg-background/40 p-4 text-sm leading-7">
                         <Check className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
                         <span className="text-muted-foreground">{item}</span>
