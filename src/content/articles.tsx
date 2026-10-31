@@ -11,6 +11,7 @@ import {
 } from "@/content/seo-growth-articles";
 import { GrowthMarketingServicesAr, GrowthMarketingServicesEn } from "@/content/growth-marketing-articles";
 import { scaleArticleRegistry } from "@/content/scale-article-batch";
+import { sallaZidMerchantRegistry } from "@/content/salla-zid-merchant-batch";
 import {
   LocalSeoEgyptAr,
   LocalSeoEgyptEn,
@@ -583,5 +584,6 @@ export const articles: Record<string, ComponentType> = {
   ...aiDigitalProductArticles,
   ...aiEcommerce100ArticleRegistry,
   ...scaleArticleRegistry,
+  ...sallaZidMerchantRegistry,
   ...buyerIntentSeoArticles,
 };
