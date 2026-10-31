@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useAutoHideOnScroll } from "@/lib/use-auto-hide-on-scroll";
 
 type Theme = "dark" | "light";
 const STORAGE_KEY = "amrelbusaily-theme";
@@ -14,6 +15,7 @@ function applyTheme(theme: Theme) {
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>("dark");
+  const hidden = useAutoHideOnScroll();
 
   useEffect(() => {
     let saved: string | null = null;
@@ -38,7 +40,7 @@ export function ThemeToggle() {
       aria-label={isLight ? "Switch to dark mode" : "Switch to light mode"}
       aria-pressed={isLight}
       title={isLight ? "Dark mode" : "Light mode"}
-      className="fixed bottom-5 left-5 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-surface/95 text-foreground shadow-lg backdrop-blur transition hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background md:bottom-6 md:left-6"
+      className={`fixed bottom-[4.375rem] end-4 z-50 inline-flex h-8 w-8 items-center justify-center rounded-full border border-border bg-surface/95 text-foreground shadow-lg backdrop-blur transition hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background md:bottom-6 md:left-6 md:right-auto md:h-11 md:w-11 ${hidden ? "max-md:pointer-events-none max-md:translate-y-24 max-md:opacity-0" : ""}`}
     >
       {isLight ? (
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.7 6.7 0 0 0 21 12.8Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
