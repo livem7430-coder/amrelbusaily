@@ -4,6 +4,20 @@ import type { ComponentType } from "react";
 type Section = { heading: string; paragraphs: string[] };
 type Article = { title: string; directAnswer: string; sections: Section[]; faq: { q: string; a: string }[]; serviceHref: string; serviceLabel: string };
 
+const merchantSources = [
+ ["Salla: product feeds", "https://help.salla.sa/article/1272723726"],
+ ["Zid: Merchant Center integration", "https://helpdesk.zid.sa/en/apps/google-merchant-center"],
+ ["Google: product data specification", "https://support.google.com/merchants/answer/7052112?hl=en"],
+ ["Google: availability mismatches", "https://support.google.com/merchants/answer/9773127?hl=en"],
+];
+const aiSources = [
+ ["Google: generative AI optimization guide", "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide"],
+ ["Google: Search generative AI control", "https://support.google.com/webmasters/answer/16908024?hl=en"],
+ ["Google: generative AI performance report", "https://support.google.com/webmasters/answer/16984139?hl=en"],
+ ["OpenAI: crawlers", "https://developers.openai.com/api/docs/bots"],
+ ["Google: future shared AI training control", "https://developers.google.com/search/blog/2026/10/ai-training-control"],
+];
+
 function ArticleView({ article, lang }: { article: Article; lang: "ar" | "en" }) {
   return (
     <>
@@ -18,7 +32,10 @@ function ArticleView({ article, lang }: { article: Article; lang: "ar" | "en" })
         <h2>{lang === "ar" ? "الأسئلة الشائعة" : "Frequently asked questions"}</h2>
         {article.faq.map((item) => <div key={item.q}><h3>{item.q}</h3><p>{item.a}</p></div>)}
       </section>
-      <p><a href={article.serviceHref}>{article.serviceLabel}</a></p>
+      <h2>{lang === "ar" ? "المصادر الرسمية" : "Official sources"}</h2>
+      <p>{lang === "ar" ? "راجعت المصادر في 31 أكتوبر 2026. خطوات الفحص المقترحة ليست نتيجة عميل أو فحصًا لحسابك." : "Sources reviewed October 31, 2026. Suggested checks are not a client result or an audit of your account."}</p>
+      <ul>{(article === merchantCenterAr || article === merchantCenterEn ? merchantSources : aiSources).map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
+      <p><a href={article.serviceHref}>{article.serviceLabel}</a>{" · "}<a href={lang === "ar" ? "/ar/packages" : "/packages"}>{lang === "ar" ? "الباقات" : "Packages"}</a></p>
     </>
   );
 }
@@ -36,7 +53,7 @@ const merchantCenterAr: Article = {
       "من لوحة تحكم زد افتح التطبيقات ثم سوق التطبيقات وابحث عن Google Merchant Center؛ التطبيق مجاني ولا يحتاج إدخال أي كود.",
       "من صفحة التطبيق اطلب رابط الخلاصة، واختر Google كمنصة، ثم اللغة والعملة اللتين تبيع بهما، ثم أنشئ الرابط وانسخه.",
       "أضف الرابط في حسابك على Merchant Center كمصدر بيانات؛ تحافظ زد على تحديث الخلاصة فتبقى الأسعار وحالة التوفر متطابقة دون رفع يدوي.",
-      "قبل أول جلب، راجع أن كل منتج له صورة وبياناته المطلوبة مكتملة؛ المنتجات الناقصة تُرفض وتؤخر اعتماد باقي المنتجات.",
+      "قبل أول جلب، راجع أن كل منتج له صورة وبياناته المطلوبة مكتملة؛ قد تُرفض المنتجات الناقصة؛ راجع كل مشكلة على مستوى المنتج أو الحساب بدل افتراض أن رفض عنصر يعني رفض الكتالوج كله.",
     ]},
     { heading: "خطوات الربط في سلة", paragraphs: [
       "أنشئ حساب Merchant Center باسم نشاطك وبلد البيع واربطه بمتجرك على سلة قبل البدء بإرسال البيانات.",
@@ -191,10 +208,10 @@ const outOfStockEn: Article = {
 
 const aiVisibilityAr: Article = {
   title: "ظهور متجرك في إجابات الذكاء الاصطناعي: AI Overviews وChatGPT وGemini",
-  directAnswer: "لا يوجد ملف أو ترميز يضمن الظهور في إجابات الذكاء الاصطناعي. وفق توثيق Google، لا متطلبات إضافية لظهور صفحاتك في AI Overviews أو AI Mode غير أساسيات السيو: صفحة مفهرسة ومؤهلة للمقتطفات ومحتوى نصي واضح. وفي بحث ChatGPT يعتمد ظهور المواقع على زاحف OAI-SearchBot. عملك الحقيقي: جودة المحتوى والبيانات وإتاحة الزواحف الصحيحة، دون تصديق وعود بظهور مضمون.",
+  directAnswer: "لا يوجد ملف أو ترميز يضمن الظهور في إجابات الذكاء الاصطناعي. وفق توثيق Google، ابدأ بصفحة مفهرسة ومؤهلة للمقتطفات ومحتوى مفيد، وراجع اختيار تضمين الموقع في ميزات البحث التوليدية داخل Search Console حسب دليل Google الأحدث. وفي بحث ChatGPT يعتمد ظهور المواقع على زاحف OAI-SearchBot. عملك الحقيقي: جودة المحتوى والبيانات وإتاحة الزواحف الصحيحة، دون تصديق وعود بظهور مضمون.",
   sections: [
     { heading: "كيف تختار أدوات الذكاء الاصطناعي ما تعرضه؟", paragraphs: [
-      "في بحث Google تعرض AI Overviews وAI Mode روابط داعمة من صفحات مفهرسة ومؤهلة للمقتطفات، وتنص Google على عدم وجود متطلبات تقنية إضافية ولا ترميز خاص لهذه الميزات.",
+      "في بحث Google تعرض AI Overviews وAI Mode روابط داعمة من صفحات مفهرسة ومؤهلة للمقتطفات. يضيف دليل التحسين الأحدث ضرورة تضمين الموقع في ميزات البحث التوليدية من Search Console. لا يحتاج ذلك إلى ترميز خاص، ولا نعرف حالة حساب متجرك دون فحصه بصلاحية مناسبة.",
       "في ChatGPT يزحف OAI-SearchBot لتظهر المواقع في نتائج البحث؛ حظره في robots.txt يعني عدم ظهور موقعك كمصدر في إجابات البحث، مع احتمال بقائه رابطًا تنقليًا في حالات محدودة.",
       "القاسم المشترك بين الأدوات: محتوى نصي واضح يجيب أسئلة حقيقية، وبيانات نشاطك محدثة في كل مكان تقرأ منه هذه الأنظمة.",
     ]},
@@ -207,10 +224,14 @@ const aiVisibilityAr: Article = {
       "يفصل OpenAI بين الزواحف: OAI-SearchBot للبحث وGPTBot للتدريب، ويمكنك السماح بأحدهما وحظر الآخر، ويستغرق تطبيق تغيير robots.txt لديهم نحو 24 ساعة.",
       "لدى Google يكون التحكم في ميزات البحث بأدوات المقتطفات مثل nosnippet وdata-nosnippet وmax-snippet وnoindex، بينما يحد Google-Extended من استخدام المحتوى في التدريب والتأسيس في أنظمة أخرى دون التأثير على ظهور البحث.",
       "في أكتوبر 2026 أعلنت Google نيتها دعم إشارة تفضيل تدريب موحدة داخل robots.txt بالتعاون مع مزودي ذكاء اصطناعي آخرين باستهداف عام 2027؛ هذا مخطط مستقبلي لا أداة تعمل اليوم، فلا تبن عليه قرارات حالية.",
-      "ملاحظة مهمة لتجار سلة وزد: ملف robots.txt في المنصات الجاهزة يدار من المنصة، فراجع إعداداتك واسأل الدعم قبل افتراض أنك تستطيع تعديل كل قواعد الزحف بنفسك.",
+      "ملاحظة مهمة لتجار سلة وزد: صلاحيات تعديل robots.txt تختلف بحسب المنصة والإعدادات المتاحة؛ اسأل الدعم وافحص الملف الناتج بدل افتراض أنك تستطيع تعديل كل قاعدة بنفسك.",
+    ]},
+    { heading: "Gemini Apps ليست AI Overviews", paragraphs: [
+      "ظهورك في Gemini Apps يختلف عن الظهور في ميزات بحث Google. إعلان Google في 30 أكتوبر يوضح أن المواقع التي تسمح صراحة بـ Google-Extended تكون مؤهلة للظهور بروابط عبر التأسيس في Gemini Apps؛ الأهلية لا تعني أن كل إجابة ستختار الموقع.",
+      "لا تغيّر سياسة التدريب لمجرد الحصول على زيارة: Google-Extended يغطي استخدامات تدريب وتأسيس خارج البحث، بينما تضمين ميزات Search التوليدية له تحكم مستقل في Search Console. حدد الاستخدام الذي تريد السماح به قبل أي تعديل؛ هذه المقالة لا تغير إعدادات حسابك.",
     ]},
     { heading: "خرافات منتشرة عن الظهور في أدوات AI", paragraphs: [
-      "لا يحتاج ظهورك إلى ملفات نصية جديدة مثل llms.txt ولا إلى ترميز schema خاص؛ تنص Google على ذلك صراحة.",
+      "لا يحتاج ظهورك في ميزات Google Search إلى ملفات مثل llms.txt أو ترميز schema خاص؛ هذا حكم يخص بحث Google، وليس وعدًا بكيفية عمل كل أداة AI.",
       "لا يوجد تسجيل رسمي لمتجرك داخل ChatGPT يضمن الاستشهاد، ولا باقة مدفوعة تشتري ظهورًا في الإجابات.",
       "البيانات المنظمة تساعد الأنظمة على الفهم وعلى الأهلية لميزات معينة، لكنها لا تضمن أن تستشهد بك أي أداة.",
     ]},
@@ -221,7 +242,7 @@ const aiVisibilityAr: Article = {
       "راجع robots.txt وإعدادات منصتك للتأكد من عدم حظر زواحف البحث عن غير قصد.",
     ]},
     { heading: "كيف تقيس دون أوهام؟", paragraphs: [
-      "في Search Console تحتسب زيارات ميزات الذكاء الاصطناعي ضمن نوع بحث الويب المعتاد؛ لا يوجد تقرير يضمن لك عدد مرات الاستشهاد.",
+      "يوثق Google تقرير أداء الذكاء الاصطناعي التوليدي في Search Console لقياس مرات الظهور في AI Overviews وAI Mode حسب الصفحة والبلد والجهاز. قد لا يظهر التقرير إذا لم تتجمع مرات ظهور كافية. لا نقول إن التقرير متاح في حسابك دون فحصه، ولا نقيس Gemini Apps بهذا التقرير.",
       "اختبر أسئلة عملائك يدويًا في الأدوات كل فترة وسجل ما تراه بتاريخه، وتعامل مع أي خدمة تعدك بظهور مضمون كعلامة تحذير.",
     ]},
   ],
@@ -236,10 +257,10 @@ const aiVisibilityAr: Article = {
 
 const aiVisibilityEn: Article = {
   title: "Getting Your Store Into AI Answers: AI Overviews, ChatGPT and Gemini",
-  directAnswer: "No file or markup can guarantee inclusion in AI answers. Per Google's documentation, there are no additional requirements for AI Overviews or AI Mode beyond SEO fundamentals: an indexed page eligible for snippets with clear textual content. In ChatGPT search, site visibility depends on the OAI-SearchBot crawler. The real work is content and data quality plus allowing the right crawlers - while rejecting anyone who promises guaranteed inclusion.",
+  directAnswer: "No file or markup can guarantee inclusion in AI answers. Start with indexed, snippet-eligible pages and useful content, then check inclusion in Search generative AI features in Search Console, as described in Google's newer optimization guide. In ChatGPT search, site visibility depends on the OAI-SearchBot crawler. The real work is content and data quality plus allowing the right crawlers - while rejecting anyone who promises guaranteed inclusion.",
   sections: [
     { heading: "How AI tools choose what to show", paragraphs: [
-      "In Google Search, AI Overviews and AI Mode surface supporting links from indexed, snippet-eligible pages; Google states there are no extra technical requirements and no special markup for these features.",
+      "In Google Search, AI Overviews and AI Mode surface supporting links from indexed, snippet-eligible pages; Google's newer optimization guide also requires inclusion in Search generative AI features in Search Console. No special markup is needed; the setting for your property has not been checked here.",
       "In ChatGPT, OAI-SearchBot crawls sites so they can appear in ChatGPT search results; blocking it in robots.txt means your site will not be shown as a source in search answers, though it may still appear as a navigational link in limited cases.",
       "The common denominator across tools: clear textual content answering real questions, and business data that is current wherever these systems read it.",
     ]},
@@ -252,10 +273,14 @@ const aiVisibilityEn: Article = {
       "OpenAI separates its crawlers: OAI-SearchBot for search and GPTBot for training. You can allow one and disallow the other, and robots.txt changes take about 24 hours to apply on their side.",
       "At Google, AI features in Search are governed by snippet controls such as nosnippet, data-nosnippet, max-snippet and noindex, while Google-Extended limits training and grounding use in some other systems without affecting Search visibility.",
       "In October 2026 Google announced plans to support a shared machine-readable AI training preference signal in robots.txt with other AI providers, targeting 2027. That is a future plan, not a working control today - do not build current decisions on it.",
-      "Important for Salla and Zid merchants: robots.txt on hosted platforms is managed by the platform, so check your settings and ask support before assuming you can edit every crawler rule yourself.",
+      "Important for Salla and Zid merchants: crawler-rule controls vary by platform and available settings. Ask support and inspect the served robots.txt rather than assuming every rule is editable.",
+    ]},
+    { heading: "Gemini Apps are not AI Overviews", paragraphs: [
+      "Google's October 30 announcement says sites that specifically allow Google-Extended are eligible to appear as grounding links in Gemini Apps. That is distinct from AI Overviews and AI Mode in Google Search, and eligibility does not guarantee a citation.",
+      "Do not change a training policy just to seek traffic. Google-Extended covers training and grounding uses outside Search, while Search generative AI inclusion has a separate Search Console control. Decide the intended use before changing a setting; this article changes no account controls.",
     ]},
     { heading: "Common myths about AI visibility", paragraphs: [
-      "You do not need new text files such as llms.txt or any special schema to appear; Google states this explicitly.",
+      "Google Search does not require llms.txt or special schema for its AI features. This statement concerns Google Search, not every AI product.",
       "There is no official registration inside ChatGPT that guarantees citation, and no paid package that buys inclusion in answers.",
       "Structured data helps systems understand content and qualify for certain features, but it never guarantees that any tool will cite you.",
     ]},
@@ -266,7 +291,7 @@ const aiVisibilityEn: Article = {
       "Review robots.txt and your platform settings to make sure search crawlers are not blocked by accident.",
     ]},
     { heading: "How to measure without illusions", paragraphs: [
-      "In Search Console, AI-feature traffic is counted within the regular Web search type; no report guarantees you a citation count.",
+      "Google documents a Generative AI performance report with impressions for AI Overviews and AI Mode by page, country and device. It may not appear without enough impressions. Account availability has not been verified here, and this report does not measure Gemini Apps.",
       "Manually test your customers' questions in the tools every so often and log what you see with its date, and treat any service promising guaranteed inclusion as a warning sign.",
     ]},
   ],
@@ -282,8 +307,6 @@ const aiVisibilityEn: Article = {
 export const sallaZidMerchantRegistry: Record<string, ComponentType> = {
   "salla-zid-merchant-center-ar": () => <ArticleView article={merchantCenterAr} lang="ar" />,
   "salla-zid-merchant-center-en": () => <ArticleView article={merchantCenterEn} lang="en" />,
-  "out-of-stock-products-seo-ar": () => <ArticleView article={outOfStockAr} lang="ar" />,
-  "out-of-stock-products-seo-en": () => <ArticleView article={outOfStockEn} lang="en" />,
   "ai-visibility-ecommerce-ar": () => <ArticleView article={aiVisibilityAr} lang="ar" />,
   "ai-visibility-ecommerce-en": () => <ArticleView article={aiVisibilityEn} lang="en" />,
 };
@@ -291,8 +314,6 @@ export const sallaZidMerchantRegistry: Record<string, ComponentType> = {
 export const sallaZidMerchantPosts: BlogPost[] = [
   { slug: "salla-zid-merchant-center-ar", title: merchantCenterAr.title, description: "خطوات ربط متجر سلة أو زد بـ Google Merchant Center: إنشاء الخلاصة، السمات المطلوبة لقبول المنتجات، وأخطاء التطابق الشائعة بين الخلاصة وصفحة المنتج.", date: "2026-10-31", readTime: "10 دقائق", lang: "ar", altSlug: "salla-zid-merchant-center-en", faq: merchantCenterAr.faq },
   { slug: "salla-zid-merchant-center-en", title: merchantCenterEn.title, description: "How to connect a Salla or Zid store to Google Merchant Center: feed creation, the attributes product approval depends on, and common feed-to-page mismatch errors.", date: "2026-10-31", readTime: "10 min read", lang: "en", altSlug: "salla-zid-merchant-center-ar", faq: merchantCenterEn.faq },
-  { slug: "out-of-stock-products-seo-ar", title: outOfStockAr.title, description: "كيف تدير صفحات المنتجات النافدة: متى تبقي الصفحة ومتى تحولها، ومطابقة التوفر بين المتجر والخلاصة والبيانات المنظمة.", date: "2026-10-31", readTime: "9 دقائق", lang: "ar", altSlug: "out-of-stock-products-seo-en", faq: outOfStockAr.faq },
-  { slug: "out-of-stock-products-seo-en", title: outOfStockEn.title, description: "How to handle out-of-stock product pages: when to keep, when to redirect, and matching availability across store, feed and structured data.", date: "2026-10-31", readTime: "9 min read", lang: "en", altSlug: "out-of-stock-products-seo-ar", faq: outOfStockEn.faq },
   { slug: "ai-visibility-ecommerce-ar", title: aiVisibilityAr.title, description: "ما الذي يحتاجه متجرك فعلًا للظهور في AI Overviews وChatGPT وGemini: أساسيات جوجل الرسمية، زواحف OpenAI، وخرافات يجب تجنبها.", date: "2026-10-31", readTime: "11 دقيقة", lang: "ar", altSlug: "ai-visibility-ecommerce-en", faq: aiVisibilityAr.faq },
   { slug: "ai-visibility-ecommerce-en", title: aiVisibilityEn.title, description: "What your store actually needs to appear in AI Overviews, ChatGPT and Gemini: Google's official fundamentals, OpenAI crawlers, and myths to avoid.", date: "2026-10-31", readTime: "11 min read", lang: "en", altSlug: "ai-visibility-ecommerce-ar", faq: aiVisibilityEn.faq },
 ];
