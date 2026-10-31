@@ -112,6 +112,14 @@
   mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
 }
 
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @utility glow-primary {
   box-shadow:
     0 0 0 1px var(--primary-glow),
@@ -174,4 +182,4 @@
 .ag-js [data-ag].ag-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .ag-js [data-ag] { opacity: 1; transform: none; transition: none; }
-    }
+}
