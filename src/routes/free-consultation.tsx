@@ -100,7 +100,6 @@ function FreeConsultation() {
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <Link to="/blog" className="hover:text-foreground">Blog</Link>
             <Link to="/ar/free-consultation" className="hover:text-foreground">النسخة العربية</Link>
-            <Link to="/ar" className="font-mono text-xs hover:text-foreground">AR</Link>
           </div>
         </div>
       </header>
@@ -230,7 +229,7 @@ function FreeConsultation() {
       </section>
 
       <footer className="border-t border-border">
-        <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-muted-foreground">
+        <div className="mx-auto max-w-6xl px-6 pb-28 pt-8 text-sm text-muted-foreground md:py-8">
           © {new Date().getFullYear()} Amr Elbusaily
         </div>
       </footer>
