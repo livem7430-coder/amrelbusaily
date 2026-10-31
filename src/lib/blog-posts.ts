@@ -1,6 +1,7 @@
 import { longFormBlogPosts } from "@/content/long-form-metadata-batch";
 import { aiDigitalProductPosts } from "@/content/ai-digital-products-metadata";
 import { scaleArticlePosts } from "@/content/scale-article-batch";
+import { sallaZidMerchantPosts } from "@/content/salla-zid-merchant-batch";
 import { aiEcommerce100Posts } from "@/content/ai-ecommerce-100-metadata";
 
 export interface BlogPost {
@@ -1313,4 +1314,5 @@ export const blogPosts: BlogPost[] = [
   ...aiDigitalProductPosts,
   ...aiEcommerce100Posts,
   ...scaleArticlePosts,
+  ...sallaZidMerchantPosts,
 ];
