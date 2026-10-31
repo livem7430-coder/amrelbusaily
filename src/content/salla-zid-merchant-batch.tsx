@@ -5,6 +5,7 @@ type Section = { heading: string; paragraphs: string[] };
 type Article = { title: string; directAnswer: string; sections: Section[]; faq: { q: string; a: string }[]; serviceHref: string; serviceLabel: string };
 
 const merchantSources = [
+ ["Salla: setup and verification", "https://help.salla.sa/article/%D8%B1%D8%A8%D8%B7-%D8%AA%D8%AC%D8%A7%D8%B1%D8%AA%D9%83-%D9%85%D8%B9-%D9%85%D8%B1%D9%83%D8%B2-%D8%AC%D9%88%D8%AC%D9%84-%D9%84%D9%84%D8%A8%D9%8A%D8%B9-%D8%A8%D8%A7%D9%84%D8%AA%D8%AC%D8%B2%D8%A6%D8%A9-google-merchant-center/v25sqpe3tj6f99g3y5fl6p8b"],
  ["Salla: product feeds", "https://help.salla.sa/article/1272723726"],
  ["Zid: Merchant Center integration", "https://helpdesk.zid.sa/en/apps/google-merchant-center"],
  ["Google: product data specification", "https://support.google.com/merchants/answer/7052112?hl=en"],
@@ -56,8 +57,8 @@ const merchantCenterAr: Article = {
       "قبل أول جلب، راجع أن كل منتج له صورة وبياناته المطلوبة مكتملة؛ قد تُرفض المنتجات الناقصة؛ راجع كل مشكلة على مستوى المنتج أو الحساب بدل افتراض أن رفض عنصر يعني رفض الكتالوج كله.",
     ]},
     { heading: "خطوات الربط في سلة", paragraphs: [
-      "أنشئ حساب Merchant Center باسم نشاطك وبلد البيع واربطه بمتجرك على سلة قبل البدء بإرسال البيانات.",
-      "اعتمد على الخلاصات بدل الإدخال اليدوي: الخلاصة الأساسية هي المصدر المركزي لبيانات منتجاتك، والخلاصة التكميلية تضيف سمات أو تصححها ولا تصلح قائمة مستقلة بذاتها.",
+      "بحسب دليل سلة، يحتاج الربط دومينًا خاصًا بالمتجر. من متجر تطبيقات سلة ثبّت تطبيق Google Merchant Center، ثم افتح إعداداته من خيارات التطبيق في التطبيقات المثبتة وانسخ رابط ملف المنتجات. لا تنسخ رابط أي متجر آخر.",
+      "في Merchant Center أدخل بيانات النشاط، وأكمل التحقق من ملكية الموقع والمطالبة به. اضبط بلدان الشحن وتكاليفه حسب ما تقدمه فعلًا، ثم أضف مصدر منتجات من رابط ملف والصق رابط سلة. أسماء القوائم قد تتغير؛ دليل سلة المرتبط أدناه هو مرجع خطوات المنصة، ومساعدة Google هي مرجع حالة الحساب.",
       "حدد سمات كل منتج بدقة: بلد البيع واللغة والتوفر والسعر والوجهات التي تريد العرض فيها، فهذه السمات هي ما يستخدمه Google لتجميع منتجاتك وعرضها.",
     ]},
     { heading: "السمات التي يتوقف عليها قبول منتجاتك", paragraphs: [
@@ -73,6 +74,8 @@ const merchantCenterAr: Article = {
     { heading: "ماذا بعد اعتماد المنتجات؟", paragraphs: [
       "راجع تقارير Merchant Center دوريًا: المنتجات المرفوضة، تحذيرات البيانات، وأداء القوائم المجانية.",
       "حسن بيانات المنتج نفسها من عناوين وصور ووصف، فهي ما يظهر في النتائج فعلًا، وليس مجرد وجود الخلاصة.",
+      "ورقة تسليم الربط: رابط المتجر، مالك الحساب، بلد البيع، اللغة والعملة، رابط مصدر البيانات، تاريخ آخر جلب، عدد العناصر المعالجة، وعينة من معرفات المنتجات وحالتها. لا تشارك رمز التحقق أو كلمة المرور داخل الورقة؛ أعط المتخصص صلاحية مناسبة فقط.",
+      "اختبار توضيحي قبل التسليم: اختر منتجًا بسيطًا وآخر له لون أو مقاس مختلف. قارن المعرف والرابط والسعر والعملة والتوفر في المصدر وفي الصفحة. بعد تعديل مخزون واحد، انتظر الجلب التالي وتحقق من القيمة المرسلة؛ لا تعتبر ظهور رابط المصدر وحده نجاحًا للمزامنة.",
       "إذا احتجت مراجعة شاملة لبيانات متجرك وظهوره في Google، فهذا جزء من خدمة تحسين متاجر سلة وزد التي نقدمها.",
     ]},
   ],
@@ -98,11 +101,11 @@ const merchantCenterEn: Article = {
       "In the Zid dashboard open Apps, then App Market, and search for Google Merchant Center; the app is free and needs no code.",
       "On the app page request your feed link, choose Google as the platform, pick the language and currency you sell in, then generate and copy the link.",
       "Add that link in Merchant Center as a data source. Zid keeps the feed updated, so prices and stock status stay matched without manual uploads.",
-      "Before the first fetch, make sure every product has an image and its required details; incomplete products get rejected and slow down approval for the rest.",
+      "Before the first fetch, make sure every product has an image and its required details; incomplete items may be disapproved. An item issue does not automatically mean the whole catalog is rejected.",
     ]},
     { heading: "Connecting in Salla", paragraphs: [
-      "Create a Merchant Center account with your business name and selling country, and link it to your Salla store before sending any data.",
-      "Rely on feeds rather than manual entry: the primary feed is the central source of your product data, while supplemental feeds add or correct attributes and cannot act as standalone product lists.",
+      "Salla documents a custom-domain requirement. Install Google Merchant Center from the Salla App Store, open its settings from the installed app options and copy your own product-file link.",
+      "In Merchant Center complete business details, website verification and claiming, then configure the actual shipping countries and costs. Add a product data source from a file URL and paste the Salla link. Labels can change: use the linked Salla setup guide for its UI and current Google help for account requirements.",
       "Set each product's attributes accurately - sale country, language, availability, price and destinations - because Google uses these attributes to group and show your products.",
     ]},
     { heading: "The attributes that decide approval", paragraphs: [
@@ -118,6 +121,8 @@ const merchantCenterEn: Article = {
     { heading: "After your products are approved", paragraphs: [
       "Review Merchant Center reports regularly: disapproved items, data warnings and free listings performance.",
       "Improve the product data itself - titles, images, descriptions - because that is what actually appears in results, not the mere existence of a feed.",
+      "Keep a handover record: store URL, account owner, selling country, language, currency, data-source URL, last fetch date, processed item count and sample product IDs with their status. Do not put passwords or verification codes in the record; use appropriate access permissions.",
+      "Illustrative acceptance test: pick a simple product and a color or size variant. Compare ID, URL, price, currency and availability between source and landing page. Change one stock value and inspect the next fetch before calling synchronization complete. A visible feed link alone is not evidence of a successful sync.",
       "If you want a full review of your store data and Google visibility, that is part of our Salla and Zid store SEO service.",
     ]},
   ],
@@ -125,82 +130,6 @@ const merchantCenterEn: Article = {
     { q: "Is the Merchant Center connection paid?", a: "The connection app in Zid's App Market is free, creating a Merchant Center account is free, and free listings cost nothing; spend only starts if you later run paid Shopping ads." },
     { q: "Do products appear right after connecting?", a: "No. Google needs to fetch the feed and review items, and some products may be approved while others are rejected based on data completeness. Approval grants eligibility, not guaranteed visibility." },
     { q: "Does Merchant Center replace store SEO?", a: "No. It is an additional display channel for product data, while improving pages, content and site structure remains the foundation of unpaid search visibility." },
-  ],
-  serviceHref: "/services/ecommerce-store-services",
-  serviceLabel: "See the Salla and Zid store SEO service",
-};
-
-const outOfStockAr: Article = {
-  title: "نفاد المخزون في المتاجر الإلكترونية: كيف تدير صفحات المنتجات النافدة دون خسارة الظهور؟",
-  directAnswer: "القاعدة العملية: لا تحذف صفحة منتج نفد مؤقتًا؛ أبقها تعمل بنفس الرابط مع توضيح حالة التوفر وعرض بدائل، وحدث سمة التوفر في بيانات المنتج والخلاصة. احذف الصفحة أو حولها فقط عند توقف المنتج نهائيًا، وحينها وجه الرابط إلى أقرب بديل منطقي.",
-  sections: [
-    { heading: "لماذا حذف صفحة المنتج النافد قرار مكلف؟", paragraphs: [
-      "صفحة المنتج تجمع مع الوقت روابط داخلية وخارجية وسجلًا في الفهرسة؛ حذفها يعني التخلي عن هذه القيمة وإرجاع صفحة غير موجودة لزائر قادم من نتيجة بحث.",
-      "كثير من المنتجات يعود توفرها؛ إعادة إنشاء الصفحة من الصفر تعني بدء تراكم الظهور من جديد.",
-    ]},
-    { heading: "القرار الأول: نفاد مؤقت أم توقف نهائي؟", paragraphs: [
-      "نفاد مؤقت: أبق الصفحة بنفس الرابط، أظهر حالة عدم التوفر بوضوح، وقدم بدائل من نفس الفئة، وفعال تنبيه العملاء عند عودة التوفر إن كانت منصتك توفره.",
-      "توقف نهائي مع وجود بديل مباشر، مثل موديل أحدث يخدم نفس الحاجة: استخدم تحويل 301 إلى البديل.",
-      "توقف نهائي بلا بديل منطقي: صفحة غير موجودة مع توجيه واضح للفئة الأم أفضل من صفحة مضللة تعرض منتجًا لا يمكن شراءه.",
-    ]},
-    { heading: "طابق حالة التوفر بين المتجر والخلاصة والبيانات المنظمة", paragraphs: [
-      "يقارن Google حالة التوفر في خلاصة Merchant Center بما تظهره صفحة الهبوط؛ التعارض يصنف بيانات غير دقيقة وقد يؤدي لرفض المنتج.",
-      "حدث سمة التوفر availability في الخلاصة عند نفاد المنتج وعند عودته، ولا تتركها متوفر بينما الصفحة تقول غير متوفر.",
-      "تأكد أن البيانات المنظمة للمنتج تعكس الحالة نفسها الظاهرة للزائر؛ تعليمات Google صريحة بضرورة تطابق البيانات المنظمة مع المحتوى المرئي.",
-    ]},
-    { heading: "حول صفحة النافد إلى مسار بديل", paragraphs: [
-      "اعرض منتجات قريبة فعلًا في الاستخدام والسعر، لا قائمة عشوائية؛ البديل الجيد ينقذ البيع ويقلل خروج الزائر.",
-      "إن وفر متجرك تنبيه العملاء عند توفر المنتج فعله؛ قائمة الانتظار تحول الطلب المؤجل إلى بيع لاحق.",
-      "حافظ على المحتوى المفيد في الصفحة من وصف ومواصفات وتقييمات، فهو ما يبقي قيمتها للبحث أثناء فترة النفاد.",
-    ]},
-    { heading: "تجنب الفخاخ الشائعة", paragraphs: [
-      "لا تنشئ صفحات أو فلاتر خاصة بالمنتجات النافدة قابلة للفهرسة؛ هي صفحات رقيقة تستهلك الزحف بلا قيمة بحثية.",
-      "راجع تقارير الفهرسة دوريًا لاكتشاف صفحات تركت بحالة خاطئة أو تحويلات متسلسلة تراكمت مع الوقت.",
-      "لا تخف المنتجات النافدة من الفئات إخفاء يكسر الروابط الداخلية؛ الترتيب الذكي يقدم المتوفر مع إبقاء صفحات النافد قابلة للوصول.",
-    ]},
-  ],
-  faq: [
-    { q: "هل أضع noindex على صفحة المنتج النافد مؤقتًا؟", a: "لا في الحالات المعتادة؛ الصفحة ما زالت تجيب طلب بحث حقيقي وقد يعود المنتج. إخراجها من الفهرسة يحتاج وقتًا لاستعادتها بعد عودة التوفر." },
-    { q: "متى يكون حذف الصفحة مقبولًا؟", a: "عند توقف المنتج نهائيًا دون أي بديل قريب، مع قبول خسارة ما جمعته الصفحة من روابط وسجل. إن وجد بديل منطقي فالتحويل 301 أولى." },
-    { q: "هل نفاد منتجات كثيرة يضر المتجر كله؟", a: "الضرر الأكبر على تجربة العميل وضياع الطلب، لا عقوبة مباشرة من Google. لكن تراكم صفحات ميتة أو مضللة يهدر الزحف ويضعف الثقة، فتعامل معه كأولوية تشغيل." },
-  ],
-  serviceHref: "/ar/services/ecommerce-store-services",
-  serviceLabel: "تعرف على خدمة تحسين متاجر سلة وزد",
-};
-
-const outOfStockEn: Article = {
-  title: "Out-of-Stock Products in E-commerce: Manage Unavailable Pages Without Losing Visibility",
-  directAnswer: "The working rule: never delete the page of a temporarily out-of-stock product. Keep it live at the same URL with a clear availability state and alternatives, and update the availability attribute in both the product data and the feed. Only remove or redirect the page when the product is permanently discontinued, and then point the URL to the closest logical alternative.",
-  sections: [
-    { heading: "Why deleting the page is expensive", paragraphs: [
-      "A product page accumulates internal and external links and an indexing history over time; deleting it throws that value away and returns a not-found page to a visitor arriving from search.",
-      "Many products come back in stock; recreating the page from scratch means rebuilding its visibility from zero.",
-    ]},
-    { heading: "First decision: temporary or permanent?", paragraphs: [
-      "Temporarily out of stock: keep the page at the same URL, show the unavailable state clearly, offer alternatives from the same category, and enable back-in-stock alerts if your platform provides them.",
-      "Permanently discontinued with a direct substitute, such as a newer model serving the same need: use a 301 redirect to that substitute.",
-      "Permanently discontinued with no logical alternative: a clear not-found page pointing to the parent category beats a misleading page selling something that cannot be bought.",
-    ]},
-    { heading: "Match availability across store, feed and structured data", paragraphs: [
-      "Google compares the availability in your Merchant Center feed with what the landing page shows; conflicts are treated as inaccurate data and can get the item disapproved.",
-      "Update the availability attribute in the feed when a product goes out of stock and when it returns; never leave it marked available while the page says otherwise.",
-      "Make sure the product's structured data reflects the same state visible to visitors; Google explicitly requires structured data to match visible content.",
-    ]},
-    { heading: "Turn the unavailable page into an alternative path", paragraphs: [
-      "Show products that are genuinely close in use and price, not a random list; a good substitute saves the sale and keeps the visitor.",
-      "If your store offers back-in-stock alerts, enable them; a real waiting list converts deferred demand into a later sale.",
-      "Keep the useful page content - description, specifications, real reviews - because that is what preserves the page's search value during the outage.",
-    ]},
-    { heading: "Common traps to avoid", paragraphs: [
-      "Do not create indexable pages or filters dedicated to out-of-stock items; they are thin pages that consume crawl without search value.",
-      "Review indexing reports regularly to catch pages left in the wrong state or redirect chains that accumulated over time.",
-      "Do not hide out-of-stock products from categories in a way that breaks internal links; rank available items first while keeping the unavailable pages reachable.",
-    ]},
-  ],
-  faq: [
-    { q: "Should I noindex a temporarily out-of-stock product page?", a: "Usually no. The page still answers real search demand and the product may return. Removing it from the index takes time to recover once it is back in stock." },
-    { q: "When is deleting the page acceptable?", a: "When the product is permanently discontinued with no close alternative, and you accept losing the links and history it earned. If a logical substitute exists, a 301 redirect is the better path." },
-    { q: "Does having many unavailable products hurt the whole store?", a: "The biggest damage is to the customer experience and lost demand, not a direct Google penalty. But accumulating dead or misleading pages wastes crawling and weakens trust, so treat it as an operational priority." },
   ],
   serviceHref: "/services/ecommerce-store-services",
   serviceLabel: "See the Salla and Zid store SEO service",
@@ -312,8 +241,8 @@ export const sallaZidMerchantRegistry: Record<string, ComponentType> = {
 };
 
 export const sallaZidMerchantPosts: BlogPost[] = [
-  { slug: "salla-zid-merchant-center-ar", title: merchantCenterAr.title, description: "خطوات ربط متجر سلة أو زد بـ Google Merchant Center: إنشاء الخلاصة، السمات المطلوبة لقبول المنتجات، وأخطاء التطابق الشائعة بين الخلاصة وصفحة المنتج.", date: "2026-10-31", readTime: "10 دقائق", lang: "ar", altSlug: "salla-zid-merchant-center-en", faq: merchantCenterAr.faq },
-  { slug: "salla-zid-merchant-center-en", title: merchantCenterEn.title, description: "How to connect a Salla or Zid store to Google Merchant Center: feed creation, the attributes product approval depends on, and common feed-to-page mismatch errors.", date: "2026-10-31", readTime: "10 min read", lang: "en", altSlug: "salla-zid-merchant-center-ar", faq: merchantCenterEn.faq },
-  { slug: "ai-visibility-ecommerce-ar", title: aiVisibilityAr.title, description: "ما الذي يحتاجه متجرك فعلًا للظهور في AI Overviews وChatGPT وGemini: أساسيات جوجل الرسمية، زواحف OpenAI، وخرافات يجب تجنبها.", date: "2026-10-31", readTime: "11 دقيقة", lang: "ar", altSlug: "ai-visibility-ecommerce-en", faq: aiVisibilityAr.faq },
-  { slug: "ai-visibility-ecommerce-en", title: aiVisibilityEn.title, description: "What your store actually needs to appear in AI Overviews, ChatGPT and Gemini: Google's official fundamentals, OpenAI crawlers, and myths to avoid.", date: "2026-10-31", readTime: "11 min read", lang: "en", altSlug: "ai-visibility-ecommerce-ar", faq: aiVisibilityEn.faq },
+  { slug: "salla-zid-merchant-center-ar", title: merchantCenterAr.title, description: "خطوات ربط متجر سلة أو زد بـ Google Merchant Center: إنشاء الخلاصة، السمات المطلوبة لقبول المنتجات، وأخطاء التطابق الشائعة بين الخلاصة وصفحة المنتج.", date: "2026-10-31", readTime: "6 دقائق", lang: "ar", altSlug: "salla-zid-merchant-center-en", faq: merchantCenterAr.faq },
+  { slug: "salla-zid-merchant-center-en", title: merchantCenterEn.title, description: "How to connect a Salla or Zid store to Google Merchant Center: feed creation, the attributes product approval depends on, and common feed-to-page mismatch errors.", date: "2026-10-31", readTime: "6 min read", lang: "en", altSlug: "salla-zid-merchant-center-ar", faq: merchantCenterEn.faq },
+  { slug: "ai-visibility-ecommerce-ar", title: aiVisibilityAr.title, description: "ما الذي يحتاجه متجرك فعلًا للظهور في AI Overviews وChatGPT وGemini: أساسيات جوجل الرسمية، زواحف OpenAI، وخرافات يجب تجنبها.", date: "2026-10-31", readTime: "6 دقائق", lang: "ar", altSlug: "ai-visibility-ecommerce-en", faq: aiVisibilityAr.faq },
+  { slug: "ai-visibility-ecommerce-en", title: aiVisibilityEn.title, description: "What your store actually needs to appear in AI Overviews, ChatGPT and Gemini: Google's official fundamentals, OpenAI crawlers, and myths to avoid.", date: "2026-10-31", readTime: "6 min read", lang: "en", altSlug: "ai-visibility-ecommerce-ar", faq: aiVisibilityEn.faq },
 ];
