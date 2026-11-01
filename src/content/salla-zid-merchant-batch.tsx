@@ -2,7 +2,7 @@ import type { BlogPost } from "@/lib/blog-posts";
 import type { ComponentType } from "react";
 
 type Section = { heading: string; paragraphs: string[] };
-type Article = { title: string; directAnswer: string; sections: Section[]; faq: { q: string; a: string }[]; serviceHref: string; serviceLabel: string };
+type Article = { title: string; directAnswer: string; sections: Section[]; faq: { q: string; a: string }[]; serviceHref: string; serviceLabel: string; reviewedAr?: string; reviewedEn?: string };
 
 const merchantSources = [
  ["Salla: setup and verification", "https://help.salla.sa/article/%D8%B1%D8%A8%D8%B7-%D8%AA%D8%AC%D8%A7%D8%B1%D8%AA%D9%83-%D9%85%D8%B9-%D9%85%D8%B1%D9%83%D8%B2-%D8%AC%D9%88%D8%AC%D9%84-%D9%84%D9%84%D8%A8%D9%8A%D8%B9-%D8%A8%D8%A7%D9%84%D8%AA%D8%AC%D8%B2%D8%A6%D8%A9-google-merchant-center/v25sqpe3tj6f99g3y5fl6p8b"],
@@ -22,6 +22,24 @@ const aiSources = [
  ["Google: future shared AI training control", "https://developers.google.com/search/blog/2026/10/ai-training-control"],
 ];
 
+const schemaSources = [
+ ["Google: product structured data", "https://developers.google.com/search/docs/appearance/structured-data/product"],
+ ["Google: intro to structured data", "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data"],
+ ["Google: breadcrumb structured data", "https://developers.google.com/search/docs/appearance/structured-data/breadcrumb"],
+ ["Salla: schema markup via Google Tag Manager", "https://help.salla.sa/article/576168598"],
+ ["Zid: store SEO settings", "https://helpdesk.zid.sa/en/online-store/seo"],
+ ["Google: Rich Results Test", "https://search.google.com/test/rich-results"],
+ ["Schema.org: validator", "https://validator.schema.org/"],
+ ["Google: Search documentation updates", "https://developers.google.com/search/updates"],
+];
+
+const sourcesFor = (article: Article) =>
+  article === merchantCenterAr || article === merchantCenterEn
+    ? merchantSources
+    : article === structuredDataAr || article === structuredDataEn
+      ? schemaSources
+      : aiSources;
+
 function ArticleView({ article, lang }: { article: Article; lang: "ar" | "en" }) {
   return (
     <>
@@ -37,8 +55,8 @@ function ArticleView({ article, lang }: { article: Article; lang: "ar" | "en" })
         {article.faq.map((item) => <div key={item.q}><h3>{item.q}</h3><p>{item.a}</p></div>)}
       </section>
       <h2>{lang === "ar" ? "المصادر الرسمية" : "Official sources"}</h2>
-      <p>{lang === "ar" ? "راجعت المصادر في 31 أكتوبر 2026. خطوات الفحص المقترحة ليست نتيجة عميل أو فحصًا لحسابك." : "Sources reviewed October 31, 2026. Suggested checks are not a client result or an audit of your account."}</p>
-      <ul>{(article === merchantCenterAr || article === merchantCenterEn ? merchantSources : aiSources).map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
+      <p>{lang === "ar" ? (article.reviewedAr ?? "راجعت المصادر في 31 أكتوبر 2026. خطوات الفحص المقترحة ليست نتيجة عميل أو فحصًا لحسابك.") : (article.reviewedEn ?? "Sources reviewed October 31, 2026. Suggested checks are not a client result or an audit of your account.")}</p>
+      <ul>{sourcesFor(article).map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
       <p><a href={article.serviceHref}>{article.serviceLabel}</a>{" · "}<a href={lang === "ar" ? "/ar/packages" : "/packages"}>{lang === "ar" ? "الباقات" : "Packages"}</a></p>
     </>
   );
@@ -264,11 +282,128 @@ const aiVisibilityEn: Article = {
   serviceLabel: "See the Salla and Zid store SEO service",
 };
 
+
+const structuredDataAr: Article = {
+  title: "البيانات المنظمة (Schema) لمتاجر سلة وزد: افحص ناتج متجرك قبل إضافة أي كود",
+  directAnswer: "ابدأ بفحص ما يولده قالب متجرك تلقائيًا عبر اختبار النتائج الغنية من Google وأداة التحقق من Schema.org قبل إضافة أي بيانات منظمة جديدة؛ غالبًا ستجد بيانات Product موجودة بالفعل، وإضافة نفس الأنواع من تطبيق أو كود خارجي قد تصنع تكرارًا وتعارضًا بدل تحسين. ركّز على صدق السعر والتوفر بين الصفحة المرئية والبيانات المنظمة والخلاصة، وتذكر أن أهلية النتيجة الغنية ليست ضمانًا لظهورها.",
+  sections: [
+    { heading: "ماذا تفعل البيانات المنظمة وماذا لا تفعل؟", paragraphs: [
+      "البيانات المنظمة كود يقرأه الحاسوب (عادة بصيغة JSON-LD) يصف محتوى الصفحة لمحركات البحث: هذا منتج، هذا سعره، هذه حالة توفره، هذه فتات التنقل الخاصة به. لا يراه الزائر، لكنه يساعد Google على فهم الصفحة وقد يجعلها مؤهلة لعرض أغنى في النتائج مثل السعر والتوفر والتقييمات ومعلومات الشحن.",
+      "الأهلية ليست وعدًا: توضح Google أن عرض التحسينات يتم حسب تقدير كل تجربة وقد يتغير، لذلك لا تبن خطة على ظهور مضمون. والبيانات المنظمة لا تعوض صفحة ضعيفة؛ المحتوى المفيد وقابلية الزحف والفهرسة أساس الظهور قبل أي ترميز.",
+      "تميز Google بين فئتين لبيانات المنتج: مقتطف المنتج لصفحات لا يُشترى منها المنتج مباشرة كصفحات المراجعات التحريرية، وقوائم التجار (merchant listings) لصفحات يشتري منها العميل فعلًا، وهي ما يناسب صفحات منتجات متجرك وتدعم تفاصيل مثل المتغيرات والشحن وسياسة الإرجاع.",
+    ]},
+    { heading: "الخطوة الأولى: افحص ما يخرجه متجرك الآن", paragraphs: [
+      "قبل شراء تطبيق أو لصق كود، اختر صفحات تمثل متجرك: الرئيسية، صفحة تصنيف، منتج بسيط، منتج بمتغيرات كالمقاسات، ومنتج نافد. الصق كل رابط في اختبار النتائج الغنية من Google وسجل الأنواع المكتشفة والأخطاء والتحذيرات، ثم استخدم أداة التحقق من Schema.org لقراءة الترميز كاملًا بعيدًا عن أهلية ميزة بعينها.",
+      "سجل ما تجده بتاريخه: أسماء الأنواع المكتشفة، السعر وحالة التوفر داخل الترميز، وأي نوع مكرر مرتين في الصفحة نفسها. هذا السجل هو مرجعك عند مقارنة ما قبل التعديل وما بعده، وهو ما ستطلبه من أي متخصص تستعين به لاحقًا.",
+      "لا تنشر سلة أو زد قائمة نهائية معلنة بكل الترميز الذي تولده القوالب، ويختلف الناتج باختلاف القالب والتطبيقات المثبتة؛ لذلك صفحة متجرك الفعلية هي مصدر الحقيقة، لا افتراضك ولا وصف التطبيق في المتجر.",
+    ]},
+    { heading: "ماذا تتطلب قوائم التجار من بيانات؟", paragraphs: [
+      "لصفحة منتج قابلة للشراء، تتضمن البيانات الأساسية اسم المنتج وصورته وعرض البيع متضمنًا السعر وعملته وحالة التوفر، وتدعم Google متغيرات المنتجات حتى تفهم أن المقاسات أو الألوان نسخ من منتج واحد. كلما اكتملت الخصائص الدقيقة زادت التحسينات التي قد تتأهل لها الصفحة.",
+      "توصي Google أيضًا ببيانات على مستوى النشاط التجاري داخل ترميز Organization، مثل سياسة الإرجاع وبرنامج الولاء إن وُجدا؛ اكتب سياسة الإرجاع الفعلية لمتجرك كما هي، فالترميز يصف واقعك ولا يحسنه.",
+      "بيانات BreadcrumbList تساعد Google على فهم موضع الصفحة في هيكل المتجر، وقد يظهر مسار التنقل بدل الرابط في نتيجة البحث. تأكد أن الفتات المعروض للزائر هو نفسه الموصوف في الترميز.",
+    ]},
+    { heading: "السعر والتوفر: ثلاث نسخ يجب أن تروي قصة واحدة", paragraphs: [
+      "يوجد سعر منتجك في ثلاثة أماكن: الصفحة المرئية للعميل، الترميز المنظم، وخلاصة Merchant Center إن ربطتها. عند اختلافها تظهر مشاكل المطابقة وقد تفقد الصفحة أهلية التحسينات أو تُرفض المنتجات في الخلاصة.",
+      "عند العروض والمواسم تحقق من منتج عادي ومنتج عليه خصم تلقائي ومنتج بقسيمة مشروطة؛ السعر في الترميز يجب أن يصف السعر الفعلي المتاح للعميل من الصفحة نفسها. إن ظهرت لك رسائل رفض أو عدم تطابق في Merchant Center فراجع دليل تشخيص رفض المنتجات على هذه المدونة.",
+    ]},
+    { heading: "طريق سلة الموثق: الإضافة عبر Google Tag Manager", paragraphs: [
+      "تشرح مساعدة سلة (آخر تحديث معلن نوفمبر 2023) إنشاء كود Schema بأداة توليد ثم حقنه كوسم HTML مخصص داخل Google Tag Manager المربوط بالمتجر. هذا طريق موثق من المنصة، لكن تعامل معه بحذر:",
+      "الترميز المحقون عبر GTM يعمل في متصفح الزائر، فتحقق بعد النشر أن Google تقرأه فعلًا باستخدام اختبار النتائج الغنية أو فحص الرابط في Search Console، لا بمجرد ظهور الكود في أداة التوليد.",
+      "مثال مقال سلة يبني ترميز LocalBusiness؛ الميكانيكية نفسها تصلح لأنواع أخرى، لكن لا تضف نوعًا يولده القالب أصلًا. التكرار بين القالب والتطبيق وGTM هو أكثر أخطاء هذا الطريق شيوعًا.",
+    ]},
+    { heading: "زد: من أين تبدأ؟", paragraphs: [
+      "توثق زد صفحة SEO في لوحة التحكم وتشمل عناوين وأوصاف الصفحات وملف robots.txt وخلاصات المنتجات وملف llms.txt، وبعضها يعتمد على باقتك. أما الترميز المنظم الذي يولده قالب متجرك فلا تنشر زد قائمة محددة به؛ افحص صفحاتك الفعلية بالأداتين المذكورتين أعلاه.",
+      "إن أضاف تطبيق من سوق تطبيقات زد ترميزًا خاصًا به، طبّق قاعدة الفحص نفسها: اختبر صفحة قبل التثبيت وبعده، وسجل أي أنواع جديدة أو مكررة ظهرت.",
+    ]},
+    { heading: "أخطاء شائعة تضيع جهد التجار", paragraphs: [
+      "ترميز Product مكرر من القالب والتطبيق معًا؛ قيم داخل الترميز لا تطابق الصفحة المرئية كسعر تخفيض في الكود وسعر عادي في الصفحة؛ وترميز يصف منتجًا غير متاح كأنه متاح.",
+      "لا تضف ترميز FAQ أملًا في نتيجة غنية: أعلنت Google في 2026 إزالة ميزة نتائج الأسئلة الشائعة الغنية من البحث وحذفت توثيقها. اكتب الأسئلة الشائعة لأنها تفيد زائرك، لا لميزة لم تعد موجودة.",
+      "ولا تفترض أن وجود تقييمات في متجرك يعني نجومًا في نتائج البحث؛ لعرض التقييمات أهلية وسياسات مستقلة، وقد غطيناها بالتفصيل في دليل تقييمات منتجات سلة ونجوم Google على هذه المدونة.",
+    ]},
+    { heading: "ورقة فحص عملية لمتجرك", paragraphs: [
+      "لكل صفحة من العينة سجل: التاريخ، الرابط، الأنواع المكتشفة في اختبار النتائج الغنية، الأخطاء والتحذيرات، وجود تكرار، تطابق السعر والتوفر مع الصفحة المرئية، وملاحظة واحدة عن أهم إصلاح. بعد أي تعديل أعد الاختبار على الرابط نفسه واحتفظ بالسجلين معًا.",
+      "راقب تقارير التحسينات في Search Console عندما تظهر لديك؛ ظهور التقرير يعتمد على اكتشاف Google للميزة، فلا تستنتج من غياب التقرير أن الترميز غائب، ولا من وجوده أن العرض الغني مضمون. أداة التحقق تخبرك بما في الصفحة، والتقارير تخبرك بما اكتشفه Google.",
+    ]},
+    { heading: "متى تطلب تنفيذًا متخصصًا؟", paragraphs: [
+      "اطلب متخصصًا عندما يتكرر التعارض في مئات المنتجات، أو تختلط المتغيرات على Google، أو تحتاج مواءمة ثلاثية بين الصفحة والترميز والخلاصة. التسليم المهني الذي تنتظره: جرد للترميز الحالي، قائمة تعارضات مرتبة بالأثر، خطة إصلاح، وسجلات اختبار قبل وبعد على عينة موثقة.",
+    ]},
+  ],
+  faq: [
+    { q: "هل البيانات المنظمة ترفع ترتيب صفحاتي في Google؟", a: "لا يوجد وعد بترتيب أعلى بسبب الترميز. الفائدة الموثقة هي أهلية عرض أغنى في النتائج وفهم أدق للصفحة، بينما يبقى أساس الظهور محتوى مفيدًا وزحفًا وفهرسة سليمة." },
+    { q: "أضفت ترميزًا ولم تظهر نتيجة غنية، لماذا؟", a: "عرض النتائج الغنية قرار Google ويتوقف على الأهلية والجودة وسياسات كل ميزة. ابدأ باختبار النتائج الغنية لتصحيح الأخطاء والتحذيرات، ثم امنح الزحف وقتًا، ولا تعامل عدم الظهور كعطل مؤكد." },
+    { q: "هل أحتاج تطبيقًا مدفوعًا لإضافة Schema لمتجري؟", a: "افحص ناتج قالبك الحالي أولًا؛ كثير من القوالب تولد بيانات المنتج الأساسية، وإضافة طبقة ثانية فوقها قد تصنع تكرارًا أسوأ من الفراغ. القرار يبدأ من نتيجة الفحص لا من إعلان التطبيق." },
+    { q: "هل أضيف ترميز FAQ لصفحات متجري؟", a: "ميزة نتائج FAQ الغنية أزيلت من Google Search ولم يعد لها توثيق. اكتب الأسئلة الشائعة لأنها تخدم الزائر وقرار الشراء، ولا تبن عليها توقع عرض خاص." },
+  ],
+  serviceHref: "/ar/services/ecommerce-store-services",
+  serviceLabel: "تعرف على خدمة تحسين متاجر سلة وزد",
+  reviewedAr: "راجعت المصادر في 1 نوفمبر 2026. خطوات الفحص المقترحة ليست نتيجة عميل أو فحصًا لحسابك.",
+  reviewedEn: "Sources reviewed November 1, 2026. Suggested checks are not a client result or an audit of your account.",
+};
+
+const structuredDataEn: Article = {
+  title: "Structured data for Salla and Zid stores: check your store's output before adding any code",
+  directAnswer: "Start by testing what your store theme already outputs using Google's Rich Results Test and the Schema.org validator before adding any new structured data; you will usually find Product markup already present, and adding the same types again from an app or external code can create duplicates and conflicts instead of an improvement. Focus on honest price and availability across the visible page, the markup and the feed, and remember that rich result eligibility is not a display guarantee.",
+  sections: [
+    { heading: "What structured data does and does not do", paragraphs: [
+      "Structured data is machine-readable code, usually JSON-LD, that describes the page to search engines: this is a product, this is its price, this is its availability, this is its breadcrumb trail. Visitors never see it, but it helps Google understand the page and can make it eligible for richer display such as price, availability, ratings and shipping information.",
+      "Eligibility is not a promise: Google states that enhancements appear at the discretion of each experience and may change, so do not build a plan on guaranteed display. Markup also does not rescue a weak page; useful content, crawlability and indexing come first.",
+      "Google distinguishes two classes of product markup: product snippets for pages where people cannot directly buy, such as editorial reviews, and merchant listings for pages where customers actually purchase, which fit your store's product pages and support details like variants, shipping and returns.",
+    ]},
+    { heading: "Step one: test what your store outputs today", paragraphs: [
+      "Before buying an app or pasting code, pick representative pages: home, a category, a simple product, a product with variants such as sizes, and an out-of-stock product. Run each URL through Google's Rich Results Test and record the detected types, errors and warnings, then use the Schema.org validator to read the full markup independently of any single feature's eligibility.",
+      "Log what you find with its date: detected type names, price and availability inside the markup, and any type appearing twice on the same page. This log is your before-and-after reference and what any specialist you hire should ask for.",
+      "Neither Salla nor Zid publishes a definitive list of the markup their themes generate, and output varies with the theme and installed apps; your store's actual pages are the source of truth, not assumptions or an app's store listing.",
+    ]},
+    { heading: "What merchant listings require", paragraphs: [
+      "For a purchasable product page, the core data includes the product name, image and an offer with price, priceCurrency and availability. Google also supports product variants so it can understand that sizes or colors belong to one parent product. The more accurate properties you provide, the more enhancements the page may be eligible for.",
+      "Google also recommends business-level data nested under Organization markup, such as your return policy and loyalty program where they exist. Describe your actual policy as it is; markup describes your reality, it does not improve it.",
+      "BreadcrumbList markup helps Google understand the page's position in the store hierarchy, and the breadcrumb trail may replace the URL in the result. Make sure the visible breadcrumb matches the markup.",
+    ]},
+    { heading: "Price and availability: three copies that must tell one story", paragraphs: [
+      "Your product's price lives in three places: the visible page, the structured data, and the Merchant Center feed if you connected one. When they disagree you get mismatch issues and the page can lose enhancement eligibility or the feed items can be disapproved.",
+      "During sales, test a regular product, an automatic sale product and a conditional coupon product; the markup price must describe the price actually available to the customer from the same page. If Merchant Center shows disapprovals or mismatch warnings, follow the rejection diagnosis guide on this blog.",
+    ]},
+    { heading: "Salla's documented route: injection via Google Tag Manager", paragraphs: [
+      "Salla's help center (last stated update November 2023) documents generating schema code with a generator tool and injecting it as a custom HTML tag inside the Google Tag Manager account linked to the store. This is a platform-documented route, but treat it carefully:",
+      "Markup injected through GTM runs in the visitor's browser, so after publishing verify that Google actually reads it using the Rich Results Test or URL Inspection in Search Console, not just the generator's preview.",
+      "Salla's article example builds LocalBusiness markup; the same mechanism applies to other types, but never add a type the theme already outputs. Duplication between theme, app and GTM is the most common mistake on this route.",
+    ]},
+    { heading: "Zid: where to start", paragraphs: [
+      "Zid documents an SEO page in the dashboard covering page titles and descriptions, robots.txt, product feeds and llms.txt, with some settings depending on your plan. Zid does not publish a definitive list of the structured data your theme outputs; test your actual pages with the two tools above.",
+      "If a Zid app store app adds its own markup, apply the same discipline: test a page before and after installation and record any new or duplicated types.",
+    ]},
+    { heading: "Common mistakes that waste merchant effort", paragraphs: [
+      "Product markup duplicated between theme and app; values inside the markup that contradict the visible page, such as a sale price in code and a regular price on the page; and markup describing an unavailable product as in stock.",
+      "Do not add FAQ markup hoping for a rich result: Google announced in 2026 that the FAQ rich result feature was removed from Search and deleted its documentation. Write FAQs because they help your visitors, not for a retired display feature.",
+      "Do not assume store reviews mean stars in search results; ratings display has its own eligibility and policies, covered in detail in the Salla product reviews and Google stars guide on this blog.",
+    ]},
+    { heading: "A practical audit sheet for your store", paragraphs: [
+      "For each sampled page record: date, URL, types detected in the Rich Results Test, errors and warnings, any duplication, price and availability match against the visible page, and one note on the most important fix. After any change, retest the same URL and keep both records together.",
+      "Watch Search Console enhancement reports when they appear; a report shows up when Google detects the feature, so a missing report does not prove missing markup and a present report does not guarantee rich display. The validator tells you what is on the page, the reports tell you what Google discovered.",
+    ]},
+    { heading: "When to ask for specialist implementation", paragraphs: [
+      "Bring in a specialist when conflicts repeat across hundreds of products, variants confuse Google, or you need the page, markup and feed aligned together. The professional deliverable to expect: an inventory of current markup, a conflict list ranked by impact, a fix plan, and dated before-and-after test records on a documented sample.",
+    ]},
+  ],
+  faq: [
+    { q: "Does structured data raise my rankings on Google?", a: "There is no promise of higher ranking from markup. The documented benefit is eligibility for richer display and more accurate page understanding, while visibility still rests on useful content, crawling and indexing." },
+    { q: "I added markup but no rich result appeared. Why?", a: "Rich result display is Google's decision and depends on eligibility, quality and each feature's policies. Fix errors and warnings in the Rich Results Test first, allow time for crawling, and do not treat non-display as a confirmed fault." },
+    { q: "Do I need a paid app to add schema to my store?", a: "Test your theme's current output first; many themes already generate core product markup, and stacking a second layer can be worse than none. The decision starts from the test result, not the app's marketing." },
+    { q: "Should I add FAQ markup to my store pages?", a: "The FAQ rich result feature was removed from Google Search and its documentation deleted. Write FAQs because they serve visitors and buying decisions, not for a display feature that no longer exists." },
+  ],
+  serviceHref: "/services/ecommerce-store-services",
+  serviceLabel: "See the Salla and Zid store SEO service",
+  reviewedAr: "راجعت المصادر في 1 نوفمبر 2026. خطوات الفحص المقترحة ليست نتيجة عميل أو فحصًا لحسابك.",
+  reviewedEn: "Sources reviewed November 1, 2026. Suggested checks are not a client result or an audit of your account.",
+};
+
 export const sallaZidMerchantRegistry: Record<string, ComponentType> = {
   "salla-zid-merchant-center-ar": () => <ArticleView article={merchantCenterAr} lang="ar" />,
   "salla-zid-merchant-center-en": () => <ArticleView article={merchantCenterEn} lang="en" />,
   "ai-visibility-ecommerce-ar": () => <ArticleView article={aiVisibilityAr} lang="ar" />,
   "ai-visibility-ecommerce-en": () => <ArticleView article={aiVisibilityEn} lang="en" />,
+  "salla-zid-structured-data-ar": () => <ArticleView article={structuredDataAr} lang="ar" />,
+  "salla-zid-structured-data-en": () => <ArticleView article={structuredDataEn} lang="en" />,
 };
 
 export const sallaZidMerchantPosts: BlogPost[] = [
@@ -276,4 +411,6 @@ export const sallaZidMerchantPosts: BlogPost[] = [
   { slug: "salla-zid-merchant-center-en", title: merchantCenterEn.title, description: "How to connect a Salla or Zid store to Google Merchant Center: feed creation, the attributes product approval depends on, and common feed-to-page mismatch errors.", date: "2026-10-31", readTime: "6 min read", lang: "en", altSlug: "salla-zid-merchant-center-ar", faq: merchantCenterEn.faq },
   { slug: "ai-visibility-ecommerce-ar", title: aiVisibilityAr.title, description: "ما الذي يحتاجه متجرك فعلًا للظهور في AI Overviews وChatGPT وGemini: أساسيات جوجل الرسمية، زواحف OpenAI، وخرافات يجب تجنبها.", date: "2026-10-31", readTime: "6 دقائق", lang: "ar", altSlug: "ai-visibility-ecommerce-en", faq: aiVisibilityAr.faq },
   { slug: "ai-visibility-ecommerce-en", title: aiVisibilityEn.title, description: "What your store actually needs to appear in AI Overviews, ChatGPT and Gemini: Google's official fundamentals, OpenAI crawlers, and myths to avoid.", date: "2026-10-31", readTime: "6 min read", lang: "en", altSlug: "ai-visibility-ecommerce-ar", faq: aiVisibilityEn.faq },
+  { slug: "salla-zid-structured-data-ar", title: structuredDataAr.title, description: "كيف تفحص البيانات المنظمة التي يولدها متجرك على سلة أو زد: اختبار الناتج الحالي، متطلبات قوائم التجار، طريق GTM في سلة، وأخطاء التكرار والتعارض الشائعة.", date: "2026-11-01", readTime: "7 دقائق", lang: "ar", altSlug: "salla-zid-structured-data-en", faq: structuredDataAr.faq },
+  { slug: "salla-zid-structured-data-en", title: structuredDataEn.title, description: "How to audit the structured data your Salla or Zid store emits: test current output, merchant listing requirements, Salla's GTM route, and common duplication and mismatch mistakes.", date: "2026-11-01", readTime: "7 min read", lang: "en", altSlug: "salla-zid-structured-data-ar", faq: structuredDataEn.faq },
 ];
