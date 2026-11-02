@@ -33,12 +33,22 @@ const schemaSources = [
  ["Google: Search documentation updates", "https://developers.google.com/search/updates"],
 ];
 
+const speedSources = [
+ ["web.dev: Core Web Vitals metrics and thresholds", "https://web.dev/articles/vitals"],
+ ["Google: page experience in Search", "https://developers.google.com/search/docs/appearance/page-experience"],
+ ["Google: PageSpeed Insights", "https://pagespeed.web.dev/"],
+ ["Zid: store themes and supported-theme speed improvements", "https://helpdesk.zid.sa/en/online-store/themes"],
+ ["Salla: themes journal", "https://help.salla.sa/article/596067432"],
+];
+
 const sourcesFor = (article: Article) =>
   article === merchantCenterAr || article === merchantCenterEn
     ? merchantSources
     : article === structuredDataAr || article === structuredDataEn
       ? schemaSources
-      : aiSources;
+      : article === storeSpeedAr || article === storeSpeedEn
+        ? speedSources
+        : aiSources;
 
 function ArticleView({ article, lang }: { article: Article; lang: "ar" | "en" }) {
   return (
@@ -397,6 +407,109 @@ const structuredDataEn: Article = {
   reviewedEn: "Sources reviewed November 1, 2026. Suggested checks are not a client result or an audit of your account.",
 };
 
+
+const storeSpeedAr: Article = {
+  title: "تسريع متجر سلة أو زد: ما تستطيع تحسينه فعلًا وما تملكه المنصة",
+  directAnswer: "قِس سرعة متجرك أولًا عبر PageSpeed Insights وراجع تقرير Core Web Vitals في Search Console قبل تغيير أي شيء، ثم ركز على ما تملكه فعلًا: حجم الصور قبل رفعها، عدد التطبيقات والأكواد الخارجية، وقالبًا حديثًا مدعومًا. الاستضافة وكود القالب الأساسي تملكهما المنصة ولن تغيرهما بإضافة أخرى، وتذكر أن تجربة الصفحة عامل مساعد ضمن عوامل كثيرة وليست زر تصدّر.",
+  sections: [
+    { heading: "السرعة تهم، لكنها ليست كل شيء", paragraphs: [
+      "توضح Google أن أنظمة الترتيب الأساسية تكافئ المحتوى الذي يقدم تجربة صفحة جيدة، لكنها في الوقت نفسه تسعى دائمًا لعرض المحتوى الأكثر صلة حتى لو كانت تجربة صفحته دون المستوى. المعنى العملي: صفحة بطيئة ذات محتوى مفيد قد تتصدر صفحة سريعة فارغة، لكن عند تساوي المحتوى تصبح التجربة ميزة حقيقية.",
+      "المقاييس المرجعية هي Core Web Vitals: أكبر رسم للمحتوى (LCP) خلال 2.5 ثانية، والاستجابة للتفاعل (INP) خلال 200 مللي ثانية، وثبات التخطيط (CLS) بحد أقصى 0.1، وتُقاس عند الشريحة المئوية 75 من تحميلات الصفحة مع فصل الجوال عن سطح المكتب.",
+    ]},
+    { heading: "قِس قبل أن تصلح", paragraphs: [
+      "افتح PageSpeed Insights والصق رابط متجرك، وسجل رقمين مختلفين: بيانات الميدان من تقرير تجربة مستخدمي Chrome (زوار حقيقيون) وبيانات المختبر (محاكاة فورية). بيانات الميدان هي المرجع عند توفرها؛ درجة المختبر أداة تشخيص تتغير بين قياس وآخر ولا تساوي تجربة زوارك.",
+      "راجع تقرير Core Web Vitals في Search Console عندما يظهر لديك؛ فهو يجمع الصفحات المتشابهة ويخبرك أي مجموعات تحتاج إصلاحًا على الجوال وسطح المكتب. وقِس ثلاث صفحات على الأقل: الرئيسية وصفحة تصنيف وصفحة منتج، فلكل منها طبيعة مختلفة.",
+    ]},
+    { heading: "ما تملكه أولًا: الصور", paragraphs: [
+      "الصور أكبر رافعة يملكها التاجر على المنصات المستضافة. اضغط الصور وغيّر أبعادها قبل الرفع بما يناسب حجم عرضها الفعلي، ولا ترفع صورة منتج بأبعاد كاميرا خام ثم تترك المتجر يصارعها. الصيغ الحديثة مثل WebP أخف من JPEG القديمة للجودة نفسها.",
+      "راجع صفحتك الرئيسية بعين قاسية: صور السلايدر الكبيرة والفيديوهات المضمنة أعلى الصفحة من أثقل ما يبطئ LCP. صورة رئيسية واحدة واضحة أفضل من خمس شرائح لا ينتظرها الزائر.",
+    ]},
+    { heading: "ما تملكه ثانيًا: التطبيقات والأكواد الخارجية", paragraphs: [
+      "كل تطبيق تثبته من سوق التطبيقات وكل بكسل أو ودجت دردشة تضيفه يجلب معه كود JavaScript يعمل في متصفح عميلك، وتراكم هذه الإضافات من أكثر أسباب بطء المتاجر شيوعًا وضعف استجابتها للتفاعل.",
+      "اجلس مراجعة دورية: احذف التطبيقات التي لا تستخدمها فعلًا، وراجع الوسوم في Google Tag Manager (بكسلات الإعلانات، أدوات تسجيل الجلسات، ودجتات الدردشة) واحذف ما انتهت حملته. بعد كل حذف أعد قياس الصفحة نفسها في PageSpeed Insights وسجل الفرق بتاريخه.",
+    ]},
+    { heading: "ما تملكه ثالثًا: القالب وبنية الصفحة", paragraphs: [
+      "اختيار القالب قرار سرعة قبل أن يكون قرار شكل. توضح مساعدة زد أن القوالب غير المبنية للواجهة المحسنة تفقد ميزات وتحسينات سرعة الواجهة الجديدة، وتعرض تنبيهًا عندما يصبح قالبك غير مدعوم؛ فإن ظهر لك التنبيه فالترقية لقالب مدعوم من أعلى العائد المتاح لك.",
+      "في سلة أيضًا تختلف القوالب في ثقلها وبنيتها، وراجع مجلة ثيمات سلة قبل الاختيار. وبغض النظر عن المنصة: كلما زادت أقسام الصفحة الرئيسية والسلايدرات والعناصر المتحركة زادت كلفة التحميل؛ صفحة رئيسية مركزة تبيع أفضل من معرض متعب.",
+    ]},
+    { heading: "ما تملكه المنصة ولا تستطيع تغييره", paragraphs: [
+      "الاستضافة وشبكة توصيل المحتوى وكود القالب الأساسي وصفحة الدفع أجزاء تملكها المنصة. لا تصرف جهدك في محاولة التحكم بها، ولا تصدق من يعدك باختراقها بإضافة جديدة.",
+      "إذا حسّنت ما تملكه وبقيت بيانات الميدان ضعيفة، ارفع ملاحظاتك لدعم المنصة مع قياساتك وتواريخها؛ مطالبة موثقة بأرقام أنفع من شكوى عامة.",
+    ]},
+    { heading: "خرافات شائعة عن تسريع المتاجر", paragraphs: [
+      "مطاردة درجة 100 في المختبر هوس غير مفيد؛ الدرجة أداة تشخيص لا هدف، وبعض ما يظهر في التقرير خارج سيطرتك على منصة مستضافة.",
+      "السرعة لا تعوض محتوى ضعيفًا؛ Google واضحة أن المحتوى الأكثر صلة يتصدر حتى مع تجربة دون المستوى. والحذف الجماعي للتطبيقات قبل القياس قد يزيل أدوات تخدم البيع بينما المشكلة الحقيقية في الصور.",
+    ]},
+    { heading: "ورقة قياس شهرية لمتجرك", paragraphs: [
+      "خصص صفحة متابعة بسيطة: التاريخ، الرابط، أرقام الميدان للجوال (LCP وINP وCLS) إن توفرت، درجة المختبر، التغيير الذي نفذته، وملاحظة واحدة. راجع تقرير Search Console شهريًا وقارن المجموعات قبل عملك وبعده، واحتفظ بالسجلات لتعرف ما الذي صنع الفرق فعلًا.",
+    ]},
+    { heading: "متى تطلب متخصصًا؟", paragraphs: [
+      "اطلب متخصصًا عندما تتشابك الأسباب أو تحتاج قرار قالب مدروسًا. التسليم المهني المتوقع: قياس أساس موثق بأدوات Google، قائمة إصلاحات مرتبة بالأثر ضمن ما تملكه فعلًا، وسجلات قبل وبعد على الصفحات نفسها، دون وعود بدرجة معينة أو ترتيب مضمون.",
+    ]},
+  ],
+  faq: [
+    { q: "هل تسريع المتجر يرفع ترتيبي في Google مباشرة؟", a: "تجربة الصفحة عامل مساعد ضمن إشارات كثيرة، وتنص Google على أن المحتوى الأكثر صلة يتصدر حتى مع تجربة دون المستوى. حسّن السرعة لزوارك أولًا ولتقوية فرصك عند تساوي المحتوى، لا كبديل عن المحتوى." },
+    { q: "ما الرقم الجيد في Core Web Vitals؟", a: "LCP خلال 2.5 ثانية، INP خلال 200 مللي ثانية، CLS بحد أقصى 0.1، وتقاس عند الشريحة 75 من تحميلات الزوار الحقيقيين مع فصل الجوال. درجة المختبر في PageSpeed أداة تشخيص وليست الهدف نفسه." },
+    { q: "متجري بطيء رغم تحسين الصور وحذف التطبيقات الزائدة، ماذا أفعل؟", a: "تأكد أنك تقرأ بيانات الميدان لا المختبر، وراجع القالب: قالب قديم غير مدعوم قد يكون السبب. وما تبقى بعدها يخص المنصة؛ ارفعه لدعمها مع قياساتك الموثقة." },
+    { q: "هل أحذف كل التطبيقات لتسريع المتجر؟", a: "لا. احذف غير المستخدم فقط وقِس أثر كل حذف على الصفحة نفسها. تطبيق مفيد يخدم البيع قد يستحق كلفته، والقرار يبدأ من القياس لا من التخمين." },
+  ],
+  serviceHref: "/ar/services/ecommerce-store-services",
+  serviceLabel: "تعرف على خدمة تحسين متاجر سلة وزد",
+  reviewedAr: "راجعت المصادر في 2 نوفمبر 2026. خطوات الفحص المقترحة ليست نتيجة عميل أو فحصًا لحسابك.",
+  reviewedEn: "Sources reviewed November 2, 2026. Suggested checks are not a client result or an audit of your account.",
+};
+
+const storeSpeedEn: Article = {
+  title: "Speeding up a Salla or Zid store: what you can actually improve and what the platform owns",
+  directAnswer: "Measure your store's speed first through PageSpeed Insights and the Core Web Vitals report in Search Console before changing anything, then focus on what you actually own: image size before upload, the number of apps and external scripts, and a modern supported theme. Hosting and the theme's core code belong to the platform and no new app will change them, and remember page experience is one supporting factor among many, not a ranking switch.",
+  sections: [
+    { heading: "Speed matters, but it is not everything", paragraphs: [
+      "Google states that its core ranking systems reward content that provides a good page experience, while also always seeking to show the most relevant content even if its page experience is sub-par. Practically: a slow page with useful content can outrank a fast empty page, but when content is comparable, experience becomes a real edge.",
+      "The reference metrics are Core Web Vitals: Largest Contentful Paint within 2.5 seconds, Interaction to Next Paint within 200 milliseconds, and Cumulative Layout Shift of 0.1 or less, measured at the 75th percentile of page loads with mobile and desktop separated.",
+    ]},
+    { heading: "Measure before you fix", paragraphs: [
+      "Open PageSpeed Insights, paste your store URL, and record two different numbers: field data from the Chrome User Experience Report (real visitors) and lab data (an instant simulation). Field data is the reference when available; the lab score is a diagnostic that varies between runs and does not equal your visitors' experience.",
+      "Review the Core Web Vitals report in Search Console when you have it; it groups similar pages and tells you which groups need work on mobile and desktop. Test at least three page types - home, a category and a product - because each behaves differently.",
+    ]},
+    { heading: "What you own first: images", paragraphs: [
+      "Images are the biggest lever a merchant controls on hosted platforms. Compress and resize images before upload to match their real display size, and do not upload raw camera dimensions and leave the store to fight them. Modern formats like WebP are lighter than old JPEGs at the same quality.",
+      "Look at your home page critically: large slider images and embedded videos above the fold are among the heaviest causes of a slow LCP. One clear hero image beats five slides nobody waits for.",
+    ]},
+    { heading: "What you own second: apps and external scripts", paragraphs: [
+      "Every app you install from the app market and every pixel or chat widget you add ships JavaScript into your customer's browser, and the accumulation of these additions is one of the most common causes of slow stores and weak interaction responsiveness.",
+      "Hold a regular review: remove apps you do not actually use, audit tags in Google Tag Manager (ad pixels, session recorders, chat widgets) and delete what belongs to finished campaigns. After each removal, re-measure the same page in PageSpeed Insights and log the difference with its date.",
+    ]},
+    { heading: "What you own third: the theme and page structure", paragraphs: [
+      "Theme choice is a speed decision before it is a design decision. Zid's help center explains that themes not built for the enhanced storefront miss new storefront features and speed improvements, and it shows an alert when your theme is no longer supported; if you see that alert, upgrading to a supported theme is among the highest-return moves available to you.",
+      "Salla themes also vary in weight and structure, so review Salla's themes journal before choosing. Regardless of platform: more home page sections, sliders and animated elements mean more loading cost; a focused home page sells better than a tiring gallery.",
+    ]},
+    { heading: "What the platform owns and you cannot change", paragraphs: [
+      "Hosting, the content delivery network, the theme's core code and the checkout page are owned by the platform. Do not spend effort trying to control them, and do not believe anyone promising to hack past them with another app.",
+      "If you improved what you own and field data stays poor, raise it with platform support together with your dated measurements; a documented, numbers-based request works better than a general complaint.",
+    ]},
+    { heading: "Common myths about store speed", paragraphs: [
+      "Chasing a lab score of 100 is unhelpful obsession; the score is a diagnostic, not a goal, and part of what the report lists is outside your control on a hosted platform.",
+      "Speed does not compensate for weak content; Google is explicit that the most relevant content wins even with sub-par experience. And deleting every app before measuring can remove tools that serve sales while the real problem was images all along.",
+    ]},
+    { heading: "A monthly measurement sheet for your store", paragraphs: [
+      "Keep a simple tracking page: date, URL, mobile field numbers (LCP, INP, CLS) when available, lab score, the change you made, and one note. Review the Search Console report monthly, compare groups before and after your work, and keep the records so you know what actually made the difference.",
+    ]},
+    { heading: "When to ask for a specialist", paragraphs: [
+      "Bring in a specialist when causes intertwine or you need a considered theme decision. The professional deliverable to expect: a documented baseline measured with Google's tools, a fix list ranked by impact within what you actually own, and before-and-after records on the same pages, without promises of a specific score or a guaranteed ranking.",
+    ]},
+  ],
+  faq: [
+    { q: "Will speeding up my store raise my Google ranking directly?", a: "Page experience is one supporting factor among many signals, and Google states the most relevant content wins even with sub-par experience. Improve speed for your visitors first and to strengthen your position when content is comparable, not as a content substitute." },
+    { q: "What is a good Core Web Vitals score?", a: "LCP within 2.5 seconds, INP within 200 milliseconds, CLS of 0.1 or less, measured at the 75th percentile of real visitor loads with mobile separated. The PageSpeed lab score is a diagnostic, not the goal itself." },
+    { q: "My store is still slow after image optimization and removing extra apps. What now?", a: "Confirm you are reading field data, not lab data, and review the theme: an old unsupported theme can be the cause. Whatever remains after that belongs to the platform; raise it with support with your documented measurements." },
+    { q: "Should I delete all apps to speed up the store?", a: "No. Remove only what you do not use and measure the effect of each removal on the same page. A useful app that serves sales may be worth its cost; the decision starts from measurement, not guessing." },
+  ],
+  serviceHref: "/services/ecommerce-store-services",
+  serviceLabel: "See the Salla and Zid store SEO service",
+  reviewedAr: "راجعت المصادر في 2 نوفمبر 2026. خطوات الفحص المقترحة ليست نتيجة عميل أو فحصًا لحسابك.",
+  reviewedEn: "Sources reviewed November 2, 2026. Suggested checks are not a client result or an audit of your account.",
+};
+
 export const sallaZidMerchantRegistry: Record<string, ComponentType> = {
   "salla-zid-merchant-center-ar": () => <ArticleView article={merchantCenterAr} lang="ar" />,
   "salla-zid-merchant-center-en": () => <ArticleView article={merchantCenterEn} lang="en" />,
@@ -404,6 +517,8 @@ export const sallaZidMerchantRegistry: Record<string, ComponentType> = {
   "ai-visibility-ecommerce-en": () => <ArticleView article={aiVisibilityEn} lang="en" />,
   "salla-zid-structured-data-ar": () => <ArticleView article={structuredDataAr} lang="ar" />,
   "salla-zid-structured-data-en": () => <ArticleView article={structuredDataEn} lang="en" />,
+  "salla-zid-store-speed-ar": () => <ArticleView article={storeSpeedAr} lang="ar" />,
+  "salla-zid-store-speed-en": () => <ArticleView article={storeSpeedEn} lang="en" />,
 };
 
 export const sallaZidMerchantPosts: BlogPost[] = [
@@ -413,4 +528,6 @@ export const sallaZidMerchantPosts: BlogPost[] = [
   { slug: "ai-visibility-ecommerce-en", title: aiVisibilityEn.title, description: "What your store actually needs to appear in AI Overviews, ChatGPT and Gemini: Google's official fundamentals, OpenAI crawlers, and myths to avoid.", date: "2026-10-31", readTime: "6 min read", lang: "en", altSlug: "ai-visibility-ecommerce-ar", faq: aiVisibilityEn.faq },
   { slug: "salla-zid-structured-data-ar", title: structuredDataAr.title, description: "كيف تفحص البيانات المنظمة التي يولدها متجرك على سلة أو زد: اختبار الناتج الحالي، متطلبات قوائم التجار، طريق GTM في سلة، وأخطاء التكرار والتعارض الشائعة.", date: "2026-11-01", readTime: "7 دقائق", lang: "ar", altSlug: "salla-zid-structured-data-en", faq: structuredDataAr.faq },
   { slug: "salla-zid-structured-data-en", title: structuredDataEn.title, description: "How to audit the structured data your Salla or Zid store emits: test current output, merchant listing requirements, Salla's GTM route, and common duplication and mismatch mistakes.", date: "2026-11-01", readTime: "7 min read", lang: "en", altSlug: "salla-zid-structured-data-ar", faq: structuredDataEn.faq },
+  { slug: "salla-zid-store-speed-ar", title: storeSpeedAr.title, description: "كيف تقيس سرعة متجرك على سلة أو زد وتحسن ما تملكه فعلًا: الصور، التطبيقات والأكواد الخارجية، واختيار قالب مدعوم، مع حدود ما تملكه المنصة.", date: "2026-11-02", readTime: "7 دقائق", lang: "ar", altSlug: "salla-zid-store-speed-en", faq: storeSpeedAr.faq },
+  { slug: "salla-zid-store-speed-en", title: storeSpeedEn.title, description: "How to measure your Salla or Zid store speed and improve what you actually own: images, apps and external scripts, and a supported theme, with honest platform limits.", date: "2026-11-02", readTime: "7 min read", lang: "en", altSlug: "salla-zid-store-speed-ar", faq: storeSpeedEn.faq },
 ];
