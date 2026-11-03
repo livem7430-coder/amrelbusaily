@@ -41,6 +41,13 @@ const speedSources = [
  ["Salla: themes journal", "https://help.salla.sa/article/596067432"],
 ];
 
+const domainSources = [
+ ["Zid: connect your own domain", "https://helpdesk.zid.sa/ar/store-settings/domains"],
+ ["Salla: link an external domain", "https://help.salla.sa/article/%D8%B1%D8%A8%D8%B7-%D8%AF%D9%88%D9%85%D9%8A%D9%86-%D9%85%D9%86-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%B3%D9%84%D8%A9/hqykbuouvfa47ecry8ikrsh0"],
+ ["Salla: manage your store domain", "https://help.salla.sa/article/%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9-%D9%86%D8%B7%D8%A7%D9%82-%D8%AF%D9%88%D9%85%D9%8A%D9%86-%D9%85%D8%AA%D8%AC%D8%B1%D9%83-%D8%B9%D9%84%D9%89-%D8%B3%D9%84%D8%A9/bdk6c6zou6v5bm1xj93r8y4p"],
+ ["Google: Search Console", "https://search.google.com/search-console"],
+];
+
 const sourcesFor = (article: Article) =>
   article === merchantCenterAr || article === merchantCenterEn
     ? merchantSources
@@ -48,7 +55,9 @@ const sourcesFor = (article: Article) =>
       ? schemaSources
       : article === storeSpeedAr || article === storeSpeedEn
         ? speedSources
-        : aiSources;
+        : article === customDomainAr || article === customDomainEn
+          ? domainSources
+          : aiSources;
 
 function ArticleView({ article, lang }: { article: Article; lang: "ar" | "en" }) {
   return (
@@ -510,6 +519,111 @@ const storeSpeedEn: Article = {
   reviewedEn: "Sources reviewed November 2, 2026. Suggested checks are not a client result or an audit of your account.",
 };
 
+
+const customDomainAr: Article = {
+  title: "ربط الدومين بمتجر سلة أو زد: الخطوات الصحيحة وما يهم جوجل بعد الربط",
+  directAnswer: "اربط نطاقك الخاص من إعدادات المنصة: في سلة من إعدادات المتجر ثم نطاق المتجر ثم ربط نطاق خارجي، وفي زد من الإعدادات ثم المتجر ثم رابط المتجر الإلكتروني ثم ربط نطاق موجود، وحدّث خوادم الأسماء لدى مسجل النطاق ثم اضغط التحقق وانتظر اكتماله حتى 72 ساعة قبل التفعيل. بعدها أضف النطاق الجديد في Search Console وأرسل خريطة الموقع. النطاق الخاص يبني علامتك وثقة عملائك، لكنه وحده لا يرفع ترتيبك؛ المحتوى والفهرسة هما ما يظهرك.",
+  sections: [
+    { heading: "لماذا تربط نطاقًا خاصًا أصلًا؟", paragraphs: [
+      "يمنحك نطاقك الخاص عنوانًا ثابتًا تملكه وتحمله معك: يظهر في إعلاناتك وبطاقاتك ورسائلك، ويحفظه العملاء ويكتبونه بلا وسيط. العنوان المجاني الافتراضي يعمل تقنيًا، لكنه يحمل اسم المنصة ولا يبني علامتك على المدى الطويل.",
+      "كن صادقًا مع نفسك عن السقف: النطاق الخاص ليس دفعة ترتيب في جوجل. قيمته في العلامة والثقة وتوحيد الروابط؛ أما الظهور في نتائج البحث فيتبع جودة صفحاتك وفهرستها.",
+    ]},
+    { heading: "قبل الربط: امتلك نطاقك باسمك", paragraphs: [
+      "اشتر النطاق من مسجل معروف أو اطلبه من منصتك إن كانت توفر ذلك، وتأكد أنه مسجل باسمك وبياناتك أنت. تنبه زد إلى نقطة مهمة: إن كانت منصة أخرى قد سجلت نطاقك باسمها، فاطلب نقله إلى اسمك قبل ربطه، فالملكية أهم من الربط.",
+      "اختر اسمًا قصيرًا واضحًا يقال ويُكتب بلا شرح، وتجنب الحروف المربكة والأرقام التي تُسمع ولا تُقرأ. لا تغيّر نطاقك بعد انطلاقك إلا لسبب حقيقي؛ الاستقرار جزء من قيمة النطاق.",
+    ]},
+    { heading: "خطوات الربط في زد", paragraphs: [
+      "من الإعدادات ثم المتجر ثم رابط المتجر الإلكتروني تفتح قائمة النطاقات. اضغط ربط نطاق موجود وأدخل النطاق الأساسي مثل example.com، وتنص زد على عدم إدخال نطاق فرعي مثل shop.example.com في هذه الخطوة.",
+      "انسخ خادم الأسماء الأساسي والثانوي من بطاقة خوادم الأسماء، ثم استبدل خوادم أسماء نطاقك بهما في لوحة مسجل النطاق، وعد واضغط التحقق. تتدرج الحالة من قيد التحقق إلى جاهز للتفعيل ثم مفعل بعد الضغط على تفعيل، وتنص زد على أن تحديث خوادم الأسماء قد يتأخر حتى 72 ساعة.",
+      "تتيح زد ربط أكثر من نطاق مع تفعيل واحد فقط في كل مرة، وتستطيع العودة لعنوانك المجاني على zid.store متى شئت، كما توفر صفحة النطاق إدارة سجلات DNS لتوجيه البريد والخدمات الأخرى.",
+    ]},
+    { heading: "خطوات الربط في سلة", paragraphs: [
+      "من القائمة الرئيسية للوحة التحكم افتح إعدادات المتجر، ثم اختر نطاق المتجر، ثم اضغط ربط نطاق خارجي، وأدخل عنوان الدومين واختر طريقة الربط ثم اضغط ربط النطاق، كما توثق مساعدة سلة المحدثة في أغسطس 2026.",
+      "توفر سلة أيضًا مقالات لإدارة النطاق وحجز دومين جديد من داخلها ونقل دومين بين متاجرها؛ راجع المقال المناسب لحالتك قبل تغيير سجلات DNS إن كان على نطاقك بريد أو خدمات قائمة.",
+    ]},
+    { heading: "لماذا يحتاج الربط وقتًا؟", paragraphs: [
+      "تغيير خوادم الأسماء لا ينتشر في الشبكة لحظيًا؛ تخزن الشبكة التوجيه القديم مؤقتًا حتى تنتهي صلاحيته. لذلك تنص زد بانتظار يصل إلى 72 ساعة قبل أن ينجح التحقق، وأن تعيد المحاولة لاحقًا بدل تعديل السجلات مرارًا.",
+      "أكثر خطأ هنا هو تبديل السجلات كل ساعة ظنًا أن شيئًا تعطل؛ كل تغيير جديد يعيد بدء الانتشار. سجل ما كتبته ووقته، ثم تحقق بعد ساعات.",
+    ]},
+    { heading: "بعد التفعيل: خطوات جوجل الأساسية", paragraphs: [
+      "أضف نطاقك الجديد في Search Console وتحقق من ملكيته، ثم أرسل خريطة الموقع من داخله. هذه الخطوة تجعلك ترى الفهرسة والاستعلامات على عنوانك الحقيقي بدل انتظار اكتشاف جوجل وحده.",
+      "راجع أن صفحاتك تفتح بعنوان النطاق الجديد مع https، وحدّث روابطك في الحملات وحسابات التواصل إلى العنوان الجديد، وراقب سلوك العنوان المجاني القديم بعد التفعيل. إن كان متجرك منقولًا من منصة أخرى وله تاريخ فهرسة على عنوان سابق، فراجع دليل نقل المتجر والسيو على هذه المدونة؛ نقل الفهرسة قصة أخرى تحتاج خطة إعادة توجيه.",
+    ]},
+    { heading: "أخطاء شائعة عند ربط الدومين", paragraphs: [
+      "إدخال نطاق فرعي مكان النطاق الأساسي، أو تغيير سجلات DNS باستمرار أثناء الانتشار، أو افتراض أن التفعيل لحظي فتعلن العنوان الجديد قبل اكتماله.",
+      "نسيان سجلات قائمة على النطاق مثل البريد الإلكتروني عند استبدال خوادم الأسماء كاملة؛ راجع سجلاتك الحالية وانسخ ما تحتاجه قبل الاستبدال. وأخيرًا، توقع أن النطاق الجديد وحده سيغير ترتيبك؛ العمل على المحتوى والفهرسة هو ما يغيرها.",
+    ]},
+    { heading: "ورقة مراجعة بعد الربط", paragraphs: [
+      "بعد التفعيل سجل: فتح المتجر بعنوان النطاق الجديد مع شهادة أمان سليمة، حالة النطاق في لوحة المنصة (مفعل)، إضافة النطاق في Search Console وإرسال الخريطة، تحديث روابط الحملات والحسابات، وملاحظة عن سلوك العنوان القديم. راجع هذه النقاط بعد يوم وأسبوع لتلتقط أي مشكلة متأخرة.",
+    ]},
+    { heading: "متى تطلب مساعدة؟", paragraphs: [
+      "اطلب مختصًا عندما يتشابك بريد النطاق مع ربط المتجر، أو عند نقل نطاق مسجل باسم طرف آخر، أو عندما يكون لمتجرك تاريخ فهرسة على عنوان قديم يحتاج خطة تحويل. التسليم المتوقع: نطاق مفعّل وموثق في Search Console، وسجلات DNS محفوظة ومدروسة، وقائمة تحقق مكتملة بتواريخها.",
+    ]},
+  ],
+  faq: [
+    { q: "هل ربط دومين خاص يحسن ترتيبي في جوجل؟", a: "ليس بحد ذاته. قيمة النطاق الخاص في بناء علامتك وثقة عملائك وتوحيد روابطك، أما الترتيب فيتبع جودة المحتوى وسلامة الفهرسة والتجربة." },
+    { q: "كم يستغرق ربط الدومين؟", a: "توثق زد أن تحديث خوادم الأسماء قد يتأخر حتى 72 ساعة قبل نجاح التحقق. أكمل الخطوات ثم أعد المحاولة بعد ساعات بدل تعديل السجلات مرارًا، فكل تعديل يعيد الانتشار من جديد." },
+    { q: "هل أربط النطاق الرئيسي أم نطاقًا فرعيًا؟", a: "عند الربط في زد تنص المساعدة على إدخال النطاق الأساسي مثل example.com وليس نطاقًا فرعيًا مثل shop.example.com. راجع مقال منصتك لحالتك الخاصة إن احتجت ربط نطاق فرعي." },
+    { q: "ماذا يحدث لعنواني المجاني القديم بعد ربط نطاقي؟", a: "توضح زد أنه يمكنك العودة إلى عنوانك المجاني متى شئت حتى بعد ربط نطاقك الخاص. راجع إعدادات منصتك لسلوك التحويل بين العنوانين بعد التفعيل." },
+  ],
+  serviceHref: "/ar/services/ecommerce-store-services",
+  serviceLabel: "تعرف على خدمة تحسين متاجر سلة وزد",
+  reviewedAr: "راجعت المصادر في 3 نوفمبر 2026. خطوات الفحص المقترحة ليست نتيجة عميل أو فحصًا لحسابك.",
+  reviewedEn: "Sources reviewed November 3, 2026. Suggested checks are not a client result or an audit of your account.",
+};
+
+const customDomainEn: Article = {
+  title: "Connecting a custom domain to a Salla or Zid store: the right steps and what matters to Google afterwards",
+  directAnswer: "Connect your own domain from the platform settings: in Salla go to store settings then store domain then link external domain; in Zid go to Settings, Store, Store link, then link existing domain. Update the nameservers at your registrar, press verify, and wait for verification that can take up to 72 hours before activating. Then add the new domain in Search Console and submit your sitemap. A custom domain builds your brand and customer trust, but alone it does not raise your ranking; content and indexing are what make you visible.",
+  sections: [
+    { heading: "Why connect a custom domain at all?", paragraphs: [
+      "Your own domain gives you a stable address you own and carry with you: it appears in your ads, cards and messages, and customers remember and type it directly. The free default address works technically, but it carries the platform's name and does not build your brand over time.",
+      "Be honest with yourself about the ceiling: a custom domain is not a ranking boost on Google. Its value is brand, trust and unified links; visibility in search results follows your page quality and indexing.",
+    ]},
+    { heading: "Before connecting: own your domain under your name", paragraphs: [
+      "Buy the domain from a known registrar or request it through your platform if offered, and make sure it is registered under your own name and details. Zid highlights an important point: if another platform registered your domain under its own name, ask to transfer it to your name before connecting it; ownership matters more than the connection.",
+      "Choose a short, clear name that is said and typed without explanation, and avoid confusing letters and numbers that are heard but not read. Do not change your domain after launch without a real reason; stability is part of a domain's value.",
+    ]},
+    { heading: "Connecting steps on Zid", paragraphs: [
+      "From Settings, then Store, then Store link you open the domain list. Press link existing domain and enter the root domain such as example.com; Zid explicitly says not to enter a subdomain such as shop.example.com at this step.",
+      "Copy the primary and secondary nameservers from the nameservers card, replace your domain's nameservers with them at your registrar, then return and press verify. The status moves from pending verification to ready for activation to active after pressing activate, and Zid notes nameserver updates can take up to 72 hours.",
+      "Zid lets you connect several domains with only one active at a time, you can return to your free zid.store address whenever you want, and the domain page offers DNS record management for routing mail and other services.",
+    ]},
+    { heading: "Connecting steps on Salla", paragraphs: [
+      "From the dashboard main menu open store settings, choose store domain, press link external domain, enter the domain address, choose the linking method and press link domain, as documented in Salla's help updated in August 2026.",
+      "Salla also provides articles for domain management, booking a new domain from inside the platform, and transferring a domain between Salla stores; review the article matching your case before changing DNS records if your domain already carries mail or other services.",
+    ]},
+    { heading: "Why does connecting take time?", paragraphs: [
+      "Nameserver changes do not spread through the network instantly; the network caches the old routing until it expires. That is why Zid advises waiting up to 72 hours before verification succeeds, and retrying later instead of editing records repeatedly.",
+      "The most common mistake here is switching records every hour assuming something broke; every new change restarts propagation. Write down what you entered and when, then check after a few hours.",
+    ]},
+    { heading: "After activation: the basic Google steps", paragraphs: [
+      "Add your new domain in Search Console and verify ownership, then submit your sitemap from inside it. This lets you see indexing and queries on your real address instead of waiting for Google to discover it alone.",
+      "Check that your pages open on the new domain with https, update your campaign and social links to the new address, and watch how the old free address behaves after activation. If your store moved from another platform with indexing history on a previous address, review the store migration and SEO guide on this blog; moving existing indexing is a different story that needs a redirect plan.",
+    ]},
+    { heading: "Common mistakes when connecting a domain", paragraphs: [
+      "Entering a subdomain instead of the root domain, changing DNS records repeatedly during propagation, or assuming activation is instant and announcing the new address before it completes.",
+      "Forgetting existing records on the domain such as email when fully replacing nameservers; review your current records and copy what you need before replacing. And finally, expecting the new domain alone to change your ranking; content and indexing work is what changes it.",
+    ]},
+    { heading: "A review sheet after connecting", paragraphs: [
+      "After activation record: the store opens on the new domain with a valid security certificate, the domain status in the platform dashboard is active, the domain is added in Search Console with the sitemap submitted, campaign and account links are updated, and one note on the old address behavior. Review these points after a day and a week to catch any delayed issue.",
+    ]},
+    { heading: "When to ask for help", paragraphs: [
+      "Ask a specialist when domain email conflicts with the store connection, when transferring a domain registered under another party's name, or when your store has indexing history on an old address that needs a redirect plan. The expected deliverable: an activated domain verified in Search Console, preserved and considered DNS records, and a dated checklist completed.",
+    ]},
+  ],
+  faq: [
+    { q: "Does connecting a custom domain improve my Google ranking?", a: "Not by itself. A custom domain's value is building your brand, customer trust and unified links; ranking follows content quality, sound indexing and experience." },
+    { q: "How long does domain connecting take?", a: "Zid documents that nameserver updates can take up to 72 hours before verification succeeds. Complete the steps, then retry after a few hours instead of editing records repeatedly, since every edit restarts propagation." },
+    { q: "Do I connect the root domain or a subdomain?", a: "When connecting on Zid, the help center says to enter the root domain like example.com, not a subdomain like shop.example.com. Check your platform's article for your specific case if you need a subdomain." },
+    { q: "What happens to my old free address after connecting my domain?", a: "Zid explains you can return to your free address whenever you want, even after connecting your own domain. Review your platform settings for how redirects between the two addresses behave after activation." },
+  ],
+  serviceHref: "/services/ecommerce-store-services",
+  serviceLabel: "See the Salla and Zid store SEO service",
+  reviewedAr: "راجعت المصادر في 3 نوفمبر 2026. خطوات الفحص المقترحة ليست نتيجة عميل أو فحصًا لحسابك.",
+  reviewedEn: "Sources reviewed November 3, 2026. Suggested checks are not a client result or an audit of your account.",
+};
+
 export const sallaZidMerchantRegistry: Record<string, ComponentType> = {
   "salla-zid-merchant-center-ar": () => <ArticleView article={merchantCenterAr} lang="ar" />,
   "salla-zid-merchant-center-en": () => <ArticleView article={merchantCenterEn} lang="en" />,
@@ -519,6 +633,8 @@ export const sallaZidMerchantRegistry: Record<string, ComponentType> = {
   "salla-zid-structured-data-en": () => <ArticleView article={structuredDataEn} lang="en" />,
   "salla-zid-store-speed-ar": () => <ArticleView article={storeSpeedAr} lang="ar" />,
   "salla-zid-store-speed-en": () => <ArticleView article={storeSpeedEn} lang="en" />,
+  "salla-zid-custom-domain-ar": () => <ArticleView article={customDomainAr} lang="ar" />,
+  "salla-zid-custom-domain-en": () => <ArticleView article={customDomainEn} lang="en" />,
 };
 
 export const sallaZidMerchantPosts: BlogPost[] = [
@@ -530,4 +646,6 @@ export const sallaZidMerchantPosts: BlogPost[] = [
   { slug: "salla-zid-structured-data-en", title: structuredDataEn.title, description: "How to audit the structured data your Salla or Zid store emits: test current output, merchant listing requirements, Salla's GTM route, and common duplication and mismatch mistakes.", date: "2026-11-01", readTime: "7 min read", lang: "en", altSlug: "salla-zid-structured-data-ar", faq: structuredDataEn.faq },
   { slug: "salla-zid-store-speed-ar", title: storeSpeedAr.title, description: "كيف تقيس سرعة متجرك على سلة أو زد وتحسن ما تملكه فعلًا: الصور، التطبيقات والأكواد الخارجية، واختيار قالب مدعوم، مع حدود ما تملكه المنصة.", date: "2026-11-02", readTime: "7 دقائق", lang: "ar", altSlug: "salla-zid-store-speed-en", faq: storeSpeedAr.faq },
   { slug: "salla-zid-store-speed-en", title: storeSpeedEn.title, description: "How to measure your Salla or Zid store speed and improve what you actually own: images, apps and external scripts, and a supported theme, with honest platform limits.", date: "2026-11-02", readTime: "7 min read", lang: "en", altSlug: "salla-zid-store-speed-ar", faq: storeSpeedEn.faq },
+  { slug: "salla-zid-custom-domain-ar", title: customDomainAr.title, description: "خطوات ربط نطاقك الخاص بمتجر سلة أو زد: خوادم الأسماء، مدة التحقق، التفعيل، وخطوات Search Console بعد الربط، مع الأخطاء الشائعة.", date: "2026-11-03", readTime: "7 دقائق", lang: "ar", altSlug: "salla-zid-custom-domain-en", faq: customDomainAr.faq },
+  { slug: "salla-zid-custom-domain-en", title: customDomainEn.title, description: "How to connect your own domain to a Salla or Zid store: nameservers, verification time, activation, and the Search Console steps after connecting, with common mistakes.", date: "2026-11-03", readTime: "7 min read", lang: "en", altSlug: "salla-zid-custom-domain-ar", faq: customDomainEn.faq },
 ];
